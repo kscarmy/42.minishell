@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:07:01 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 16:42:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/16 11:24:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int	ft_space(char *str, int i) // renvoie le nombre d espaces a sauter en partan
 	int	u;
 
 	u = 0;
-	while (str[i + u] && str[i + u] == " ")
+	while (str[i + u] && str[i + u] == ' ')
 	{
 		u++;
 	}
 	return (u);
 }
+

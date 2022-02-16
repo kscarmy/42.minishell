@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 16:13:31 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/16 12:09:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char **argv, char **env)
 {
 	argc = 0;
 	argv = NULL;
-	// char *line;
 	t_data	*data;
-
-	int i = 0; // A SUPP
 
 	data = malloc(sizeof(t_data));
 	if (ft_init_env(data, env) == 0)
@@ -31,7 +28,18 @@ int	main(int argc, char **argv, char **env)
 	write(0, "~$ ", 3);
 	while (get_next_line(0, &data->input) > 0)
 	{
-		ft_putstr(data->input);
+
+		// write(0, "\n", 3);
+		// ft_putstr(data->input);
+		
+		/* commande de parsing a inserer ici */
+		ft_parse_input(data);
+		
+
+		/* commande d'execusion des tokens a inserer ici */
+		
+		ft_while_token(data);
+		// write(0, "\n", 3);
 		write(0, "~$ ", 3);
 	}
 	// printf("\n");

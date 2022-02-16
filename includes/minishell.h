@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 17:24:59 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/16 12:04:07 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 
 typedef struct p_data
 {
-	int				err; // 
+	int				exit; // sortie forcee si exit == 1
+	int				err; // erreurs native du programme minishell : 0 = OK, sinon erreur
+	int				i; // tete de lecture dans input
 	char			**env; // argument env
 	char			*input; // chaine de caractere recu brute dans le shell
 	struct p_token	*first; // adresse du premier token
@@ -37,9 +39,10 @@ typedef struct p_data
 
 typedef struct p_token
 {
-	int	cmd; // correspond a la fonctionn geree par minishell
-	int	option; // correspond a l'option de la commande precedente
-	char	*str; // correspond a la string gerer par cmd
+	int				sep; // separateurs, type "; | > < >> <<""
+	int				cmd; // correspond a la fonctionn geree par minishell
+	int				option; // correspond a l'option de la commande precedente
+	char			*str; // correspond a la string gerer par cmd
 	struct p_token	*next; // prochain token
 	struct p_token	*prev; // precedent token
 	
@@ -86,17 +89,37 @@ int	ft_init_env_bis(t_data *data, char **env, int i);
 /*		UTILS		*/
 /*	*************	*/
 
+/*	ft_str.c	*/
+char	*ft_strncpy(char *dest, char *src, int n);
+int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separateur, sinon son code specifique
+
 /*	ft_write.c	*/
 void	ft_putstr(char *str);
 void	ft_putchar(char *c);
 int		ft_is_a_b(char a, char b); // compare a et b, renvoie 1 si ils sont identiques sinon 0
 int		ft_space(char *str, int i); // renvoie le nombre d espaces a sauter en partant de i
 
+
 /*	**************	*/
 /*		PARSING		*/
 /*	**************	*/
 
-/*	ft_cut_echo.c	*/
+/*	ft_cut_input.c	*/
+int	ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifique a l'erreur
 
+/*	ft_cut_echo.c	*/
+int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
+void	ft_cut_echo_option(t_data *data, int i); // verifie si l'option "-n" est presente
+void	ft_create_echo_token(t_data *data, int option); // fonction qui cree le token echo avec ou sans option : si u >= 2 alors option
+
+/*	**********	*/
+/*		CMD		*/
+/*	**********	*/
+
+/*	ft_echo.c	*/
+void	ft_echo(t_token *token); // commande echo
+
+/*	ft_read_token_list.c	*/
+int	ft_while_token(t_data *data); // lecture des tokens
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 03:20:27 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/16 10:35:44 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ void	ft_init_token(t_data *data) // initialise la liste
 		data->err = 101; // erreur 101 = malloc
 	else
 	{
+		token->sep = -1; // valeur initiale vide
 		token->cmd = -1; // valeur initiale vide
 		token->option = -1; // valeur initiale vide
 		token->str = NULL; // valeur initiale vide
 		token->next = NULL; // dernier token donc addresse suivante nulle
 		token->prev = NULL; // premier token donc addresse precedente nulle
-	}	
+	}
+	data->first = token;
 }
 
 void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debut de la stack

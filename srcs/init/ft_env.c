@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 05:21:36 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/16 11:58:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	ft_init_env(t_data *data, char **env) // malloc env dans data
 			return (0); // erreur malloc
 		i++;
 	}
+	data->i = 0;
+	data->exit = 0;
+	data->err = 0;
+	data->first = NULL;
 	data->env[i] = NULL;
 	return (1); // 1 = OK
 }
