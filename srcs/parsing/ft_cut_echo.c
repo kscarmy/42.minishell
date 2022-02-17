@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/16 11:36:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:11:42 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_cut_echo(t_data *data, int i) // ret 1 si echo trouver, sinon ret 0. i es
 			u++;
 		i++;
 	}
+	printf("\ncut echo :\ni : %d\nu : %d\n", i , u); // A SUPP
 	if (u == 4)
 	{
 		ft_cut_echo_option(data, i);
@@ -40,16 +41,20 @@ void	ft_cut_echo_option(t_data *data, int i)
 
 	str = "-n";
 	u = 0;
+	printf("\necho op 1 :\ni : %d\nu : %d\n", i , u); // A SUPP
 	i = ft_space(data->input, i);
+	printf("\necho op 2 :\ni : %d\nu : %d\n", i , u); // A SUPP
 	while (data->input[i] && data->input[i] != ' ') //  verifier que si "-n" a plusieurs n, ceux ci sont comptes
 	{
 		while (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;
 		i++;
 	}
-	if (u == 2)
+	printf("\necho op 3 :\ni : %d\nu : %d\n", i , u); // A SUPP
+	if (u >= 2)
 		i = i + u;
 	data->i = data->i + i;
+	printf("\necho op 4 :\ni : %d\nu : %d\n", i , u); // A SUPP
 	ft_create_echo_token(data, u);
 }
 

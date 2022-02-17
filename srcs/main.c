@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/16 12:09:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:30:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,22 @@ int	main(int argc, char **argv, char **env)
 	
 	/*		Tests		*/
 	write(0, "~$ ", 3);
-	while (get_next_line(0, &data->input) > 0)
+	while (data->exit == 0 && get_next_line(0, &data->input) > 0)
 	{
-
-		// write(0, "\n", 3);
-		// ft_putstr(data->input);
 		
 		/* commande de parsing a inserer ici */
 		ft_parse_input(data);
 		
-
 		/* commande d'execusion des tokens a inserer ici */
+		if (data->exit == 0)
+			ft_while_token(data);
 		
-		ft_while_token(data);
-		// write(0, "\n", 3);
+		/*	commande de reset de data	*/
+		ft_clear_for_new_input(data);
 		write(0, "~$ ", 3);
 	}
-	// printf("\n");
-	// while (data->env[i])
-	// {
-	// 	printf("%s\n", data->env[i]);
-	// 	i++;
-	// }
-	/*		Tests		*/
+	
+	/*	fonction qui clear tout a faire	*/
 
 	return (0);
 }

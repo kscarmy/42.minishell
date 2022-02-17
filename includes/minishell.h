@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/16 12:04:07 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:59:18 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int	ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifiqu
 int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
 void	ft_cut_echo_option(t_data *data, int i); // verifie si l'option "-n" est presente
 void	ft_create_echo_token(t_data *data, int option); // fonction qui cree le token echo avec ou sans option : si u >= 2 alors option
+
+/*	ft_exit.c	*/
+void	ft_clear_token_list(t_data *data); // supprime tout les tokens de la liste
+void	ft_clear_for_new_input(t_data *data); // reset la structure data pour reprendre un nouveau input
 
 /*	**********	*/
 /*		CMD		*/

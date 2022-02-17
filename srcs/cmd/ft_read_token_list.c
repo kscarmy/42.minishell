@@ -6,13 +6,13 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/16 12:05:22 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/17 19:58:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_while_token(t_data *data) // lecture des tokens
+int		ft_while_token(t_data *data) // lecture des tokens
 {
 	int	i;
 	
@@ -21,6 +21,6 @@ int	ft_while_token(t_data *data) // lecture des tokens
 	{
 		i++;
 	}
-	printf("\ncmd : %d\noption : %d\nstr :'%s'\n", data->first->cmd, data->first->option, data->first->str);
+	printf("\ncmd : %d\noption : %d\nstr :'%s'\n", data->first->cmd, data->first->option, data->first->str); // A SUPP
 	return (0);
 }
