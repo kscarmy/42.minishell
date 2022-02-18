@@ -20,9 +20,13 @@ UTILS_C = srcs/utils/ft_write.c\
 PARS_C = srcs/parsing/ft_cut_echo.c\
 			srcs/parsing/ft_cut_input.c\
 			srcs/parsing/ft_exit.c\
+			srcs/parsing/ft_quotes.c\
+			srcs/parsing/ft_cut_pwd.c\
+			srcs/parsing/ft_cut_export.c\
 
 CMD_C = srcs/cmd/ft_echo.c\
 			srcs/cmd/ft_read_token_list.c\
+			srcs/cmd/ft_pwd.c\
 
 MAIN_C = srcs/main.c\
 
@@ -38,6 +42,10 @@ OBJS = get_next_line.o\
 			ft_echo.o\
 			ft_read_token_list.o\
 			ft_exit.o\
+			ft_quotes.o\
+			ft_cut_pwd.o\
+			ft_pwd.o\
+			ft_cut_export.o\
 
 
 

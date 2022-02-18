@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 19:13:37 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:01:02 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 		ft_space(data->input, data->i);
 		if (ft_cut_echo(data, data->i) == 1)
 			found++;
+		if (ft_cut_pwd(data) == 1)
+			found++;
+		if (ft_cut_export(data) == 1)
+			found++;
 		data->i = data->i + 1;
 	}
 	if (found == 0)
 	{
-		data->exit = 1;
 		ft_putstr("ERREUR\n");
 		return (1); // pas de commande trouvee
 	}

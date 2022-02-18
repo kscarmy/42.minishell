@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 19:11:42 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 07:44:46 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	ft_cut_echo(t_data *data, int i) // ret 1 si echo trouver, sinon ret 0. i es
 	str = "echo";
 	while (data->input[i] && data->input[i] != ' ')
 	{
-		while (ft_is_a_b(data->input[i], str[u]) == 1)
+		if (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;
 		i++;
 	}
-	printf("\ncut echo :\ni : %d\nu : %d\n", i , u); // A SUPP
+	// printf("\ncut echo :\ni : %d\nu : %d\n", i , u); // A SUPP
 	if (u == 4)
 	{
 		ft_cut_echo_option(data, i);
@@ -41,22 +41,27 @@ void	ft_cut_echo_option(t_data *data, int i)
 
 	str = "-n";
 	u = 0;
-	printf("\necho op 1 :\ni : %d\nu : %d\n", i , u); // A SUPP
-	i = ft_space(data->input, i);
-	printf("\necho op 2 :\ni : %d\nu : %d\n", i , u); // A SUPP
-	while (data->input[i] && data->input[i] != ' ') //  verifier que si "-n" a plusieurs n, ceux ci sont comptes
-	{
-		while (ft_is_a_b(data->input[i], str[u]) == 1)
-			u++;
-		i++;
-	}
-	printf("\necho op 3 :\ni : %d\nu : %d\n", i , u); // A SUPP
+	// printf("\necho op 1 :\ni : %d\nstr[i] : '%c'\nu : %d\n", i,data->input[i], u); // A SUPP
+	i = i + ft_space(data->input, i);
+	// printf("\necho op 2 :\ni : %d\nstr[i] : '%c'\nu : %d\n", i,data->input[i], u); // A SUPP
+	// printf("\necho option i %d\n", i);
+	// printf("echo option str '%c'\n", data->input[i]);
+	// printf("\necho op 2 :\ni : %d\nu : %d\n", i , u); // A SUPP
+	if (ft_is_a_b(data->input[i], str[0]) == 1)
+		u++;
+	while (ft_is_a_b(data->input[i + u], str[1]) == 1)
+		u++;
+	// printf("\necho op 3 :\ni : %d\nstr[i] : '%c'\nu : %d\n", i,data->input[i], u); // A SUPP
+	// printf("\necho op 3 :\ni : %d\nu : %d\n", i , u); // A SUPP
 	if (u >= 2)
 		i = i + u;
+	i = i + ft_space(data->input, i);
 	data->i = data->i + i;
-	printf("\necho op 4 :\ni : %d\nu : %d\n", i , u); // A SUPP
+	// printf("\necho op 4 :\ni : %d\ndata i : %d\nstr[i] : '%c'\nu : %d\n", i, data->i, data->input[i], u); // A SUPP
+	// printf("\necho op 4 :\ni : %d\nu : %d\n", i , u); // A SUPP
 	ft_create_echo_token(data, u);
 }
+
 
 void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le token echo avec ou sans option : si u >= 2 alors option
 {
@@ -70,12 +75,14 @@ void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le toke
 	data->first->cmd = 1;
 	if (option >= 2)
 		data->first->option = 1;
-	while (ft_is_separator(data->input, data->i) == 0 && data->input[data->i + u])
+	// printf("\nTok 1 :\ni : %d\nstr[i] : '%c'\nu : %d\n", data->i, data->input[data->i], u); // A SUPP
+	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 		u++;
-	data->first->str = malloc(sizeof(char) * (u + 1));
+	// printf("\nTok 2 :\ni : %d\nstr[i] : '%c'\nu : %d\n", data->i, data->input[data->i], u); // A SUPP
+	data->first->str = ft_malloc_str(data, u);
 	if (data->first->str != NULL)
 	{
-		data->first->str = ft_strncpy(data->first->str, &data->input[data->i], u);
+		data->first->str = ft_strncpy(data->first->str, &(data->input[data->i]), u);
 	}
 	else
 		data->err = 200; // erreur malloc

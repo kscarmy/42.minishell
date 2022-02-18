@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/16 10:35:44 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 07:44:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,18 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 
 void	ft_free_token(t_data *data, t_token *token) // free les mallocs dans une liste
 {
-	if (token->str != NULL)
+	if (token->cmd != 2 && token->str != NULL)
 	{
 		free (token->str);
 		token->str = NULL;
 	}
 	else
-		data->err = 103; // free d'un str deja free
+	{	
+		if (token->cmd != 2)
+			data->err = 103; // free d'un str deja free
+		else
+			token->str = NULL;
+	}
 }
 
 void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en relian si besoin les autres

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 20:30:17 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 01:28:06 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ int	main(int argc, char **argv, char **env)
 		ft_parse_input(data);
 		
 		/* commande d'execusion des tokens a inserer ici */
-		if (data->exit == 0)
+		if (data->exit == 0 && data->first != NULL)
 			ft_while_token(data);
 		
+		/*	test avec echo	*/
+		ft_delete_token(data, data->first);
+
 		/*	commande de reset de data	*/
 		ft_clear_for_new_input(data);
 		write(0, "~$ ", 3);

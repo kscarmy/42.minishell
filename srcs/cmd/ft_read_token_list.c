@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 19:58:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:10:56 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ int		ft_while_token(t_data *data) // lecture des tokens
 	{
 		i++;
 	}
-	printf("\ncmd : %d\noption : %d\nstr :'%s'\n", data->first->cmd, data->first->option, data->first->str); // A SUPP
+
+	/*	faire des tests unitaires :		*/
+	if (data->first->cmd == 1) // pour echo
+	{
+		ft_echo(data, data->first);
+	}
+	if (data->first->cmd == 2) // pour pwd
+	{
+		ft_pwd(data, data->first);
+	}
+	if (data->first->cmd == 3) // pour export
+	{
+		printf("\n'%s'\n", data->first->str);
+	}
+	
 	return (0);
 }

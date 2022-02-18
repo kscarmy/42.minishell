@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 19:59:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/18 11:06:49 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h> // WRITE
 # include <stdio.h> // PRINTF
-# include <stdlib.h> // MALLOC FREE
+# include <stdlib.h> // MALLOC FREE GETENV
 
 # define BUFFER_SIZE_GNL 128
 
@@ -90,8 +90,10 @@ int	ft_init_env_bis(t_data *data, char **env, int i);
 /*	*************	*/
 
 /*	ft_str.c	*/
+void	ft_str_join_input(t_data *data, int i, int max); // malloc en recuperant la chaine token->str + la chaine input entre i et i + m
 char	*ft_strncpy(char *dest, char *src, int n);
 int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separateur, sinon son code specifique
+char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renplie de \0 et le return
 
 /*	ft_write.c	*/
 void	ft_putstr(char *str);
@@ -104,8 +106,18 @@ int		ft_space(char *str, int i); // renvoie le nombre d espaces a sauter en part
 /*		PARSING		*/
 /*	**************	*/
 
+/*	ft_cut_export.c	*/
+void	ft_create_export_token(t_data *data); // cree le token de la commande export
+int		ft_is_export(char *str, int i);// verifie si l'argument d'export est valable
+void	ft_parse_export(t_data *data); // parse les arguments de export
+int		ft_cut_export(t_data *data); // cut la commande export
+
+/*	ft_cut_pwd.c	*/
+int		ft_cut_pwd(t_data *data); // cut la commande pwd
+void	ft_create_pwd_token(t_data *data); // cree le token de la commande pwd
+
 /*	ft_cut_input.c	*/
-int	ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifique a l'erreur
+int		ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifique a l'erreur
 
 /*	ft_cut_echo.c	*/
 int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
@@ -121,9 +133,12 @@ void	ft_clear_for_new_input(t_data *data); // reset la structure data pour repre
 /*	**********	*/
 
 /*	ft_echo.c	*/
-void	ft_echo(t_token *token); // commande echo
+void	ft_echo(t_data *data, t_token *token); // commande echo
 
 /*	ft_read_token_list.c	*/
 int	ft_while_token(t_data *data); // lecture des tokens
+
+/*	ft_pwd.c	*/
+void	ft_pwd(t_data *data, t_token *token); // commande pwd
 
 #endif

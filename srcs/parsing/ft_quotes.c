@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_quotes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 17:35:31 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/18 07:51:18 by guderram         ###   ########.fr       */
+/*   Created: 2022/02/18 03:42:50 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/18 07:32:02 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_echo(t_data *data, t_token *token) // commande echo
+void		ft_check_quote(t_data *data) // verif des quotes
 {
-	/*	sortie sur l'entree standard	*/
-	ft_putstr(token->str);
-	if (token->option != 1)
-		ft_putstr("\n");
-	data->i = data->i;
-	// ft_delete_token(data, token); // SEG FAULT
+	int	i;
+	int squote;
+	int	dquote;
+
+	i = data->i;
+	dquote = 0;
+	squote = 0;
+	
+	while (data->input[i] && ft_is_separator(data->input, i))
+	{
+		if (data->input[i] == 34) // 34 = "
+			dquote++;
+		if (data->input[i] == 39) // 39 == '
+			squote++;
+		i++;
+	}
+	// if (dquote )
 }
