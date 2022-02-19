@@ -1,68 +1,77 @@
-NAME_LIB = minishell.a
+## Executables name
+NAME		= minishell
 
-NAME = minishell
-
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror
-
-GNL_C = srcs/gnl/get_next_line.c\
-			srcs/gnl/get_next_line_bis.c\
-			srcs/gnl/get_next_line_utils.c\
-
-INIT_C = srcs/init/ft_token.c\
-			srcs/init/ft_env.c\
-
-UTILS_C = srcs/utils/ft_write.c\
-			srcs/utils/ft_str.c\
-
-
-PARS_C = srcs/parsing/ft_cut_echo.c\
-			srcs/parsing/ft_cut_input.c\
-			srcs/parsing/ft_exit.c\
-			srcs/parsing/ft_quotes.c\
-			srcs/parsing/ft_cut_pwd.c\
-			srcs/parsing/ft_cut_export.c\
-
-CMD_C = srcs/cmd/ft_echo.c\
-			srcs/cmd/ft_read_token_list.c\
-			srcs/cmd/ft_pwd.c\
-
-MAIN_C = srcs/main.c\
-
-OBJS = get_next_line.o\
-			get_next_line_bis.o\
-			get_next_line_utils.o\
-			ft_token.o\
-			ft_env.o\
-			ft_write.o\
-			ft_cut_echo.o\
-			ft_cut_input.o\
-			ft_str.o\
-			ft_echo.o\
-			ft_read_token_list.o\
-			ft_exit.o\
-			ft_quotes.o\
-			ft_cut_pwd.o\
-			ft_pwd.o\
-			ft_cut_export.o\
+## Sources
+SRC	= 	src/main.c \
+		src/parsing/history.c \
+		src/parsing/cut_exit.c \
+		src/parsing/ft_exit.c \
+		src/parsing/cd.c \
+		src/parsing/env.c \
+		src/parsing/ft_cut_pwd.c \
+		src/parsing/ft_cut_input.c \
+		src/parsing/ft_cut_export.c \
+		src/init/ft_token.c \
+		src/init/ft_env.c \
+		src/cmd/ft_read_token_list.c \
+		src/cmd/ft_echo.c \
+		src/cmd/ft_pwd.c \
+		src/utils/ft_write.c \
+		src/utils/ft_str.c
+#		src/parsing/ft_cut_echo.c \
+#		src/parsing/ft_cut_str.c \
 
 
+## Objects (patsubst = path substitute)
+OBJ	= ${patsubst src/%, obj/%, $(SRC:.c=.o)}
 
-all : $(NAME)
+## LIBFT config
+LIBFT		= $(LIBFT_DIR)libft.a
+LIBFT_DIR	= ./src/libft/
+LIB_FLAGS	= -L $(LIBFT_DIR) -lft
+INC		= -I ./inc/ -I $(LIBFT_DIR)
 
-$(NAME) :
-	@$(CC) $(CFLAGS) $(GNL_C) $(INIT_C) $(UTILS_C) $(PARS_C) $(CMD_C) -c
-	@ar -rc $(NAME_LIB) $(OBJS)
-	@ranlib $(NAME_LIB)
-	@$(CC) $(CFLAGS) $(MAIN_C) $(NAME_LIB) -o $(NAME)
+## Compiling config
+CC		= gcc
+RM		= rm -rf
+CFLAGS		= -Wall -Werror -Wextra
 
-clean :
-	@rm -rf $(OBJS)
+## Output messages
+DONE = @echo "libft compiled successfully!"
+CLEAN_O = @echo "Object files removed!"
+CLEAN_A = @echo "Executables removed!"
+DONE = @echo "MINISHELL ready to use!"
 
-fclean : clean
-	@rm -rf $(NAME)
-	@rm -rf $(NAME_LIB)
+all:	obj $(NAME)
 
-re : fclean all
-	@rm -rf $(OBJS)
+
+$(NAME): $(OBJ) $(LIBFT)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
+	$(DONE)
+
+$(LIBFT):
+	@make -sC $(LIBFT_DIR)
+
+obj:
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/cmd
+	@mkdir -p obj/utils
+
+obj/%.o: src/%.c
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	@make clean -sC $(LIBFT_DIR)
+	@${RM} obj ${OBJ}
+	$(CLEAN_O)
+
+fclean:	clean
+	@make fclean -sC $(LIBFT_DIR)
+	@${RM} ${NAME}
+	$(CLEAN_A)
+
+re: fclean all
+
+.PHONY:	all clean fclean re obj
