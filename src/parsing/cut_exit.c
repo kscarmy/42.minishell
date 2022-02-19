@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   cut_exit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 06:59:21 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/18 07:00:47 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/19 09:49:40 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	cut_exit(t_data *data)
 	while (ft_is_whitespace(data->input[i]))
 		i++;
 	if (ft_strncmp((data->input + i), command, 4) == 0)
+	{
+		data->exit = 1;
 		return(1);
+	}
 	return (0);
 }

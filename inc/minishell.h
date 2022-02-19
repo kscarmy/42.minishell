@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/19 09:29:42 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/19 10:09:26 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void		ft_create_env_token(t_data *data);
 int		cut_pwd(t_data *data);
 
 int		cut_cd(t_data *data);
+int		change_dir(char *path);
+void		ft_create_cd_token(t_data *data);
 
 /*	**********	*/
 /*		CMD				*/
