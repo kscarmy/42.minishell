@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/19 09:01:38 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:36:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **env)
 //	int i = 0; // A SUPP
 
 	data = malloc(sizeof(t_data));
-	if (ft_init_env(data, env) == 0)
+	if (ft_init_data(data, env) == 0)
 		return (0); // erreur
 
 	/*		Tests		*/
@@ -37,7 +37,7 @@ int	main(int argc, char **argv, char **env)
 		ft_parse_input(data);
 
 		/* commande d'execusion des tokens a inserer ici */
-		if ((data->exit == 0) && (data->first != NULL))
+		if ((data->exit == 0) && (data->token != NULL))
 			ft_while_token(data);
 
 
@@ -61,11 +61,14 @@ int	main(int argc, char **argv, char **env)
 
 
 			/*	test avec echo	*/
-		ft_delete_token(data, data->first);
+		ft_delete_token(data, data->token);
 
 			/*	commande de reset de data	*/
 		ft_clear_for_new_input(data);
-		write(0, "~$ ", 3);
+		if (data->exit == 0)
+			write(0, "~$ ", 3);
+		else
+			ft_putstr("exit\n");
 	}
 
 	/*	fonction qui clear tout a faire	*/

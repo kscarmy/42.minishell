@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 05:21:36 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 22:00:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_init_env_bis(t_data *data, char **env, int i)
+void	ft_create_var_var(t_data *data, char *str) // cree un maillon de chane dans la structure var
+{
+	int	i;
+	int	u;
+
+	i = 0;
+	u = 0;
+	if (data->var == NULL)
+		ft_init_var(data);
+	else
+		ft_add_new_var(data);
+	while(str[i] && str[i] != '=')
+		i++;
+	i++;
+	data->var->name = ft_malloc_str(data, i);
+	data->var->name = ft_strncpy(data->var->name, str, i);
+	while(str[i + u])
+		u++;
+	data->var->value = ft_malloc_str(data, i);
+	data->var->value = ft_strncpy(data->var->name, &str[i], u);
+}
+
+int	ft_init_data_bis(t_data *data, char **env, int i)
 {
 	int	u;
 
@@ -32,7 +54,7 @@ int	ft_init_env_bis(t_data *data, char **env, int i)
 	return (1); // OK
 }
 
-int	ft_init_env(t_data *data, char **env) // malloc env dans data
+int	ft_init_data(t_data *data, char **env) // malloc env dans data
 {
 	int	i;
 //	int	u;
@@ -45,16 +67,17 @@ int	ft_init_env(t_data *data, char **env) // malloc env dans data
 	if (data->env == NULL)
 		return (0); // erreur malloc
 	i = 0;
-	while (env[i])
+	while (env[i] && data->err == 0)
 	{
-		if (ft_init_env_bis(data, env, i) == 0)
+		ft_create_var_var(data, env[i]);
+		if (ft_init_data_bis(data, env, i) == 0)
 			return (0); // erreur malloc
 		i++;
 	}
 	data->i = 0;
 	data->exit = 0;
 	data->err = 0;
-	data->first = NULL;
+	data->token = NULL;
 	data->env[i] = NULL;
 	return (1); // 1 = OK
 }

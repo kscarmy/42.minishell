@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 05:20:34 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/19 09:29:45 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	cut_history(t_data *data)
 		i++;
 	if (ft_strncmp((data->input + i), command, 7) == 0)
 	{
+		data->i = data->i + 7; // incre data->i
 		ft_create_history_token(data);
 		return(1);
 	}
@@ -53,9 +54,9 @@ int	cut_history(t_data *data)
 
 void	ft_create_history_token(t_data *data) // cree le token de la commande env.
 {
-	if (data->first == NULL)
+	if (data->token == NULL)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
-	data->first->cmd = 5;
+	data->token->cmd = 5;
 }

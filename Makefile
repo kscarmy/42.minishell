@@ -4,22 +4,24 @@ NAME		= minishell
 ## Sources
 SRC	= 	src/main.c \
 		src/parsing/history.c \
-		src/parsing/cut_exit.c \
-		src/parsing/ft_exit.c \
-		src/parsing/cd.c \
-		src/parsing/env.c \
+		src/parsing/ft_cut_exit.c \
+		src/parsing/ft_clear_token.c \
+		src/parsing/ft_cut_cd.c \
+		src/parsing/ft_cut_env.c \
 		src/parsing/ft_cut_pwd.c \
 		src/parsing/ft_cut_input.c \
 		src/parsing/ft_cut_export.c \
-		src/init/ft_token.c \
-		src/init/ft_env.c \
-		src/cmd/ft_read_token_list.c \
-		src/cmd/ft_echo.c \
-		src/cmd/ft_pwd.c \
+		src/parsing/ft_cut_echo.c \
+		src/init/ft_init_token.c \
+		src/init/ft_init_data.c \
+		src/init/ft_init_var.c \
+		src/builtin/ft_read_token_list.c \
+		src/builtin/ft_echo.c \
+		src/builtin/ft_pwd.c \
+		src/builtin/ft_env.c \
 		src/utils/ft_write.c \
-		src/utils/ft_str.c
-#		src/parsing/ft_cut_echo.c \
-#		src/parsing/ft_cut_str.c \
+		src/utils/ft_str.c \
+
 
 
 ## Objects (patsubst = path substitute)
@@ -56,7 +58,7 @@ obj:
 	@mkdir -p obj
 	@mkdir -p obj/parsing
 	@mkdir -p obj/init
-	@mkdir -p obj/cmd
+	@mkdir -p obj/builtin
 	@mkdir -p obj/utils
 
 obj/%.o: src/%.c

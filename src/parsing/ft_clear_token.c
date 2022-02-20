@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_clear_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 19:54:31 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/17 19:58:26 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_clear_token_list(t_data *data) // supprime tout les tokens de la liste
 {
-	while (data->first != NULL)
+	while (data->token != NULL)
 	{
-		ft_delete_token(data, data->first);
+		ft_delete_token(data, data->token);
 	}
 }
 

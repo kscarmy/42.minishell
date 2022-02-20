@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/18 11:04:40 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	ft_str_join_input(t_data *data, int i, int max) // malloc en recuperant la 
 	char	*tmp;
 
 	u = 0;
-	while (data->first->str[u])
+	while (data->token->str[u])
 		u++;
 	tmp = ft_malloc_str(data, (u + max));
 	u = 0;
-	while (data->first->str[u])
+	while (data->token->str[u])
 	{
-		tmp[u] = data->first->str[u];
+		tmp[u] = data->token->str[u];
 		u++;
 	}
 	while (max > 0)
@@ -72,6 +72,29 @@ void	ft_str_join_input(t_data *data, int i, int max) // malloc en recuperant la 
 		i++;
 		max--;
 	}
-	ft_strdel(&data->first->str);
-	data->first->str = tmp;
+	ft_strdel(&data->token->str);
+	data->token->str = tmp;
+}
+
+
+char	*ft_strncpy(char *dest, char *src, int n)
+{
+	int	i;
+
+	i = 0;
+	// printf("strncpy : %d\n", n);
+	// printf("strncpy 1 : %s\n", dest);
+	while ((src[i]) && (i < n))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	// printf("strncpy 2 : %s\n", dest);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	// printf("strncpy 3 : %s\n", dest);
+	return (dest);
 }

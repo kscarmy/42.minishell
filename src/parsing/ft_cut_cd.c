@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   ft_cut_cd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/19 10:10:13 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	change_dir(char *path)
 	return (1); //ok
 }
 
-int	cut_cd(t_data *data)
+int	ft_cut_cd(t_data *data) // ret 1 si exti trouver, sinon ret 0
 {
 	char *command;
 	int i;
@@ -40,9 +40,9 @@ int	cut_cd(t_data *data)
 
 void	ft_create_cd_token(t_data *data) // cree le token de la commande cd.
 {
-	if (data->first == NULL)
+	if (data->token == NULL)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
-	data->first->cmd = 6;
+	data->token->cmd = 6;
 }

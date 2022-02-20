@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cut_str.c                                       :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 16:26:53 by guderram         ###   ########.fr       */
+/*   Created: 2022/02/19 16:11:48 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/19 19:35:18 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_strcmp_space(char *str, char *cmp)
+void	ft_env(t_data *data, t_token *token) // commande env
 {
-	int i;
-	int u;
-
-	i = 0;
-	u = 0;
-	while ()
+	
+	token->str = getenv(NULL);
+	if (token->str == NULL)
+		data->err = 106;
+	/*	sortie sur l'entree standard	*/
+	ft_putstr(token->str);
+	ft_putstr("\n");
+	data->i = data->i;
 }

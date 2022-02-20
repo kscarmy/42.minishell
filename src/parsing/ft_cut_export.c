@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/18 11:06:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ int		ft_is_export(char *str, int i) // verifie si l'argument d'export est valabl
 void	ft_create_export_token(t_data *data) // cree le token de la commande export
 {
 
-	if (data->first == NULL)
+	if (data->token == NULL)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
-	data->first->cmd = 3;
-	data->first->str = ft_malloc_str(data, 0);
+	data->token->cmd = 3;
+	data->token->str = ft_malloc_str(data, 0);
 	ft_parse_export(data);
 }

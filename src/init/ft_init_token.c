@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token.c                                         :+:      :+:    :+:   */
+/*   ft_init_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/11 03:20:27 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_init_token(t_data *data) // initialise la liste
 		token->next = NULL; // dernier token donc addresse suivante nulle
 		token->prev = NULL; // premier token donc addresse precedente nulle
 	}
-	data->first = token;
+	data->token = token;
 }
 
 void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debut de la stack
@@ -43,9 +43,9 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 		new->cmd = -1; // valeur initiale vide
 		new->option = -1; // valeur initiale vide
 		new->str = NULL; // valeur initiale vide
-		new->next = data->first; // indique la prochaine addresse a new
-		data->first->prev = new; // donne a list + 1 son adresse precedente (donc celle de new)
-		data->first = new; // donne a data first la premiere adresse (donc celle de new)
+		new->next = data->token; // indique la prochaine addresse a new
+		data->token->prev = new; // donne a list + 1 son adresse precedente (donc celle de new)
+		data->token = new; // donne a data token la premiere adresse (donc celle de new)
 		new->prev = NULL; // premier token dans la liste donc addresse precedente nulle
 	}
 }
@@ -70,15 +70,15 @@ void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en rel
 {
 	if (delete == NULL)
 		data->err = 102; // suppression d'un token inexistant
-	if (data->first != NULL && delete != NULL)
+	if (data->token != NULL && delete != NULL)
 	{
 		ft_free_token(data, delete);
 		if (delete->next == NULL && delete->prev != NULL) // si dernier et pas premier
 			delete->prev->next = NULL;
 		if (delete->prev == NULL && delete->next != NULL) // si premier et pas dernier
-			data->first = delete->next;
+			data->token = delete->next;
 		if (delete->prev == NULL && delete->next == NULL) // si premier et dernier
-			data->first = NULL;
+			data->token = NULL;
 		if (delete->next != NULL && delete->prev != NULL) // si au milieu de deux
 		{
 			delete->prev->next = delete->next; // le precedent prend le suivant

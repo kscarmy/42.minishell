@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/19 10:09:26 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/20 21:55:19 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ typedef struct p_data
 	int				i; // tete de lecture dans input
 	char			**env; // argument env
 	char			*input; // chaine de caractere recu brute dans le shell
-	struct p_token	*first; // adresse du premier token
+	struct p_token	*token; // adresse du premier token
+	struct p_var	*var; // adresse du premier var
 }				t_data;
 
 /*	**************	*/
-/*	token		*/
+/*		token		*/
 /*	**************	*/
 
 typedef struct p_token
@@ -50,22 +51,41 @@ typedef struct p_token
 
 }				t_token;
 
+/*	**********	*/
+/*		var		*/
+/*	**********	*/
+
+typedef struct p_var
+{
+	char			*name;
+	char			*value;
+	struct p_var	*next; // prochain token
+	struct p_var	*prev; // precedent token
+}				t_var;
+
 /*	*************	*/
-/*	INIT		*/
+/*		INIT		*/
 /*	*************	*/
 
-/*	ft_token.c	*/
+/*	ft_init_token.c	*/
 void	ft_init_token(t_data *data); // initialise la liste
 void	ft_add_new_token(t_data *data); // cree une nouvelle liste et la met au debut de la stack
 void	ft_free_token(t_data *data, t_token *token); // free les mallocs dans une liste
 void	ft_delete_token(t_data *data, t_token *delete); // supprime la tokene en relian si besoin les autres
 
-/*	ft_env.c	*/
-int	ft_init_env(t_data *data, char **env); // malloc env dans data
-int	ft_init_env_bis(t_data *data, char **env, int i);
+/*	ft_init_data.c	*/
+int	ft_init_data(t_data *data, char **env); // malloc env dans data
+int	ft_init_data_bis(t_data *data, char **env, int i);
+void	ft_create_var_var(t_data *data, char *str); // cree un maillon de chane dans la structure var
+
+/*	ft_init_var.c	*/
+void	ft_init_var(t_data *data); // initialise la liste
+void	ft_add_new_var(t_data *data); // cree une nouvelle liste et la met au debut de la stack
+void	ft_free_var(t_data *data, t_var *var); // free les mallocs dans une liste
+void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si besoin les autres
 
 /*	*************	*/
-/*	UTILS		*/
+/*		UTILS		*/
 /*	*************	*/
 
 /*	ft_write.c	*/
@@ -80,7 +100,7 @@ char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renpl
 
 
 /*	**************	*/
-/*	PARSING		*/
+/*		PARSING		*/
 /*	**************	*/
 
 /*	ft_cut_export.c	*/
@@ -101,27 +121,44 @@ int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i 
 void	ft_cut_echo_option(t_data *data, int i); // verifie si l'option "-n" est presente
 void	ft_create_echo_token(t_data *data, int option); // fonction qui cree le token echo avec ou sans option : si u >= 2 alors option
 
-/*	ft_exit.c	*/
+/*	ft_clear_token.c	*/
 void	ft_clear_token_list(t_data *data); // supprime tout les tokens de la liste
 void	ft_clear_for_new_input(t_data *data); // reset la structure data pour reprendre un nouveau input
+
+/*	ft_cut_env.c	*/
+int	ft_cut_env(t_data *data); // ret 1 si env trouver, sinon ret 0.
+void	ft_create_env_token(t_data *data); // cree le token de la commande env.
+
+/*	ft_cut_exit.c	*/
+int	ft_cut_exit(t_data *data); // ret 1 si exti trouver, sinon ret 0
+void	ft_create_exit_token(t_data *data); // cree le token de la commande pwd
+
+/*	ft_cut_cd.c	*/
+int		ft_cut_cd(t_data *data); // ret 1 si exti trouver, sinon ret 0
+void	ft_create_cd_token(t_data *data); // cree le token de la commande cd.
+
+
 
 
 int		cut_history(t_data *data);
 void		ft_create_history_token(t_data *data);
 
-int		cut_exit(t_data *data);
 
-int		cut_env(t_data *data);
-void		ft_create_env_token(t_data *data);
+// int		cut_exit(t_data *data);
 
-int		cut_pwd(t_data *data);
+// int		cut_env(t_data *data);
+// void		ft_create_env_token(t_data *data);
+
+// int		cut_pwd(t_data *data);
 
 int		cut_cd(t_data *data);
 int		change_dir(char *path);
 void		ft_create_cd_token(t_data *data);
 
+
+
 /*	**********	*/
-/*		CMD				*/
+/*		CMD		*/
 /*	**********	*/
 int		add_history(char *str, int param);
 int		print_wd(void);
