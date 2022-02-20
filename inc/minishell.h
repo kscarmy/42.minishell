@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 21:55:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/20 23:45:03 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct p_data
 	int				i; // tete de lecture dans input
 	char			**env; // argument env
 	char			*input; // chaine de caractere recu brute dans le shell
+	char			*pwd; // vraie pwd
+	char			*opwd; // vraie old pwd
 	struct p_token	*token; // adresse du premier token
 	struct p_var	*var; // adresse du premier var
 }				t_data;
@@ -157,9 +159,9 @@ void		ft_create_cd_token(t_data *data);
 
 
 
-/*	**********	*/
-/*		CMD		*/
-/*	**********	*/
+/*	**************	*/
+/*		BUILTIN		*/
+/*	**************	*/
 int		add_history(char *str, int param);
 int		print_wd(void);
 int		print_cd(char *path);
@@ -171,6 +173,14 @@ int	ft_while_token(t_data *data); // lecture des tokens
 
 /*	ft_pwd.c	*/
 void	ft_pwd(t_data *data, t_token *token); // commande pwd
+
+/*	**********	*/
+/*		VAR		*/
+/*	**********	*/
+
+/*	ft_var.c	*/
+t_var	*ft_found_var_name(t_data *data, char *str); // permet de trouver et de renvoyer l'adresse de la var qui contient la string "str" dans name. si rien n'est trouver renvoie "NULL"
+void	ft_disp_all_var(t_data *data, char sep); // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value
 
 
 #endif

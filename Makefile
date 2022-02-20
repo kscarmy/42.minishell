@@ -21,6 +21,7 @@ SRC	= 	src/main.c \
 		src/builtin/ft_env.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
+		src/var/ft_var.c \
 
 
 
@@ -60,6 +61,7 @@ obj:
 	@mkdir -p obj/init
 	@mkdir -p obj/builtin
 	@mkdir -p obj/utils
+	@mkdir -p obj/var
 
 obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
