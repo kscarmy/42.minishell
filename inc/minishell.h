@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 23:45:03 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/22 10:42:24 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct p_data
 	int				exit; // sortie forcee si exit == 1
 	int				err; //
 	int				i; // tete de lecture dans input
-	char			**env; // argument env
+	// char			**env; // argument env
 	char			*input; // chaine de caractere recu brute dans le shell
 	char			*pwd; // vraie pwd
 	char			*opwd; // vraie old pwd
@@ -47,7 +47,8 @@ typedef struct p_token
 	int				sep; // separateurs, type "; | > < >> <<""
 	int				cmd; // correspond a la fonctionn geree par minishell
 	int				option; // correspond a l'option de la commande precedente
-	char			*str; // correspond a la string gerer par cmd
+	char			**bin; // bin[0] : nom binaire, bin[0 + i] : arguments
+	char			*arg; // correspond aux arguments gerer par cmd
 	struct p_token	*next; // prochain token
 	struct p_token	*prev; // precedent token
 
@@ -77,8 +78,9 @@ void	ft_delete_token(t_data *data, t_token *delete); // supprime la tokene en re
 
 /*	ft_init_data.c	*/
 int	ft_init_data(t_data *data, char **env); // malloc env dans data
-int	ft_init_data_bis(t_data *data, char **env, int i);
+// int	ft_init_data_bis(t_data *data, char **env, int i);
 void	ft_create_var_var(t_data *data, char *str); // cree un maillon de chane dans la structure var
+void	ft_init_data_pwd(t_data *data); // initialise les deux pwd dans la structure data
 
 /*	ft_init_var.c	*/
 void	ft_init_var(t_data *data); // initialise la liste
@@ -104,6 +106,10 @@ char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renpl
 /*	**************	*/
 /*		PARSING		*/
 /*	**************	*/
+
+/*	ft_cut_unset.c	*/
+int		ft_cut_unset(t_data *data, int i); // ret 1 si unset trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
+void	ft_create_unset_token(t_data *data); // fonction qui cree le token unset
 
 /*	ft_cut_export.c	*/
 void	ft_create_export_token(t_data *data); // cree le token de la commande export
@@ -139,7 +145,12 @@ void	ft_create_exit_token(t_data *data); // cree le token de la commande pwd
 int		ft_cut_cd(t_data *data); // ret 1 si exti trouver, sinon ret 0
 void	ft_create_cd_token(t_data *data); // cree le token de la commande cd.
 
-
+/*	ft_cut_bin.c	*/
+int	ft_cut_bin(t_data *data); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
+void	ft_create_bin_token(t_data *data); // fonction qui cree le token bin
+void	ft_malloc_bin(t_data *data); // malloc le **bin
+int		ft_bin_arg_size(t_data *data, int i); // renvoie la taille d'un argument
+int		ft_bin_count(t_data *data, int i); // revoie le nombre de cases a malloc
 
 
 int		cut_history(t_data *data);
@@ -174,6 +185,10 @@ int	ft_while_token(t_data *data); // lecture des tokens
 /*	ft_pwd.c	*/
 void	ft_pwd(t_data *data, t_token *token); // commande pwd
 
+/*	ft_env.c	*/
+void	ft_env(t_data *data, t_token *token); // commande env
+
+
 /*	**********	*/
 /*		VAR		*/
 /*	**********	*/
@@ -182,5 +197,12 @@ void	ft_pwd(t_data *data, t_token *token); // commande pwd
 t_var	*ft_found_var_name(t_data *data, char *str); // permet de trouver et de renvoyer l'adresse de la var qui contient la string "str" dans name. si rien n'est trouver renvoie "NULL"
 void	ft_disp_all_var(t_data *data, char sep); // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value
 
+
+/*	**********	*/
+/*		BIN		*/
+/*	**********	*/
+
+/*	ft_bin.c	*/
+void	ft_test(t_data *data); // TEST
 
 #endif

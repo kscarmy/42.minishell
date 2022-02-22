@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:14:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_init_token(t_data *data) // initialise la liste
 		token->sep = -1; // valeur initiale vide
 		token->cmd = -1; // valeur initiale vide
 		token->option = -1; // valeur initiale vide
-		token->str = NULL; // valeur initiale vide
+		token->arg = NULL; // valeur initiale vide
+		token->bin = NULL; // valeur initiale vide
 		token->next = NULL; // dernier token donc addresse suivante nulle
 		token->prev = NULL; // premier token donc addresse precedente nulle
 	}
@@ -42,7 +43,8 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 	{
 		new->cmd = -1; // valeur initiale vide
 		new->option = -1; // valeur initiale vide
-		new->str = NULL; // valeur initiale vide
+		new->arg = NULL; // valeur initiale vide
+		new->bin = NULL; // valeur initiale vide
 		new->next = data->token; // indique la prochaine addresse a new
 		data->token->prev = new; // donne a list + 1 son adresse precedente (donc celle de new)
 		data->token = new; // donne a data token la premiere adresse (donc celle de new)
@@ -52,17 +54,17 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 
 void	ft_free_token(t_data *data, t_token *token) // free les mallocs dans une liste
 {
-	if (token->cmd != 2 && token->str != NULL)
+	if (token->cmd != 2 && token->arg != NULL)
 	{
-		free (token->str);
-		token->str = NULL;
+		free (token->arg);
+		token->arg = NULL;
 	}
 	else
 	{
 		if (token->cmd != 2)
 			data->err = 103; // free d'un str deja free
 		else
-			token->str = NULL;
+			token->arg = NULL;
 	}
 }
 

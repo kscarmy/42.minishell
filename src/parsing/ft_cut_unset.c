@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 00:04:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 00:14:30 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:11:45 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,18 @@ int	ft_cut_unset(t_data *data, int i) // ret 1 si unset trouver, sinon ret 0. i 
 			u++;
 		i++;
 	}
-	if (u == 4)
+	if (u == 5)
 	{
-		ft_create_unset_token(data, i);
+
+		data->i = data->i + i;
+		data->i = data->i + ft_space(data->input, data->i);
+		ft_create_unset_token(data);
 		return (1);
 	}
 	return (0);
 }
 
-// void	ft_cut_unset_option(t_data *data, int i)
-// {
-// 	char	*str;
-// 	int		u;
-
-// 	str = "-n";
-// 	u = 0;
-// 	i = i + ft_space(data->input, i);
-// 	if (ft_is_a_b(data->input[i], str[0]) == 1)
-// 		u++;
-// 	while (ft_is_a_b(data->input[i + u], str[1]) == 1)
-// 		u++;
-// 	if (u >= 2)
-// 		i = i + u;
-// 	i = i + ft_space(data->input, i);
-// 	data->i = data->i + i;
-// 	ft_create_unset_token(data, u);
-// }
-
-
-void	ft_create_unset_token(t_data *data, int option) // fonction qui cree le token unset avec ou sans option : si u >= 2 alors option
+void	ft_create_unset_token(t_data *data) // fonction qui cree le token unset
 {
 	int	u;
 
@@ -62,15 +45,14 @@ void	ft_create_unset_token(t_data *data, int option) // fonction qui cree le tok
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
-	data->token->cmd = 1;
-	if (option >= 2)
-		data->token->option = 1;
+	data->token->cmd = 8;
+	
 	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 		u++;
-	data->token->str = ft_malloc_str(data, u);
-	if (data->token->str != NULL)
+	data->token->arg = ft_malloc_str(data, u);
+	if (data->token->arg != NULL)
 	{
-		data->token->str = ft_strncpy(data->token->str, &(data->input[data->i]), u);
+		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
 	}
 	else
 		data->err = 200; // erreur malloc

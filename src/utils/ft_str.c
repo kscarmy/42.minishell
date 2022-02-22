@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:11:26 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	ft_str_join_input(t_data *data, int i, int max) // malloc en recuperant la 
 	char	*tmp;
 
 	u = 0;
-	while (data->token->str[u])
+	while (data->token->arg[u])
 		u++;
 	tmp = ft_malloc_str(data, (u + max));
 	u = 0;
-	while (data->token->str[u])
+	while (data->token->arg[u])
 	{
-		tmp[u] = data->token->str[u];
+		tmp[u] = data->token->arg[u];
 		u++;
 	}
 	while (max > 0)
@@ -72,8 +72,8 @@ void	ft_str_join_input(t_data *data, int i, int max) // malloc en recuperant la 
 		i++;
 		max--;
 	}
-	ft_strdel(&data->token->str);
-	data->token->str = tmp;
+	ft_strdel(&data->token->arg);
+	data->token->arg = tmp;
 }
 
 

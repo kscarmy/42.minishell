@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 23:50:02 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/22 10:56:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **env)
 	data = malloc(sizeof(t_data));
 	if (ft_init_data(data, env) == 0)
 		return (0); // erreur
-
+	// printf("pwd : '%s'\nopwd : '%s'\n", data->pwd, data->opwd);
 	/*		Tests		*/
 	write(0, "~$ ", 3);
 	while (data->exit == 0 && get_next_line(0, &data->input) > 0)
@@ -40,26 +40,6 @@ int	main(int argc, char **argv, char **env)
 		if ((data->exit == 0) && (data->token != NULL))
 			ft_while_token(data);
 
-
-
-
-
-
-			//if (cut_pwd(data))
-				//print_wd();
-			//else if (cut_cd(data))
-				//print_cd("inc");
-			//else if (cut_exit(data))
-				//exit(0);
-			//else if (cut_env(data))
-
-			//if (cut_history(data))
-				//add_history(data->input, 2);
-			//else
-				//add_history(data->input, 1);
-
-
-
 			/*	test avec echo	*/
 		ft_delete_token(data, data->token);
 
@@ -70,6 +50,7 @@ int	main(int argc, char **argv, char **env)
 		else
 			ft_putstr("exit\n");
 	}
+	// ft_test(data);
 
 	/*	fonction qui clear tout a faire	*/
 

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:14:51 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	ft_create_export_token(t_data *data) // cree le token de la commande export
 	else
 		ft_add_new_token(data);
 	data->token->cmd = 3;
-	data->token->str = ft_malloc_str(data, 0);
+	data->token->arg = ft_malloc_str(data, 0);
 	ft_parse_export(data);
 }

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:12:26 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le toke
 		data->token->option = 1;
 	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 		u++;
-	data->token->str = ft_malloc_str(data, u);
-	if (data->token->str != NULL)
+	data->token->arg = ft_malloc_str(data, u);
+	if (data->token->arg != NULL)
 	{
-		data->token->str = ft_strncpy(data->token->str, &(data->input[data->i]), u);
+		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
 	}
 	else
 		data->err = 200; // erreur malloc

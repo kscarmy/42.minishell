@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:26:19 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 23:54:09 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/21 02:45:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ void	ft_pwd(t_data *data, t_token *token) // commande pwd
 	// ft_putstr(token->str);
 	// ft_putstr("\n");
 	token->cmd = token->cmd;
-	ft_disp_all_var(data, '=');
+	// ft_disp_all_var(data, '=');
+	// ft_putstr("\n");
+	// data->i = data->i;
+
+	ft_putstr(data->pwd);
 	ft_putstr("\n");
-	data->i = data->i;
+
 }
