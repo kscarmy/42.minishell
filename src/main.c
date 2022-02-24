@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/22 10:56:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 08:10:01 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,22 @@ int	main(int argc, char **argv, char **env)
 	argv = NULL;
 	// char *line;
 	t_data	*data;
+//	t_var *var;
 
 	(void)argc;
 	(void)argv;
 //	int i = 0; // A SUPP
 
+
+	(void)env;   // void temporaire pour compiler.
 	data = malloc(sizeof(t_data));
 	if (ft_init_data(data, env) == 0)
 		return (0); // erreur
 	// printf("pwd : '%s'\nopwd : '%s'\n", data->pwd, data->opwd);
+
 	/*		Tests		*/
+//	var = ft_found_var_name(data, "USER");
+//	printf("var = %s\n", var->value);
 	write(0, "~$ ", 3);
 	while (data->exit == 0 && get_next_line(0, &data->input) > 0)
 	{

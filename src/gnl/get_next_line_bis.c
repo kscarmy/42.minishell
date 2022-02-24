@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   get_next_line_bis.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 07:26:19 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 07:36:54 by mourdani         ###   ########.fr       */
+/*   Created: 2021/12/16 17:00:36 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/09 19:57:12 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_pwd(t_data *data, t_token *token) // commande pwd
+int	ft_exerror(char **str, int error)
 {
-		// token->str = getenv("PWD");
-	// if (token->str == NULL)
-	// 	data->err = 106;
-	/*	sortie sur l'entree standard	*/
-	// ft_putstr(token->str);
-	// ft_putstr("\n");
-	token->cmd = token->cmd;
-	// ft_disp_all_var(data, '=');
-	// ft_putstr("\n");
-	// data->i = data->i;
+	ft_strdel(&*str);
+	if (error == 1)
+		return (-1);
+	return (0);
+}
 
-	ft_putstr(data->pwd);
-	ft_putstr("\n");
-
+void	ft_strdel(char **as)
+{
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

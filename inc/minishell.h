@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 02:16:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 08:02:33 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,22 +152,22 @@ void	ft_malloc_bin(t_data *data); // malloc le **bin
 int		ft_bin_arg_size(t_data *data, int i); // renvoie la taille d'un argument
 int		ft_bin_count(t_data *data, int i); // revoie le nombre de cases a malloc
 
-
+/*	history.c	*/
 int		cut_history(t_data *data);
-void		ft_create_history_token(t_data *data);
+void	ft_create_history_token(t_data *data); // cree le token de la commande cd.
 
-
-// int		cut_exit(t_data *data);
-
-// int		cut_env(t_data *data);
-// void		ft_create_env_token(t_data *data);
-
-// int		cut_pwd(t_data *data);
-
+/*	cd.c		*/
 int		cut_cd(t_data *data);
 int		change_dir(char *path);
 void		ft_create_cd_token(t_data *data);
 
+/*	cut_str		*/
+char		*cut_str(t_data *data, char *str); // function to parse str given to cmd
+
+
+/*	 quotes		*/
+char		*put_env(t_data *data, char *str, int i);
+char		*ft_quote(t_data *data, char *str, int i);
 
 
 /*	**************	*/
