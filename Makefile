@@ -21,6 +21,7 @@ SRC	= 	src/main.c \
 		src/builtin/ft_echo.c \
 		src/builtin/ft_pwd.c \
 		src/builtin/ft_env.c \
+		src/builtin/ft_unset.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
 		src/var/ft_var.c \

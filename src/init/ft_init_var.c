@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 17:41:03 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 18:33:23 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 02:39:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_add_new_var(t_data *data) // cree une nouvelle liste et la met au debut 
 		new->next = data->var; // indique la prochaine addresse a new
 		data->var = new; // donne a data var la premiere adresse (donc celle de new)
 		new->prev = NULL; // premier var dans la liste donc addresse precedente nulle
+		new->next->prev = new;
 	}
 }
 
@@ -64,7 +65,7 @@ void	ft_free_var(t_data *data, t_var *var) // free les mallocs dans une liste
 	}
 }
 
-void	ft_delete_var(t_data *data, t_var *delete) // supprime la vare en relian si besoin les autres
+void	ft_delete_var(t_data *data, t_var *delete) // supprime la var en relian si besoin les autres
 {
 	if (delete == NULL)
 		data->err = 102; // suppression d'un var inexistant

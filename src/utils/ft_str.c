@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 22:11:26 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:27:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,14 @@ char	*ft_strncpy(char *dest, char *src, int n)
 	}
 	// printf("strncpy 3 : %s\n", dest);
 	return (dest);
+}
+
+int		ft_str_size(char *str) // renvoie la taille d'un str
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

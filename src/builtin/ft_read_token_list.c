@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/22 10:58:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 02:42:12 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ int		ft_while_token(t_data *data) // lecture des tokens
 		data->exit = 1; // enclanche la sortie
 	// printf("TEST 6\n");
 	if (data->token->cmd == 8) // pour unset
+	{
 		printf("\n'%s'\n", data->token->arg);
+		ft_unset(data, data->token);
+	}
 	if (data->token->cmd == 9) // pour bin
 	{
-		printf("bin : '%s'\narg : '%s'\n", data->token->bin[0], data->token->bin[1]);
+		// printf("bin : '%s'\narg : '%s'\n", data->token->bin[0], data->token->bin[1]);
+		ft_is_bin(data, data->token);
 		// ft_test(data);
 	}
 	return (0);

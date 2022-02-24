@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/22 10:42:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 02:16:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct p_data
 	int				exit; // sortie forcee si exit == 1
 	int				err; //
 	int				i; // tete de lecture dans input
-	// char			**env; // argument env
+	char			**env; // argument env A NE PAS UTILISER (utiliser la strucure VAR)
 	char			*input; // chaine de caractere recu brute dans le shell
 	char			*pwd; // vraie pwd
 	char			*opwd; // vraie old pwd
@@ -101,7 +101,7 @@ void	ft_str_join_input(t_data *data, int i, int max); // malloc en recuperant la
 char	*ft_strncpy(char *dest, char *src, int n);
 int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separateur, sinon son code specifique
 char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renplie de \0 et le return
-
+int		ft_str_size(char *str); // renvoie la taille d'un str
 
 /*	**************	*/
 /*		PARSING		*/
@@ -188,6 +188,9 @@ void	ft_pwd(t_data *data, t_token *token); // commande pwd
 /*	ft_env.c	*/
 void	ft_env(t_data *data, t_token *token); // commande env
 
+/*	ft_unset.c	*/
+void	ft_unset(t_data *data, t_token *token); // fonction principale de unset
+
 
 /*	**********	*/
 /*		VAR		*/
@@ -204,5 +207,12 @@ void	ft_disp_all_var(t_data *data, char sep); // permet d'afficher toutes les va
 
 /*	ft_bin.c	*/
 void	ft_test(t_data *data); // TEST
+
+char	*ft_malloc_one_var(t_data *data, t_var *var); // malloc une ligne dans data->env
+void	ft_malloc_var(t_data *data); // malloc et renvoie var dans un char **
+int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i); // stocke et malloc un path dans token->arg
+void	ft_is_bin(t_data *data, t_token *token); // 
+void	ft_bin_execve(t_data *data, t_token *token); // 
+void	ft_free_tab_char(char **str); // free un tableau de char
 
 #endif
