@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 01:27:56 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 07:27:15 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,10 +167,10 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 
 void	ft_test(t_data *data) // TEST
 {
-	char	*str;
-	char	*cmd;
+//	char	*str;
+//	char	*cmd;
 	char	*path;
-	char	*env;
+//	char	*env;
 	char	**argv;
 	int	i;
 
@@ -180,10 +180,10 @@ void	ft_test(t_data *data) // TEST
 	argv[1] = "-la";
 	argv[2] = NULL;
 	// env = getenv(NULL);
-	env = NULL;
+//	env = NULL;
 	path = "/bin/ls";
-	cmd = "ls";
-	str = "/usr/local/bin";
+//	cmd = "ls";
+//	str = "/usr/local/bin";
 	i = access(path, F_OK);
 	printf("access : '%d'\nerror : '%d'\n", i, data->err);
 	i = 0;
