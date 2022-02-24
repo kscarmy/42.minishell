@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 08:02:23 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:07:28 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 	if (data->var != NULL)
 		var = data->var;
 	else
+		return (NULL);
+	if (i == 0)
 		return (NULL);
 	while (var != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: mourdani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 23:51:35 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/23 10:34:04 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:05:30 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*cut_str(t_data *data, char *str)
 		return(NULL);
 	ret = NULL;
 	quote = NULL;
+	while (str[i] == ' ')
+		i++;
 	while (str[i])
 	{
 		while (str[i] == ' ' && str[i + 1] == ' ')
@@ -44,7 +46,7 @@ char	*cut_str(t_data *data, char *str)
 		}
 		else 
 		{
-			if (str[i] == '$')							
+			if (str[i] == '$')
 			{
 				ret = ft_strjoin(ret, put_env(data, str, i));
 				if (data->i == 0)
@@ -55,6 +57,5 @@ char	*cut_str(t_data *data, char *str)
 				ret = ft_straddc(ret, str[i++]);
 		}
 	}
-	printf("cutted string : |%s|\n", ret);
 	return (ret);
 }

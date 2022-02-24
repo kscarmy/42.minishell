@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:04:56 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/24 08:11:03 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:38:51 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@ char	*put_env(t_data *data, char *str, int i)
 	}
 	env = ft_straddc(env, '\0');
 	var = ft_found_var_name(data, env);
+	if (!var)
+	{
+		data->i = i;
+		return (NULL);
+	}
 	env_val = var->value;
-	if (!env_val)		// if env variable doesnt exist.
+	if (!env_val || !var)		// if env variable doesnt exist.
 	{
 		data->i = 0;
 		return (NULL);
@@ -102,7 +107,6 @@ char	*d_quote(t_data *data, char *str, int i)  // converts what's inside double 
 		}
 		if (str[i] == '$')							
 		{
-			//unq = ft_strjoin(unq, put_env(data, str, i));
 			unq = ft_strjoin(unq, put_env(data, str, i));
 			if (data->i == 0)
 				return (NULL);
@@ -130,9 +134,9 @@ char	*ft_quote(t_data *data, char *str, int i)
 	char *unq; // new unquoted string
 
 	unq = NULL;
-	if (data->input[i] == '"')			// if first character of str is " enter d_quote();
+	if (str[i] == '"')			// if first character of str is " enter d_quote();
 		unq = d_quote(data, str, i);
-	else if (data->input[i] == '\'')		// if first character of str is ' enter s_quote();
+	else if (str[i] == '\'')		// if first character of str is ' enter s_quote();
 		unq = s_quote(data, str, i);
 	i = data->i;
 	return (unq);

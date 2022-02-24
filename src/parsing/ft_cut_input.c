@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 08:09:35 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 11:10:22 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	data->i = 0;
 	found = 0;
 
-	if (!cut_str(data, data->input))
-		return (1);
-	return (0);
+//	if (!cut_str(data, data->input))
+//		return (1);
+//	return (0);
 	if (ft_cut_exit(data))			// sets data->exit = 1 if command is "exit"
 		return (0);
 
