@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 12:14:46 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:27:32 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int	ft_cut_echo(t_data *data, int i) // ret 1 si echo trouver, sinon ret 0. i es
 		return (1);
 	}
 	return (0);
-}
-
-void	ft_cut_echo_str()
-{
-
 }
 
 void	ft_cut_echo_option(t_data *data, int i)

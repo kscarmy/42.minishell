@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 08:02:33 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:11:50 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	ft_create_history_token(t_data *data); // cree le token de la commande cd.
 
 /*	cd.c		*/
 int		cut_cd(t_data *data);
-int		change_dir(char *path);
+int		change_dir(t_data *data);
 void		ft_create_cd_token(t_data *data);
 
 /*	cut_str		*/

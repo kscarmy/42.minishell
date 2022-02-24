@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 11:10:22 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:28:18 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	data->i = 0;
 	found = 0;
 
-//	if (!cut_str(data, data->input))
-//		return (1);
-//	return (0);
 	if (ft_cut_exit(data))			// sets data->exit = 1 if command is "exit"
 		return (0);
 
@@ -30,12 +27,11 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	else 
 		add_history(data->input, 1);	// adds line to history if it is not "history"
 	
-//	if (ft_cut_env(data))			// checks if command is "env" and creates its token
-//		found++;
+	if (ft_cut_env(data))			// checks if command is "env" and creates its token
+		found++;
 	
 	if (ft_cut_cd(data))
 		found++;
-	
 	while (data->input[data->i])
 	{
 		ft_space(data->input, data->i);
