@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/24 16:29:10 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:16:36 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,25 @@
 
 int	change_dir(t_data *data)                 // changes directory
 {
+	if (data->token->arg == NULL || !ft_strncmp(data->token->arg, "~\0", 2))
+	{
+		chdir(getenv("HOME"));
+		if (data->pwd)
+		{
+			free(data->pwd);
+			data->pwd = NULL;
+		}
+		data->pwd = getcwd(NULL, 0);
+		return (1);
+	}
 	if (chdir(data->token->arg) < 0)
 		perror(data->token->arg);        // printf error message
+	if (data->pwd)
+	{
+		free(data->pwd);
+		data->pwd = NULL;
+	}
+	data->pwd = getcwd(NULL, 0);
 	return (1); //ok
 }
 
@@ -31,7 +48,7 @@ int	ft_cut_cd(t_data *data) // ret 1 si cd est trouvé, sinon ret 0
 	if (ft_strncmp((data->input + i), command, 2) == 0)
 	{
 		data->i = i + 3;
-		if (data->input[data->i - 1] != ' ')
+		if (data->input[data->i - 1] != '\0' && data->input[data->i - 1] != ' ')
 			return (0);
 		ft_create_cd_token(data);
 		return(1);

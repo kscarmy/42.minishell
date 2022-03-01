@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:26:19 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 16:08:13 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:20:25 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_pwd(t_data *data, t_token *token) // commande pwd
 	// ft_disp_all_var(data, '=');
 	// ft_putstr("\n");
 	// data->i = data->i;
-	printf("%s\n", getcwd(NULL, 0));
+	printf("%s\n", data->pwd);
+	//printf("%s\n", getcwd(NULL, 0));
 
 }

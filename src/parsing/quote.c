@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:04:56 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/24 12:38:51 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:41:48 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ char	*d_quote(t_data *data, char *str, int i)  // converts what's inside double 
 	i++;
 	while (str[i] && str[i] != '"')
 	{
-		if (str[i] == '\\' && (str[i+1] == '\\'
-			|| str[i+1] == '\'' || str[i+1] == '"' || str[i+1] == '$')) // when \\ or \" or \$.
+		while (str[i] == '\\' && (str[i+1] == '\\'
+			|| str[i+1] == '"' || str[i+1] == '$')) // when \\ or \" or \$.
 		{
 			unq = ft_straddc(unq, str[i+1]);					// add second char after \.
 			i += 2;									// increment i and data->i with 2.
