@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 01:27:56 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/25 04:03:14 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*ft_malloc_one_var(t_data *data, t_var *var) // malloc une ligne dans data-
 		i++;
 	}
 	str[i] = '=';
+	i++;
 	while (var->value[u])
 	{
 		str[i + u] = var->value[u];
@@ -150,19 +151,61 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	}
 	if (access(token->arg, F_OK) == -1)
 	{
-		printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
-		data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
+		ft_arg_path_bin(data, token);
+		
+		
 	}
 	else
 		ft_bin_execve(data, token);
 }
 
-void	ft_bin_execve(t_data *data, t_token *token) // 
+void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est un binaire
 {
 	int	i;
+	pid_t	pid;
+	int		status;
 
-	i = execve(token->arg, token->bin, data->env);
-	printf("ERREUR EXECVE : %d\n", i); // A SUPP
+	i = access(token->bin[0], F_OK);
+	if (i == 0)
+	{
+		pid = fork();
+		if (pid == -1)
+			data->err = 5000;
+		else if (pid == 0)
+			i = execve(token->bin[0], token->bin, data->env);
+		else
+			waitpid(pid, &status, 0);
+	}
+	else
+	{
+		data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
+		printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
+	}
+}
+
+void	ft_bin_execve(t_data *data, t_token *token) // 
+{
+	int		i;
+	pid_t	pid;
+	int		status;
+	// int u = 0;
+
+	pid = fork();
+	i = 0;
+	if (pid == -1)
+		printf("ERREUR TEST FORK\n");
+	else if (pid == 0)
+		i = execve(token->arg, token->bin, data->env);
+	else
+		waitpid(pid, &status, 0);
+	
+	// printf("EXECVE i : %d\n", i); // A SUPP
+	// printf("PATH : '%s'\n", token->arg);
+	// while (data->env[u])
+	// {
+	// 	printf("'%s'\n", data->env[u]);
+	// 	u++;
+	// }
 }
 
 void	ft_test(t_data *data) // TEST

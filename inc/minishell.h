@@ -6,17 +6,21 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 02:16:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/01 09:58:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <unistd.h> // WRITE
+# include <unistd.h> // WRITE FORK
 # include <stdio.h> // PRINTF
-# include <stdlib.h> // MALLOC FREE
-#include <dirent.h> // opendir() for "cd"
+# include <stdlib.h> // MALLOC FREE EXIT
+# include <dirent.h> // opendir() for "cd"
+
+# include <sys/types.h> // WAITPID
+# include <sys/wait.h> // WAITPID
+
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
@@ -66,6 +70,14 @@ typedef struct p_var
 	struct p_var	*prev; // precedent token
 }				t_var;
 
+
+
+/*	***********	*/
+/*	   global	*/
+/*	***********	*/
+
+t_data	*glob;
+
 /*	*************	*/
 /*		INIT		*/
 /*	*************	*/
@@ -102,6 +114,7 @@ char	*ft_strncpy(char *dest, char *src, int n);
 int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separateur, sinon son code specifique
 char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renplie de \0 et le return
 int		ft_str_size(char *str); // renvoie la taille d'un str
+int		ft_check_char(char *str, char c, int max); // verifie si c est dans str avec max
 
 /*	**************	*/
 /*		PARSING		*/
@@ -116,6 +129,11 @@ void	ft_create_export_token(t_data *data); // cree le token de la commande expor
 int		ft_is_export(char *str, int i);// verifie si l'argument d'export est valable
 void	ft_parse_export(t_data *data); // parse les arguments de export
 int		ft_cut_export(t_data *data); // cut la commande export
+
+
+void	ft_export_in_bin(t_data *data, int nb); // malloc chaques arguments VALIDES de export
+int		ft_export_sizeof_arg(char	*str, int i); // renvoie la taille d'un arg de export en partant de i dans str
+int		ft_export_count_equal(t_data *data); // compte le nombre valide d'arguments pour export
 
 /*	ft_cut_pwd.c	*/
 int		ft_cut_pwd(t_data *data); // cut la commande pwd
@@ -214,5 +232,6 @@ int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i); // stocke et ma
 void	ft_is_bin(t_data *data, t_token *token); // 
 void	ft_bin_execve(t_data *data, t_token *token); // 
 void	ft_free_tab_char(char **str); // free un tableau de char
+void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
 
 #endif

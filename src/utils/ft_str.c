@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/23 13:27:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/01 09:45:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,18 @@ int		ft_str_size(char *str) // renvoie la taille d'un str
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int		ft_check_char(char *str, char c, int max) // verifie si c est dans str avec max
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && i < max)
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

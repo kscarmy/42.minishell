@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 22:14:51 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:13:44 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,107 @@ int		ft_is_export(char *str, int i) // verifie si l'argument d'export est valabl
 	return (0);
 }
 
+int		ft_export_count_equal(t_data *data) // compte le nombre valide d'arguments pour export
+{
+	int	i;
+	int	equal;
+
+	i = data->i;
+	equal = 0;
+	// printf("'");
+	while (data->input[i] && ft_is_separator(data->input, i) == 0)
+	{
+		// printf("%c", data->input[i]);
+		if (data->input[i] == '=' && ft_is_separator(data->input, (i - 1)) == 0 && data->input[i - 1] != ' ')
+		{
+			equal++;
+			while (data->input[i] && ft_is_separator(data->input, i) == 0 && data->input[i] != ' ') // incre i jusqua retomber sur un autre arg
+			{
+				
+				// printf("incre\n");
+				i++;
+				// printf("%c", data->input[i]);
+			}
+		}
+		else
+			i++;
+	}
+	// printf("'\n");
+	// printf("i %d c '%c'\n", i, data->input[i]);
+	return (equal);
+}
+
+int		ft_export_sizeof_arg(char	*str, int i) // renvoie la taille d'un arg de export en partant de i dans str
+{
+	int	u;
+	u = 0;
+	while (str[i + u] && ft_is_separator(str, (i + u)) == 0 && str[i + u] != ' ')
+		u++;
+	if (ft_check_char(&(str[i]), '=', u) == 1)
+		return (u);
+	return (0);
+}
+
+void	ft_export_in_bin(t_data *data, int nb) // malloc chaques arguments VALIDES de export
+{
+	int	i;
+	int	u;
+	int	s; // size of arg
+
+	i = data->i;
+	u = 0;
+	// printf("in bin 1 : i %d\n", i);
+	while (data->input[i] && ft_is_separator(data->input, i) == 0 && u < nb)
+	{
+		i = i + ft_space(data->input, i);
+		s = ft_export_sizeof_arg(data->input, i);
+		if (s > 0)
+		{
+			// printf("in bin 2 : i %d u %d s %d\n", i, u, s);
+			data->token->bin[u] = ft_malloc_str(data, s);
+			data->token->bin[u] = ft_strncpy(data->token->bin[u], &(data->input[i]), s);
+			// printf("str '%s' : bin%d '%s'\n", &(data->input[i]), u, data->token->bin[u]);
+			u++;
+			
+			i = i + s;
+		}
+		else
+			i++;
+	}
+	// printf("in bin 3 : i %d\n", i);
+	data->token->bin[u] = NULL;
+}
+
+
 void	ft_create_export_token(t_data *data) // cree le token de la commande export
 {
+	int	i;
 
+	i = 0;
 	if (data->token == NULL)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
 	data->token->cmd = 3;
 	data->token->arg = ft_malloc_str(data, 0);
-	ft_parse_export(data);
+	i = ft_export_count_equal(data);
+	data->token->bin = malloc(sizeof(char *) * (i + 1));
+	if (data->token->bin == NULL)
+		data->err = 8010;
+	else
+		ft_export_in_bin(data, i);
+	// printf("export : %d\n", i);
+
+	/*	affichage token bin	*/
+	// int	u = 0;
+	// while (data->token->bin[u])
+	// {
+	// 	printf("bin%d : '%s'\n", u, data->token->bin[u]);
+	// 	u++;
+	// }
+
+	/*	affichage token bin	*/
+
+	
+	// ft_parse_export(data);
 }
