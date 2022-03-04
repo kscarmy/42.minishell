@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 02:42:12 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 14:24:58 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_while_token(t_data *data) // lecture des tokens
 		add_history(NULL, 2);	// shows history with param == 2; adds to history with param == 1;
 	// printf("TEST 5\n");
 	if (data->token->cmd == 6)
-		change_dir("src/parsing");	// fill inside with path of directory to enter.
+		change_dir(data);	// fill inside with path of directory to enter.
 
 	if (data->token->cmd == 7) // pour exit
 		data->exit = 1; // enclanche la sortie

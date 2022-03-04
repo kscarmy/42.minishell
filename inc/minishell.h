@@ -76,7 +76,7 @@ typedef struct p_var
 /*	   global	*/
 /*	***********	*/
 
-t_data	*glob;
+//t_data	*glob;
 
 /*	*************	*/
 /*		INIT		*/
@@ -170,22 +170,22 @@ void	ft_malloc_bin(t_data *data); // malloc le **bin
 int		ft_bin_arg_size(t_data *data, int i); // renvoie la taille d'un argument
 int		ft_bin_count(t_data *data, int i); // revoie le nombre de cases a malloc
 
-
+/*	history.c	*/
 int		cut_history(t_data *data);
-void		ft_create_history_token(t_data *data);
+void	ft_create_history_token(t_data *data); // cree le token de la commande cd.
 
-
-// int		cut_exit(t_data *data);
-
-// int		cut_env(t_data *data);
-// void		ft_create_env_token(t_data *data);
-
-// int		cut_pwd(t_data *data);
-
+/*	cd.c		*/
 int		cut_cd(t_data *data);
-int		change_dir(char *path);
+int		change_dir(t_data *data);
 void		ft_create_cd_token(t_data *data);
 
+/*	cut_str		*/
+char		*cut_str(t_data *data, char *str); // function to parse str given to cmd
+
+
+/*	 quotes		*/
+char		*put_env(t_data *data, char *str, int i);
+char		*ft_quote(t_data *data, char *str, int i);
 
 
 /*	**************	*/
@@ -229,8 +229,8 @@ void	ft_test(t_data *data); // TEST
 char	*ft_malloc_one_var(t_data *data, t_var *var); // malloc une ligne dans data->env
 void	ft_malloc_var(t_data *data); // malloc et renvoie var dans un char **
 int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i); // stocke et malloc un path dans token->arg
-void	ft_is_bin(t_data *data, t_token *token); // 
-void	ft_bin_execve(t_data *data, t_token *token); // 
+void	ft_is_bin(t_data *data, t_token *token); //
+void	ft_bin_execve(t_data *data, t_token *token); //
 void	ft_free_tab_char(char **str); // free un tableau de char
 void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
 

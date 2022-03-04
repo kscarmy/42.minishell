@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   get_next_line_bis.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/19 16:11:48 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 07:36:10 by mourdani         ###   ########.fr       */
+/*   Created: 2021/12/16 17:00:36 by guderram          #+#    #+#             */
+/*   Updated: 2022/02/09 19:57:12 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_env(t_data *data, t_token *token) // commande env
+int	ft_exerror(char **str, int error)
 {
-	
-	// token->str = getenv(NULL);
-	// if (token->str == NULL)
-	// 	data->err = 106;
-	/*	sortie sur l'entree standard	*/
-	// ft_putstr(token->str);
-	// ft_putstr("\n");
-	// data->i = data->i;
-	token->cmd = token->cmd;
-	ft_disp_all_var(data, '=');
-	ft_putstr("\n");
-	data->i = data->i;
+	ft_strdel(&*str);
+	if (error == 1)
+		return (-1);
+	return (0);
+}
+
+void	ft_strdel(char **as)
+{
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

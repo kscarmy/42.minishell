@@ -12,20 +12,6 @@
 
 #include "../../inc/minishell.h"
 
-// int		ft_bin_access(t_data *data, int i, int u, char *path) // ret 0 si rien trouver, sinon 1
-// {
-// 	char	*str;
-
-// 	str = ft_malloc_str(data, (u - i));
-// 	if (str != NULL)
-// 	{
-// 		str = ft_strncpy(str, &(path[i]), (u - i));
-		
-// 	}
-
-	
-// }
-
 char	*ft_malloc_one_var(t_data *data, t_var *var) // malloc une ligne dans data->env
 {
 	int		i;
@@ -79,12 +65,6 @@ void	ft_malloc_var(t_data *data) // malloc et renvoie var dans un char **
 	data->env[i] = NULL;
 }
 
-
-// int		ft_bin_access(t_data *data, char *str) // renvoie la valeur de access
-// {
-// 	return (access(str, F_OK));
-// }
-
 int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i) // stocke et malloc un path dans token->arg
 {
 	int	u;
@@ -111,7 +91,6 @@ int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i) // stocke et mal
 		tok->arg[u + y] = tok->bin[0][y];
 		y++;
 	}
-	// printf("tok bin : ;%s'");
 	tok->arg[u + y] = '\0';
 	return (u);
 }
@@ -134,7 +113,7 @@ void	ft_free_tab_char(char **str) // free un tableau de char
 }
 
 
-void	ft_is_bin(t_data *data, t_token *token) // 
+void	ft_is_bin(t_data *data, t_token *token) //
 {
 	int		i;
 	t_var	*var;
@@ -152,8 +131,8 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	if (access(token->arg, F_OK) == -1)
 	{
 		ft_arg_path_bin(data, token);
-		
-		
+
+
 	}
 	else
 		ft_bin_execve(data, token);
@@ -183,37 +162,24 @@ void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est u
 	}
 }
 
-void	ft_bin_execve(t_data *data, t_token *token) // 
+void	ft_bin_execve(t_data *data, t_token *token) //
 {
-	int		i;
 	pid_t	pid;
 	int		status;
-	// int u = 0;
 
 	pid = fork();
-	i = 0;
 	if (pid == -1)
 		printf("ERREUR TEST FORK\n");
 	else if (pid == 0)
-		i = execve(token->arg, token->bin, data->env);
+		execve(token->arg, token->bin, data->env);
 	else
 		waitpid(pid, &status, 0);
-	
-	// printf("EXECVE i : %d\n", i); // A SUPP
-	// printf("PATH : '%s'\n", token->arg);
-	// while (data->env[u])
-	// {
-	// 	printf("'%s'\n", data->env[u]);
-	// 	u++;
-	// }
+
 }
 
 void	ft_test(t_data *data) // TEST
 {
-	char	*str;
-	char	*cmd;
 	char	*path;
-	char	*env;
 	char	**argv;
 	int	i;
 
@@ -222,11 +188,8 @@ void	ft_test(t_data *data) // TEST
 	argv[0] = "ls";
 	argv[1] = "-la";
 	argv[2] = NULL;
-	// env = getenv(NULL);
-	env = NULL;
+
 	path = "/bin/ls";
-	cmd = "ls";
-	str = "/usr/local/bin";
 	i = access(path, F_OK);
 	printf("access : '%d'\nerror : '%d'\n", i, data->err);
 	i = 0;

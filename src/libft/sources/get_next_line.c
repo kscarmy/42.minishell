@@ -94,7 +94,7 @@ int	get_next_line(const int fd, char **line)
 	if (fd < 0 || line == NULL)
 		return (-1);
 	ret = 1;
-	while (glob->exit == 0 && ret > 0)
+	while (ret > 0)
 	{
 		ret = read(fd, buff, BUFF_SIZE);
 		buff[ret] = '\0';
@@ -109,6 +109,5 @@ int	get_next_line(const int fd, char **line)
 		if (ft_strchr(s[fd], '\n'))
 			break ;
 	}
-	printf("GNL\n");
 	return (output(s, line, ret, fd));
 }

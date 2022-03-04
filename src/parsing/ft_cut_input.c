@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 22:38:26 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/24 16:28:18 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 {
 	int	found;
 
+	data->i = 0;
 	found = 0;
 
 	if (ft_cut_exit(data))			// sets data->exit = 1 if command is "exit"
@@ -31,7 +32,6 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	
 	if (ft_cut_cd(data))
 		found++;
-	
 	while (data->input[data->i])
 	{
 		ft_space(data->input, data->i);
@@ -50,7 +50,8 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	}
 	if (found == 0)
 	{
-		printf("minishell : command not found : %s\n", data->input);
+		if (!'\n')
+			printf("minishell : command not found : %s\n", data->input);
 		return (1); // pas de commande trouvee
 	}
 	return (0);

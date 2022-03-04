@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:26:19 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 02:45:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:20:25 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_pwd(t_data *data, t_token *token) // commande pwd
 {
+	(void)data;
+	(void)token;
 		// token->str = getenv("PWD");
 	// if (token->str == NULL)
 	// 	data->err = 106;
@@ -24,8 +26,7 @@ void	ft_pwd(t_data *data, t_token *token) // commande pwd
 	// ft_disp_all_var(data, '=');
 	// ft_putstr("\n");
 	// data->i = data->i;
-
-	ft_putstr(data->pwd);
-	ft_putstr("\n");
+	printf("%s\n", data->pwd);
+	//printf("%s\n", getcwd(NULL, 0));
 
 }
