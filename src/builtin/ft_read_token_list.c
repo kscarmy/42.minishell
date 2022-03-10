@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 14:24:58 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:18:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int		ft_while_token(t_data *data) // lecture des tokens
 	if (data->token->cmd == 2) // pour pwd
 		ft_pwd(data, data->token);
 	if (data->token->cmd == 3) // pour export
+	{
 		printf("\n'%s'\n", data->token->arg);
+		ft_export(data, data->token);
+	}
 	// printf("TEST 2\n");
 
 	// printf("TEST 3\n");
@@ -46,7 +49,7 @@ int		ft_while_token(t_data *data) // lecture des tokens
 	// printf("TEST 6\n");
 	if (data->token->cmd == 8) // pour unset
 	{
-		printf("\n'%s'\n", data->token->arg);
+		// printf("\n'%s'\n", data->token->arg);
 		ft_unset(data, data->token);
 	}
 	if (data->token->cmd == 9) // pour bin
@@ -55,5 +58,7 @@ int		ft_while_token(t_data *data) // lecture des tokens
 		ft_is_bin(data, data->token);
 		// ft_test(data);
 	}
+	if (data->token->sep > 0)
+		printf("token sep : %d\n", data->token->sep);
 	return (0);
 }

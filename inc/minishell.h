@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/01 09:58:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:11:55 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,9 @@ char		*cut_str(t_data *data, char *str); // function to parse str given to cmd
 char		*put_env(t_data *data, char *str, int i);
 char		*ft_quote(t_data *data, char *str, int i);
 
+/*		 ft_cut_redirects		*/
+int	ft_cut_redirects(t_data *data); // ret 1 si une redirection est trouvee, sinon ret 0
+void	ft_create_redirects_token(t_data *data, int i); // cree le token de la commande redirect
 
 /*	**************	*/
 /*		BUILTIN		*/
@@ -208,6 +211,11 @@ void	ft_env(t_data *data, t_token *token); // commande env
 
 /*	ft_unset.c	*/
 void	ft_unset(t_data *data, t_token *token); // fonction principale de unset
+
+/*	ft_export.c	*/
+void	ft_export_in_var(t_data *data, t_token *token, int i);  // verifie si le name est dans var et fais en fonction
+void	ft_parse_export_name(t_data *data, t_token *token, int i); // parse et malloc dans token->arg le nom de la var. i est la position dans token->bin[i]
+void	ft_export(t_data *data, t_token *token); // commande export
 
 
 /*	**********	*/
