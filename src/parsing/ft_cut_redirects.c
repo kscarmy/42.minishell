@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/10 18:18:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/11 23:47:31 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 	int i;
 
 	i = 0;
-	// printf("is redir\n");
+	printf("is redir\n");
 	while (ft_is_whitespace(data->input[i]))
 		i++;
 	if (ft_is_separator(data->input, i) != 0)
@@ -27,7 +27,7 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 			data->i = data->i + i + 2;
 		else
 			data->i = data->i + i + 1;
-		// printf("redir ok\n");
+		printf("redir ok\n");
 		return (1);
 	}	
 	return (0);
@@ -40,4 +40,5 @@ void	ft_create_redirects_token(t_data *data, int i) // cree le token de la comma
 	else
 		ft_add_new_token(data);
 	data->token->sep = i; // valeur de la commande de sortie
+	printf("data->token->sep = %d\n", i);
 }

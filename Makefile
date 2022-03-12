@@ -3,6 +3,7 @@ NAME		= minishell
 
 ## Sources
 SRC	= 	src/main.c \
+		src/signals.c \
 		src/parsing/history.c \
 		src/parsing/ft_cut_exit.c \
 		src/parsing/ft_clear_token.c \

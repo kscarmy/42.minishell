@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/10 18:16:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/11 23:49:26 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 	while (data->input[data->i])
 	{
 		ft_space(data->input, data->i);
-		// if ()
 		if (found == 0 && ft_cut_echo(data, data->i) == 1)
 			found++;
 		if (found == 0 && ft_cut_pwd(data) == 1)
@@ -44,10 +43,10 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 			found++;
 		if (found == 0 && ft_cut_unset(data, data->i) == 1)
 			found++;
-		if (found == 0 && ft_cut_bin(data) == 1)
-			found++;
 		if (found == 0 && ft_cut_redirects(data) == 1)
 			found++;
+		//if (found == 0 && ft_cut_bin(data) == 1)
+		//	found++;
 		data->i = data->i + 1;
 	}
 	if (found == 0)

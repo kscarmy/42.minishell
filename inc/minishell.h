@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/10 18:11:55 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/12 02:49:11 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # include <sys/types.h> // WAITPID
 # include <sys/wait.h> // WAITPID
+#include <termios.h> // SIGNALS
+#include <signal.h> // SIGNALS
 
 # include "../src/libft/includes/libft.h"
 
@@ -242,4 +244,10 @@ void	ft_bin_execve(t_data *data, t_token *token); //
 void	ft_free_tab_char(char **str); // free un tableau de char
 void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
 
+
+/*	**********	*/
+/*	 Signals	*/
+/*	**********	*/
+void	handler();
+void	init_signals(void);
 #endif
