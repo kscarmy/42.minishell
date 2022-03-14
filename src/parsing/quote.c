@@ -6,7 +6,7 @@
 /*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:04:56 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/25 11:41:48 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:24:42 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,24 @@ char	*d_quote(t_data *data, char *str, int i)  // converts what's inside double 
 		}
 		if (str[i] == '$')							
 		{
-			unq = ft_strjoin(unq, put_env(data, str, i));
-			if (data->i == 0)
-				return (NULL);
-			i = data->i;
+			if (str[i + 1] == '?')
+			{
+				unq = ft_strjoin(unq, ft_itoa(errno));
+				if (data->i == 0)
+					return (NULL);
+				i += 2;
+			}
+			else
+			{
+				unq = ft_strjoin(unq, put_env(data, str, i));
+				if (data->i == 0)
+					return (NULL);
+				i = data->i;
+			}
 		}
 		else 
 			unq = ft_straddc(unq, str[i++]);
 	}
-	data->i = ++i;
 	i = 0;
 	if (unq)
 	{
@@ -126,6 +135,7 @@ char	*d_quote(t_data *data, char *str, int i)  // converts what's inside double 
 	}
 	else
 		unq = ft_straddc(unq, '\0');
+	data->i = ++i;
 	return (unq);
 }
 

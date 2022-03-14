@@ -6,11 +6,42 @@
 /*   By: mourdani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 23:51:35 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/24 12:05:30 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:57:45 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+void	cut_backslash(char **ret, char *str, int *i)		// 
+{
+	*ret = ft_straddc(*ret, str[*i+1]);			// add second char after \.
+	*i += 2;						// increment i and data->i with 2.
+}
+
+void	cut_quotes(t_data *data, char **ret, char *str, int *i)
+{
+   	*ret = ft_strjoin(*ret, ft_quote(data, str, *i));
+			if (data->i == 0)
+				return;
+			*i = data->i;
+}
+
+void	cut_errno(t_data *data, char **ret, int *i)
+{
+	*ret = ft_strjoin(*ret, ft_itoa(errno));
+					if (data->i == 0)
+						return;
+					*i += 2;
+}
+
+void	cut_env_var(t_data *data, char **ret, char *str, int *i)
+{
+					*ret = ft_strjoin(*ret, put_env(data, str, *i));
+					if (data->i == 0)
+						return;
+					*i = data->i;
+
+}
 
 char	*cut_str(t_data *data, char *str)
 {
@@ -31,27 +62,18 @@ char	*cut_str(t_data *data, char *str)
 	{
 		while (str[i] == ' ' && str[i + 1] == ' ')
 			i++;
-		if (str[i] == '\\' && (str[i+1] == ' ' || str[i+1] == '\\' || str[i+1] == '"' || str[i+1] == '\'' ||str[i+1] == '$')) // when \\ or \" or \$.
-		{
-			ret = ft_straddc(ret, str[i+1]);					// add second char after \.
-			i += 2;									// increment i and data->i with 2.
-		}
 		if (str[i-1] != '\\' && (str[i] == '"' || str[i] == '\''))
-		{
-//			ret = ft_quote(data, str, i);
-   			ret = ft_strjoin(ret, ft_quote(data, str, i));
-			if (data->i == 0)
-				return (NULL);
-	    		i = data->i;
-		}
+			cut_backslash(&ret, str, &i);
+		if (str[i-1] != '\\' && (str[i] == '"' || str[i] == '\''))
+			cut_quotes(data, &ret, str, &i);
 		else 
 		{
 			if (str[i] == '$')
 			{
-				ret = ft_strjoin(ret, put_env(data, str, i));
-				if (data->i == 0)
-					return (NULL);
-				i = data->i;
+				if (str[i + 1] == '?')
+					cut_errno(data, &ret, &i);
+				else 
+					cut_env_var(data, &ret, str, &i);
 			}
 			else
 				ret = ft_straddc(ret, str[i++]);

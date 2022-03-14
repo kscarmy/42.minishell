@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/11 23:47:31 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/12 04:03:48 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 	int i;
 
 	i = 0;
-	printf("is redir\n");
+//	printf("is redir\n");
 	while (ft_is_whitespace(data->input[i]))
 		i++;
 	if (ft_is_separator(data->input, i) != 0)
@@ -33,6 +33,16 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 	return (0);
 }
 
+void	cut_cmd_redir(t_data *data, int i)
+{
+	char **cmd;
+
+	(void)i;
+		cmd = ft_split(data->input, '>');
+		data->token->bin[0] = cmd[0];
+		data->token->bin[1] = cmd[1];
+}
+
 void	ft_create_redirects_token(t_data *data, int i) // cree le token de la commande redirect
 {
 	if (data->token == NULL)
@@ -40,5 +50,7 @@ void	ft_create_redirects_token(t_data *data, int i) // cree le token de la comma
 	else
 		ft_add_new_token(data);
 	data->token->sep = i; // valeur de la commande de sortie
-	printf("data->token->sep = %d\n", i);
+	cut_cmd_redir(data, i);		
+	printf("data->token->bin[0] = %s\n", data->token->bin[0]);
+	printf("data->token->bin[1] = %s\n", data->token->bin[1]);
 }

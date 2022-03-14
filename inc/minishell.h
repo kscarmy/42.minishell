@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/12 02:49:11 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:38:37 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 
 # include <sys/types.h> // WAITPID
 # include <sys/wait.h> // WAITPID
-#include <termios.h> // SIGNALS
-#include <signal.h> // SIGNALS
+# include <termios.h> // SIGNALS
+# include <signal.h> // SIGNALS
+# include <errno.h> // Error exit code for $?
 
 # include "../src/libft/includes/libft.h"
 

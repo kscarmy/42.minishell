@@ -6,12 +6,11 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/12 02:49:37 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/12 02:50:32 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-
 
 void	prompt(t_data *data)
 {
