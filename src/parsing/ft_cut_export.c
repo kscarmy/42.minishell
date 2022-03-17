@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/01 10:13:44 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:04:09 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_parse_export(t_data *data) // parse les arguments de export
 		m = 0;
 		i++;
 	}
-	data->i = data->i + i;
+	// data->i = data->i + i;
 }
 
 int		ft_is_export(char *str, int i) // verifie si l'argument d'export est valable
@@ -146,6 +146,12 @@ void	ft_export_in_bin(t_data *data, int nb) // malloc chaques arguments VALIDES 
 		else
 			i++;
 	}
+	// printf("EXPORT IN BIN :\n");
+	// printf("data i %d, i : %d\n", data->i, i);
+	data->i = i;
+	// data->i = data->i + i;
+	// printf("data i %d, inp i '%s'\n", data->i, &(data->input[data->i]));
+	// printf("data i %d", data->i);
 	// printf("in bin 3 : i %d\n", i);
 	data->token->bin[u] = NULL;
 }
@@ -181,5 +187,5 @@ void	ft_create_export_token(t_data *data) // cree le token de la commande export
 	/*	affichage token bin	*/
 
 	
-	// ft_parse_export(data);
+	ft_parse_export(data);
 }

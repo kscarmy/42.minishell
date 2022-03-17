@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/12 02:49:37 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:47:27 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ void	prompt(t_data *data)
 	{
 		/* commande de parsing a inserer ici */
 		ft_parse_input(data);
-
+		printf("AFTER PARSING\n");
 		/* commande d'execusion des tokens a inserer ici */
 		if ((data->exit == 0) && (data->token != NULL))
-			ft_while_token(data);
+			ft_read_token_list(data);
+			// ft_while_token(data);
+		printf("AFTER READ TOKEN\n");
 
 			/*	test avec echo	*/
-		ft_delete_token(data, data->token);
+		// printf("pre delete tok\n");
+		// ft_delete_token(data, data->token);
 
 			/*	commande de reset de data	*/
+		// printf("pre clear input\n");
 		ft_clear_for_new_input(data);
+		// printf("pre new line\n");
 		if (data->exit == 0)
 			write(0, "~$ ", 3);
 		else

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:10:53 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/20 17:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:27:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	ft_cut_pwd(t_data *data) // cut la commande pwd
 	int		u;
 	int		i;
 
-	i = data->i;
+	printf("IN CUT PWD\n");
+	i = data->i + ft_space(data->input, data->i);
 	u = 0;
 	str = "pwd";
-	while (data->input[i] && data->input[i] != ' ')
+	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
 	{
 		if (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;
@@ -29,7 +30,7 @@ int	ft_cut_pwd(t_data *data) // cut la commande pwd
 	}
 	if (u == 3)
 	{
-		data->i = data->i + u;
+		data->i = data->i + u + ft_space(data->input, data->i);
 		ft_create_pwd_token(data);
 		return (1);
 	}
@@ -43,5 +44,5 @@ void	ft_create_pwd_token(t_data *data) // cree le token de la commande pwd
 	else
 		ft_add_new_token(data);
 	data->token->cmd = 2;
-
+	printf("IN TOK PWD\n");
 }

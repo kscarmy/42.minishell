@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/12 02:49:11 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:39:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void	ft_create_pwd_token(t_data *data); // cree le token de la commande pwd
 
 /*	ft_cut_input.c	*/
 int		ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifique a l'erreur
+int	ft_parse_cmd_not_found(t_data *data); // commande non trouvee
 
 /*	ft_cut_echo.c	*/
 int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
@@ -154,7 +155,7 @@ void	ft_clear_token_list(t_data *data); // supprime tout les tokens de la liste
 void	ft_clear_for_new_input(t_data *data); // reset la structure data pour reprendre un nouveau input
 
 /*	ft_cut_env.c	*/
-int	ft_cut_env(t_data *data); // ret 1 si env trouver, sinon ret 0.
+int	ft_cut_env(t_data *data, int i); // ret 1 si env trouver, sinon ret 0.
 void	ft_create_env_token(t_data *data); // cree le token de la commande env.
 
 /*	ft_cut_exit.c	*/
@@ -203,6 +204,11 @@ int		print_cd(char *path);
 void	ft_echo(t_data *data, t_token *token); // commande echo
 
 /*	ft_read_token_list.c	*/
+void	ft_read_token_list(t_data *data); // lecture des tokens
+void	ft_launch_cmd(t_data *data, t_token *token); // lance une cmd
+t_token	*ft_ret_last_token(t_data *data); // renvoie l'adresse du dernier token.
+void	ft_print_token_list(t_data *data); // affiche tout les token
+
 int	ft_while_token(t_data *data); // lecture des tokens
 
 /*	ft_pwd.c	*/

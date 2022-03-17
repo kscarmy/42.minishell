@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/11 23:47:31 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:46:52 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sinon ret 0
 {
 	int i;
+	int u; //compte les espaces
 
-	i = 0;
-	printf("is redir\n");
-	while (ft_is_whitespace(data->input[i]))
-		i++;
-	if (ft_is_separator(data->input, i) != 0)
+	i = data->i;
+	u = 0;
+	// printf("is redir\n");
+	u = u + ft_space(data->input, i);
+	// printf("sep : '%c' i : %d\n", data->input[i], i);
+	if (ft_is_separator(data->input, (i + u)) != 0)
 	{
-		ft_create_redirects_token(data, ft_is_separator(data->input, i));
-		if (ft_is_separator(data->input, i) > 4)
-			data->i = data->i + i + 2;
+		printf("sep : '%c' i : %d\n", data->input[i], i);
+		ft_create_redirects_token(data, ft_is_separator(data->input, (i + u)));
+		if (ft_is_separator(data->input, (i + u)) > 4)
+			data->i = data->i + u + 2;
 		else
-			data->i = data->i + i + 1;
+			data->i = data->i + u + 1;
 		printf("redir ok\n");
 		return (1);
 	}	
@@ -40,5 +43,5 @@ void	ft_create_redirects_token(t_data *data, int i) // cree le token de la comma
 	else
 		ft_add_new_token(data);
 	data->token->sep = i; // valeur de la commande de sortie
-	printf("data->token->sep = %d\n", i);
+	// printf("data->token->sep = %d\n", i);
 }

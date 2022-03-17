@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/21 22:14:17 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:43:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 		data->err = 101; // erreur 101 = malloc
 	else
 	{
+		new->sep = -1; // valeur initiale vide
 		new->cmd = -1; // valeur initiale vide
 		new->option = -1; // valeur initiale vide
 		new->arg = NULL; // valeur initiale vide
 		new->bin = NULL; // valeur initiale vide
 		new->next = data->token; // indique la prochaine addresse a new
-		data->token->prev = new; // donne a list + 1 son adresse precedente (donc celle de new)
+		// data->token->prev = new; // donne a list + 1 son adresse precedente (donc celle de new)
 		data->token = new; // donne a data token la premiere adresse (donc celle de new)
 		new->prev = NULL; // premier token dans la liste donc addresse precedente nulle
+		new->next->prev = new;
 	}
 }
 
@@ -75,18 +77,37 @@ void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en rel
 	if (data->token != NULL && delete != NULL)
 	{
 		ft_free_token(data, delete);
+		// printf("after delete in\n");
 		if (delete->next == NULL && delete->prev != NULL) // si dernier et pas premier
+		{
+			// printf("1\n");
 			delete->prev->next = NULL;
+		}
 		if (delete->prev == NULL && delete->next != NULL) // si premier et pas dernier
+		{
+			// printf("2\n");
 			data->token = delete->next;
+			delete->next->prev = NULL;
+		}
 		if (delete->prev == NULL && delete->next == NULL) // si premier et dernier
+		{
+			// printf ("\nfirst and last\n");
 			data->token = NULL;
+		}
 		if (delete->next != NULL && delete->prev != NULL) // si au milieu de deux
 		{
+			// printf("3\n");
 			delete->prev->next = delete->next; // le precedent prend le suivant
 			delete->next->prev = delete->prev; // le suivant prend le precedent
 		}
-		free (delete);
-		delete = NULL;
+		// printf("before free\n");
+		if (delete && delete != NULL)
+		{
+			// printf ("free delete '%p'\n", delete);
+			free (delete);
+			delete = NULL;
+			// printf ("delete status '%p'\n", delete);
+		}
+		// printf("after free\n");
 	}
 }

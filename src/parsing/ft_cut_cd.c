@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/25 11:16:36 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:45:07 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_cut_cd(t_data *data) // ret 1 si cd est trouvé, sinon ret 0
 	char *command;
 	int i;
 
-	i = 0;
+	i = data->i;
 	command = "cd";
 	while (ft_is_whitespace(data->input[i]))
 		i++;
