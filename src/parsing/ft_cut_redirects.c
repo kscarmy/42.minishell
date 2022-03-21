@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/15 21:46:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:37:40 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 	// printf("sep : '%c' i : %d\n", data->input[i], i);
 	if (ft_is_separator(data->input, (i + u)) != 0)
 	{
-		printf("sep : '%c' i : %d\n", data->input[i], i);
+		// printf("sep : '%c' i : %d\n", data->input[i], i);
 		ft_create_redirects_token(data, ft_is_separator(data->input, (i + u)));
 		if (ft_is_separator(data->input, (i + u)) > 4)
 			data->i = data->i + u + 2;
 		else
 			data->i = data->i + u + 1;
-		printf("redir ok\n");
+		// printf("redir ok\n");
 		return (1);
 	}	
 	return (0);

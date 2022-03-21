@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/17 15:54:53 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/21 17:49:36 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 	if (token->cmd == 1) // pour echo
 		ft_echo(data, token);
 	if (token->cmd == 2) // pour pwd
-		ft_pwd(data, token);
+		ft_pwd(data);
 	if (token->cmd == 3) // pour export
 		ft_export(data, token);
 	if (token->cmd == 4) // pour env

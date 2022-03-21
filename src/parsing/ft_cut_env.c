@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:12:42 by mourdani          #+#    #+#             */
-/*   Updated: 2022/03/17 18:27:27 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/21 05:21:01 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_cut_env(t_data *data, int i) // ret 1 si env trouver, sinon ret 0. i est 
 	// printf("i : %d", i);
 	i = i + ft_space(data->input, i);
 	// printf("i : %d, '%s'\n", i, &(data->input[i]));
-	while (data->input[i] && data->input[i] != ' ')
+	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
 	{
 		if (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/17 15:39:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/21 21:31:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ int	ft_cut_exit(t_data *data); // ret 1 si exti trouver, sinon ret 0
 void	ft_create_exit_token(t_data *data); // cree le token de la commande pwd
 
 /*	ft_cut_cd.c	*/
-int		ft_cut_cd(t_data *data); // ret 1 si exti trouver, sinon ret 0
+int		ft_cut_cd(t_data *data, int i); // ret 1 si exti trouver, sinon ret 0
 void	ft_create_cd_token(t_data *data); // cree le token de la commande cd.
 
 /*	ft_cut_bin.c	*/
@@ -212,13 +212,14 @@ void	ft_print_token_list(t_data *data); // affiche tout les token
 int	ft_while_token(t_data *data); // lecture des tokens
 
 /*	ft_pwd.c	*/
-void	ft_pwd(t_data *data, t_token *token); // commande pwd
+void	ft_pwd(t_data *data); // commande pwd
 
 /*	ft_env.c	*/
 void	ft_env(t_data *data, t_token *token); // commande env
 
 /*	ft_unset.c	*/
 void	ft_unset(t_data *data, t_token *token); // fonction principale de unset
+char	*ft_unset_malloc_str(t_data *data, char *str); // renvoie une chaine de str
 
 /*	ft_export.c	*/
 void	ft_export_in_var(t_data *data, t_token *token, int i);  // verifie si le name est dans var et fais en fonction
