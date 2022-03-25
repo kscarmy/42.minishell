@@ -31,6 +31,7 @@ SRC	= 	src/main.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
 		src/var/ft_var.c \
+		src/var/ft_var_sort.c \
 		src/bin/ft_bin.c \
 
 

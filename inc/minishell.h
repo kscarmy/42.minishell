@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 21:31:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:16:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si
 /*	ft_write.c	*/
 int		ft_is_a_b(char a, char b); // compare a et b, renvoie 1 si ils sont identiques sinon 0
 int		ft_space(char *str, int i); // renvoie le nombre d espaces a sauter en partant de i
+void	ft_print_one_var(t_var *var); // affiche le contenu d'une var pour export sans arg
+int		ft_str_comp_ascii(char *str1, char *str2); // compare les deux chaines de caracteres et renvoie celle qui est premiere celon la table ascii
+
 
 /*	ft_str.c	*/
 void	ft_str_join_input(t_data *data, int i, int max); // malloc en recuperant la chaine token->str + la chaine input entre i et i + m
@@ -226,14 +229,24 @@ void	ft_export_in_var(t_data *data, t_token *token, int i);  // verifie si le na
 void	ft_parse_export_name(t_data *data, t_token *token, int i); // parse et malloc dans token->arg le nom de la var. i est la position dans token->bin[i]
 void	ft_export(t_data *data, t_token *token); // commande export
 
-
+/*	ft_cd.c	*/
+void	ft_cd(t_data *data, t_token *token);
+void	ft_cd_home(t_data *data); // si cd renvoie sur son home
+void	ft_cd_goto_path(t_data *data, char *path); // verifie la validitee du path et le stocke dans TOUT les endroits necesaires
+void	ft_cd_from_data_to_var_opwd(t_data *data); // s'occupe de gerer opwd dans la structure var
+void	ft_cd_from_data_to_var_pwd(t_data *data); // s'occupe de gerer pwd dans la structure var
+void	ft_cd_goto_opwd(t_data *data, char *path); // execute la commande 'cd -'
 /*	**********	*/
 /*		VAR		*/
 /*	**********	*/
 
 /*	ft_var.c	*/
 t_var	*ft_found_var_name(t_data *data, char *str); // permet de trouver et de renvoyer l'adresse de la var qui contient la string "str" dans name. si rien n'est trouver renvoie "NULL"
-void	ft_disp_all_var(t_data *data, char sep); // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value
+void	ft_disp_all_var(t_data *data, char sep, int export); // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value, si export vaut 1 alors considere que la commande export a ete lancee sans arguments
+
+/*	ft_var_sort.c	*/
+t_var	*ft_found_first_var(t_data *data); // cherche la premiere variable selon la table ascii
+
 
 
 /*	**********	*/

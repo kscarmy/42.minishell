@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/03/21 21:40:11 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/25 07:21:55 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_create_cd_token(t_data *data) // cree le token de la commande cd.
 	if (data->token->arg != NULL)
 	{
 		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
+		data->i = data->i + u;
 		// data->token->arg = cut_str(data, data->token->arg);
 	}
 	else

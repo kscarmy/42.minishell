@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 17:49:36 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/24 07:32:53 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 	if (token->cmd == 5) // pour history
 		add_history(NULL, 2);	// shows history with param == 2; adds to history with param == 1;
 	if (token->cmd == 6)
-		change_dir(data);	// fill inside with path of directory to enter.
+		ft_cd(data, token);	// fill inside with path of directory to enter.
 	if (token->cmd == 7) // pour exit
 		data->exit = 1; // enclanche la sortie
 	if (token->cmd == 8) // pour unset

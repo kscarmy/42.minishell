@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 17:38:27 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/25 07:18:10 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 			found++;
 		}
 		printf(" %d", data->i);
-		if (found == 0 && ft_cut_cd(data))
+		if (found == 0 && ft_cut_cd(data, data->i))
 			found++;
 		printf(" %d", data->i);
 		if (found == 0 && ft_cut_echo(data, data->i) == 1)
@@ -64,8 +64,8 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 		if (found == 0 && ft_cut_redirects(data) == 1)
 			found++;
 		printf(" %d", data->i);
-		// if (found == 0 && ft_cut_bin(data) == 1)
-		// 	found++;
+		if (found == 0 && ft_cut_bin(data) == 1)
+			found++;
 		// printf("aftfonc data i : '%s'\n", &(data->input[data->i]));
 		if (found == 0)
 			found = ft_parse_cmd_not_found(data);

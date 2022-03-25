@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:04:57 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/10 18:18:32 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/24 11:15:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 // 		printf("EXPORT : NO DATA NOT SET IN : src>builtin>ft_export.c\n");
 // 	if (ft_)
 // }
-
 
 
 void	ft_export_in_var(t_data *data, t_token *token, int i)  // verifie si le name est dans var et fais en fonction
@@ -67,6 +66,8 @@ void	ft_export(t_data *data, t_token *token) // commande export
 	int	i; // compteur dans bin[i]
 
 	i = 0;
+	if (token->bin[0] == NULL)
+		ft_disp_all_var(data, '=', 1);
 	while (token->bin[i] != NULL)
 	{
 		ft_parse_export_name(data, token, i);

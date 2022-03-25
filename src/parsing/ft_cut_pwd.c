@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:10:53 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 17:29:39 by guderram         ###   ########.fr       */
+/*   Updated: 2022/03/25 07:48:51 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int	ft_cut_pwd(t_data *data) // cut la commande pwd
 
 void	ft_create_pwd_token(t_data *data) // cree le token de la commande pwd
 {
+	int	i;
+
+	i = data->i;
+	while (data->input[i] && ft_is_separator(data->input, i) == 0)
+		i++;
+	data->i = i;
 	if (data->token == NULL)
 		ft_init_token(data);
 	else

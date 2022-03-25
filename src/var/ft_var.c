@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 12:07:28 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/03/24 09:07:06 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,22 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 	return (var);
 }
 
-void	ft_disp_all_var(t_data *data, char sep) // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value
+void	ft_disp_all_var(t_data *data, char sep, int export) // permet d'afficher toutes les variables stockees avec en option un separateur entre nom et value, si export vaut 1 alors considere que la commande export a ete lancee sans arguments
 {
 	t_var	*var;
 	
 	var = data->var;
 	while (var != NULL)
 	{
-		// printf("%s%c%s\n", var->name, sep, var->value);
+		if (export == 1)
+			ft_putstr("declare -x ");
 		ft_putstr(var->name);
 		ft_putchar(sep);
+		if (export == 1)
+			ft_putchar('"');
 		ft_putstr(var->value);
+		if (export == 1)
+			ft_putchar('"');
 		if (var->next != NULL)
 			ft_putchar('\n');
 		var = var->next;
