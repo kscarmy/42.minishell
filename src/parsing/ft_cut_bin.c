@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/22 10:53:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/01 11:12:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,20 @@ void	ft_malloc_bin(t_data *data) // malloc le **bin
 			u++;
 		}
 		data->token->bin[u] = NULL;
-		data->i = data->i + i;
+		// data->i = data->i + i;
 	}
 }
 
 void	ft_create_bin_token(t_data *data) // fonction qui cree le token bin
 {
-	// int	u;
+	int	u;
 
-	// u = 0;
+	u = 0;
 	data->token->cmd = 9;
 	ft_malloc_bin(data);
+	while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
+		u++;
+	data->i = data->i + u;
 	// while (data->input[data->i + u] != ' ' && ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 	// 	u++;
 	// data->token->bin = ft_malloc_str(data, u);

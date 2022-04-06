@@ -6,11 +6,20 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/17 15:47:27 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/03 10:21:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sinon 0
+{
+	if(p->fd_i == -10 && p->fd_o == -10 && p->ofd_i == -10 && p->ofd_o == -10)
+		return (1);
+	else
+		return (0);
+}
+
 
 
 void	prompt(t_data *data)
@@ -40,6 +49,9 @@ void	prompt(t_data *data)
 		else
 			ft_putstr("exit\n");
 	}
+	write(0, "ex\n", 3);
+
+
 }
 
 int	main(int argc, char **argv, char **env)
@@ -61,8 +73,12 @@ int	main(int argc, char **argv, char **env)
 	data = malloc(sizeof(t_data));
 	if (ft_init_data(data, env) == 0)
 		return (0); // erreur
+	// while (data->exit == 0 && ft_verif_pipe(data->pipe) == 1)
 	prompt(data);
 	/*	fonction qui clear tout a faire	*/
-
+	
+	/*	tests free : 	*/
+	unlink(TMP_OUT);
+	unlink(TMP_IN);
 	return (0);
 }

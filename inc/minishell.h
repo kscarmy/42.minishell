@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/24 11:16:05 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/03 10:54:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
+# define TMP_OUT ".minishell_tmp_out" // fichier tempo de minishell pour tout ce qui concerne les sorties
+# define TMP_IN ".minishell_tmp_in" // fichier tempo de minishell pour tout ce qui concerne les entrees
 
 /*	***********	*/
 /*	   data		*/
@@ -33,6 +35,7 @@
 
 typedef struct p_data
 {
+
 	int				exit; // sortie forcee si exit == 1
 	int				err; //
 	int				i; // tete de lecture dans input
@@ -42,6 +45,7 @@ typedef struct p_data
 	char			*opwd; // vraie old pwd
 	struct p_token	*token; // adresse du premier token
 	struct p_var	*var; // adresse du premier var
+	struct p_pipe	*pipe; // structure des pipes
 }				t_data;
 
 /*	**************	*/
@@ -59,6 +63,18 @@ typedef struct p_token
 	struct p_token	*prev; // precedent token
 
 }				t_token;
+
+/*	**********	*/
+/*		pipe	*/
+/*	**********	*/
+
+typedef struct p_pipe
+{
+	int				ofd_o; // ancien fd out
+	int				ofd_i; // ancien fd in
+	int				fd_o; // fd out
+	int				fd_i; // fd in
+}				t_pipe;
 
 /*	**********	*/
 /*		var		*/
@@ -92,6 +108,7 @@ void	ft_delete_token(t_data *data, t_token *delete); // supprime la tokene en re
 
 /*	ft_init_data.c	*/
 int	ft_init_data(t_data *data, char **env); // malloc env dans data
+void	ft_init_pipe(t_data *data); // prepare la structure des pipes
 // int	ft_init_data_bis(t_data *data, char **env, int i);
 void	ft_create_var_var(t_data *data, char *str); // cree un maillon de chane dans la structure var
 void	ft_init_data_pwd(t_data *data); // initialise les deux pwd dans la structure data
@@ -207,6 +224,7 @@ int		print_cd(char *path);
 void	ft_echo(t_data *data, t_token *token); // commande echo
 
 /*	ft_read_token_list.c	*/
+t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t); // lecture des tokens dans les pipes
 void	ft_read_token_list(t_data *data); // lecture des tokens
 void	ft_launch_cmd(t_data *data, t_token *token); // lance une cmd
 t_token	*ft_ret_last_token(t_data *data); // renvoie l'adresse du dernier token.
@@ -270,4 +288,17 @@ void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est 
 /*	**********	*/
 void	handler();
 void	init_signals(void);
+
+
+/*	*******	*/
+/*	 REDIR	*/
+/*	*******	*/
+
+/*	ft_pipe.c	*/
+void	ft_pipe_out(t_data *data); // redirige la sortie de la prochaine commande dans le TMP_OUT
+void	ft_pipe_in(t_data *data); // redirige l'entree de la prochaine commande dans le tmp_file
+void	ft_pipe_close_data_fd(t_data *data, int	fd); // ferme le fd, si fd == 0 ferme out sinon in
+void	ft_copy_fd(int fd_s, int fd_d); // copy le fd source dans le fd dest
+
+
 #endif

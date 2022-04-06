@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/02/24 07:58:10 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/04/01 11:54:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,20 @@ void	ft_init_data_pwd(t_data *data) // initialise les deux pwd dans la structure
 	data->opwd = ft_strncpy(data->opwd, var->value, i);	
 }
 
-int	ft_init_data(t_data *data, char **env) // malloc env dans data
+void	ft_init_pipe(t_data *data) // prepare la structure des pipes
+{
+	t_pipe	*pip;
+
+	pip = malloc(sizeof(t_pipe));
+	data->pipe = pip;
+	data->pipe->fd_o = -10;
+	data->pipe->fd_i = -10;
+	data->pipe->ofd_o = -10;
+	data->pipe->ofd_i = -10;
+	// printf("PIPE INIT : %d\n", data->pipe->fd_o);
+}
+
+int		ft_init_data(t_data *data, char **env) // malloc env dans data
 {
 	int	i;
 
@@ -77,5 +90,8 @@ int	ft_init_data(t_data *data, char **env) // malloc env dans data
 	data->exit = 0;
 	data->err = 0;
 	data->token = NULL;
+	ft_init_pipe(data);
+	// data->fd_in = -10;
+	// data->fd_out = -10;
 	return (1); // 1 = OK
 }
