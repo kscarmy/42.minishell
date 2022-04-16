@@ -61,7 +61,7 @@ all:	obj $(NAME)
 
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -lreadline -o $(NAME)
 	$(DONE)
 
 $(LIBFT):

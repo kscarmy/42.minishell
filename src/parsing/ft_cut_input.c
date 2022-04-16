@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/25 07:18:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/16 20:29:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 		// printf("prefonc data i : '%s'\n", &(data->input[data->i]));
 		found = 0;
 		data->i = data->i + ft_space(data->input, data->i);
-		if (cut_history(data) == 1)		// checks if command is "history" and creates its token
-			found++;
-		else 
-			add_history(data->input, 1);	// adds line to history if it is not "history"
+		// if (cut_history(data) == 1)		// checks if command is "history" and creates its token
+		// 	found++;
+		// else 
+		// 	add_history(data->input, 1);	// adds line to history if it is not "history"
 		if (found == 0 && ft_cut_exit(data))		// sets data->exit = 1 if command is "exit"
 			found++;
 		printf("i : %d", data->i);

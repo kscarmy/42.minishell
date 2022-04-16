@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/03 10:54:38 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/16 20:27:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # include <unistd.h> // WRITE FORK
-# include <stdio.h> // PRINTF
+# include <stdio.h> // PRINTF READLINE
 # include <stdlib.h> // MALLOC FREE EXIT
 # include <dirent.h> // opendir() for "cd"
 
@@ -22,6 +22,10 @@
 # include <sys/wait.h> // WAITPID
 #include <termios.h> // SIGNALS
 #include <signal.h> // SIGNALS
+
+#include <readline/readline.h> // READLINE
+#include <readline/history.h> // READLINE
+
 
 # include "../src/libft/includes/libft.h"
 
@@ -217,7 +221,7 @@ void	ft_create_redirects_token(t_data *data, int i); // cree le token de la comm
 /*	**************	*/
 /*		BUILTIN		*/
 /*	**************	*/
-int		add_history(char *str, int param);
+// int		add_history(char *str, int param);
 int		print_wd(void);
 int		print_cd(char *path);
 /*	ft_echo.c	*/

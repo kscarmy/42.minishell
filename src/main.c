@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/03 10:21:59 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/16 20:31:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,23 @@ int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sino
 
 void	prompt(t_data *data)
 {
-	write(0, "~$ ", 3);
-	while (data->exit == 0 && get_next_line(0, &data->input) > 0)
+	// char *line;
+	// write(0, "~$ ", 3);
+	while (data->exit == 0)
 	{
-		/* commande de parsing a inserer ici */
+		/*	readline	*/
+
+		data->input = readline("~$ ");
+		add_history(data->input);
+
+		/*	commande de parsing a inserer ici */
 		ft_parse_input(data);
-		printf("AFTER PARSING\n");
+		// printf("AFTER PARSING\n");
 		/* commande d'execusion des tokens a inserer ici */
 		if ((data->exit == 0) && (data->token != NULL))
 			ft_read_token_list(data);
 			// ft_while_token(data);
-		printf("AFTER READ TOKEN\n");
+		// printf("AFTER READ TOKEN\n");
 
 			/*	test avec echo	*/
 		// printf("pre delete tok\n");
@@ -44,12 +50,15 @@ void	prompt(t_data *data)
 		// printf("pre clear input\n");
 		ft_clear_for_new_input(data);
 		// printf("pre new line\n");
-		if (data->exit == 0)
-			write(0, "~$ ", 3);
-		else
+		// if (data->exit == 0)
+		// 	write(0, "~$ ", 3);
+		// else
+		// free(line);
+		// line = NULL;
+		if (data->exit != 0)
 			ft_putstr("exit\n");
 	}
-	write(0, "ex\n", 3);
+	// write(0, "ex\n", 3);
 
 
 }
