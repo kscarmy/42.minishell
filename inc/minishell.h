@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/16 20:27:54 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:06:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separat
 char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renplie de \0 et le return
 int		ft_str_size(char *str); // renvoie la taille d'un str
 int		ft_check_char(char *str, char c, int max); // verifie si c est dans str avec max
+int		ft_str_comp(char *str1, char *str2); // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
+int		ft_str_after_cut(char *str); // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
 
 /*	**************	*/
 /*		PARSING		*/

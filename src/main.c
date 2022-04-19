@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/16 20:31:05 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:34:08 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,17 @@ int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sino
 
 void	prompt(t_data *data)
 {
+	int	i = 0;
 	// char *line;
 	// write(0, "~$ ", 3);
 	while (data->exit == 0)
 	{
 		/*	readline	*/
-
+		i = 0;
 		data->input = readline("~$ ");
 		add_history(data->input);
-
+		while (data->input[i]) { i++; }
+		printf("sizeof input %d\n", i);
 		/*	commande de parsing a inserer ici */
 		ft_parse_input(data);
 		// printf("AFTER PARSING\n");
@@ -48,6 +50,7 @@ void	prompt(t_data *data)
 
 			/*	commande de reset de data	*/
 		// printf("pre clear input\n");
+		printf("sizeof data->i %d\n", data->i);
 		ft_clear_for_new_input(data);
 		// printf("pre new line\n");
 		// if (data->exit == 0)

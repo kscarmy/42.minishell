@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/01 11:12:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/16 21:49:26 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 	int	i;
 
 	i = data->i;
+	printf("\ncut bin : '%s'\n", &data->input[i]);
 	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
 		i++;
 	if (i > 0)
 	{
+		printf ("cut bin i %d\n", i);
 		if (data->token == NULL)
 			ft_init_token(data);
 		else

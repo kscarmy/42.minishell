@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/01 09:45:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:36:13 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,25 @@ int		ft_check_char(char *str, char c, int max) // verifie si c est dans str avec
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+int	ft_str_comp(char *str1, char *str2) // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
+{
+	if (ft_strncmp(str1, str2, ft_strlen(str1)) == 0
+		&& ft_strncmp(str1, str2, ft_strlen(str2)) == 0)
+		return (1);
+	return (0);
+}
+
+int		ft_str_after_cut(char *str) // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
+{
+	printf ("str after cut '%s'\n", str);
+	if (str[0] == '\0')
+		return (1);
+	if (str[0] == ' ')
+		return (1);
+	if (ft_is_separator(str, 0) != 0)
+		return (1);
 	return (0);
 }

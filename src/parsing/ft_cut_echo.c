@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/15 21:35:44 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:55:24 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,33 @@
 
 int	ft_cut_echo(t_data *data, int i) // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
 {
-	char	*str;
-	int		u;
+	// char	*str;
+	// int		u;
 
-	u = 0;
-	str = "echo";
-	while (data->input[i] && data->input[i] != ' ')
-	{
-		if (ft_is_a_b(data->input[i], str[u]) == 1)
-			u++;
-		i++;
-	}
-	if (u == 4)
-	{
-		ft_cut_echo_option(data, i);
-		return (1);
-	}
-	return (0);
+	// u = 0;
+	// str = "echo";
+	// while (data->input[i] && data->input[i] != ' ')
+	// {
+	// 	if (ft_is_a_b(data->input[i], str[u]) == 1)
+	// 		u++;
+	// 	i++;
+	// }
+	// if (u == 4)
+	// {
+	// 	ft_cut_echo_option(data, i);
+	// 	return (1);
+	// }
+
+	if (ft_strncmp(&data->input[i], "echo", 4) != 0)
+		return (0);
+	i = i + 4;
+	// printf("\necho pre ok\n");
+	if (ft_str_after_cut(&data->input[i]) != 1)
+		return (0);
+	// printf("\necho ok\n");
+	ft_cut_echo_option(data, i);
+	// printf("\necho sortie data->i : %d\n", data->i);
+	return (1);
 }
 
 void	ft_cut_echo_option(t_data *data, int i)
@@ -48,7 +58,8 @@ void	ft_cut_echo_option(t_data *data, int i)
 	if (u >= 2)
 		i = i + u;
 	i = i + ft_space(data->input, i);
-	data->i = data->i + i;
+	// printf("cut echo option i %d\n", i);
+	data->i = i;
 	ft_create_echo_token(data, u);
 }
 
@@ -68,11 +79,13 @@ void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le toke
 	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 		u++;
 	data->token->arg = ft_malloc_str(data, u);
-	if (data->token->arg != NULL)
+	if (u > 0 && data->token->arg != NULL)
 	{
 		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
 		data->token->arg = cut_str(data, data->token->arg);
+		data->i = data->i + u;
 	}
 	else
 		data->err = 200; // erreur malloc
+	
 }

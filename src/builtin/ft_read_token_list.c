@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/16 20:29:54 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:57:40 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ t_token	*ft_ret_last_token(t_data *data) // renvoie l'adresse du dernier token.
 void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 {
 	// printf("pipe : %d %d\n", data->pipe->fd_i, data->pipe->fd_o);
-	if (token->prev != NULL && token->prev->sep == 2) // si le prochain token a un sep
-		{
-			printf("in pipe out\n");
-			ft_pipe_out(data);
-		}
-	if (token->next != NULL && token->next->sep == 2) // si le precedent token a un sep
-		ft_pipe_in(data);
+	// if (token->prev != NULL && token->prev->sep == 2) // si le prochain token a un sep
+	// 	{
+	// 		printf("in pipe out\n");
+	// 		ft_pipe_out(data);
+	// 	}
+	// if (token->next != NULL && token->next->sep == 2) // si le precedent token a un sep
+	// 	ft_pipe_in(data);
 	// printf("launch cmd\n");
 	if (token->cmd == 1) // pour echo
 		ft_echo(data, token);
@@ -57,10 +57,10 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 
 t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des tokens dans les pipes
 {
-	pid_t		pid;
+	// pid_t		pid;
 	// int			status;
 
-	pid = fork();
+	// pid = fork();
 	while (t != NULL && (t->sep == 2 || (t->prev != NULL && t->prev->sep == 2) || (t->next != NULL && t->next->sep == 2)))
 	{
 		
@@ -72,10 +72,10 @@ t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des
 			t = NULL;
 		
 	}
-	printf("PTN DE PID 2 : %d, %d\n", getpid(), pid);
-	waitpid(pid, 0, 0);
+	// printf("PTN DE PID 2 : %d, %d\n", getpid(), pid);
+	// waitpid(pid, 0, 0);
 	// kill(pid, SIGKILL);
-	printf("sortie du fork?\n");
+	// printf("sortie du fork?\n");
 	return (t);
 }
 
@@ -85,21 +85,23 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 
 	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
-	printf("PTN DE PID: %d\n", getpid());
+	// printf("PTN DE PID: %d\n", getpid());
+	ft_putchar('\'');
+	// printf("'");
 	while (data->exit == 0 && t != NULL)
 	{
 		if (t->prev != NULL && t->prev->sep == 2)
 		{
-			printf("PREMIER\n");
+			// printf("PREMIER\n");
 			t = ft_read_token_list_while_pipe(data, t);
 		}
 		else
 		{
-			printf("SECOND\n");
+			// printf("SECOND\n");
 			if (t != NULL && t->cmd != -1)
 			{
 				ft_launch_cmd(data, t);
-				printf("statu de exit : %d\n", data->exit);
+				// printf("statu de exit : %d\n", data->exit);
 			}
 		}
 		if (t != NULL && t->prev != NULL)
@@ -107,6 +109,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		else
 			t = NULL;
 	}
+	printf("'\n");
 }
 
 
