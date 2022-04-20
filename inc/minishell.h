@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 14:06:23 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 23:47:22 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct p_var
 /*	***********	*/
 
 //t_data	*glob;
+int			g_return;
 
 /*	*************	*/
 /*		INIT		*/
@@ -219,6 +220,11 @@ char		*ft_quote(t_data *data, char *str, int i);
 /*		 ft_cut_redirects		*/
 int	ft_cut_redirects(t_data *data); // ret 1 si une redirection est trouvee, sinon ret 0
 void	ft_create_redirects_token(t_data *data, int i); // cree le token de la commande redirect
+
+/*		ft_pre_parsing.c		*/
+int		ft_is_input_safe(char *str); // verifie si le input respecte les demandes, telles que les quotes fermees
+int		ft_verif_single_quote(char *str); // verifie la permeabilite des single quotes
+int		ft_verif_double_quote(char *str); // verifie la permeabilite des double quotes
 
 /*	**************	*/
 /*		BUILTIN		*/

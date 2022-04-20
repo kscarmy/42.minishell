@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/25 07:18:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/19 23:07:14 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est u
 void	ft_bin_execve(t_data *data, t_token *token) //
 {
 	pid_t	pid;
-	int		status;
+	// int		status;
 
 	pid = fork();
 	if (pid == -1)
@@ -173,8 +173,8 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 	else if (pid == 0)
 		execve(token->arg, token->bin, data->env);
 	else
-		waitpid(pid, &status, 0);
-
+		waitpid(pid, &g_return, 0);
+	// printf("")
 }
 
 // void	ft_test(t_data *data) // TEST

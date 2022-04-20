@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 13:34:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/20 02:51:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ void	prompt(t_data *data)
 		while (data->input[i]) { i++; }
 		printf("sizeof input %d\n", i);
 		/*	commande de parsing a inserer ici */
-		ft_parse_input(data);
-		// printf("AFTER PARSING\n");
+		if (ft_is_input_safe(data->input) == 0)
+			data->err = 1;
+		else
+			ft_parse_input(data);
+
+		printf("err : %d\n", data->err);
 		/* commande d'execusion des tokens a inserer ici */
-		if ((data->exit == 0) && (data->token != NULL))
+		
+		if (data->err == 0 && data->exit == 0 && data->token != NULL)
 			ft_read_token_list(data);
+
+
+
 			// ft_while_token(data);
 		// printf("AFTER READ TOKEN\n");
 
@@ -52,12 +60,7 @@ void	prompt(t_data *data)
 		// printf("pre clear input\n");
 		printf("sizeof data->i %d\n", data->i);
 		ft_clear_for_new_input(data);
-		// printf("pre new line\n");
-		// if (data->exit == 0)
-		// 	write(0, "~$ ", 3);
-		// else
-		// free(line);
-		// line = NULL;
+
 		if (data->exit != 0)
 			ft_putstr("exit\n");
 	}

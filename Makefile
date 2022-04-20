@@ -18,6 +18,7 @@ SRC	= 	src/main.c \
 		src/parsing/quote.c \
 		src/parsing/cut_str.c \
 		src/parsing/ft_cut_redirects.c \
+		src/parsing/ft_pre_parsing.c \
 		src/init/ft_init_token.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_var.c \
