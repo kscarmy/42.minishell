@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 18:19:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/22 06:30:43 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,22 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 	i = 0;
 	while (str[i])
 		i++;
+	// printf("fnd var n i <%d>\n", i);
 	if (data->var != NULL)
 		var = data->var;
 	else
 		return (NULL);
+	// printf("fnd var n apr i\n");
 	if (i == 0)
 		return (NULL);
+	// printf("fnd var n apr i 2\n");
+	// printf("fnd var n str <%s>\n", str);
 	while (var != NULL)
 	{
-
+		// printf("var N <%s>\n", var->name);
 		if (ft_strncmp(var->name, str, i) == 0)
 		{
+			// printf("GROS\n");
 			if(var->name[i] == '\0')
 			{
 				// printf("found var name str '%s' str[i] '%c' var '%s'\n", str, str[i], var->name);

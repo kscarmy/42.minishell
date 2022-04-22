@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/22 05:45:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/22 06:47:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 				// printf ("q null\n");
 				u = u + 2;
 			}
+		else if (data->input[data->i + u] == '$')
+			u = u + ft_str_size(ft_ret_dollar(data, &(data->input[data->i + u])));
 		else
 			u++;
 		// printf ("u 4 %d\n", u);
@@ -90,9 +92,27 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 			}
 			else if ((data->input[data->i + u] == '\"' && data->input[data->i + u + 1] == '\"') || (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] == '\''))
 			{
-				printf ("Q null <%s>\n", &(data->input[data->i + u]));
+				// printf ("Q null <%s>\n", &(data->input[data->i + u]));
 				u = u + 2;
-				printf ("Q null <%s>\n", &(data->input[data->i + u]));
+				// printf ("Q null <%s>\n", &(data->input[data->i + u]));
+			}
+			else if (data->input[data->i + u] == '$')
+			{
+
+				// printf("FDP\n");
+				tmp = ft_ret_dollar(data, &(data->input[data->i + u]));
+				// printf("FDP <%s>\n", tmp);
+				// printf("sizeof tok arg <%d>\n", ft_str_size(tok->arg));
+				ft_copie_dest_src(tok, tmp);
+				ft_strdel(&tmp);
+				// ft_copie_dest_src(tok, ft_ret_dollar(data, &(data->input[data->i + u])));
+				// printf("FDP\n");
+				// u = u + ft_str_size(ft_ret_dollar(data, &(data->input[data->i + u])));
+				u++;
+				while (data->input[data->i + u] && data->input[data->i + u] != ' ' && data->input[data->i + u] != '$' && ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u] != '\"' && data->input[data->i + u] != '\'')
+					u++;
+				// printf("tok arg <%s>\n", tok->arg);
+				// printf("FDP sortie\n");
 			}
 			else
 			{

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/22 05:21:20 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/22 06:45:32 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 	int 	u; // pour le malloc
 	char	*ret;
 
-	printf("entree dbl q\n");
+	// printf("entree dbl q\n");
 	u = 0; // car ne prend pas le premier < " > dans le malloc
 	i = 1; // pour skip le premier < " >
 	while (str[i] && str[i] != '\"')
@@ -62,11 +62,11 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			i++;
 		}
 	}
-	printf("dbl q size <%d>\n", u);
+	// printf("dbl q size <%d>\n", u);
 	ret = ft_malloc_str(data, u);
 	i = 1;
 	u = 0;
-	printf("malloc ret ok\n");
+	// printf("malloc ret ok\n");
 	while (str[i] && str[i] != '\"')
 	{
 		if (str[i] == '$')
@@ -84,7 +84,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 		}
 	}
 	ret[u] = '\0';
-	printf("exit bdl q\n");
+	// printf("exit bdl q\n");
 	return (ret);
 }
 
@@ -94,18 +94,24 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 	char	*ret;
 	t_var	*var;
 
-	i = 0;
+	i = 1;
 	while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\'' && str[i] != '\"')
 		i++;
+	// printf ("dol i <%d>\n", i);
 	ret = ft_malloc_str(data, i);
-	i = 0;
+	i = 1;
+	// ret[0] = '$';
 	while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\'' && str[i] != '\"')
 	{
-		ret[i] = str[i];
+		// printf("ret <%c> str <%c>\n", ret[i], str[i]);
+		ret[i - 1] = str[i];
 		i++;
 	}
-	ret[i] = '\0';
+	ret[i - 1] = '\0';
+	// printf ("doll fin i <%d> ret[i] <%s>\n", i, &(str[i]));
+	// printf ("dol ret <%s>\n", ret);
 	var = ft_found_var_name(data, ret);
+	// printf ("var N <%s> V <%s>\n", var->name, var->value);
 	if (var == NULL)
 		return (NULL);
 	ft_strdel(&ret);
@@ -116,6 +122,7 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 		ret[i] = var->value[i];
 		i++;
 	}
+	
 	ret[i] = '\0';
 	return (ret);
 }
