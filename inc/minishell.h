@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 23:47:22 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/21 00:18:30 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,16 @@ void	ft_add_new_var(t_data *data); // cree une nouvelle liste et la met au debut
 void	ft_free_var(t_data *data, t_var *var); // free les mallocs dans une liste
 void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si besoin les autres
 
+
+
 /*	*************	*/
 /*		UTILS		*/
 /*	*************	*/
+
+/*	t_parse_arg.c	*/
+int		ft_size_of_arg(t_data *data); // renvoie la taille d'un arg, pratique pour malloc tok->arg
+void	ft_malloc_arg(t_data *data, t_token *tok); // malloc dans tok->arg l'argument
+
 
 /*	ft_write.c	*/
 int		ft_is_a_b(char a, char b); // compare a et b, renvoie 1 si ils sont identiques sinon 0
@@ -144,6 +151,8 @@ int		ft_str_size(char *str); // renvoie la taille d'un str
 int		ft_check_char(char *str, char c, int max); // verifie si c est dans str avec max
 int		ft_str_comp(char *str1, char *str2); // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
 int		ft_str_after_cut(char *str); // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
+void	ft_copie_dest_src(t_token *tok, char *src); // copie dans dest ce que contient source A LA SUITE DE DEST : SI PAS DE PLACE TEMPI !
+
 
 /*	**************	*/
 /*		PARSING		*/
@@ -225,6 +234,12 @@ void	ft_create_redirects_token(t_data *data, int i); // cree le token de la comm
 int		ft_is_input_safe(char *str); // verifie si le input respecte les demandes, telles que les quotes fermees
 int		ft_verif_single_quote(char *str); // verifie la permeabilite des single quotes
 int		ft_verif_double_quote(char *str); // verifie la permeabilite des double quotes
+
+/*		ft_quote.c		*/
+char	*ft_ret_double_quote(t_data *data, char *str, int incr); // renvoie la chaine entre double quote. Applique les $UN_TRUC si besoin
+char	*ft_ret_dollar(t_data *data, char *str); // renvoie la valeur directe de var name, si str n'existe pas renvoie un null
+char	*ft_ret_simple_quote(t_data *data, char *str, int incr); // renvoie la chaine entre simple quote. Applique PAS les $UN_TRUC si besoin
+
 
 /*	**************	*/
 /*		BUILTIN		*/

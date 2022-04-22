@@ -19,6 +19,7 @@ SRC	= 	src/main.c \
 		src/parsing/cut_str.c \
 		src/parsing/ft_cut_redirects.c \
 		src/parsing/ft_pre_parsing.c \
+		src/parsing/ft_quote.c \
 		src/init/ft_init_token.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_var.c \
@@ -31,6 +32,7 @@ SRC	= 	src/main.c \
 		src/builtin/ft_cd.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
+		src/utils/ft_parse_arg.c \
 		src/var/ft_var.c \
 		src/var/ft_var_sort.c \
 		src/bin/ft_bin.c \

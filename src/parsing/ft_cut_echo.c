@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 17:55:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:12:22 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	ft_cut_echo_option(t_data *data, int i)
 
 void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le token echo avec ou sans option : si u >= 2 alors option
 {
-	int	u;
+	// int	u;
 
-	u = 0;
+	// u = 0;
 	if (data->token == NULL)
 		ft_init_token(data);
 	else
@@ -76,16 +76,17 @@ void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le toke
 	data->token->cmd = 1;
 	if (option >= 2)
 		data->token->option = 1;
-	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
-		u++;
-	data->token->arg = ft_malloc_str(data, u);
-	if (u > 0 && data->token->arg != NULL)
-	{
-		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
-		data->token->arg = cut_str(data, data->token->arg);
-		data->i = data->i + u;
-	}
-	else
-		data->err = 200; // erreur malloc
+	ft_malloc_arg(data, data->token);
+
+	// printf("echo u %d\n", u);
+	// data->token->arg = ft_malloc_str(data, u);
+	// if (u > 0 && data->token->arg != NULL)
+	// {
+	// 	data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
+	// 	data->token->arg = cut_str(data, data->token->arg);
+	// 	data->i = data->i + u;
+	// }
+	// else
+	// 	data->err = 200; // erreur malloc
 	
 }

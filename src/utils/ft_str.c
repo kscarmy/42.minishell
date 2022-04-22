@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 17:36:13 by guderram         ###   ########.fr       */
+/*   Updated: 2022/04/22 01:00:06 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	ft_str_comp(char *str1, char *str2) // compare les deux strings, renvoie 1 s
 
 int		ft_str_after_cut(char *str) // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
 {
-	printf ("str after cut '%s'\n", str);
+	// printf ("str after cut '%s'\n", str);
 	if (str[0] == '\0')
 		return (1);
 	if (str[0] == ' ')
@@ -141,4 +141,31 @@ int		ft_str_after_cut(char *str) // compare le premier caractere de str avec les
 	if (ft_is_separator(str, 0) != 0)
 		return (1);
 	return (0);
+}
+
+void	ft_copie_dest_src(t_token *tok, char *src) // copie dans dest ce que contient source A LA SUITE DE DEST : SI PAS DE PLACE TEMPI !
+{
+	int	i;
+	int	u;
+
+	i = 0;
+	u = 0;
+	// printf ("dest <%s> src <%s>\n", *dest, src);
+	// printf("TEST\n");
+	while (tok->arg[i] != '\0')
+		i++;
+	// printf("TEST\n");
+	// printf("i %d ", i);
+	// printf("TEST\n");
+	while (src[u] != '\0')
+	{
+		// printf("A TEST\n");
+		tok->arg[i + u] = src[u];
+		// i++;
+		u++;
+		// printf("B TEST\n");
+	}
+	// printf("TEST\n");
+	// printf("i %d u %d\n", i, u);
+	// printf ("dest <%s> src <%s>\n", *dest, src);
 }
