@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/22 06:39:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/04 03:10:22 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int		ft_str_size(char *str) // renvoie la taille d'un str
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -154,7 +156,7 @@ void	ft_copie_dest_src(t_token *tok, char *src) // copie dans dest ce que contie
 	printf("dans copie dest\n");
 	while (tok->arg[i] != '\0')
 		i++;
-	// printf("TEST\n");
+	printf("TEST\n");
 	printf("i %d ", i);
 	// printf("TEST\n");
 	while (src[u] != '\0')
