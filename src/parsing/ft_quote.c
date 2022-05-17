@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/05 18:33:07 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:10:22 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 	char	*ret;
 	char	*tmp;
 
-	// printf("entree dbl q\n");
+	printf("----------------- entree dbl q\n");
 	u = 0; // car ne prend pas le premier < " > dans le malloc
 	i = 1; // pour skip le premier < " >
 	while (str[i] && str[i] != '\"')
@@ -51,20 +51,31 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 	i = 1;
 	while (str[i] && str[i] != '\"')
 	{
+		if (str[i] == '$' && str[i + 1] == '"')
+		{
+			u = u + 1;
+			// printf ("NON JEAN MICH\n");
+			// tmp = malloc(sizeof(char*) * (2));
+			// tmp[0] = '$';
+			// tmp[1] = '\0';
+			// return (tmp);
+		}
 		if (str[i] == '$')
 		{
 			// i++;
-			// printf("dbl q if dol u %d i %d str[i] <%s>\n", u, i, &(str[i]));
+			printf("dbl q if dol u %d i %d str[i] <%s>\n", u, i, &(str[i]));
+			printf ("TAILLER DU TRUC %d\n", ft_str_size(ft_ret_dollar(data, &str[i])));
 			tmp = ft_ret_dollar(data, &str[i]);
-			// printf("dbl q if dol tmp <%s>\n", tmp);
+			printf("dbl q if dol tmp <%s>\n", tmp);
+			printf("u : %d tmp : %d\n",u , ft_str_size(tmp));
 			u = u + ft_str_size(tmp);
 			// printf("bro\n");
 			ft_strdel(&tmp);
-			// printf("dbl q if dol u <%d>\n", u);
+			printf("dbl q if dol u <%d>\n", u);
 			i++;
 			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"')
 				i++;
-			// printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
+			printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 		}
 		else
 		{
@@ -72,15 +83,25 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			i++;
 		}
 	}
-	// printf("dbl q size <%d>\n", u);
+	printf("dbl q size <%d>\n", u);
 	ret = ft_malloc_str(data, u);
+	printf("ret : %d, u %d\n", ft_str_size(ret), u);
 	i = 1;
 	u = 0;
-	// printf("----malloc ret ok----\n");
+	printf("----malloc ret ok----\n");
+	printf ("str <%s>\n", str);
 	while (ft_str_size(ret) > 0 && str[i] && str[i] != '\"')
 	{
-		if (str[i] == '$')
+		// if (str[i] == '$' && str[i + 1] == '"')
+		// {
+		// 	tmp = malloc(sizeof(char*) * (2));
+		// 	tmp[0] = '$';
+		// 	tmp[1] = '\0';
+		// 	return (tmp);
+		// }
+		if (str[i] == '$' && str[i + 1] != '"')
 		{
+			printf ("LE PREMIER\n");
 			// i++;
 			// printf("dbl q if dol u <%d> str[i] <%s>\n", u, &(str[i]));
 			tmp = ft_ret_dollar(data, &str[i]);
@@ -98,6 +119,17 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"')
 				i++;
 		}
+		else if (str[i] == '$' && str[i + 1] == '"')
+		{
+			printf ("LE SECOND\n");
+			tmp = malloc(sizeof(char*) * (2));
+			tmp[0] = '$';
+			tmp[1] = '\0';
+			ret = ft_strcpy(ret, tmp); // TEST DU COUP
+			u = u + 1;
+			ft_strdel(&tmp);
+			i++;
+		}
 		else
 		{
 			ret[u] = str[i];
@@ -107,8 +139,10 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 	}
 	ret[u] = '\0';
 	// printf("exit bdl q\n");
+	printf ("fin ret db q : ret : <%s>\n", ret);
 	return (ret);
 }
+
 
 // char	*ft_stra_strb()
 
@@ -119,8 +153,19 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 	t_var	*var;
 
 	i = 1;
+	printf ("ret dollar str <%s>\n\n", str);
+	if (str[1] == '\0' || str[1] == ' ' || str[1] == '\'' || str[1] == '\"')
+	{
+		ret = malloc(sizeof(char*) * (2));
+		ret[0] = '$';
+		ret[1] = '\0';
+		return(ret);
+	}
+	printf("ret dollard\n");
+	printf("i : %d\n", i);
 	while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\'' && str[i] != '\"')
 		i++;
+	printf("i : %d\n", i);
 	// printf ("dol i <%d>\n", i);
 	ret = ft_malloc_str(data, i);
 	i = 1;
@@ -132,6 +177,12 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 		i++;
 	}
 	ret[i - 1] = '\0';
+	// printf ("size of ret %d\n", ft_str_size(ret));
+	if (ft_str_size(ret) == 0)
+	{
+		printf("GGGGGGGGG ret == 0, <%s>\n", ret);
+		return(ret);
+	}
 	// printf ("doll fin i <%d> ret[i] <%s>\n", i, &(str[i]));
 	// printf ("dol ret <%s>\n", ret);
 	var = ft_found_var_name(data, ret);
@@ -148,5 +199,6 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 	}
 	
 	ret[i] = '\0';
+	printf("RET DOLL OK\n");
 	return (ret);
 }
