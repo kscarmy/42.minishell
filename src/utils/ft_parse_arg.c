@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/04 20:24:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:34:20 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 	int	u;
 	int i = 0;
 
-	int	jean = 0;
+	// int	jean = 0;
 
 	u = 0;
-	printf("IN SIZE OF ARG :\n");
-	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u] && jean < 2)
+	// printf("IN SIZE OF ARG :\n");
+	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 	{
-		printf ("u 1 %d\n", u);
+		// printf ("u 1 %d\n", u);
 		if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"' && data->input[data->i + u + 1] != '\0')
 		{
 			i = ft_str_size(ft_ret_double_quote(data, &data->input[data->i + u], 0));
-			printf("SIZE I %d\n", i);
+			// printf("SIZE I %d\n", i);
 			if (i != 0)
 				u = u + i;
 			while (i == 0 && data->input[data->i + u] != '\"')
@@ -52,12 +52,12 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 		// printf ("u 4 %d\n", u);
 		// i++;
 		// printf("<%c>\n", data->input[data->i + u]);
-		jean++;
+		// jean++;
 	}
 	// printf ("size arg %d\n", u);
 	if (i != 0 && u == 0)
 		u++;
-	printf ("EXIT SIZE OF ARG : (%d)\n", u);
+	// printf ("EXIT SIZE OF ARG : (%d)\n", u);
 	return (u);
 }
 
@@ -69,24 +69,24 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 	char	*tmp;
 
 	
-	int	jean = 0;
+	// int	jean = 0;
 	
-	int bordel = 0;
+	// int bordel = 0;
 
 	i = 0;
 	u = 0;
-	printf ("----Entree malloc arg\n");
+	// printf ("----Entree malloc arg\n");
 	size = ft_size_of_arg(data);
-	printf ("----size tok arg <%d>\n", size);
+	// printf ("----size tok arg <%d>\n", size);
 	tok->arg = ft_malloc_str(data, size);
 	if (size > 0 && tok->arg != NULL)
 	{
-		while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0  && bordel < 2)
+		while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
 		{
-			printf ("----in while : <%s>\n", &(data->input[data->i + u]));
+			// printf ("----in while : <%s>\n", &(data->input[data->i + u]));
 			if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"')
 			{
-				printf ("in dq\n");
+				// printf ("in dq\n");
 				tmp = ft_ret_double_quote(data, &data->input[data->i + u], 0);
 				if (ft_str_size(tmp) > 0)
 					u = u + 2 + ft_str_size(tmp);
@@ -95,14 +95,14 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				if (data->input[data->i + u] == '\"')
 					u++;
 
-				printf ("----IN malloc arg dbl q u size (%d)\n", u);
+				// printf ("----IN malloc arg dbl q u size (%d)\n", u);
 				if (ft_str_size(tmp) > 0)
 					ft_copie_dest_src(tok, tmp);
 				ft_strdel(&tmp);
 			}
 			else if (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] != '\'')
 			{
-				printf ("in sq\n");
+				// printf ("in sq\n");
 				// printf("malloc arg sgl quote :\n");
 				// printf ("u 1 %d\n", u);
 				// printf("sgl pre tmp <%s> u %d c <%c>\n", tmp, u, data->input[data->i + u]);
@@ -161,8 +161,8 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 					u++;
 			}
 			printf("fin bcl tmp <%s> u %d c <%c>\n", tmp, u, data->input[data->i + u]);
-			bordel++;
-			jean++;
+			// bordel++;
+			// jean++;
 		}
 		while (tok->arg[i] && tok->arg[i] != '\0')
 			i++;

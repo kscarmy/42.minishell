@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/04 18:19:30 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:33:07 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 	char	*ret;
 	char	*tmp;
 
-	printf("entree dbl q\n");
+	// printf("entree dbl q\n");
 	u = 0; // car ne prend pas le premier < " > dans le malloc
 	i = 1; // pour skip le premier < " >
 	while (str[i] && str[i] != '\"')
@@ -54,17 +54,17 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 		if (str[i] == '$')
 		{
 			// i++;
-			printf("dbl q if dol u %d i %d str[i] <%s>\n", u, i, &(str[i]));
+			// printf("dbl q if dol u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 			tmp = ft_ret_dollar(data, &str[i]);
-			printf("dbl q if dol tmp <%s>\n", tmp);
+			// printf("dbl q if dol tmp <%s>\n", tmp);
 			u = u + ft_str_size(tmp);
-			printf("bro\n");
+			// printf("bro\n");
 			ft_strdel(&tmp);
-			printf("dbl q if dol u <%d>\n", u);
+			// printf("dbl q if dol u <%d>\n", u);
 			i++;
 			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"')
 				i++;
-			printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
+			// printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 		}
 		else
 		{
@@ -72,26 +72,26 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			i++;
 		}
 	}
-	printf("dbl q size <%d>\n", u);
+	// printf("dbl q size <%d>\n", u);
 	ret = ft_malloc_str(data, u);
 	i = 1;
 	u = 0;
-	printf("----malloc ret ok----\n");
+	// printf("----malloc ret ok----\n");
 	while (ft_str_size(ret) > 0 && str[i] && str[i] != '\"')
 	{
 		if (str[i] == '$')
 		{
 			// i++;
-			printf("dbl q if dol u <%d> str[i] <%s>\n", u, &(str[i]));
+			// printf("dbl q if dol u <%d> str[i] <%s>\n", u, &(str[i]));
 			tmp = ft_ret_dollar(data, &str[i]);
-			printf("dbl q if dol tmp <%s>\n", tmp);
+			// printf("dbl q if dol tmp <%s>\n", tmp);
 			// if (ft_str_size(ret) > 0)
 			ret = ft_strcpy(ret, tmp); // TEST DU COUP
-			printf("bro\n");
+			// printf("bro\n");
 			// ft_copie_dest_src(data->token, tmp); // ICI LE PB GUILLAUME // merci guillaume du passé
 			u = u + ft_str_size(tmp);
 			ft_strdel(&tmp);
-			printf("dbl q if dol u <%d>\n", u);
+			// printf("dbl q if dol u <%d>\n", u);
 			// ft_copie_dest_src(data->token, ft_ret_dollar(data, &str[i]));
 			// u = u + ft_str_size(ft_ret_dollar(data, &str[i]));
 			i++;
@@ -106,7 +106,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 		}
 	}
 	ret[u] = '\0';
-	printf("exit bdl q\n");
+	// printf("exit bdl q\n");
 	return (ret);
 }
 

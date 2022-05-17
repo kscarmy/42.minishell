@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/04 03:10:22 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:34:30 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,11 +153,11 @@ void	ft_copie_dest_src(t_token *tok, char *src) // copie dans dest ce que contie
 	i = 0;
 	u = 0;
 	// printf ("dest <%s> src <%s>\n", *dest, src);
-	printf("dans copie dest\n");
+	// printf("dans copie dest\n");
 	while (tok->arg[i] != '\0')
 		i++;
-	printf("TEST\n");
-	printf("i %d ", i);
+	// printf("TEST\n");
+	// printf("i %d ", i);
 	// printf("TEST\n");
 	while (src[u] != '\0')
 	{
@@ -168,6 +168,6 @@ void	ft_copie_dest_src(t_token *tok, char *src) // copie dans dest ce que contie
 		// printf("B TEST\n");
 	}
 	// printf("TEST\n");
-	printf("i %d u %d\n", i, u);
+	// printf("i %d u %d\n", i, u);
 	// printf ("dest <%s> src <%s>\n", *dest, src);
 }

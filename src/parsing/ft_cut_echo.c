@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/04 19:52:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:31:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	ft_create_echo_token(t_data *data, int option) // fonction qui cree le toke
 	data->token->cmd = 1;
 	if (option >= 2)
 		data->token->option = 1;
-	printf("CREATE ECHO TOKEN :\n");
+	// printf("CREATE ECHO TOKEN :\n");
 	ft_malloc_arg(data, data->token);
-	printf("END CREATE ECHO TOKEN :\n");
+	// printf("END CREATE ECHO TOKEN :\n");
 	// printf("echo u %d\n", u);
 	// data->token->arg = ft_malloc_str(data, u);
 	// if (u > 0 && data->token->arg != NULL)
