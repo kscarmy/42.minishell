@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 16:16:31 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:15:15 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_token	*ft_ret_last_token(t_data *data) // renvoie l'adresse du dernier token.
 
 void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 {
-	// printf("pipe : %d %d\n", data->pipe->fd_i, data->pipe->fd_o);
 	// if (token->prev != NULL && token->prev->sep == 2) // si le prochain token a un sep
 	// 	{
 	// 		printf("in pipe out\n");
@@ -33,7 +32,6 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 	// 	}
 	// if (token->next != NULL && token->next->sep == 2) // si le precedent token a un sep
 	// 	ft_pipe_in(data);
-	// printf("launch cmd\n");
 	if (token->cmd == 1) // pour echo
 		ft_echo(data, token);
 	if (token->cmd == 2) // pour pwd
@@ -57,10 +55,6 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 
 t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des tokens dans les pipes
 {
-	// pid_t		pid;
-	// int			status;
-
-	// pid = fork();
 	while (t != NULL && (t->sep == 2 || (t->prev != NULL && t->prev->sep == 2) || (t->next != NULL && t->next->sep == 2)))
 	{
 		
@@ -72,44 +66,36 @@ t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des
 			t = NULL;
 		
 	}
-	// printf("PTN DE PID 2 : %d, %d\n", getpid(), pid);
-	// waitpid(pid, 0, 0);
-	// kill(pid, SIGKILL);
-	// printf("sortie du fork?\n");
 	return (t);
 }
 
 void	ft_read_token_list(t_data *data) // lecture des tokens
 {
-	t_token *t;
+	t_token *last_token;
 
-	ft_print_token_list(data);
-	t = ft_ret_last_token(data);
-	// printf("PTN DE PID: %d\n", getpid());
-//	ft_putchar('\'');
-	// printf("'");
-	while (data->exit == 0 && t != NULL)
+//	ft_print_token_list(data);
+	last_token = ft_ret_last_token(data);
+	while (data->exit == 0 && last_token != NULL)
 	{
-		if (t->prev != NULL && t->prev->sep == 2)
+		if (last_token->prev != NULL && last_token->prev->sep == 2)
 		{
 			// printf("PREMIER\n");
-			t = ft_read_token_list_while_pipe(data, t);
+			last_token = ft_read_token_list_while_pipe(data, last_token);
 		}
 		else
 		{
 			// printf("SECOND\n");
-			if (t != NULL && t->cmd != -1)
+			if (last_token != NULL && last_token->cmd != -1)
 			{
-				ft_launch_cmd(data, t);
+				ft_launch_cmd(data, last_token);
 				// printf("statu de exit : %d\n", data->exit);
 			}
 		}
-		if (t != NULL && t->prev != NULL)
-			t = t->prev;
+		if (last_token != NULL && last_token->prev != NULL)
+			last_token = last_token->prev;
 		else
-			t = NULL;
+			last_token = NULL;
 	}
-	printf("\n");
 }
 
 
@@ -123,70 +109,12 @@ void	ft_print_token_list(t_data *data) // affiche tout les token
 	i = 0;
 	while (token != NULL)
 	{
-//		printf("-------------------------------\n");
-//		printf("cmd %d sep %d", token->cmd, token->sep);
 		if (token->arg != NULL)
-			printf(" arg '%s'", token->arg);
 		while (token->bin != NULL && token->bin[i])
 		{
 			printf(" '%s'", token->bin[i]);
 			i++;
 		}
-//		printf("\n");
 		token = token->next;
 	}
-//	printf("-------------------------------\n");
 }
-
-
-
-// int		ft_while_token(t_data *data) // lecture des tokens
-// {
-// 	int	i;
-
-// 	i = 0;
-
-// 	while (i < 5 && data->exit == 0 && data->token != NULL) // A SUPP : i garde fou
-// 		i++;
-
-// 	// printf("TEST 1\n");
-// 	/*	faire des tests unitaires :		*/
-// 	if (data->token->cmd == 1) // pour echo
-// 		ft_echo(data, data->token);
-// 	if (data->token->cmd == 2) // pour pwd
-// 		ft_pwd(data, data->token);
-// 	if (data->token->cmd == 3) // pour export
-// 	{
-// 		printf("\n'%s'\n", data->token->arg);
-// 		ft_export(data, data->token);
-// 	}
-// 	// printf("TEST 2\n");
-
-// 	// printf("TEST 3\n");
-// 	if (data->token->cmd == 4) // pour env
-// 		ft_env(data, data->token);
-// 	// printf("TEST 4\n");
-// 	if (data->token->cmd == 5) // pour history
-// 		add_history(NULL, 2);	// shows history with param == 2; adds to history with param == 1;
-// 	// printf("TEST 5\n");
-// 	if (data->token->cmd == 6)
-// 		change_dir(data);	// fill inside with path of directory to enter.
-
-// 	if (data->token->cmd == 7) // pour exit
-// 		data->exit = 1; // enclanche la sortie
-// 	// printf("TEST 6\n");
-// 	if (data->token->cmd == 8) // pour unset
-// 	{
-// 		// printf("\n'%s'\n", data->token->arg);
-// 		ft_unset(data, data->token);
-// 	}
-// 	if (data->token->cmd == 9) // pour bin
-// 	{
-// 		// printf("bin : '%s'\narg : '%s'\n", data->token->bin[0], data->token->bin[1]);
-// 		ft_is_bin(data, data->token);
-// 		// ft_test(data);
-// 	}
-// 	if (data->token->sep > 0)
-// 		printf("token sep : %d\n", data->token->sep);
-// 	return (0);
-// }

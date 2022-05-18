@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 15:55:15 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/05/18 23:03:23 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 	int	i;
 
 	i = data->i;
-	printf("\ncut bin : '%s'\n", &data->input[i]);
 	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
 		i++;
 	if (i > 0)
@@ -79,7 +78,10 @@ void	ft_malloc_bin(t_data *data) // malloc le **bin
 			i = i + ft_space(data->input, i);
 			data->token->bin[u] = malloc(sizeof(char *) * (ft_bin_arg_size(data, i)));
 			if (data->token->bin[u] != NULL)
+			{
 				data->token->bin[u] = ft_strncpy(data->token->bin[u], &(data->input[i]), ft_bin_arg_size(data, i));
+				data->token->bin[0][ft_bin_arg_size(data, i)] = '\0';
+			}
 			else
 				data->err = 2020;
 			i = i + ft_bin_arg_size(data, i);

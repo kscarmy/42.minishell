@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/05 18:31:29 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:59:37 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,12 @@
 
 int	ft_cut_echo(t_data *data, int i) // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
 {
-	// char	*str;
-	// int		u;
-
-	// u = 0;
-	// str = "echo";
-	// while (data->input[i] && data->input[i] != ' ')
-	// {
-	// 	if (ft_is_a_b(data->input[i], str[u]) == 1)
-	// 		u++;
-	// 	i++;
-	// }
-	// if (u == 4)
-	// {
-	// 	ft_cut_echo_option(data, i);
-	// 	return (1);
-	// }
-
 	if (ft_strncmp(&data->input[i], "echo", 4) != 0)
 		return (0);
 	i = i + 4;
-	// printf("\necho pre ok\n");
 	if (ft_str_after_cut(&data->input[i]) != 1)
 		return (0);
-	// printf("\necho ok\n");
 	ft_cut_echo_option(data, i);
-	// printf("\necho sortie data->i : %d\n", data->i);
 	return (1);
 }
 

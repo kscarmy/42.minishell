@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 23:07:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:24:36 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,15 +125,9 @@ void	ft_is_bin(t_data *data, t_token *token) //
 		ft_free_tab_char(data->env);
 	ft_malloc_var(data);
 	while (var->value != NULL && var->value[i] && access(token->arg, F_OK) == -1)
-	{
 		i = i + ft_bin_path(data, var, token, i);
-	}
 	if (access(token->arg, F_OK) == -1)
-	{
 		ft_arg_path_bin(data, token);
-
-
-	}
 	else
 		ft_bin_execve(data, token);
 }

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 16:51:24 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:53:06 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sino
 void	prompt(t_data *data)
 {
 	int	i = 0;
-	// char *line;
-	// write(0, "~$ ", 3);
 	while (data->exit == 0)
 	{
 		/*	readline	*/
@@ -36,17 +34,17 @@ void	prompt(t_data *data)
 		data->input = readline("~$ ");
 		if (ft_strlen(data->input) == 0)
 			break;
-		add_history(data->input);
-		while (data->input[i]) { i++; }
+		add_history(data->input);		
+		while (data->input[i])
+		       	i++;
+
 		/*	commande de parsing a inserer ici */
 		if (ft_is_input_safe(data->input) == 0)
 			data->err = 1;
 		else
 			ft_parse_input(data);
 
-	//	printf("err : %d\n", data->err);
 		/* commande d'execusion des tokens a inserer ici */
-		
 		if (data->err == 0 && data->exit == 0 && data->token != NULL)
 			ft_read_token_list(data);
 
