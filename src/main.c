@@ -6,11 +6,13 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/20 02:51:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:11:20 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+int		g_return;
 
 int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sinon 0
 {

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/21 00:18:30 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:10:44 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct p_var
 /*	***********	*/
 
 //t_data	*glob;
-int			g_return;
+extern int			g_return;
 
 /*	*************	*/
 /*		INIT		*/

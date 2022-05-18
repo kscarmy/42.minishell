@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/03 10:23:49 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:09:31 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	ft_pipe_out(t_data *data) // redirige la sortie de la prochaine commande da
 
 void	ft_copy_fd(int fd_s, int fd_d) // copy le fd source dans le fd dest
 {
-	int	i;
+	//int	i;
 	// int	ret;
 	char	buff[2];
 
-	i = 0;
+	//i = 0;
 	while(read(fd_s, buff, 1) > 0)
 	{
 		write(fd_d, buff, 1);
@@ -59,11 +59,11 @@ void	ft_copy_fd(int fd_s, int fd_d) // copy le fd source dans le fd dest
 void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans le tmp_file
 {
 	int		out;
-	char	*str;
-	int		i;
+	//char	*str;
+	//int		i;
 
-	i = 0;
-	str = NULL;
+	//i = 0;
+	//str = NULL;
 	printf("pipe in\n");
 	data->pipe->ofd_i = dup(0);
 	// ft_pipe_close_data_fd(data, 0);
