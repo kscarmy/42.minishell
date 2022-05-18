@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/16 21:49:26 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:55:15 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 		i++;
 	if (i > 0)
 	{
-		printf ("cut bin i %d\n", i);
+//		printf ("cut bin i %d\n", i);
 		if (data->token == NULL)
 			ft_init_token(data);
 		else

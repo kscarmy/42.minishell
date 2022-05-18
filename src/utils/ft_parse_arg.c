@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/17 17:09:32 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:20:59 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 	// int	jean = 0;
 
 	u = 0;
-	printf("IN SIZE OF ARG :\n");
+//	printf("IN SIZE OF ARG :\n");
 	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 	{
-		printf ("u 1 %d\n", u);
+//		printf ("u 1 %d\n", u);
 		if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"' && data->input[data->i + u + 1] != '\0')
 		{
 			i = ft_str_size(ft_ret_double_quote(data, &data->input[data->i + u], 0));
@@ -82,9 +82,9 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 
 	i = 0;
 	u = 0;
-	printf ("-------------Entree malloc arg\n");
+//	printf ("-------------Entree malloc arg\n");
 	size = ft_size_of_arg(data);
-	printf ("--------------size tok arg <%d>\n", size);
+//	printf ("--------------size tok arg <%d>\n", size);
 	tok->arg = ft_malloc_str(data, size);
 	if (size > 0 && tok->arg != NULL)
 	{
@@ -93,7 +93,7 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 			// printf ("----in while : <%s>\n", &(data->input[data->i + u]));
 			if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"')
 			{
-				printf ("in dq\n");
+//				printf ("in dq\n");
 				tmp = ft_ret_double_quote(data, &data->input[data->i + u], 0);
 				if (ft_str_size(tmp) > 0)
 					u = u + 2 + ft_str_size(tmp);
@@ -102,11 +102,11 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				if (data->input[data->i + u] == '\"')
 					u++;
 
-				printf ("----IN malloc arg dbl q u size (%d)\n", u);
+//				printf ("----IN malloc arg dbl q u size (%d)\n", u);
 				if (ft_str_size(tmp) > 0)
 					ft_copie_dest_src(tok, tmp);
 				ft_strdel(&tmp);
-				printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
+//				printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
 			}
 			else if (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] != '\'')
 			{
@@ -125,21 +125,21 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				// printf ("u 2 %d <%s> <%s>\n", u, tok->arg, tmp);
 				ft_copie_dest_src(tok, tmp);
 				ft_strdel(&tmp);
-				printf ("2 u : %d, <%s>\n", u, &data->input[data->i + u]);
+//				printf ("2 u : %d, <%s>\n", u, &data->input[data->i + u]);
 				// printf ("u 3 %d <%s>\n", u, tok->arg);
 			}
 			else if ((data->input[data->i + u] == '\"' && data->input[data->i + u + 1] == '\"') || (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] == '\''))
 			{
 				// printf ("Q null <%s>\n", &(data->input[data->i + u]));
 				u = u + 2;
-				printf ("3 u : %d, <%s>\n", u, &data->input[data->i + u]);
+//				printf ("3 u : %d, <%s>\n", u, &data->input[data->i + u]);
 				// printf ("Q null <%s>\n", &(data->input[data->i + u]));
 			}
 			else if (data->input[data->i + u] == '$')
 			{
 
 				// printf("FDP\n");
-				printf ("4 u : %d, <%s>\n", u, &data->input[data->i + u]);
+//				printf ("4 u : %d, <%s>\n", u, &data->input[data->i + u]);
 				tmp = ft_ret_dollar(data, &(data->input[data->i + u]));
 				// printf("FDP <%s>\n", tmp);
 				// printf("sizeof tok arg <%d>\n", ft_str_size(tok->arg));
@@ -157,7 +157,7 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				// printf ("u : %d, <%s>\n", u, &data->input[data->i + u]);
 				// printf("tok arg <%s>\n", tok->arg);
 				// printf("FDP sortie\n");
-				printf ("4 u : %d, <%s>\n", u, &data->input[data->i + u]);
+//				printf ("4 u : %d, <%s>\n", u, &data->input[data->i + u]);
 			}
 			else
 			{
@@ -176,7 +176,7 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				else
 					u++;
 			}
-			printf("fin bcl tmp <%s> u %d c <%c>\n", tmp, u, data->input[data->i + u]);
+//			printf("fin bcl tmp <%s> u %d c <%c>\n", tmp, u, data->input[data->i + u]);
 			// bordel++;
 			// jean++;
 		}
@@ -187,15 +187,15 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 	}
 	if (size == 0 && data->input[data->i + u] == '\"')
 	{
-		printf ("----OUI JEAN\n");
-		printf ("<%s>\n", &(data->input[data->i + u]));
+//		printf ("----OUI JEAN\n");
+//		printf ("<%s>\n", &(data->input[data->i + u]));
 		u++;
 		while (data->input[data->i + u] && data->input[data->i + u] != '\"')
 			u++;
-		printf ("<%s>\n", &(data->input[data->i + u]));
+//		printf ("<%s>\n", &(data->input[data->i + u]));
 		if (data->input[data->i + u] == '\"')
 			u++;
-		printf ("<%s>\n", &(data->input[data->i + u]));
+//		printf ("<%s>\n", &(data->input[data->i + u]));
 		data->i = data->i + u;
 	}
 	else if (size == 0)

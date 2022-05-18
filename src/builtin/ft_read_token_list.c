@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/19 12:57:40 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:16:31 by mourdani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	// printf("PTN DE PID: %d\n", getpid());
-	ft_putchar('\'');
+//	ft_putchar('\'');
 	// printf("'");
 	while (data->exit == 0 && t != NULL)
 	{
@@ -109,7 +109,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		else
 			t = NULL;
 	}
-	printf("'\n");
+	printf("\n");
 }
 
 
@@ -123,8 +123,8 @@ void	ft_print_token_list(t_data *data) // affiche tout les token
 	i = 0;
 	while (token != NULL)
 	{
-		printf("-------------------------------\n");
-		printf("cmd %d sep %d", token->cmd, token->sep);
+//		printf("-------------------------------\n");
+//		printf("cmd %d sep %d", token->cmd, token->sep);
 		if (token->arg != NULL)
 			printf(" arg '%s'", token->arg);
 		while (token->bin != NULL && token->bin[i])
@@ -132,10 +132,10 @@ void	ft_print_token_list(t_data *data) // affiche tout les token
 			printf(" '%s'", token->bin[i]);
 			i++;
 		}
-		printf("\n");
+//		printf("\n");
 		token = token->next;
 	}
-	printf("-------------------------------\n");
+//	printf("-------------------------------\n");
 }
 
 
