@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/21 00:18:30 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/18 15:05:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,15 @@ void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si
 /*		UTILS		*/
 /*	*************	*/
 
-/*	t_parse_arg.c	*/
+/*	ft_parse_arg.c	*/
 int		ft_size_of_arg(t_data *data); // renvoie la taille d'un arg, pratique pour malloc tok->arg
 void	ft_malloc_arg(t_data *data, t_token *tok); // malloc dans tok->arg l'argument
+
+void	ft_malloc_builtin_arg(t_data *data, t_token *tok); // permet de malloc les arguments d'un builtin dans arg.
+char	*ft_one_arg(t_data *data, int u); // renvoie le premier argument en partant de u dans data input
+char	*ft_one_simple_arg(t_data *data, int i); // renvoie une chaine simple contenant des termes
+int		ft_size_one_arg(t_data *data, int s); // renvoie la taille d'un seul argument
+int		ft_incre_one_arg(t_data *data, int u); // incremente en fonction d'un 'argument' d'entree
 
 
 /*	ft_write.c	*/
@@ -152,6 +158,7 @@ int		ft_check_char(char *str, char c, int max); // verifie si c est dans str ave
 int		ft_str_comp(char *str1, char *str2); // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
 int		ft_str_after_cut(char *str); // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
 void	ft_copie_dest_src(t_token *tok, char *src); // copie dans dest ce que contient source A LA SUITE DE DEST : SI PAS DE PLACE TEMPI !
+char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep); // refais un malloc de dest de la taille dest + src, copie dest puis src a la suite. si sep est different de NULL, la fonction place le sep entre dest et src.
 
 
 /*	**************	*/
