@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/20 02:51:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:21:42 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	prompt(t_data *data)
 
 			/*	commande de reset de data	*/
 		// printf("pre clear input\n");
-		printf("sizeof data->i %d\n", data->i);
+		// printf("sizeof data->i %d\n", data->i);
 		ft_clear_for_new_input(data);
-
+		// printf("fin du clear pour input\n");
 		if (data->exit != 0)
 			ft_putstr("exit\n");
 	}

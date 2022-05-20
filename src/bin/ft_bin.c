@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 14:03:12 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:28:51 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est u
 	}
 	else
 	{
-		data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
+		// data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
 		printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
 	}
 }

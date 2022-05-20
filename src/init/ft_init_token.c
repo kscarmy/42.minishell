@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/15 21:43:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:26:49 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,54 @@ void	ft_add_new_token(t_data *data) // cree une nouvelle liste et la met au debu
 
 void	ft_free_token(t_data *data, t_token *token) // free les mallocs dans une liste
 {
-	if (token->cmd != 2 && token->arg != NULL)
+	int	i;
+
+	i = 0;
+	// printf ("ft_free_token : cmd %d\n", token->cmd);
+	if (token->arg != NULL)
 	{
+		// printf ("ft_free_token : arg <%s>\n", token->arg);
 		free (token->arg);
 		token->arg = NULL;
 	}
-	else
+	// printf ("1\n");
+	while (token->bin && token->bin[i] != NULL)
 	{
-		if (token->cmd != 2)
-			data->err = 103; // free d'un str deja free
-		else
-			token->arg = NULL;
+		// printf ("ft_free_token : bin <%s>\n", token->bin[i]);
+		free (token->bin[i]);
+		token->bin[i] = NULL;
+		// printf ("ft_free_token : bin <%s>\n", token->bin[i]);
+		i++;
 	}
+	// printf ("2\n");
+	if (token->bin != NULL)
+	{
+		// printf ("ft_free_token : bin\n");
+		free (token->bin);
+		token->bin = NULL;
+	}
+	// printf ("3\n");
+	// printf("free_token OK\n");
+	data->i = data->i;
+	// else
+	// {
+	// 	if (token->cmd != 2)
+	// 		data->err = 103; // free d'un str deja free
+	// 	else
+	// 		token->arg = NULL;
+	// }
+	// if (token->cmd != 2 && token->arg != NULL)
+	// {
+	// 	free (token->arg);
+	// 	token->arg = NULL;
+	// }
+	// else
+	// {
+	// 	if (token->cmd != 2)
+	// 		data->err = 103; // free d'un str deja free
+	// 	else
+	// 		token->arg = NULL;
+	// }
 }
 
 void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en relian si besoin les autres
@@ -76,6 +112,7 @@ void	ft_delete_token(t_data *data, t_token *delete) // supprime la tokene en rel
 		data->err = 102; // suppression d'un token inexistant
 	if (data->token != NULL && delete != NULL)
 	{
+		// if (delete->cmd != 4 && delete->cmd != 2)
 		ft_free_token(data, delete);
 		// printf("after delete in\n");
 		if (delete->next == NULL && delete->prev != NULL) // si dernier et pas premier
