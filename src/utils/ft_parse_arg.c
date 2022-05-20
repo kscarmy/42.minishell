@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 16:59:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:22:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,10 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		else if (data->input[s + u] == '\'' && data->input[s + u + 1] != '\'' && data->input[s + u + 1] != '\0')
 		{
 			ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
-			u = u + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
+			while (data->input[s + u] != '\'')
+				u++;
+			u++;
+			// u = u + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
 		}
 		else if ((data->input[s + u] == '\"' && data->input[s + u + 1] == '\"') || (data->input[s + u] == '\'' && data->input[s + u + 1] == '\''))
 			u = u + 2;
@@ -348,8 +351,17 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		}
 		else if (data->input[i + u] == '\'' && data->input[i + u + 1] != '\'' && data->input[i + u + 1] != '\0')
 		{
-			ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[i + u], 0));
-			i = i + ft_str_size(ft_ret_simple_quote(data, &data->input[i + u], 0));
+			printf("one arg : sq : ret\n");
+			ret = ft_src_in_dest(data, ret, ft_ret_simple_quote(data, &data->input[i + u], 0), 0);
+			printf("one arg : sq : ret : <%s>\n", ret);
+			i++;
+			while (data->input[i + u] != '\'')
+				i++;
+			i++;
+			printf("one arg : sq fin\n");
+			// ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[i + u], 0));
+			// i = i + ft_str_size(ft_ret_simple_quote(data, &data->input[i + u], 0));
+
 		}
 		else if ((data->input[i + u] == '\"' && data->input[i + u + 1] == '\"') || (data->input[i + u] == '\'' && data->input[i + u + 1] == '\''))
 			i = i + 2;
@@ -359,14 +371,14 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 			{
 				ret = ft_src_in_dest(data, ret, ft_ret_dollar(data, &(data->input[i + u])), 0);
 				printf("one arg : dollar i %d\n", i);
+			}
 				// i = i + ft_str_size(ret);
 				// ret[ft_str_size(ret)] = '\0';
+			i++;
+			while (ft_is_separator(data->input, (i + u)) == 0 && data->input[i + u] && data->input[i + u] != ' ' && data->input[i + u] != '$')
 				i++;
-				while (ft_is_separator(data->input, (i + u)) == 0 && data->input[i + u] && data->input[i + u] != ' ' && data->input[i + u] != '$')
-					i++;
-				printf("one arg : dollar i %d\n", i);
+			printf("one arg : dollar i %d\n", i);
 				// ret[i] = '\0';
-			}
 		}
 		else
 		{
@@ -387,9 +399,10 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les arguments d'un builtin dans arg.
 {
 	int		u;
+	int max = 0;
 
 	u = 0;
-	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0)
+	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0 && max < 20)
 	{
 		printf("malloc builtin : debut while\n");
 		u = u + ft_space(data->input, data->i + u);
@@ -398,6 +411,7 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 		printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
 		u = ft_incre_one_arg(data, u);
 		printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
+		max ++;
 	}
 	data->i = data->i + u;
 }

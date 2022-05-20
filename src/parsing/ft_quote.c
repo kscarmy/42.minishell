@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 16:07:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:19:43 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,11 +190,15 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 		return(ret);
 	}
 	// printf ("doll fin i <%d> ret[i] <%s>\n", i, &(str[i]));
-	// printf ("dol ret <%s>\n", ret);
+	printf ("dol ret <%s>\n", ret);
 	var = ft_found_var_name(data, ret);
-	// printf ("var N <%s> V <%s>\n", var->name, var->value);
+	//printf ("var N <%s> V <%s>\n", var->name, var->value);
 	if (var == NULL)
+	{
+		printf ("NO VAR FOUND\n");
 		return (NULL);
+	}
+	printf ("var N <%s> V <%s>\n", var->name, var->value);
 	ft_strdel(&ret);
 	ret = ft_malloc_str(data, ft_str_size(var->value));
 	i = 0;
