@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 15:18:46 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:26:36 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 		}
 		var = var->next;
 	}
-	printf("found var name : no name\n");
+	// printf("found var name : no name\n");
 	// printf("");
 	return (NULL);
 }

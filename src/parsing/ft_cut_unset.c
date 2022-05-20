@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 00:04:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 17:40:03 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:41:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,20 @@ void	ft_create_unset_token(t_data *data) // fonction qui cree le token unset
 	// printf("TOKEN UNSET\n");
 	// printf("%d, '%s'\n", data->i, &(data->input[data->i]));
 	
-	while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
-		u++;
-	data->token->arg = ft_malloc_str(data, u);
+	
+	ft_malloc_builtin_arg(data, data->token);
+	printf("Unset arg : <%s>\n", data->token->arg);
+
+	// while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
+	// 	u++;
+	// data->token->arg = ft_malloc_str(data, u);
+	// // data->i = data->i + u;
+	// // printf("%d, '%s'\n", data->i, &(data->input[data->i]));
+	// if (data->token->arg != NULL)
+	// {
+	// 	data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
+	// }
+	// else
+	// 	data->err = 200; // erreur malloc
 	// data->i = data->i + u;
-	// printf("%d, '%s'\n", data->i, &(data->input[data->i]));
-	if (data->token->arg != NULL)
-	{
-		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
-	}
-	else
-		data->err = 200; // erreur malloc
-	data->i = data->i + u;
 }

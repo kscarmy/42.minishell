@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/04/19 18:42:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:32:41 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,22 @@ void	ft_create_cd_token(t_data *data) // cree le token de la commande cd.
 		ft_add_new_token(data);
 	data->token->cmd = 6;
 	// u = ft_space(data->input, data->i);
-	while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u] != ' ')
-		u++;
-	// while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
+
+	ft_malloc_builtin_arg(data, data->token);
+
+	// while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u] != ' ')
 	// 	u++;
-	data->token->arg = ft_malloc_str(data, u);
-	if (data->token->arg != NULL)
-	{
-		data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
-		// data->token->arg = cut_str(data, data->token->arg);
-		while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
-			u++;
-		data->i = data->i + u;
-	}
-	else
-		data->err = 200; // erreur malloc
+	// // while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
+	// // 	u++;
+	// data->token->arg = ft_malloc_str(data, u);
+	// if (data->token->arg != NULL)
+	// {
+	// 	data->token->arg = ft_strncpy(data->token->arg, &(data->input[data->i]), u);
+	// 	// data->token->arg = cut_str(data, data->token->arg);
+	// 	while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
+	// 		u++;
+	// 	data->i = data->i + u;
+	// }
+	// else
+	// 	data->err = 200; // erreur malloc
 }

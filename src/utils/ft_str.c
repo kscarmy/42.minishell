@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/18 16:41:56 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:26:49 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,36 +178,36 @@ char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep) // refais un
 	int	ss; //  size src
 	char *ret;
 
-	printf("src in dest : infos :\n");
-	printf("src in dest : dest : <%s> src : <%s>\n", dest, src);
+	// printf("src in dest : infos :\n");
+	// printf("src in dest : dest : <%s> src : <%s>\n", dest, src);
 	sd = ft_str_size(dest);
 	ss = ft_str_size(src);
-	printf("src in dest : sep\n");
+	// printf("src in dest : sep\n");
 	if (sep != 0)
 		ret = ft_malloc_str(data, sd + ss + 1);
 	else
 		ret = ft_malloc_str(data, sd + ss);
 	sd = 0;
 	ss = 0;
-	printf("src in dest : while\n");
+	// printf("src in dest : while\n");
 	while (dest && dest[sd] && dest[sd] != '\0')
 	{
 		ret[sd] = dest[sd];
 		sd++;
 	}
-	printf("src in dest : if\n");
+	// printf("src in dest : if\n");
 	if (sd > 0 && sep != 0)
 	{
 		ret[sd] = sep;
 		sd++;
 	}
-	printf("src in dest : while 2\n");
+	// printf("src in dest : while 2\n");
 	while (src[ss] != '\0')
 	{
 		ret[sd + ss] = src[ss];
 		ss++;
 	}
 	ret[sd + ss] = '\0';
-	printf("src in dest : fin : ret <%s>\n", ret);
+	// printf("src in dest : fin : ret <%s>\n", ret);
 	return (ret);
 }
