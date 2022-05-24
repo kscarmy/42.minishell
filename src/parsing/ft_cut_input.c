@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/17 10:32:01 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:39:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 
 	data->i = 0;
 	found = 0;
+	// printf("entree parse input : tok ?\n");
+	// ft_print_token_list(data);
+	// printf("Tok ok\n");
 	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
 		// printf("prefonc data i : '%s'\n", &(data->input[data->i]));
@@ -69,11 +72,16 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 			found++;
 		printf(" %d", data->i);
 		if (found == 0 && ft_cut_bin(data) == 1)
+		{
+			printf("fin while cut input : <%s>\n", data->token->bin[0]);
 			found++;
+		}
+		ft_print_token_list(data);
 		// printf("aftfonc data i : '%s'\n", &(data->input[data->i]));
 		if (found == 0)
 			found = ft_parse_cmd_not_found(data);
 		printf(" PARSE INPUT end while i %d, '%s'\n", data->i, &(data->input[data->i]));
+		
 	}
 	if (found == -1)
 		return (1); // pas de commande trouvee

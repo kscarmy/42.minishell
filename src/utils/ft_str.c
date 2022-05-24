@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 15:26:49 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/21 14:51:11 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_is_separator(char *str, int i) // renvoie 0 si "c" n'est pas un separateur, sinon son code specifique
 {
-	if (str[i] == ';')
+	if (str[i] == ';') // ; 1
 		return (1);
-	if (str[i] == '|')
+	if (str[i] == '|') // | 2
 		return (2);
-	if (str[i] == '>' && str[i + 1] != '>')
+	if (str[i] == '>' && str[i + 1] != '>') // > 3
 		return (3);
-	if (str[i] == '<' && str[i + 1] != '<')
+	if (str[i] == '<' && str[i + 1] != '<') // < 4
 		return (4);
-	if (str[i] == '>' && str[i + 1] == '>')
+	if (str[i] == '>' && str[i + 1] == '>') // >> 5
 		return (5);
-	if (str[i] == '<' && str[i + 1] == '<')
+	if (str[i] == '<' && str[i + 1] == '<') // << 6
 		return (6);
 	return (0);
 }

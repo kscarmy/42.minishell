@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 17:13:12 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/23 21:27:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,8 @@ void	ft_malloc_bin(t_data *data); // malloc le **bin
 int		ft_bin_arg_size(t_data *data, int i); // renvoie la taille d'un argument
 int		ft_bin_count(t_data *data, int i); // revoie le nombre de cases a malloc
 
+int		ft_bin_size(t_data *data); // permet de malloc la strucure de bin
+
 /*	history.c	*/
 int		cut_history(t_data *data);
 void	ft_create_history_token(t_data *data); // cree le token de la commande cd.
@@ -263,6 +265,8 @@ void	ft_read_token_list(t_data *data); // lecture des tokens
 void	ft_launch_cmd(t_data *data, t_token *token); // lance une cmd
 t_token	*ft_ret_last_token(t_data *data); // renvoie l'adresse du dernier token.
 void	ft_print_token_list(t_data *data); // affiche tout les token
+t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok); // lecture des tokens pendant des redirections
+
 
 int	ft_while_token(t_data *data); // lecture des tokens
 
@@ -334,5 +338,8 @@ void	ft_pipe_in(t_data *data); // redirige l'entree de la prochaine commande dan
 void	ft_pipe_close_data_fd(t_data *data, int	fd); // ferme le fd, si fd == 0 ferme out sinon in
 void	ft_copy_fd(int fd_s, int fd_d); // copy le fd source dans le fd dest
 
+/*	ft_in_file.c	*/
+int		ft_create_open_file(t_data *data, char *name, int create); // cree ou ouvre un fichier. si create == 1 alors supprime le fichier. renvoie le fd du fichier ouvert.
+void	ft_fd_redir(t_data	*data, int fd_in, int fd_out); // redirige la sortie ou l'entree en fonction de ce qu'on lui passe
 
 #endif

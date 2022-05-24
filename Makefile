@@ -37,6 +37,7 @@ SRC	= 	src/main.c \
 		src/var/ft_var_sort.c \
 		src/bin/ft_bin.c \
 		src/redir/ft_pipe.c \
+		src/redir/ft_in_file.c \
 
 
 

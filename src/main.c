@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 17:21:42 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:35:08 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,13 @@ int	main(int argc, char **argv, char **env)
 
 	printf("Bienvenue dans ce minishell realisé par guderram et mourdani\n");
 	data = malloc(sizeof(t_data));
+	// printf("OK 1\n");
 	if (ft_init_data(data, env) == 0)
 		return (0); // erreur
 	// while (data->exit == 0 && ft_verif_pipe(data->pipe) == 1)
+	// printf("OK 2\n");
 	prompt(data);
+	// printf("OK 3\n");
 	/*	fonction qui clear tout a faire	*/
 	
 	/*	tests free : 	*/

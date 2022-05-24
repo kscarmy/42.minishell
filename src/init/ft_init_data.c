@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/01 11:54:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:34:56 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,29 @@ void	ft_init_data_pwd(t_data *data) // initialise les deux pwd dans la structure
 	i = 0;
 	str = "PWD";
 	var = data->var;
+	// printf("OK 1B1\n");
 	while (var != NULL && ft_strncmp(var->name, str, 3) != 0)
 		var = var->next;
+	// printf("OK 1B2\n");
 	while (var->value[i])
 		i++;
+	// printf("OK 1B3\n");
 	data->pwd = ft_malloc_str(data, i);
 	data->pwd = ft_strncpy(data->pwd, var->value, i);
-	
+	// printf("OK 1B4\n");
 	i = 0;
 	str = "OLDPWD";
 	var = data->var;
 	while (var != NULL && ft_strncmp(var->name, str, 6) != 0)
 		var = var->next;
-	while (var->value[i])
+	// printf("OK 1B5\n");
+	while (var != NULL && var->value[i])
 		i++;
+	// printf("OK 1B6\n");
 	data->opwd = ft_malloc_str(data, i);
+	// printf("OK 1B7\n");
 	data->opwd = ft_strncpy(data->opwd, var->value, i);	
+	// printf("OK 1B8\n");
 }
 
 void	ft_init_pipe(t_data *data) // prepare la structure des pipes
@@ -80,17 +87,22 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 
 	i = 0;
 	data->var = NULL;
+	// printf("OK 1A\n");
 	while (env[i] && data->err == 0)
 	{
 		ft_create_var_var(data, env[i]);
 		i++;
 	}
+	// printf("OK 1B\n");
 	ft_init_data_pwd(data);
+	// printf("OK 1BB\n");
 	data->i = 0;
 	data->exit = 0;
 	data->err = 0;
 	data->token = NULL;
+	// printf("OK 1C\n");
 	ft_init_pipe(data);
+	// printf("OK 1D\n");
 	// data->fd_in = -10;
 	// data->fd_out = -10;
 	return (1); // 1 = OK
