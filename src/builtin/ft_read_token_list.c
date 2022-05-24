@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/23 16:05:36 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:45:28 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,25 +84,33 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 	int		fd;
 	t_token	*t;
 	//cmd sep fichier
-	fd = 0;
+	fd = -10;
 	t = tok;
+	int	max = 0; // A SUPP 
 	// if (t->prev->prev == NULL || t->prev->prev->bin == NULL) // si ya par exemple `echo jean >` 
 	// 	data->err = 1230; // correspond a : bash: erreur de syntaxe près du symbole inattendu « newline »
 
 	
-	while (data->err == 0 && fd >= 0 && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5)) // trouver le bon while a mettre ...
+	while (max < 5 && data->err == 0 && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5)) // trouver le bon while a mettre ...
 	{
 		printf ("ft_read_token_list_while_redir entree while\n");
+		if (fd != -10)
+		{
+			printf ("close fd\n");
+			close (fd);
+			fd = -10;
+		}
 		/*	partie creation de fichiers	*/
 		if (t->prev->prev == NULL || t->prev->prev->bin == NULL) // si ya par exemple `echo jean >` 
 			data->err = 1230; // correspond a : bash: erreur de syntaxe près du symbole inattendu « newline »
-		printf ("a\n");
+		// printf ("a\n");
 		if (t->prev->sep == 3)
 			fd = ft_create_open_file(data, t->prev->prev->bin[0], 1); // si sep = 3 alors supprime le fichiers
 		else
 			fd = ft_create_open_file(data, t->prev->prev->bin[0], 0); // si sep = 5 alors ecrit a la suite
 		/*	partie analyse de la suite	*/
-		printf("t->prev->prev->prev->sep : %d\n", t->prev->prev->prev->sep);
+		// printf("b\n");
+		// printf("t->prev->prev->prev->sep : %d\n", t->prev->prev->prev->sep);
 		if (t->prev->prev != NULL && t->prev->prev->prev != NULL && (t->prev->prev->prev->sep == 3 || t->prev->prev->prev->sep == 5))
 		{
 			printf("UP MULTI REDIR\n");
@@ -113,10 +121,12 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 		// 	t = t->prev;
 		// else
 		// 	t = NULL;
+		max++;
 	}
 	printf ("ft_read_token_list_while_redir sortie while\n");
 	if (tok != NULL && tok->cmd != -1)
 	{
+		printf("lancement redir\n");
 		/*	partie redirection du fd	*/
 		ft_fd_redir(data, -10, fd);
 	
@@ -144,7 +154,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 	{
 		if (t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
 		{
-			ft_read_token_list_while_redir(data, t);
+			t = ft_read_token_list_while_redir(data, t);
 			printf("FONCTION DE GESTION A FAIRE ET METTRE (REDIRECTIONS)\n");
 			//FONCTION DE GESTION A FAIRE ET METTRE
 		}

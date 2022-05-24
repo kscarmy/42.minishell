@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/21 14:51:11 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/24 22:48:25 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,13 @@ int		ft_str_size(char *str) // renvoie la taille d'un str
 	int	i;
 
 	i = 0;
+	// printf("str size entree <%p>\n", str);
 	if (str == NULL)
 		return (0);
-	while (str[i])
+	// printf("str size mid\n");
+	while (str != NULL && str[i] && str[i] != '\0')
 		i++;
+	// printf("str size sortie\n");
 	return (i);
 }
 
