@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 10:52:12 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:29:47 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,12 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	var = ft_found_var_name(data, "PATH");
 	if (var == NULL)
 	{
-		printf("PATH UNSTET :\n");
-		// return ;
+		ft_putstr("bash: ");
+		ft_putstr(token->bin[0]);
+		ft_putstr(" : No such file or directory\n");
+		g_return = 127;
+		// printf("PATH UNSTET :\n");
+		return ;
 	}
 	// printf("ft_is_bin : var OK\n");
 	// printf("ft_is_bin : tok list\n");
@@ -194,6 +198,7 @@ void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est u
 	// int		status;
 
 	i = access(token->bin[0], F_OK);
+	printf("NON MICHEL !\n");
 	if (i == 0)
 	{
 		pid = fork();
@@ -216,6 +221,11 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 	pid_t	pid;
 	// int		status;
 
+	printf("------ Entree Fork : <%s>\n", token->arg);
+	ft_putstr_fd("SORTIE SUR 1 :", 1);
+	printf("fd_in : %d\n", data->pipe->fd_i);
+	printf("fd_out : %d\n", data->pipe->fd_o);
+	// dup2(data->pipe->fd_i, 0);
 	pid = fork();
 	if (pid == -1)
 		printf("ERREUR TEST FORK\n");
@@ -223,7 +233,7 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 		execve(token->arg, token->bin, data->env);
 	// else
 	waitpid(pid, &g_return, 0);
-	// printf("")
+	printf("------ Sortie Fork <%s> !\n", token->arg);
 }
 
 // void	ft_test(t_data *data) // TEST

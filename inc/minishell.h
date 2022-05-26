@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/23 21:27:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/26 14:40:04 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,7 @@ void	ft_launch_cmd(t_data *data, t_token *token); // lance une cmd
 t_token	*ft_ret_last_token(t_data *data); // renvoie l'adresse du dernier token.
 void	ft_print_token_list(t_data *data); // affiche tout les token
 t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok); // lecture des tokens pendant des redirections
+t_token		*ft_redirect_input(t_data *data, t_token *tok); // redirige l'entree standart sur un fichier.
 
 
 int	ft_while_token(t_data *data); // lecture des tokens

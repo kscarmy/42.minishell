@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 10:52:05 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/26 16:28:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,90 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 
 t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des tokens dans les pipes
 {
-	// pid_t		pid;
-	// int			status;
+	// int		fd;
 
-	// pid = fork();
-	while (t != NULL && (t->sep == 2 || (t->prev != NULL && t->prev->sep == 2) || (t->next != NULL && t->next->sep == 2)))
+	// if (tok->prev == NULL || tok->prev->prev == NULL || tok->prev->prev->arg == NULL)
+	// {
+	// 	// printf("ft_redirect_input ERROR\n");
+	// 	return (tok);
+	// }
+	// fd = open(tok->prev->prev->arg, O_RDWR);
+	// if (fd < 0)
+	// {
+	// 	ft_putstr("bash: ");
+	// 	ft_putstr(tok->prev->prev->arg);
+	// 	ft_putstr("No such file or directory\n");
+	// 	g_return = 1;
+	// 	return (tok);
+	// }
+	// printf("REDIR INPUT :\n");
+	// printf("tok : arg <%s>")
+	ft_pipe_in(data);
+	// ft_fd_redir(data, fd, -10);
+	ft_launch_cmd(data, t);
+	ft_pipe_close_data_fd(data, 0);
+	// printf("REDIR INPUT : OK !\n");
+	if (t->prev != NULL && t->prev->prev != NULL && t->prev->prev->prev != NULL)
 	{
-		
-		if(t->cmd != -1)
-			ft_launch_cmd(data, t);
-		if (t->prev != NULL)
-			t = t->prev;
-		else
-			t = NULL;
-		
+		// printf("REDIR INPUT : not null!\n");
+		t = t->prev->prev->prev;
 	}
-	// printf("PTN DE PID 2 : %d, %d\n", getpid(), pid);
-	// waitpid(pid, 0, 0);
-	// kill(pid, SIGKILL);
-	// printf("sortie du fork?\n");
+	else
+	{
+		// printf("REDIR INPUT : null !\n");
+		t = NULL;
+	}
+	// printf("REDIR INPUT : sortie !\n");
 	return (t);
 }
+
+
+/*	Nouveaux pipes :	*/
+
+// t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture des tokens pendant des redirections
+// {
+// 	int		fd;
+// 	t_token	*t;
+// 	fd = -10;
+// 	t = tok;
+	
+// 	while (data->err == 0 && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5)) // trouver le bon while a mettre ...
+// 	{
+// 		if (fd != -10)
+// 		{
+// 			close (fd);
+// 			fd = -10;
+// 		}
+// 		/*	partie creation de fichiers	*/
+// 		if (t->prev->prev == NULL || t->prev->prev->bin == NULL) // si ya par exemple `echo jean >` 
+// 			data->err = 1230; // correspond a : bash: erreur de syntaxe près du symbole inattendu « newline »
+// 		if (t->prev->sep == 3)
+// 			fd = ft_create_open_file(data, t->prev->prev->bin[0], 1); // si sep = 3 alors supprime le fichiers
+// 		else
+// 			fd = ft_create_open_file(data, t->prev->prev->bin[0], 0); // si sep = 5 alors ecrit a la suite
+// 		/*	partie analyse de la suite	*/
+// 		if (t->prev->prev != NULL && t->prev->prev->prev != NULL && (t->prev->prev->prev->sep == 3 || t->prev->prev->prev->sep == 5))
+// 		{
+// 			t = t->prev->prev;
+// 		}
+// 	}
+// 	if (tok != NULL && tok->cmd != -1)
+// 	{
+// 		// printf("lancement redir\n");
+// 		/*	partie redirection du fd	*/
+// 		ft_fd_redir(data, -10, fd);
+	
+// 		/*	partie execution de tok	*/
+	
+// 		ft_launch_cmd(data, tok);
+	
+// 		/*	partie reset des redirections	*/
+// 		ft_pipe_close_data_fd(data, 3);
+// 	}
+// 	return (t);
+// }
+/*	fin Nouveaux pipes	*/
+
 
 t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture des tokens pendant des redirections
 {
@@ -93,10 +156,10 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 	
 	while (max < 5 && data->err == 0 && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5)) // trouver le bon while a mettre ...
 	{
-		printf ("ft_read_token_list_while_redir entree while\n");
+		// printf ("ft_read_token_list_while_redir entree while\n");
 		if (fd != -10)
 		{
-			printf ("close fd\n");
+			// printf ("close fd\n");
 			close (fd);
 			fd = -10;
 		}
@@ -113,7 +176,7 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 		// printf("t->prev->prev->prev->sep : %d\n", t->prev->prev->prev->sep);
 		if (t->prev->prev != NULL && t->prev->prev->prev != NULL && (t->prev->prev->prev->sep == 3 || t->prev->prev->prev->sep == 5))
 		{
-			printf("UP MULTI REDIR\n");
+			// printf("UP MULTI REDIR\n");
 			t = t->prev->prev;
 			// printf("")
 		}
@@ -123,10 +186,10 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 		// 	t = NULL;
 		max++;
 	}
-	printf ("ft_read_token_list_while_redir sortie while\n");
+	// printf ("ft_read_token_list_while_redir sortie while\n");
 	if (tok != NULL && tok->cmd != -1)
 	{
-		printf("lancement redir\n");
+		// printf("lancement redir\n");
 		/*	partie redirection du fd	*/
 		ft_fd_redir(data, -10, fd);
 	
@@ -137,8 +200,46 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 		/*	partie reset des redirections	*/
 		ft_pipe_close_data_fd(data, 3);
 	}
-	printf ("ft_read_token_list_while_redir SORTIE\n");
+	// printf ("ft_read_token_list_while_redir SORTIE\n");
 	return (t);
+}
+
+t_token		*ft_redirect_input(t_data *data, t_token *tok) // redirige l'entree standart sur un fichier.
+{
+	int		fd;
+
+	if (tok->prev == NULL || tok->prev->prev == NULL || tok->prev->prev->arg == NULL)
+	{
+		// printf("ft_redirect_input ERROR\n");
+		return (tok);
+	}
+	fd = open(tok->prev->prev->arg, O_RDWR);
+	if (fd < 0)
+	{
+		ft_putstr("bash: ");
+		ft_putstr(tok->prev->prev->arg);
+		ft_putstr("No such file or directory\n");
+		g_return = 1;
+		return (tok);
+	}
+	// printf("REDIR INPUT :\n");
+	// printf("tok : arg <%s>")
+	ft_fd_redir(data, fd, -10);
+	ft_launch_cmd(data, tok);
+	ft_pipe_close_data_fd(data, 0);
+	// printf("REDIR INPUT : OK !\n");
+	if (tok->prev != NULL && tok->prev->prev != NULL && tok->prev->prev->prev != NULL)
+	{
+		// printf("REDIR INPUT : not null!\n");
+		tok = tok->prev->prev->prev;
+	}
+	else
+	{
+		// printf("REDIR INPUT : null !\n");
+		tok = NULL;
+	}
+	// printf("REDIR INPUT : sortie !\n");
+	return(tok);
 }
 
 void	ft_read_token_list(t_data *data) // lecture des tokens
@@ -152,26 +253,35 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 	// printf("'");
 	while (data->exit == 0 && t != NULL)
 	{
-		if (t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
-		{
+		// ft_pipe_close_data_fd(data, 3);
+		if (t != NULL && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
 			t = ft_read_token_list_while_redir(data, t);
-			// printf("FONCTION DE GESTION A FAIRE ET METTRE (REDIRECTIONS)\n");
-			//FONCTION DE GESTION A FAIRE ET METTRE
-		}
-		if (t->prev != NULL && t->prev->sep == 2)
+		if (t != NULL && t->prev != NULL && t->prev->sep == 4)
+			t = ft_redirect_input(data, t);
+		if (t != NULL && t->prev != NULL && t->prev->sep == 2)
 		{
+			// ft_pipe_close_data_fd(data, 1);
 			// printf("PREMIER\n");
-			t = ft_read_token_list_while_pipe(data, t);
+			ft_pipe_out(data);
+			// t = ft_read_token_list_while_pipe(data, t);
 		}
-		else
+		if (t != NULL && t->next != NULL && t->next->sep == 2)
 		{
-			// printf("SECOND\n");
-			if (t != NULL && t->cmd != -1)
-			{
-				ft_launch_cmd(data, t);
-				// printf("statu de exit : %d\n", data->exit);
-			}
+			// ft_pipe_close_data_fd(data, 0);
+			t = ft_read_token_list_while_pipe(data, t);
+			// ft_pipe_in(data);
+			// printf("ft_read_token_list pipe in :\n");
+			
+			// ft_launch_cmd(data, t);
+			
 		}
+		if (t != NULL && t->cmd != -1)
+			ft_launch_cmd(data, t);
+		// if (t->prev != NULL && t->prev->sep == 2)
+		// {
+		// 	ft_pipe_close_data_fd(data, 3);
+			
+		// }
 		if (t != NULL && t->prev != NULL)
 			t = t->prev;
 		else
