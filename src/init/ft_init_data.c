@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/23 16:34:56 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:21:10 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,10 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 		ft_create_var_var(data, env[i]);
 		i++;
 	}
+	ft_add_new_var(data);
+	data->var->name = malloc(sizeof(char) * 2);
+	data->var->name[0] = '$';
+	data->var->name[1] = '\0';
 	// printf("OK 1B\n");
 	ft_init_data_pwd(data);
 	// printf("OK 1BB\n");

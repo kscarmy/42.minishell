@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/24 22:45:28 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/26 10:52:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		if (t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
 		{
 			t = ft_read_token_list_while_redir(data, t);
-			printf("FONCTION DE GESTION A FAIRE ET METTRE (REDIRECTIONS)\n");
+			// printf("FONCTION DE GESTION A FAIRE ET METTRE (REDIRECTIONS)\n");
 			//FONCTION DE GESTION A FAIRE ET METTRE
 		}
 		if (t->prev != NULL && t->prev->sep == 2)
