@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/27 23:24:02 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:39:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des
 	// printf("tok : arg <%s>")
 	ft_pipe_in(data);
 	// ft_fd_redir(data, fd, -10);
-	ft_launch_cmd(data, t);
+	// ft_launch_cmd(data, t);
 	// ft_pipe_close_data_fd(data, 0);
 	// printf("REDIR INPUT : OK !\n");
 	if (t->prev != NULL && t->prev->prev != NULL && t->prev->prev->prev != NULL)
@@ -251,15 +251,20 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 {
 	t_token *t;
 
+	int i = 0; // A SUPP
+
 	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	// printf("PTN DE PID: %d\n", getpid());
-	printf("read token list :\n");
+	printf("read token list :\n\n\n");
 	ft_putchar('\'');
 	// printf("'");
+	ft_pipe_close_data_fd(data, 3);
 	while (data->exit == 0 && t != NULL)
 	{
+		// printf("tok : conten :cmd %d arg <%s> sep %d\n", t->cmd, t->arg, t->sep);
 		// ft_pipe_close_data_fd(data, 3);
+		// printf(" i %d\n", i);
 		if (t != NULL && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
 			t = ft_read_token_list_while_redir(data, t);
 		// printf("token address %p\n", t);
@@ -268,26 +273,31 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		// printf("token address %p\n", t);
 		if (t != NULL && t->prev != NULL && t->prev->sep == 2)
 		{
-			// ft_pipe_close_data_fd(data, 1);
-			printf("PREMIER\n");
+			ft_pipe_close_data_fd(data, 1);
+			// printf("PREMIER i %d\n", i);
 			ft_pipe_out(data);
 			// t = ft_read_token_list_while_pipe(data, t);
 		}
 		if (t != NULL && t->next != NULL && t->next->sep == 2)
 		{
-			// ft_pipe_close_data_fd(data, 0);
-			printf("second\n");
-			ft_pipe_close_data_fd(data, 1);
-			ft_read_token_list_while_pipe(data, t);
+			ft_pipe_close_data_fd(data, 0);
+			// printf("second i %d\n", i);
+			// ft_pipe_close_data_fd(data, 1);
+			ft_pipe_in(data);
+			// ft_read_token_list_while_pipe(data, t);
 			// ft_pipe_in(data);
 			// printf("ft_read_token_list pipe in :\n");
 			
 			// ft_launch_cmd(data, t);
 			
 		}
+		if (t != NULL && t->prev == NULL)
+		{
+			ft_pipe_close_data_fd(data, 1);
+		}
 		if (t != NULL && t->cmd != -1)
 		{
-			printf("launch\n");
+			// printf("launch i %d\n", i);
 			ft_launch_cmd(data, t);
 		}
 		// if (t->prev != NULL && t->prev->sep == 2)
@@ -299,8 +309,10 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 			t = t->prev;
 		else
 			t = NULL;
+		
+		i++;
 	}
-	printf("'\n");
+	printf("'\n\n\n");
 }
 
 

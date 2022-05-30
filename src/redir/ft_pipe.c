@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 19:36:17 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:16:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ void	ft_pipe_out(t_data *data) // redirige la sortie de la prochaine commande da
 {
 	int		fd_out;
 	
+	// printf("Pipe out : entree");
 	// data->pipe->ofd_o = dup(1);
 	// ft_pipe_close_data_fd(data, 1);
 	unlink(TMP_OUT);
-	open(TMP_OUT, O_CREAT, 00777);
-	
+	fd_out = open(TMP_OUT, O_CREAT, 00777);
+	close(fd_out);
 	fd_out = open(TMP_OUT, O_RDWR);
 	ft_fd_redir(data, -10, fd_out);
 	// if (data->pipe->fd_o > 0)
@@ -44,6 +45,7 @@ void	ft_pipe_out(t_data *data) // redirige la sortie de la prochaine commande da
 	// else
 	// 	data->err = 10001;
 	// ft_pipe_close_data_fd(data, 0);
+	// printf("Pipe out : sortie");
 }
 
 void	ft_copy_fd(int fd_s, int fd_d) // copy le fd source dans le fd dest
