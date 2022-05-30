@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 16:28:38 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/27 23:24:02 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 		ft_unset(data, token);
 	if (token->cmd == 9) // pour bin
 		ft_is_bin(data, token);
-	ft_pipe_close_data_fd(data, 3);
+	// ft_pipe_close_data_fd(data, 3);
 }
 
 t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des tokens dans les pipes
@@ -78,7 +78,7 @@ t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t) // lecture des
 	ft_pipe_in(data);
 	// ft_fd_redir(data, fd, -10);
 	ft_launch_cmd(data, t);
-	ft_pipe_close_data_fd(data, 0);
+	// ft_pipe_close_data_fd(data, 0);
 	// printf("REDIR INPUT : OK !\n");
 	if (t->prev != NULL && t->prev->prev != NULL && t->prev->prev->prev != NULL)
 	{
@@ -208,6 +208,7 @@ t_token		*ft_redirect_input(t_data *data, t_token *tok) // redirige l'entree sta
 {
 	int		fd;
 
+	// printf("REDIR INPUT :\n");
 	if (tok->prev == NULL || tok->prev->prev == NULL || tok->prev->prev->arg == NULL)
 	{
 		// printf("ft_redirect_input ERROR\n");
@@ -218,27 +219,31 @@ t_token		*ft_redirect_input(t_data *data, t_token *tok) // redirige l'entree sta
 	{
 		ft_putstr("bash: ");
 		ft_putstr(tok->prev->prev->arg);
-		ft_putstr("No such file or directory\n");
+		ft_putstr(": No such file or directory\n");
 		g_return = 1;
-		return (tok);
+		// return (tok);
 	}
-	// printf("REDIR INPUT :\n");
-	// printf("tok : arg <%s>")
-	ft_fd_redir(data, fd, -10);
-	ft_launch_cmd(data, tok);
-	ft_pipe_close_data_fd(data, 0);
-	// printf("REDIR INPUT : OK !\n");
+	else
+	{
+
+		// printf("tok : arg <%s>", tok->arg);
+		ft_fd_redir(data, fd, -10);
+		ft_launch_cmd(data, tok);
+		ft_pipe_close_data_fd(data, 0);
+		// printf("REDIR INPUT : OK !\n");
+	}
+	// printf("REDIR INPUT : partie 2\n");
 	if (tok->prev != NULL && tok->prev->prev != NULL && tok->prev->prev->prev != NULL)
 	{
 		// printf("REDIR INPUT : not null!\n");
-		tok = tok->prev->prev->prev;
+		tok = tok->prev->prev;
 	}
 	else
 	{
 		// printf("REDIR INPUT : null !\n");
 		tok = NULL;
 	}
-	// printf("REDIR INPUT : sortie !\n");
+	// printf("REDIR INPUT : sortie !\n"); 
 	return(tok);
 }
 
@@ -249,6 +254,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	// printf("PTN DE PID: %d\n", getpid());
+	printf("read token list :\n");
 	ft_putchar('\'');
 	// printf("'");
 	while (data->exit == 0 && t != NULL)
@@ -256,19 +262,23 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		// ft_pipe_close_data_fd(data, 3);
 		if (t != NULL && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5))
 			t = ft_read_token_list_while_redir(data, t);
+		// printf("token address %p\n", t);
 		if (t != NULL && t->prev != NULL && t->prev->sep == 4)
 			t = ft_redirect_input(data, t);
+		// printf("token address %p\n", t);
 		if (t != NULL && t->prev != NULL && t->prev->sep == 2)
 		{
 			// ft_pipe_close_data_fd(data, 1);
-			// printf("PREMIER\n");
+			printf("PREMIER\n");
 			ft_pipe_out(data);
 			// t = ft_read_token_list_while_pipe(data, t);
 		}
 		if (t != NULL && t->next != NULL && t->next->sep == 2)
 		{
 			// ft_pipe_close_data_fd(data, 0);
-			t = ft_read_token_list_while_pipe(data, t);
+			printf("second\n");
+			ft_pipe_close_data_fd(data, 1);
+			ft_read_token_list_while_pipe(data, t);
 			// ft_pipe_in(data);
 			// printf("ft_read_token_list pipe in :\n");
 			
@@ -276,7 +286,10 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 			
 		}
 		if (t != NULL && t->cmd != -1)
+		{
+			printf("launch\n");
 			ft_launch_cmd(data, t);
+		}
 		// if (t->prev != NULL && t->prev->sep == 2)
 		// {
 		// 	ft_pipe_close_data_fd(data, 3);

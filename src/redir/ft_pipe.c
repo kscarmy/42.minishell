@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 16:32:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:36:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans
 
 	i = 0;
 	str = NULL;
-	printf("pipe in\n");
+	// printf("pipe in\n");
 	// data->pipe->ofd_i = dup(0);
 	// ft_pipe_close_data_fd(data, 0);
 	out = open(TMP_OUT, O_RDWR);
-	printf("pipe in2 %d\n", out);
+	// printf("pipe in2 %d\n", out);
 	// while (out > 0 && get_next_line(out, &str) > 0 && i<5) // copie OUT dans str
 	// 	i++;
 	// printf("pipe in3\n");
@@ -87,12 +87,14 @@ void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans
 	// fd_in = open(TMP_IN, O_CREAT, 00777);
 	// close (fd_in);
 	// fd_in = open(TMP_IN, O_RDWR);
-	printf("pipe in : fd_in %d\n", fd_in);
+	// printf("pipe in : fd_in %d\n", fd_in);
 	if (fd_in > 0)
 		ft_copy_fd(out, fd_in);
 	close(out);
+	close(fd_in);
+	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);
 	ft_fd_redir(data, fd_in, -10);
-	printf("pipe in : fd_in : %d\n", data->pipe->fd_i);
+	// printf("pipe in : fd_in : %d\n", data->pipe->fd_i);
 	
 }
 
