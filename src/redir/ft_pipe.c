@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 11:16:59 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:20:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans
 	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);
 	ft_fd_redir(data, fd_in, -10);
 	// printf("pipe in : fd_in : %d\n", data->pipe->fd_i);
-	
 }
 
 void	ft_pipe_close_data_fd(t_data *data, int	fd) // ferme le fd, si fd == 0 ferme out sinon in

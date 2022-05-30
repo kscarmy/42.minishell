@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 14:40:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:42:46 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define BUFFER_SIZE_GNL 128
 # define TMP_OUT ".minishell_tmp_out" // fichier tempo de minishell pour tout ce qui concerne les sorties
 # define TMP_IN ".minishell_tmp_in" // fichier tempo de minishell pour tout ce qui concerne les entrees
+# define TMP_HERE ".minishell_tmp_here_doc" // fichier tempo de minishell pour tout ce qui concerne les entrees
 
 /*	***********	*/
 /*	   data		*/
@@ -238,6 +239,8 @@ char		*ft_quote(t_data *data, char *str, int i);
 /*		 ft_cut_redirects		*/
 int	ft_cut_redirects(t_data *data); // ret 1 si une redirection est trouvee, sinon ret 0
 void	ft_create_redirects_token(t_data *data, int i); // cree le token de la commande redirect
+t_token		*ft_here_doc(t_data *data, t_token *t); // fonction de gestion de '<<'
+
 
 /*		ft_pre_parsing.c		*/
 int		ft_is_input_safe(char *str); // verifie si le input respecte les demandes, telles que les quotes fermees

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 17:37:40 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 12:16:18 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_cut_redirects(t_data *data) // ret 1 si une redirection est trouvee, sino
 	}	
 	return (0);
 }
+
 
 void	ft_create_redirects_token(t_data *data, int i) // cree le token de la commande redirect
 {

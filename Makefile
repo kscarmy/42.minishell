@@ -38,6 +38,7 @@ SRC	= 	src/main.c \
 		src/bin/ft_bin.c \
 		src/redir/ft_pipe.c \
 		src/redir/ft_in_file.c \
+		src/redir/ft_here_doc.c \
 
 
 
