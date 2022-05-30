@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/25 16:21:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:47:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 	i = 0;
 	data->var = NULL;
 	// printf("OK 1A\n");
+	t_var	*t;
 	while (env[i] && data->err == 0)
 	{
 		ft_create_var_var(data, env[i]);
@@ -106,6 +107,15 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 	data->token = NULL;
 	// printf("OK 1C\n");
 	ft_init_pipe(data);
+	t = ft_found_var_name(data, "SHLVL");
+	if (t != NULL)
+	{
+		i = ft_atoi(t->value);
+		i++;
+		ft_strdel(&t->value);
+		t->value = ft_itoa(i);
+	}
+	
 	// printf("OK 1D\n");
 	// data->fd_in = -10;
 	// data->fd_out = -10;
