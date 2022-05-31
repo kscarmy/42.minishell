@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:58:29 by mourdani          #+#    #+#             */
-/*   Updated: 2022/05/30 16:30:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:15:42 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,45 @@
 
 void	handler(int signum)
 {
+	// printf("SIG : %d\n", signum);
 	if (signum == SIGINT)
 	{
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n~$ ", 1);
 		rl_on_new_line();
 		// rl_replace_line("", 0);
 		rl_redisplay();
 		g_return = 2;
+		// // printf("1\n");
+		// ft_putstr_fd("\n", 1);
+		
+		// // ft_putstr_fd("\n~$ ", 1);
+		
+		// rl_on_new_line();
+
+		// // rl_replace_line("", 0);
+
+		// rl_redisplay();
+		// g_return = -13;
 	}
 	else if (signum == SIGQUIT)
 	{
-		ft_putstr_fd("\b\b  \b\b", 1);
+		// printf("2\n");
+		rl_on_new_line();
+		rl_redisplay();
+		ft_putstr_fd("\b\b\b\b\b~$ ", 1);
 		g_return = 0;
 	}
+	// else if (signum == SIGSEGV)
+	// {
+	// 	printf("3 !\n");
+	// 	g_return = -113;
+	// 	exit(0);
+	// 	// g_return = 0;
+	// }
+	// else if (signum == EOF)
+	// {
+	// 	printf("3 !\n");
+	// }
 
 	// rl_on_new_line();
 	// printf("JEAN MICH\n");
@@ -44,7 +70,8 @@ void	jean()
 
 void init_signals(void)
 {
-	signal(SIGINT, jean);
+	printf("INIT_SIGNAL\n");
+	signal(SIGINT, handler);
 	signal(SIGQUIT, handler);
 	// struct termios old_termios, new_termios;
 

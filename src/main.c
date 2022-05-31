@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 16:22:37 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:15:30 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,49 @@ void	prompt(t_data *data)
 	/*	TEST	*/
 	signal(SIGINT, handler);
 	signal(SIGQUIT, handler);
-	/*	TEST	*/
+	signal(SIGSEGV, handler);
 
+	printf("1 %d 2 %d 3 %d 4 %d\n", SIGINT, SIGQUIT, SIGSEGV, EOF);
+	/*	TEST	*/
+	g_return = 0;
 	while (data->exit == 0)
 	{
 		/*	readline	*/
 		i = 0;
 		data->input = readline("~$ ");
-		add_history(data->input);
-		while (data->input[i]) { i++; }
-		printf("sizeof input %d\n", i);
-		/*	commande de parsing a inserer ici */
-		if (ft_is_input_safe(data->input) == 0)
-			data->err = 1;
-		else
-			ft_parse_input(data);
+		if (g_return >= 0 && ft_str_size(data->input) > 0)
+		{
+			add_history(data->input);
+			if (ft_is_input_safe(data->input) == 0)
+				data->err = 1;
+			else
+				ft_parse_input(data);
+			if (data->err == 0 && data->exit == 0 && data->token != NULL)
+				ft_read_token_list(data);
+		}
+		else if (g_return == -13)
+			g_return = 2;
+		else if (data->input == NULL)
+		{
+			// printf("DATA INPUT NULL !\n");
+			ft_putchar_fd('\n', 1);
+			g_return = -113;
+		}
 
-		printf("err : %d\n", data->err);
+
+		// while (data->input[i]) { i++; }
+		// printf("sizeof input %d\n", i);
+		/*	commande de parsing a inserer ici */
+		// if (ft_is_input_safe(data->input) == 0)
+		// 	data->err = 1;
+		// else
+		// 	ft_parse_input(data);
+
+		// printf("err : %d\n", data->err);
 		/* commande d'execusion des tokens a inserer ici */
 		
-		if (data->err == 0 && data->exit == 0 && data->token != NULL)
-			ft_read_token_list(data);
+		// if (data->err == 0 && data->exit == 0 && data->token != NULL)
+		// 	ft_read_token_list(data);
 
 
 
@@ -66,6 +88,8 @@ void	prompt(t_data *data)
 		// printf("pre clear input\n");
 		// printf("sizeof data->i %d\n", data->i);
 		ft_clear_for_new_input(data);
+		if (g_return == -113)
+			data->exit = 1;
 		// printf("fin du clear pour input\n");
 		if (data->exit != 0)
 			ft_putstr("exit\n");

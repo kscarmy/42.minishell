@@ -66,7 +66,7 @@ all:	obj $(NAME)
 
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS)  -lreadline -L .brew/opt/readline/lib -I .brew/opt/readline/include -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS)  -lreadline -I .brew/opt/readline/include -o $(NAME)
 	$(DONE)
 
 $(LIBFT):
