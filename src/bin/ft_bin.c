@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 11:29:11 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:22:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,19 +221,21 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 	pid_t	pid;
 	// int		status;
 
-	printf("------ Entree Fork : <%s>\n", token->arg);
+	// printf("------ Entree Fork : <%s>\n", token->arg);
 	// ft_putstr_fd("SORTIE SUR 1 :", 1);
-	printf("fd_in : %d\n", data->pipe->fd_i);
-	printf("fd_out : %d\n", data->pipe->fd_o);
+	// printf("fd_in : %d\n", data->pipe->fd_i);
+	// printf("fd_out : %d\n", data->pipe->fd_o);
 	// dup2(data->pipe->fd_i, 0);
 	pid = fork();
 	if (pid == -1)
-		printf("ERREUR TEST FORK\n");
+		printf("ERREUR FORK BIN EXECVE\n");
 	else if (pid == 0)
 		execve(token->arg, token->bin, data->env);
 	// else
+	// signal(SIGINT, handler);
+	// signal(SIGQUIT, handler);
 	waitpid(pid, &g_return, 0);
-	printf("------ Sortie Fork <%s> !\n", token->arg);
+	// printf("------ Sortie Fork <%s> !\n", token->arg);
 }
 
 // void	ft_test(t_data *data) // TEST

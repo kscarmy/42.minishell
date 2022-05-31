@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 12:17:02 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 13:41:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:25:11 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ t_token *ft_here_doc(t_data *data, t_token *t) // fonction de gestion de '<<'
 	exit = 0;
 	size = ft_str_size(t->prev->prev->arg);
 	unlink(TMP_IN);
+	// pid_t	pid;
 	// printf("size : %d\n", size);
 	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);
 	ft_pipe_close_data_fd(data, 3);
+	// pid = fork();
+	// if (pid == -1)
+	// 	printf("ERREUR FORK HERE DOC\n");
+	// else if (pid == 0)
+	// {
 	while (exit == 0 && max < 5)
 	{
 		tmp = readline("> ");
@@ -40,6 +46,8 @@ t_token *ft_here_doc(t_data *data, t_token *t) // fonction de gestion de '<<'
 		}
 		max++;
 	}
+	// }
+	// waitpid(pid, &g_return, 0);
 	close (fd_in);
 	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);
 	ft_fd_redir(data, fd_in, -10);

@@ -20,23 +20,23 @@
 
 
 
-void	ft_jean_mich(void *p)
+// void	ft_jean_mich(void *p)
+// {
+
+// 	char	*str = &*p;
+// 	printf ("<%p>\n", p);
+// 	printf("str 1 '%s'\n", str);
+// 	str[0] = 'B';
+// 	printf("str 2 '%s'\n", str);
+// 	// exit(0);
+
+// }
+
+
+int	main(void)
 {
-
-	char	*str = &*p;
-	printf ("<%p>\n", p);
-	printf("str 1 '%s'\n", str);
-	str[0] = 'B';
-	printf("str 2 '%s'\n", str);
-	// exit(0);
-
-}
-
-
-int	main(int argc, char **argv)
-{
-	pid_t	pid;
-	int g_return;
+	// pid_t	pid;
+	// int g_return;
 	// void	*p;
 	// int fd;
 	// int	jean;
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 	// jean = dup(1);
 	// unlink(TEST1);
 
-	if (argc < 2)
-		return (1);
+	// if (argc < 2)
+	// 	return (1);
 	// open(TEST1, O_CREAT, 00777);
 	// fd = open(TEST1, O_RDWR);
 
@@ -59,8 +59,8 @@ int	main(int argc, char **argv)
 	// dup2(jean, 1);
 	// close(jean);
 	// printf("3 %s\n", argv[1]);
-	printf ("pre '%s'\n", argv[1]);
-	printf ("<%p>\n", argv[1]);
+	// printf ("pre '%s'\n", argv[1]);
+	// printf ("<%p>\n", argv[1]);
 
 	// int		status;
 	// p = argv[1];
@@ -68,10 +68,10 @@ int	main(int argc, char **argv)
 	// if (pid == -1)
 		// printf("ERREUR TEST FORK\n");
 	// else if (pid == 0)
-		ft_jean_mich((void*)argv[1]);
+		// ft_jean_mich((void*)argv[1]);
 		// waitpid(pid, &g_return, 0);
-	printf ("<%p>\n", argv[1]);
-	printf ("after '%s'\n", argv[1]);
+	// printf ("<%p>\n", argv[1]);
+	// printf ("after '%s'\n", argv[1]);
 
 	return (0);
 }

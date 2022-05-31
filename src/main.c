@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/23 16:35:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 16:22:37 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	prompt(t_data *data)
 	int	i = 0;
 	// char *line;
 	// write(0, "~$ ", 3);
+	
+	/*	TEST	*/
+	signal(SIGINT, handler);
+	signal(SIGQUIT, handler);
+	/*	TEST	*/
+
 	while (data->exit == 0)
 	{
 		/*	readline	*/
@@ -81,8 +87,8 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 //	int i = 0; // A SUPP
 
-	init_signals();
-	signal(SIGTSTP, handler);
+	// init_signals();
+	// signal(SIGTSTP, handler);
 
 	printf("Bienvenue dans ce minishell realisé par guderram et mourdani\n");
 	data = malloc(sizeof(t_data));
@@ -98,5 +104,5 @@ int	main(int argc, char **argv, char **env)
 	/*	tests free : 	*/
 	unlink(TMP_OUT);
 	unlink(TMP_IN);
-	return (0);
+	return (g_return);
 }

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 13:47:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:19:21 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,10 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 		ft_strdel(&t->value);
 		t->value = ft_itoa(i);
 	}
-	
+	else
+	{
+		
+	}
 	// printf("OK 1D\n");
 	// data->fd_in = -10;
 	// data->fd_out = -10;
