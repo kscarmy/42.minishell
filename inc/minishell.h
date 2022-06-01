@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/01 15:51:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:15:55 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,8 +321,10 @@ void	ft_malloc_var(t_data *data); // malloc et renvoie var dans un char **
 int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i); // stocke et malloc un path dans token->arg
 void	ft_is_bin(t_data *data, t_token *token); //
 void	ft_bin_execve(t_data *data, t_token *token); //
-void	ft_free_tab_char(char **str); // free un tableau de char
+// void	ft_free_tab_char(char **str); // free un tableau de char
 void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
+void	ft_free_data_env(t_data *data); // free un tableau de char
+
 
 
 /*	**********	*/

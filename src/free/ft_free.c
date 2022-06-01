@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:38:29 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/01 16:07:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:14:45 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void    ft_free_minishell(t_data *data) // free les mallocs avant de sortir du p
         data->pipe = NULL;
         // ft_strdel(&data->pipe);
     }
-
+    ft_free_data_env(data);
+    data->env = NULL;
 
     
     // free(data->pipe);
