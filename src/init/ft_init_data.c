@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 15:19:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:47:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ void	ft_create_var_var(t_data *data, char *str) // cree un maillon de chane dans
 		u++;
 	data->var->value = ft_malloc_str(data, u);
 	data->var->value = ft_strncpy(data->var->value, &(str[i]), u);
+	// ft_putstr("Create var var : str <");
+	// ft_putstr(str);
+	// ft_putstr("> name <");
+	// ft_putstr(data->var->name);
+	// ft_putstr("> value <");
+	// ft_putstr(data->var->value);
+	// ft_putstr(">\n");
 }
 
 void	ft_init_data_pwd(t_data *data) // initialise les deux pwd dans la structure data
@@ -40,18 +47,35 @@ void	ft_init_data_pwd(t_data *data) // initialise les deux pwd dans la structure
 	t_var *var;
 	char *str;
 
+	
+	
+	// ft_putstr("init data pwd :\n");
 	i = 0;
 	str = "PWD";
 	var = data->var;
 	// printf("OK 1B1\n");
+	// if (var == NULL)
+	// 	ft_putstr("init data/ pwd : NULL 1\n");
 	while (var != NULL && ft_strncmp(var->name, str, 3) != 0)
+	{
+		// ft_putstr("name : <");
+		// ft_putstr(var->name);
+		// ft_putstr(">\n");
 		var = var->next;
+	}
+
 	// printf("OK 1B2\n");
+	// if (var == NULL)
+	// 	ft_putstr("init data pwd : NULL 2\n");
+	// ft_putstr("init data pwd : 0\n");
 	while (var->value[i])
 		i++;
 	// printf("OK 1B3\n");
+	// ft_putstr("init data pwd : 1\n");
 	data->pwd = ft_malloc_str(data, i);
+		// ft_putstr("init data pwd : 2\n");
 	data->pwd = ft_strncpy(data->pwd, var->value, i);
+		// ft_putstr("init data pwd : 3\n");
 	// printf("OK 1B4\n");
 	i = 0;
 	str = "OLDPWD";
@@ -85,25 +109,51 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 {
 	int	i;
 
-	i = 0;
-	data->var = NULL;
+
+	// ft_putstr("ENV : ");
+	// ft_putstr(env[i]);
+	// while (env && env[i])
+	// {
+	// 	ft_putstr(env[i]);
+	// 	ft_putstr("\n");
+
+	// 	i++;
+	// }
+	// i = 0;
+	// ft_putnbr(data->err);
+
 	// printf("OK 1A\n");
 	t_var	*t;
+
+	data->i = 0;
+	data->exit = 0;
+	data->err = 0;
+	data->var = NULL;
+	data->env = NULL;
+	i = 0;
+
+	// ft_putstr("init data :\n");
 	while (env[i] && data->err == 0)
 	{
+		// ft_putstr("env : \n");
+		// ft_putstr(env[i]);
 		ft_create_var_var(data, env[i]);
 		i++;
 	}
-	ft_add_new_var(data);
+	// ft_putstr("ICI ?\n");
+	if (data->var == NULL)
+		ft_init_var(data);
+	else
+		ft_add_new_var(data);
 	data->var->name = malloc(sizeof(char) * 2);
 	data->var->name[0] = '$';
 	data->var->name[1] = '\0';
 	// printf("OK 1B\n");
 	ft_init_data_pwd(data);
 	// printf("OK 1BB\n");
-	data->i = 0;
-	data->exit = 0;
-	data->err = 0;
+	// data->i = 0;
+	// data->exit = 0;
+	// data->err = 0;
 	data->token = NULL;
 	// printf("OK 1C\n");
 	ft_init_pipe(data);
@@ -115,10 +165,7 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 		ft_strdel(&t->value);
 		t->value = ft_itoa(i);
 	}
-	else
-	{
-		
-	}
+	
 	// printf("OK 1D\n");
 	// data->fd_in = -10;
 	// data->fd_out = -10;

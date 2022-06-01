@@ -50,11 +50,11 @@ void	ft_pipe_out(t_data *data) // redirige la sortie de la prochaine commande da
 
 void	ft_copy_fd(int fd_s, int fd_d) // copy le fd source dans le fd dest
 {
-	int	i;
+	// int	i;
 	// int	ret;
 	char	buff[2];
 
-	i = 0;
+	// i = 0;
 	// printf("ft_copy_fd :\n");
 	buff[1] = '\0';
 	while(read(fd_s, buff, 1) > 0)
@@ -69,12 +69,12 @@ void	ft_copy_fd(int fd_s, int fd_d) // copy le fd source dans le fd dest
 void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans le tmp_file
 {
 	int		out;
-	char	*str;
-	int		i;
+	// char	*str;
+	// int		i;
 	int		fd_in;
 
-	i = 0;
-	str = NULL;
+	// i = 0;
+	// str = NULL;
 	// printf("pipe in\n");
 	// data->pipe->ofd_i = dup(0);
 	// ft_pipe_close_data_fd(data, 0);

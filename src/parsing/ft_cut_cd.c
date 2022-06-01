@@ -78,9 +78,9 @@ int	ft_cut_cd(t_data *data, int i) // ret 1 si cd est trouvé, sinon ret 0
 
 void	ft_create_cd_token(t_data *data) // cree le token de la commande cd.
 {
-	int	u;
+	// int	u;
 
-	u = 0;
+	// u = 0;
 	if (data->token == NULL)
 		ft_init_token(data);
 	else

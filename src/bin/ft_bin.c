@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 16:22:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:29:11 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void	ft_malloc_var(t_data *data) // malloc et renvoie var dans un char **
 
 	i = 0;
 	var = data->var;
-	// printf("ft_malloc_var : entree\n");
+	ft_putstr("ft_malloc_var : entree\n");
 	while (var != NULL)
 	{
 		var = var->next;
 		i++;
 	}
-	// printf("ft_malloc_var : while 1 : ok\n");
-	data->env = malloc(sizeof(char *) * (i + 1));
+	ft_putstr("ft_malloc_var : while 1 : ok\n");
+	data->env = (char **)malloc(sizeof(char *) * (i + 1));
 	// data->env = ft_malloc_str(data, i);
-	// printf("ft_malloc_var : malloc : ok\n");
+	ft_putstr("ft_malloc_var : malloc : ok\n");
 	i = 0;
 	var = data->var;
 	while (data->err == 0 && var != NULL)
@@ -105,21 +105,37 @@ int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i) // stocke et mal
 	return (u);
 }
 
-void	ft_free_tab_char(char **str) // free un tableau de char
+void	ft_free_data_env(t_data *data) // free un tableau de char
 {
 	int	i;
 
 	i = 0;
-	while (str != NULL && str[i])
+	// data->env
+	// ft_putstr("free tab char :\n");
+	// while (data->env[i])
+	// {
+	// 	ft_putstr(data->env[i]);
+	// 	ft_putstr("\n");
+	// 	i++;
+	// }
+	// i = 0;
+	ft_putstr("free tab char : 0\n");
+	while (data->env && data->env[i])
 	{
-		ft_strdel(&str[i]);
+		ft_putstr(data->env[i]);
+		ft_putstr("\n");
+		// ft_strdel(&data->env[i]);
+		free(&data->env[i]);
+		data->env[i] = NULL;
 		i++;
 	}
-	if (str != NULL)
+	ft_putstr("free tab char : 1\n");
+	if (data->env != NULL)
 	{
-		free(str);
-		str = NULL;
+		free(&data->env);
+		data->env = NULL;
 	}
+	ft_putstr("free tab char : 2\n");
 }
 
 
@@ -129,7 +145,7 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	t_var	*var;
 
 	i = 0;
-	// printf("ft_is_bin :\n");
+	ft_putstr("ft_is_bin :\n");
 	var = ft_found_var_name(data, "PATH");
 	if (var == NULL)
 	{
@@ -147,10 +163,10 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	// printf("tok <%s> bin <%s>\n", token->arg, token->bin[0]);
 	
 	// ft_print_token_list(data);
-	// printf("ft_is_bin : suite\n");
+	ft_putstr("ft_is_bin : suite\n");
 	if (data->env != NULL)
-		ft_free_tab_char(data->env);
-	// printf("ft_is_bin : free var : OK\n");
+		ft_free_data_env(data);
+	ft_putstr("ft_is_bin : free var : OK\n");
 	ft_malloc_var(data);
 	// printf("ft_is_bin : malloc var : OK\n");
 
@@ -221,21 +237,19 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 	pid_t	pid;
 	// int		status;
 
-	// printf("------ Entree Fork : <%s>\n", token->arg);
+	printf("------ Entree Fork : <%s>\n", token->arg);
 	// ft_putstr_fd("SORTIE SUR 1 :", 1);
-	// printf("fd_in : %d\n", data->pipe->fd_i);
-	// printf("fd_out : %d\n", data->pipe->fd_o);
+	printf("fd_in : %d\n", data->pipe->fd_i);
+	printf("fd_out : %d\n", data->pipe->fd_o);
 	// dup2(data->pipe->fd_i, 0);
 	pid = fork();
 	if (pid == -1)
-		printf("ERREUR FORK BIN EXECVE\n");
+		printf("ERREUR TEST FORK\n");
 	else if (pid == 0)
 		execve(token->arg, token->bin, data->env);
 	// else
-	// signal(SIGINT, handler);
-	// signal(SIGQUIT, handler);
 	waitpid(pid, &g_return, 0);
-	// printf("------ Sortie Fork <%s> !\n", token->arg);
+	printf("------ Sortie Fork <%s> !\n", token->arg);
 }
 
 // void	ft_test(t_data *data) // TEST

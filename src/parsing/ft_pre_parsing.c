@@ -101,4 +101,3 @@ int		ft_verif_double_quote(char *str) // verifie la permeabilite des double quot
 		return (sq);
 	return (dq);
 }
-

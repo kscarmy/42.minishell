@@ -146,18 +146,32 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 	int i;
 
 	i = 0;
+	// ft_putstr("CUT BIN :\n");
 	u = ft_bin_size(data);
+	// ft_putnbr(u);
+	// ft_putstr("CUT BIN : 1\n");
 	if (data->token == NULL)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
 	data->token->cmd = 9;
-	data->token->bin = malloc(sizeof(char*) * (u));
+	// ft_putstr("CUT BIN : 2\n");
+	data->token->bin = (char **)malloc(sizeof(char*) * (u + 1));
+	// ft_putstr("CUT BIN : 3\n");
+	// if (data->token->bin == NULL)
+	// 	ft_putstr("CUT BIN : NULL\n");
+
 	data->token->bin[u] = NULL;
+	
 	u = 0;
+	ft_putnbr(u);
 	u = u + ft_space(data->input, data->i + u);
+	// ft_putstr("CUT BIN : 4\n");
+	ft_putnbr(u);
 	data->token->arg = ft_src_in_dest(data, data->token->arg, ft_one_arg(data, u), 0);
+	// ft_putstr("CUT BIN : 5\n");
 	u = u + ft_space(data->input, data->i + u);
+	// ft_putstr("CUT BIN : 6\n");
 	// printf("BIN : data->token->arg : <%s>\n", data->token->arg);
 	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0)
 	{
@@ -172,6 +186,7 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 		// printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
 		i++;
 	}
+	// ft_putstr("CUT BIN : 7\n");
 	data->i = data->i + u;
 	return (1);
 }

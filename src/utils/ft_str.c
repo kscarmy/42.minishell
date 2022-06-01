@@ -181,15 +181,18 @@ char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep) // refais un
 	int	ss; //  size src
 	char *ret;
 
+	ft_putstr("src in dest :\n");
 	// printf("src in dest : infos :\n");
 	// printf("src in dest : dest : <%s> src : <%s>\n", dest, src);
 	sd = ft_str_size(dest);
 	ss = ft_str_size(src);
 	// printf("src in dest : sep\n");
+	ft_putstr("src in dest : 1\n");
 	if (sep != 0)
 		ret = ft_malloc_str(data, sd + ss + 1);
 	else
 		ret = ft_malloc_str(data, sd + ss);
+	ft_putstr("src in dest : 2\n");
 	sd = 0;
 	ss = 0;
 	// printf("src in dest : while\n");

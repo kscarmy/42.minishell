@@ -54,7 +54,7 @@ INC		= -I ./inc/ -I $(LIBFT_DIR)
 ## Compiling config
 CC		= gcc
 RM		= rm -rf
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -fsanitize=address
 
 ## Output messages
 DONE = @echo "libft compiled successfully!"
@@ -66,7 +66,7 @@ all:	obj $(NAME)
 
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS)  -lreadline -I .brew/opt/readline/include -o $(NAME)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -lreadline -o $(NAME)
 	$(DONE)
 
 $(LIBFT):

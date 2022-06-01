@@ -16,6 +16,8 @@ void	ft_init_var(t_data *data) // initialise la liste
 {
 	t_var	*var;
 
+	// ft_putstr("MICHEL ?\n");
+
 	var = malloc(sizeof(t_var));
 	if(var == NULL)
 		data->err = 1001; // erreur 1001 = malloc var
@@ -33,7 +35,8 @@ void	ft_add_new_var(t_data *data) // cree une nouvelle liste et la met au debut 
 {
 	t_var *new;
 
-	new = malloc(sizeof(t_var));
+	// ft_putstr("BERNARD ?\n");/
+	new = (t_var *)malloc(sizeof(t_var));
 	if (new == NULL)
 		data->err = 101; // erreur 101 = malloc
 	else
@@ -45,6 +48,7 @@ void	ft_add_new_var(t_data *data) // cree une nouvelle liste et la met au debut 
 		new->prev = NULL; // premier var dans la liste donc addresse precedente nulle
 		new->next->prev = new;
 	}
+	// ft_putstr("BERNARD ?\n");
 }
 
 void	ft_free_var(t_data *data, t_var *var) // free les mallocs dans une liste

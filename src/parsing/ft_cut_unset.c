@@ -41,9 +41,9 @@ int	ft_cut_unset(t_data *data, int i) // ret 1 si unset trouver, sinon ret 0. i 
 
 void	ft_create_unset_token(t_data *data) // fonction qui cree le token unset
 {
-	int	u;
+	// int	u;
 
-	u = 0;
+	// u = 0;
 	if (data->token == NULL)
 		ft_init_token(data);
 	else

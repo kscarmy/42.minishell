@@ -253,14 +253,26 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 	int	ret;
 
 	u = 0;
-	s = s + data->i;
+	// s = s + data->i;
 	ret = 0;
+	
+	ft_putstr("size one arg :\n");
+	ft_putnbr(s);
+	s = s + data->i;
+	ft_putstr("size one arg :\n");
+	ft_putnbr(s);
+	ft_putstr("size one arg :\n");
+	ft_putnbr(ret);
+	ft_putstr("size one arg :\n");
 	// printf("size one arg : entree\n");
 	while (ft_is_separator(data->input, (s + u)) == 0 && data->input[s + u] && data->input[s + u] != ' ')
 	{
+		ft_putstr("size one arg : while\n");
+		ft_putnbr(ret);
 		// printf("size one arg : while : ret %d\n", ret);
 		if (data->input[s + u] == '\"' && data->input[s + u + 1] != '\"' && data->input[s + u + 1] != '\0')
 		{
+			ft_putstr("size one arg : 1\n");
 			ret = ret + ft_str_size(ft_ret_double_quote(data, &data->input[s + u], 0));
 			u++;
 			while (data->input[s + u] != '\"')
@@ -269,6 +281,7 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		}
 		else if (data->input[s + u] == '\'' && data->input[s + u + 1] != '\'' && data->input[s + u + 1] != '\0')
 		{
+			ft_putstr("size one arg : 2\n");
 			ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
 			while (data->input[s + u] != '\'')
 				u++;
@@ -276,10 +289,15 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 			// u = u + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
 		}
 		else if ((data->input[s + u] == '\"' && data->input[s + u + 1] == '\"') || (data->input[s + u] == '\'' && data->input[s + u + 1] == '\''))
+		{
+			ft_putstr("size one arg : 3\n");
 			u = u + 2;
+		}
 		else if (data->input[s + u] == '$')
 		{
-			// printf("size one arg : dollar entree\n");
+			ft_putstr("size one arg : 4\n");
+			ft_putnbr(ret);
+			// printf("size one arg : dollar entree\n");	
 			if (ft_str_size(ft_ret_dollar(data, &(data->input[s + u]))) > 0)
 			{
 				// printf("size one arg : if\n");
@@ -294,14 +312,21 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 				ret++;
 				u++;
 			}
+			ft_putnbr(ret);
 			// printf("size one arg : dollar sortie\n");
 		}
 		else
 		{
+			ft_putstr("size one arg : 5\n");
+			ft_putnbr(ret);
 			u++;
 			ret++;
+			ft_putnbr(ret);
 		}
 	}
+	ft_putstr("size one arg : sortie : ret :<");
+	ft_putnbr(ret);
+	ft_putstr(">\n");
 	// printf("size one arg : sortie : ret %d\n", ret);
 	return (ret);
 }
@@ -331,13 +356,19 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 	int		i;
 
 	i = 0;
+
+	// ft_putstr("one arg :\n");
+	ft_putnbr(u);
 	// printf("one arg : malloc ret\n");
 	ret = ft_malloc_str(data, ft_size_one_arg(data, u));
 	u = u + data->i;
+	// ft_putstr("one arg : 1\n");
 	while (data->input[i + u] && data->input[i + u] != ' ' && ft_is_separator(data->input, i + u) == 0)
 	{
 		/*	jean michel	*/
 		// printf("one arg : debut while\n");
+		// ft_putstr("one arg : i ");
+		// ft_put
 		if (data->input[i + u] == '\"' && data->input[i + u + 1] != '\"' && data->input[i + u + 1] != '\0')
 		{
 			// printf("one arg : dq : ret\n");

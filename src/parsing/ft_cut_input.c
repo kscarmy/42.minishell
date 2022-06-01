@@ -36,12 +36,11 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 		found = 0;
 		data->i = data->i + ft_space(data->input, data->i);
 		printf ("parse input data i : %d\n", data->i);
+		printf("input : <%s>\n", data->input);
 		if (ft_str_size(&(data->input[data->i])) == 0)
 			found++;
-		// if (cut_history(data) == 1)		// checks if command is "history" and creates its token
-		// 	found++;
-		// else 
-		// 	add_history(data->input, 1);	// adds line to history if it is not "history"
+		printf("0 : %d", data->i);
+		
 		if (found == 0 && ft_cut_exit(data))		// sets data->exit = 1 if command is "exit"
 			found++;
 		printf("i : %d", data->i);
@@ -50,27 +49,27 @@ int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique
 			// printf("incre env found\n");
 			found++;
 		}
-		printf(" %d", data->i);
+		printf("1 %d", data->i);
 		if (found == 0 && ft_cut_cd(data, data->i))
 			found++;
-		printf(" %d", data->i);
+		printf("2 %d", data->i);
 		if (found == 0 && ft_cut_echo(data, data->i) == 1)
 		{
 			found++;
 		}
-		printf(" %d", data->i);
+		printf("3 %d", data->i);
 		if (found == 0 && ft_cut_pwd(data) == 1)
 			found++;
-		printf(" %d", data->i);
+		printf("4 %d", data->i);
 		if (found == 0 && ft_cut_export(data) == 1)
 			found++;
-		printf(" %d", data->i);
+		printf("5 %d", data->i);
 		if (found == 0 && ft_cut_unset(data, data->i) == 1)
 			found++;
-		printf(" %d", data->i);
+		printf("6 %d", data->i);
 		if (found == 0 && ft_cut_redirects(data) == 1)
 			found++;
-		printf(" %d", data->i);
+		printf("7 %d", data->i);
 		if (found == 0 && ft_cut_bin(data) == 1)
 		{
 			printf("fin while cut input : <%s>\n", data->token->bin[0]);
