@@ -21,7 +21,7 @@ char	*ft_malloc_one_var(t_data *data, t_var *var) // malloc une ligne dans data-
 	// printf("ft_malloc_one_var : entree\n");
 	i = ft_str_size(var->name);
 	u = ft_str_size(var->value);
-	i = i + u + 1; // le '+ 1' correspond au signe '='
+	i = i + u + 2; // le '+ 1' correspond au signe '='
 	str = ft_malloc_str(data, i);
 	i = 0;
 	u = 0;
@@ -110,6 +110,7 @@ void	ft_free_data_env(t_data *data) // free un tableau de char
 	int	i;
 
 	i = 0;
+	// char	*tmp;
 	// data->env
 	// ft_putstr("free tab char :\n");
 	// while (data->env[i])
@@ -119,23 +120,24 @@ void	ft_free_data_env(t_data *data) // free un tableau de char
 	// 	i++;
 	// }
 	// i = 0;
-	ft_putstr("free tab char : 0\n");
+	// ft_putstr("free tab char : 0\n");
 	while (data->env && data->env[i])
 	{
-		ft_putstr(data->env[i]);
-		ft_putstr("\n");
+		// ft_putstr(data->env[i]);
+		// ft_putstr("\n");
+		// tmp = &
 		// ft_strdel(&data->env[i]);
-		free(&data->env[i]);
+		free(data->env[i]);
 		data->env[i] = NULL;
 		i++;
 	}
-	ft_putstr("free tab char : 1\n");
+	// ft_putstr("free tab char : 1\n");
 	if (data->env != NULL)
 	{
-		free(&data->env);
+		free(data->env);
 		data->env = NULL;
 	}
-	ft_putstr("free tab char : 2\n");
+	// ft_putstr("free tab char : 2\n");
 }
 
 
@@ -166,9 +168,9 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	ft_putstr("ft_is_bin : suite\n");
 	if (data->env != NULL)
 		ft_free_data_env(data);
-	ft_putstr("ft_is_bin : free var : OK\n");
+	// ft_putstr("ft_is_bin : free var : OK\n");
 	ft_malloc_var(data);
-	// printf("ft_is_bin : malloc var : OK\n");
+	ft_putstr("ft_is_bin : malloc var : OK\n");
 
 	/*	fin zone test	*/
 	// printf("tok <%s> bin <%s>\n", token->arg, token->bin[0]);
@@ -183,12 +185,12 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	
 	token->arg = NULL;
 
-	// printf("ft_is_bin : fin zone test : OK\n");
-	while (var != NULL && var->value != NULL && var->value[i] && access(token->arg, F_OK) == -1)
+	ft_putstr("ft_is_bin : fin zone test : OK\n");
+	while (var != NULL && var->value != NULL && i < ft_str_size(var->value) && access(token->arg, F_OK) == -1)
 	{
 		i = i + ft_bin_path(data, var, token, i);
 	}
-	// printf("token arg : <%s>\n", token->arg);
+	ft_putstr("token arg :\n");
 	if (access(token->arg, F_OK) == 0)
 		ft_bin_execve(data, token);
 	else
@@ -199,6 +201,7 @@ void	ft_is_bin(t_data *data, t_token *token) //
 		g_return = 127;
 		// printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
 	}
+	ft_putstr("token arg :\n");
 	// if (access(token->arg, F_OK) == -1)
 	// {
 	// 	ft_arg_path_bin(data, token);

@@ -109,20 +109,6 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 {
 	int	i;
 
-
-	// ft_putstr("ENV : ");
-	// ft_putstr(env[i]);
-	// while (env && env[i])
-	// {
-	// 	ft_putstr(env[i]);
-	// 	ft_putstr("\n");
-
-	// 	i++;
-	// }
-	// i = 0;
-	// ft_putnbr(data->err);
-
-	// printf("OK 1A\n");
 	t_var	*t;
 
 	data->i = 0;
@@ -162,7 +148,9 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 	{
 		i = ft_atoi(t->value);
 		i++;
-		ft_strdel(&t->value);
+		// ft_strdel(&t->value);
+		free(t->value);
+		t->value = NULL;
 		t->value = ft_itoa(i);
 	}
 	

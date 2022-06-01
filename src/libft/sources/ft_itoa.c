@@ -53,88 +53,136 @@
 // 	return (string);
 // }
 
-static	int		ft_size(long nb)
-{
-	long	i;
+// static	int		ft_size(long nb)
+// {
+// 	long	i;
 
-	i = 1;
-	if (nb == 0)
-		return (2);
-	if (nb < 0)
+// 	i = 1;
+// 	if (nb == 0)
+// 		return (2);
+// 	if (nb < 0)
+// 	{
+// 		i++;
+// 		nb = -nb;
+// 	}
+// 	while (nb > 0)
+// 	{
+// 		i++;
+// 		nb = nb / 10;
+// 	}
+// 	return (i);
+// }
+
+// static	char	*ft_is_zero(void)
+// {
+// 	char	*zero;
+
+// 	if (!(zero = malloc(sizeof(char) * 2)))
+// 		return (NULL);
+// 	zero[0] = '0';
+// 	zero[1] = '\0';
+// 	return (zero);
+// }
+
+// static	char	*ft_strnb(long size, long nb)
+// {
+// 	char	*str;
+// 	long	i;
+
+// 	i = 0;
+// 	if (!(str = (char *)malloc(sizeof(char) * size)))
+// 		return (NULL);
+// 	if (nb < 0)
+// 	{
+// 		nb = -nb;
+// 		size--;
+// 	}
+// 	size--;
+// 	if (nb == 0)
+// 		str = ft_is_zero();
+// 	while ((size > 0) && (nb > 0))
+// 	{
+// 		str[i] = (nb % 10) + 48;
+// 		nb = nb / 10;
+// 		i++;
+// 		size--;
+// 		str[i] = '\0';
+// 	}
+// 	return (str);
+// }
+
+// char			*ft_itoa(int n)
+// {
+// 	char	*str;
+// 	char	*cpystr;
+// 	long	i;
+// 	long	size;
+
+// 	i = 0;
+// 	if (!(str = (char *)malloc(sizeof(char) * ft_size((long)n))))
+// 		return (NULL);
+// 	cpystr = ft_strnb(ft_size((long)n), (long)n);
+// 	size = ft_size((long)n) - 1;
+// 	if (n < 0)
+// 	{
+// 		str[i] = 45;
+// 		i++;
+// 		size--;
+// 	}
+// 	while (size > 0)
+// 	{
+// 		str[i] = cpystr[ft_size((long)n) - (i + 2)];
+// 		i++;
+// 		size--;
+// 	}
+// 	str[i] = '\0';
+// 	return (str);
+// }
+
+
+static	int	ft_find_size(long n)
+{
+	int	compt;
+
+	compt = 0;
+	if (n <= 0)
 	{
-		i++;
-		nb = -nb;
+		n = n * -1;
+		compt++;
 	}
-	while (nb > 0)
+	while (n > 0)
 	{
-		i++;
-		nb = nb / 10;
+		n = n / 10;
+		compt++;
 	}
-	return (i);
+	return (compt);
 }
 
-static	char	*ft_is_zero(void)
+char	*ft_itoa(int n)
 {
-	char	*zero;
+	char		*rslt;
+	long		store;
+	int			i;
+	int			j;
 
-	if (!(zero = malloc(sizeof(char) * 2)))
+	store = n;
+	rslt = malloc(sizeof(char) * ft_find_size(n) + 1);
+	if (!rslt)
 		return (NULL);
-	zero[0] = '0';
-	zero[1] = '\0';
-	return (zero);
-}
-
-static	char	*ft_strnb(long size, long nb)
-{
-	char	*str;
-	long	i;
-
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * size)))
-		return (NULL);
-	if (nb < 0)
+	i = ft_find_size(n) - 1;
+	j = 0;
+	if (store < 0)
 	{
-		nb = -nb;
-		size--;
+		rslt[j] = '-';
+		store = store * -1;
+		j++;
 	}
-	size--;
-	if (nb == 0)
-		str = ft_is_zero();
-	while ((size > 0) && (nb > 0))
+	while (i >= j)
 	{
-		str[i] = (nb % 10) + 48;
-		nb = nb / 10;
-		i++;
-		size--;
-		str[i] = '\0';
+		rslt[i] = '0' + store % 10;
+		store = store / 10;
+		i--;
 	}
-	return (str);
-}
-
-char			*ft_itoa(int n)
-{
-	char	*str;
-	char	*cpystr;
-	long	i;
-	long	size;
-
-	i = 0;
-	if (!(str = (char *)malloc(sizeof(char) * ft_size((long)n))))
-		return (NULL);
-	cpystr = ft_strnb(ft_size((long)n), (long)n);
-	size = ft_size((long)n) - 1;
-	if (n < 0)
-	{
-		str[i] = 45;
-		i++;
-		size--;
-	}
-	while (size > 0)
-	{
-		str[i] = cpystr[ft_size((long)n) - (i + 2)];
-		i++;
-		size--;
-	}
-	str[i] = '\0';
-	return (str);
+	rslt[ft_find_size(n)] = '\0';
+	return (rslt);
 }

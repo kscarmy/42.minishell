@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 12:42:46 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:51:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,5 +345,13 @@ void	ft_copy_fd(int fd_s, int fd_d); // copy le fd source dans le fd dest
 /*	ft_in_file.c	*/
 int		ft_create_open_file(t_data *data, char *name, int create); // cree ou ouvre un fichier. si create == 1 alors supprime le fichier. renvoie le fd du fichier ouvert.
 void	ft_fd_redir(t_data	*data, int fd_in, int fd_out); // redirige la sortie ou l'entree en fonction de ce qu'on lui passe
+
+
+/*	*******	*/
+/*	 FREE	*/
+/*	*******	*/
+
+/*	ft_free.c	*/
+void    ft_free_minishell(t_data *data); // free les mallocs avant de sortir du programme.
 
 #endif

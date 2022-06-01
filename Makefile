@@ -39,6 +39,7 @@ SRC	= 	src/main.c \
 		src/redir/ft_pipe.c \
 		src/redir/ft_in_file.c \
 		src/redir/ft_here_doc.c \
+		src/free/ft_free.c \
 
 
 
@@ -55,7 +56,7 @@ INC		= -I ./inc/ -I $(LIBFT_DIR)
 CC		= gcc
 RM		= rm -rf
 CFLAGS		= -Wall -Werror -Wextra -fsanitize=address
-
+# -fsanitize=address
 ## Output messages
 DONE = @echo "libft compiled successfully!"
 CLEAN_O = @echo "Object files removed!"
@@ -81,6 +82,7 @@ obj:
 	@mkdir -p obj/var
 	@mkdir -p obj/bin
 	@mkdir -p obj/redir
+	@mkdir -p obj/free
 
 obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<

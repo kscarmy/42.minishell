@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/23 16:35:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:51:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ int	main(int argc, char **argv, char **env)
 	/*	tests free : 	*/
 	unlink(TMP_OUT);
 	unlink(TMP_IN);
+	ft_free_minishell(data);
 	return (0);
 }
