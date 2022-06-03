@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:26:42 by mourdani          #+#    #+#             */
-/*   Updated: 2022/05/26 11:28:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:36:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ char	*ft_itoa(int n)
 	int			j;
 
 	store = n;
-	rslt = malloc(sizeof(char) * ft_find_size(n) + 1);
+	rslt = malloc(sizeof(char) * (ft_find_size(n) + 1));
 	if (!rslt)
 		return (NULL);
 	i = ft_find_size(n) - 1;

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/26 11:17:15 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:00:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 {
 	t_var	*var;
 	int		i;
+	// char	*tmp;
 
 	i = 0;
-	// printf("ft_found_var_name : str <%s>\n", str);
+	printf("ft_found_var_name : ENTREE : str <%s>\n", str);
 	while (str[i])
 		i++;
 	if (data->var != NULL)
@@ -29,17 +30,21 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 		return (NULL);
 	if (i == 0)
 		return (NULL);
-	// printf("ft_found_var_name : str <%s>\n", str);
+	printf("ft_found_var_name : avant while : str <%s>\n", str);
 	while (var != NULL)
 	{
-		// printf("ft_found_var_name : dans while : var name <%s>\n", var->name);
+		printf("ft_found_var_name : dans while : var name <%s>\n", var->name);
 		if (str[0] == '?' && str[1] == '\0')
 		{
-			// printf("ft_found_var_name : OUI\n");
-			if (var->value != NULL)
-				ft_strdel(&var->value);
-			var->value = malloc(sizeof(char) * (ft_str_size(ft_itoa(g_return))));
+			printf("ft_found_var_name : OUI\n");
+			printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
+			ft_strdel(&var->value);
+			printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
+			// tmp = ft_itoa(g_return);
+			// var->value = malloc(sizeof(char) * (ft_str_size(tmp)));
+			var->value = ft_itoa(g_return);
 			// printf("g_return %d ft_itoa : <%s>\n", g_return, ft_itoa(g_return));
+			// ft_strdel(&tmp);
 			var->value = ft_itoa(g_return);
 			return (var);
 		}
@@ -71,7 +76,7 @@ void	ft_disp_all_var(t_data *data, char sep, int export) // permet d'afficher to
 	var = data->var;
 	while (var != NULL)
 	{
-		if (var->name[0] == '$' && var->name[1] == '\0')
+		if (var->name[0] == '?' && var->name[1] == '\0')
 			var = var->next;
 		if (export == 1)
 			ft_putstr("declare -x ");

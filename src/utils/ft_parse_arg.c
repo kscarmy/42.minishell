@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 15:27:31 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:06:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 {
 	int	u;
 	int i = 0;
+	// int	dol_s;
+	char	*tmp;
 
 	// int	jean = 0;
 
@@ -47,12 +49,14 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 			}
 		else if (data->input[data->i + u] == '$')
 		{
-			// printf("size of arg dollard in %d\n", u);
-			if (ft_str_size(ft_ret_dollar(data, &(data->input[data->i + u]))) > 0)
-				u = u + ft_str_size(ft_ret_dollar(data, &(data->input[data->i + u])));
+			tmp = ft_ret_dollar(data, &(data->input[data->i + u]));
+			printf("size of arg dollard in %d\n", u);
+			if (ft_str_size(tmp) > 0)
+				u = u + ft_str_size(tmp);
 			else
 				u++;
-			// printf("size of arg dollard out %d\n", u);
+			ft_strdel(&tmp);
+			printf("size of arg dollard out %d\n", u);
 		}
 		else
 			u++;
@@ -251,6 +255,7 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 {
 	int	u;
 	int	ret;
+	char	*tmp;
 
 	u = 0;
 	// s = s + data->i;
@@ -295,13 +300,14 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		}
 		else if (data->input[s + u] == '$')
 		{
+			tmp = ft_ret_dollar(data, &(data->input[s + u]));
 			// ft_putstr("size one arg : 4\n");
 			// ft_putnbr(ret);
 			// printf("size one arg : dollar entree\n");	
-			if (ft_str_size(ft_ret_dollar(data, &(data->input[s + u]))) > 0)
+			if (ft_str_size(tmp) > 0)
 			{
 				// printf("size one arg : if\n");
-				ret = ret + ft_str_size(ft_ret_dollar(data, &(data->input[s + u])));
+				ret = ret + ft_str_size(tmp);
 				u++;
 				while (ft_is_separator(data->input, (s + u)) == 0 && data->input[s + u] && data->input[s + u] != ' ' && data->input[s + u] != '$')
 					u++;
@@ -312,6 +318,7 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 				ret++;
 				u++;
 			}
+			ft_strdel(&tmp);
 			ft_putnbr(ret);
 			// printf("size one arg : dollar sortie\n");
 		}
@@ -354,6 +361,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 {
 	char	*ret;
 	char	*tmp;
+	char	*tmp2;
 	int		i;
 
 	i = 0;
@@ -361,6 +369,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 	// ft_putstr("one arg :\n");
 	ft_putnbr(u);
 	// printf("one arg : malloc ret\n");
+	// tmp = ft_size_one_arg(data, u);
 	ret = ft_malloc_str(data, ft_size_one_arg(data, u));
 	u = u + data->i;
 	// ft_putstr("one arg : 1\n");
@@ -404,10 +413,11 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 			i = i + 2;
 		else if (data->input[i + u] == '$')
 		{
-			if (ft_str_size(ft_ret_dollar(data, &(data->input[i + u]))) > 0) // A FAIRE : ajouter la gestion de un seul doll directement dans la fonction ret_dollar
+			tmp2 = ft_ret_dollar(data, &(data->input[i + u]));
+			if (ft_str_size(tmp2) > 0) // A FAIRE : ajouter la gestion de un seul doll directement dans la fonction ret_dollar
 			{
 				tmp = ret;
-				ret = ft_src_in_dest(data, ret, ft_ret_dollar(data, &(data->input[i + u])), 0);
+				ret = ft_src_in_dest(data, ret, tmp2, 0);
 				ft_strdel(&tmp);
 				// printf("one arg : dollar i %d\n", i);
 			}
@@ -418,6 +428,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 				i++;
 			// printf("one arg : dollar i %d\n", i);
 				// ret[i] = '\0';
+			ft_strdel(&tmp2);
 		}
 		else
 		{
@@ -441,18 +452,21 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 {
 	int		u;
 	int max = 0;
+	char	*tmp;
 
 	u = 0;
 	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0 && max < 20)
 	{
-		// printf("malloc builtin : debut while\n");
+		printf("malloc builtin : debut while\n");
 		u = u + ft_space(data->input, data->i + u);
-		// printf("malloc builtin : one arg\n");
+		printf("malloc builtin : one arg\n");
 		ft_strdel(&tok->arg);
-		tok->arg = ft_src_in_dest(data, tok->arg, ft_one_arg(data, u), ' ');
-		// printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
+		tmp = ft_one_arg(data, u);
+		tok->arg = ft_src_in_dest(data, tok->arg, tmp, ' ');
+		ft_strdel(&tmp);
+		printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
 		u = ft_incre_one_arg(data, u);
-		// printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
+		printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
 		max ++;
 	}
 	data->i = data->i + u;
