@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/24 22:49:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:46:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,19 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 
 	i = 0;
 	u = 0;
-	// printf ("\n-------------Entree malloc arg\n");
+	printf ("\n-------------Entree malloc arg\n");
 	size = ft_size_of_arg(data);
-	// printf ("--------------size tok arg <%d>\n", size);
+	printf ("--------------size tok arg <%d>\n", size);
 	tok->arg = ft_malloc_str(data, size);
-	// printf ("INFO 1 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
+	printf ("INFO 1 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
 	if (size > 0 && tok->arg != NULL)
 	{
 		while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
 		{
-			// printf ("----in while : <%s>\n", &(data->input[data->i + u]));
+			printf ("----in while : <%s>\n", &(data->input[data->i + u]));
 			if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"')
 			{
-				// printf ("in dq\n");
+				printf ("in dq\n");
 				tmp = ft_ret_double_quote(data, &data->input[data->i + u], 0);
 				if (ft_str_size(tmp) > 0)
 					u = u + 2 + ft_str_size(tmp);
@@ -103,12 +103,12 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				if (data->input[data->i + u] == '\"')
 					u++;
 
-				// printf ("----IN malloc arg dbl q u size (%d)\n", u);
+				printf ("----IN malloc arg dbl q u size (%d)\n", u);
 				if (ft_str_size(tmp) > 0)
 					ft_copie_dest_src(tok, tmp);
 				ft_strdel(&tmp);
-				// printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
-				// printf ("INFO 2 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
+				printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
+				printf ("INFO 2 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
 			}
 			else if (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] != '\'')
 			{
@@ -256,23 +256,23 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 	// s = s + data->i;
 	ret = 0;
 	
-	ft_putstr("size one arg :\n");
+	// ft_putstr("size one arg :\n");
 	ft_putnbr(s);
 	s = s + data->i;
-	ft_putstr("size one arg :\n");
+	// ft_putstr("size one arg :\n");
 	ft_putnbr(s);
-	ft_putstr("size one arg :\n");
+	// ft_putstr("size one arg :\n");
 	ft_putnbr(ret);
-	ft_putstr("size one arg :\n");
+	// ft_putstr("size one arg :\n");
 	// printf("size one arg : entree\n");
 	while (ft_is_separator(data->input, (s + u)) == 0 && data->input[s + u] && data->input[s + u] != ' ')
 	{
-		ft_putstr("size one arg : while\n");
-		ft_putnbr(ret);
+		// ft_putstr("size one arg : while\n");
+		// ft_putnbr(ret);
 		// printf("size one arg : while : ret %d\n", ret);
 		if (data->input[s + u] == '\"' && data->input[s + u + 1] != '\"' && data->input[s + u + 1] != '\0')
 		{
-			ft_putstr("size one arg : 1\n");
+			// ft_putstr("size one arg : 1\n");
 			ret = ret + ft_str_size(ft_ret_double_quote(data, &data->input[s + u], 0));
 			u++;
 			while (data->input[s + u] != '\"')
@@ -281,7 +281,7 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		}
 		else if (data->input[s + u] == '\'' && data->input[s + u + 1] != '\'' && data->input[s + u + 1] != '\0')
 		{
-			ft_putstr("size one arg : 2\n");
+			// ft_putstr("size one arg : 2\n");
 			ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
 			while (data->input[s + u] != '\'')
 				u++;
@@ -290,13 +290,13 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		}
 		else if ((data->input[s + u] == '\"' && data->input[s + u + 1] == '\"') || (data->input[s + u] == '\'' && data->input[s + u + 1] == '\''))
 		{
-			ft_putstr("size one arg : 3\n");
+			// ft_putstr("size one arg : 3\n");
 			u = u + 2;
 		}
 		else if (data->input[s + u] == '$')
 		{
-			ft_putstr("size one arg : 4\n");
-			ft_putnbr(ret);
+			// ft_putstr("size one arg : 4\n");
+			// ft_putnbr(ret);
 			// printf("size one arg : dollar entree\n");	
 			if (ft_str_size(ft_ret_dollar(data, &(data->input[s + u]))) > 0)
 			{
@@ -317,16 +317,16 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		}
 		else
 		{
-			ft_putstr("size one arg : 5\n");
-			ft_putnbr(ret);
+			// ft_putstr("size one arg : 5\n");
+			// ft_putnbr(ret);
 			u++;
 			ret++;
-			ft_putnbr(ret);
+			// ft_putnbr(ret);
 		}
 	}
-	ft_putstr("size one arg : sortie : ret :<");
-	ft_putnbr(ret);
-	ft_putstr(">\n");
+	// ft_putstr("size one arg : sortie : ret :<");
+	// ft_putnbr(ret);
+	// ft_putstr(">\n");
 	// printf("size one arg : sortie : ret %d\n", ret);
 	return (ret);
 }

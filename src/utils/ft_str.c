@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/24 22:48:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:46:03 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,18 +181,18 @@ char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep) // refais un
 	int	ss; //  size src
 	char *ret;
 
-	ft_putstr("src in dest :\n");
+	// ft_putstr("src in dest :\n");
 	// printf("src in dest : infos :\n");
 	// printf("src in dest : dest : <%s> src : <%s>\n", dest, src);
 	sd = ft_str_size(dest);
 	ss = ft_str_size(src);
 	// printf("src in dest : sep\n");
-	ft_putstr("src in dest : 1\n");
+	// ft_putstr("src in dest : 1\n");
 	if (sep != 0)
 		ret = ft_malloc_str(data, sd + ss + 1);
 	else
 		ret = ft_malloc_str(data, sd + ss);
-	ft_putstr("src in dest : 2\n");
+	// ft_putstr("src in dest : 2\n");
 	sd = 0;
 	ss = 0;
 	// printf("src in dest : while\n");
@@ -216,4 +216,25 @@ char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep) // refais un
 	ret[sd + ss] = '\0';
 	// printf("src in dest : fin : ret <%s>\n", ret);
 	return (ret);
+}
+
+char	*ft_str_cpy(char *stra, char *strb)
+{
+	int	i;
+	int	u;
+
+	i = 0;
+	u = 0;
+	// printf("str_cpy : stra <%s> strb <%s>\n", stra, strb);
+	while(stra[i] && stra[i] != '\0')
+		i++;
+	// printf("str_cpy : stra <%s> strb %d <%s> %d\n", stra, i, strb, u);
+	while (strb[u] && strb[u] != '\0')
+	{
+		// printf("oui\n");
+		stra[i + u] = strb[u];
+		u++;
+	}
+	// printf("str_cpy : stra <%s> strb %d <%s> %d\n", stra, i, strb, u);
+	return (stra);
 }

@@ -55,9 +55,9 @@ INC		= -I ./inc/ -I $(LIBFT_DIR)
 ## Compiling config
 CC		= gcc
 RM		= rm -rf
-CFLAGS		= -Wall -Werror -Wextra -fsanitize=address
-# -fsanitize=address
-## Output messages
+CFLAGS		= -Wall -Werror -Wextra
+## -fsanitize=address
+## Output messages	
 DONE = @echo "libft compiled successfully!"
 CLEAN_O = @echo "Object files removed!"
 CLEAN_A = @echo "Executables removed!"

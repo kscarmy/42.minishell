@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 15:27:15 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:45:46 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,10 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			tmp = ft_ret_dollar(data, &str[i]);
 			// printf("dbl q if dol tmp <%s>\n", tmp);
 			// if (ft_str_size(ret) > 0)
-			ret = ft_strcpy(ret, tmp); // TEST DU COUP
+			// printf("--dbl q if dol tmp <%s> ret <%s>\n", tmp, ret);
+			ret = ft_str_cpy(ret, tmp);
+			// ret = ft_strcpy(ret, tmp); // TEST DU COUP
+			// printf("--dbl q if dol tmp <%s> ret <%s>\n", tmp, ret);
 			// printf("bro\n");
 			// ft_copie_dest_src(data->token, tmp); // ICI LE PB GUILLAUME // merci guillaume du passé
 			u = u + ft_str_size(tmp);
@@ -128,7 +131,8 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			tmp = malloc(sizeof(char*) * (2));
 			tmp[0] = '$';
 			tmp[1] = '\0';
-			ret = ft_strcpy(ret, tmp); // TEST DU COUP
+			ret = ft_str_cpy(ret, tmp);
+			// ret = ft_strcpy(ret, tmp); // TEST DU COUP
 			u = u + 1;
 			ft_strdel(&tmp);
 			i++;
