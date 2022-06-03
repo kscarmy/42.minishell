@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/24 22:50:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:37:39 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 {
 	int	u;
 	int i;
+	// char	*tmp;
 
 	i = 0;
 	// ft_putstr("CUT BIN :\n");
@@ -168,7 +169,8 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 	u = u + ft_space(data->input, data->i + u);
 	// ft_putstr("CUT BIN : 4\n");
 	ft_putnbr(u);
-	data->token->arg = ft_src_in_dest(data, data->token->arg, ft_one_arg(data, u), 0);
+	ft_strdel(&data->token->arg);
+	// data->token->arg = ft_src_in_dest(data, data->token->arg, ft_one_arg(data, u), 0);
 	// ft_putstr("CUT BIN : 5\n");
 	u = u + ft_space(data->input, data->i + u);
 	// ft_putstr("CUT BIN : 6\n");
@@ -178,7 +180,8 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 		// printf("malloc builtin : debut while\n");
 		u = u + ft_space(data->input, data->i + u);
 		// printf("malloc builtin : one arg\n");
-		data->token->bin[i] = ft_src_in_dest(data, NULL, ft_one_arg(data, u), 0);
+		data->token->bin[i] = ft_one_arg(data, u);
+		// data->token->bin[i] = ft_src_in_dest(data, NULL, ft_one_arg(data, u), 0);
 		// printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
 		u = ft_incre_one_arg(data, u);
 		

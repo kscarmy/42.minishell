@@ -5,6 +5,7 @@ mkdir -p obj/parsing
 mkdir -p obj/init
 mkdir -p obj/builtin
 mkdir -p obj/utils
+ 
 mkdir -p obj/var
 mkdir -p obj/bin
 mkdir -p obj/redir

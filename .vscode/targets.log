@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 13:58:47 2022
+# Make data base, printed on Fri Jun  3 15:26:49 2022
 
 # Variables
 
@@ -266,6 +266,7 @@ TERMINATOR_UUID = urn:uuid:edca271b-4cd9-4eb4-a3eb-79bebae2bf54
 # Directories
 
 # . (device 57, inode 264218669): 13 files, no impossibilities.
+ 
 # src (device 57, inode 264218955): No files, no impossibilities so far.
 
 # 13 files, no impossibilities in 2 directories.
@@ -277,7 +278,6 @@ obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # 1 implicit rules, 0 (0.0%) terminal.
- 
 
 # Files
 
@@ -389,7 +389,7 @@ obj/main.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 13:40:04.76003827
+#  Last modified 2022-06-03 15:07:50.486134059
 #  File has been updated.
 #  Successfully updated.
 
@@ -548,6 +548,7 @@ obj/bin/ft_bin.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -566,7 +567,6 @@ clean:
 	$(CLEAN_O)
 
 # Not a target:
- 
 obj/init/ft_init_data.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -635,6 +635,6 @@ obj/parsing/ft_quote.o:
 # strcache performance: lookups = 91 / hit rate = 30%
 # hash-table stats:
 # Load=63/8192=1%, Rehash=0, Collisions=1/91=1%
-# Finished Make data base on Fri Jun  3 13:58:47 2022
+# Finished Make data base on Fri Jun  3 15:26:49 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 14:46:59 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:27:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -353,6 +353,7 @@ char	*ft_one_simple_arg(t_data *data, int i) // renvoie une chaine simple conten
 char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant de u dans data input
 {
 	char	*ret;
+	char	*tmp;
 	int		i;
 
 	i = 0;
@@ -372,7 +373,10 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		if (data->input[i + u] == '\"' && data->input[i + u + 1] != '\"' && data->input[i + u + 1] != '\0')
 		{
 			// printf("one arg : dq : ret\n");
+			tmp = ret;
+			printf("------ %p\n------ %p\n", ret, tmp);
 			ret = ft_src_in_dest(data, ret, ft_ret_double_quote(data, &data->input[i + u], 0), 0);
+			ft_strdel(&tmp);
 			// printf("one arg : dq : ret : <%s>\n", ret);
 			i++;
 			while (data->input[i + u] != '\"')
@@ -383,7 +387,9 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		else if (data->input[i + u] == '\'' && data->input[i + u + 1] != '\'' && data->input[i + u + 1] != '\0')
 		{
 			// printf("one arg : sq : ret\n");
+			tmp = ret;
 			ret = ft_src_in_dest(data, ret, ft_ret_simple_quote(data, &data->input[i + u], 0), 0);
+			ft_strdel(&tmp);
 			// printf("one arg : sq : ret : <%s>\n", ret);
 			i++;
 			while (data->input[i + u] != '\'')
@@ -400,7 +406,9 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		{
 			if (ft_str_size(ft_ret_dollar(data, &(data->input[i + u]))) > 0) // A FAIRE : ajouter la gestion de un seul doll directement dans la fonction ret_dollar
 			{
+				tmp = ret;
 				ret = ft_src_in_dest(data, ret, ft_ret_dollar(data, &(data->input[i + u])), 0);
+				ft_strdel(&tmp);
 				// printf("one arg : dollar i %d\n", i);
 			}
 				// i = i + ft_str_size(ret);
@@ -413,9 +421,11 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		}
 		else
 		{
+			tmp = ret;
 			ret = ft_src_in_dest(data, ret, ft_one_simple_arg(data, i + u), 0);
+			ft_strdel(&tmp);
 			while (data->input[i + u] && data->input[i + u] != ' ' && ft_is_separator(data->input, i + u) == 0 && data->input[i + u] != '\'' && data->input[i + u] != '\"' && data->input[i + u] != '$')
-			i++;
+				i++;
 		}
 		/*	jean michel	*/
 		// i++;
@@ -438,6 +448,7 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 		// printf("malloc builtin : debut while\n");
 		u = u + ft_space(data->input, data->i + u);
 		// printf("malloc builtin : one arg\n");
+		ft_strdel(&tok->arg);
 		tok->arg = ft_src_in_dest(data, tok->arg, ft_one_arg(data, u), ' ');
 		// printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
 		u = ft_incre_one_arg(data, u);
