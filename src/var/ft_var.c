@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 17:00:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:18:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 	// char	*tmp;
 
 	i = 0;
-	printf("ft_found_var_name : ENTREE : str <%s>\n", str);
+	// printf("ft_found_var_name : ENTREE : str <%s>\n", str);
 	while (str[i])
 		i++;
 	if (data->var != NULL)
@@ -30,16 +30,16 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 		return (NULL);
 	if (i == 0)
 		return (NULL);
-	printf("ft_found_var_name : avant while : str <%s>\n", str);
+	// printf("ft_found_var_name : avant while : str <%s>\n", str);
 	while (var != NULL)
 	{
-		printf("ft_found_var_name : dans while : var name <%s>\n", var->name);
+		// printf("ft_found_var_name : dans while : var name <%s>\n", var->name);
 		if (str[0] == '?' && str[1] == '\0')
 		{
-			printf("ft_found_var_name : OUI\n");
-			printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
+			// printf("ft_found_var_name : OUI\n");
+			// printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
 			ft_strdel(&var->value);
-			printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
+			// printf("var : name <%s> value <%s> %p\n", var->name, var->value, var->value);
 			// tmp = ft_itoa(g_return);
 			// var->value = malloc(sizeof(char) * (ft_str_size(tmp)));
 			var->value = ft_itoa(g_return);

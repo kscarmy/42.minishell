@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:47:58 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/25 07:39:45 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:17:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,19 @@ void	ft_cd(t_data *data, t_token *token)
 	int i;
 
 	i = 0;
-	i = i + ft_space(token->arg, i);
+	// printf("ft_cd\n");
+	if (token->arg != NULL)
+		i = i + ft_space(token->arg, i);
+	// printf("ft_cd ok\n");
 	// printf ("PRE : pwd '%s' opwd '%s'\n", data->pwd, data->opwd);
 	// printf("size of arg : %lu\n", ft_strlen(token->arg));
-	if (token->arg[i] == '\0' || token->arg[i] == '~')
+	if (token->arg == NULL || token->arg[i] == '\0' || token->arg[i] == '~')
 		ft_cd_home(data);
 	else if (token->arg[i] == '-')
 		ft_cd_goto_opwd(data, data->opwd);
 	else
 		ft_cd_goto_path(data, &token->arg[i]);
+	// printf("ft_cd sortie\n");
 }
 
 
@@ -59,6 +63,7 @@ void	ft_cd_home(t_data *data) // si cd renvoie sur son home
 {
 	t_var	*var;
 
+	// printf("ft_cd_home : entree\n");
 	var = ft_found_var_name(data, "HOME");
 	if (var == NULL)
 	{
@@ -68,6 +73,7 @@ void	ft_cd_home(t_data *data) // si cd renvoie sur son home
 	{
 		ft_cd_goto_path(data, var->value);
 	}
+	// printf("ft_cd_home : sortie\n");
 }
 
 void	ft_cd_goto_opwd(t_data *data, char *path) // execute la commande 'cd -'

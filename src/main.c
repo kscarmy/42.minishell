@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 15:42:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:20:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	prompt(t_data *data)
 		data->input = readline("~$ ");
 		add_history(data->input);
 		while (data->input[i]) { i++; }
-		printf("sizeof input %d\n", i);
+		// printf("sizeof input %d\n", i);
 		/*	commande de parsing a inserer ici */
 		if (ft_is_input_safe(data->input) == 0)
 			data->err = 1;
 		else
 			ft_parse_input(data);
 
-		printf("err : %d\n", data->err);
+		// printf("err : %d\n", data->err);
 		/* commande d'execusion des tokens a inserer ici */
 		
 		if (data->err == 0 && data->exit == 0 && data->token != NULL)
@@ -111,7 +111,7 @@ int	main(int argc, char **argv, char **env)
 	unlink(TMP_OUT);
 	unlink(TMP_IN);
 	ft_free_minishell(data);
-	rl_clear_history();
+	// rl_clear_history();
 	free(data);
 	data = NULL;
 	return (0);

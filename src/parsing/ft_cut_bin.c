@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 15:37:39 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:22:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,10 @@ int	ft_cut_bin(t_data *data) // ret 1 si echo trouver, sinon ret 0. i est la tet
 	data->token->bin[u] = NULL;
 	
 	u = 0;
-	ft_putnbr(u);
+	// ft_putnbr(u);
 	u = u + ft_space(data->input, data->i + u);
 	// ft_putstr("CUT BIN : 4\n");
-	ft_putnbr(u);
+	// ft_putnbr(u);
 	ft_strdel(&data->token->arg);
 	// data->token->arg = ft_src_in_dest(data, data->token->arg, ft_one_arg(data, u), 0);
 	// ft_putstr("CUT BIN : 5\n");

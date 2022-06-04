@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 15:34:23 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:21:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,8 @@ char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep) // refais un
 	ret[sd + ss] = '\0';
 	// printf("src in dest : fin : ret <%s>\n", ret);
 	ft_strdel(&src);
+	// printf("src in dest : free\n");
+
 	// ft_strdel(&dest);
 	return (ret);
 }

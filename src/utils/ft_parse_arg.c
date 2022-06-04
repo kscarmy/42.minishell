@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 17:06:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:23:20 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int		ft_size_of_arg(t_data *data) // renvoie la taille d'un arg, pratique pour m
 		else if (data->input[data->i + u] == '$')
 		{
 			tmp = ft_ret_dollar(data, &(data->input[data->i + u]));
-			printf("size of arg dollard in %d\n", u);
+			// printf("size of arg dollard in %d\n", u);
 			if (ft_str_size(tmp) > 0)
 				u = u + ft_str_size(tmp);
 			else
 				u++;
 			ft_strdel(&tmp);
-			printf("size of arg dollard out %d\n", u);
+			// printf("size of arg dollard out %d\n", u);
 		}
 		else
 			u++;
@@ -86,19 +86,19 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 
 	i = 0;
 	u = 0;
-	printf ("\n-------------Entree malloc arg\n");
+	// printf ("\n-------------Entree malloc arg\n");
 	size = ft_size_of_arg(data);
-	printf ("--------------size tok arg <%d>\n", size);
+	// printf ("--------------size tok arg <%d>\n", size);
 	tok->arg = ft_malloc_str(data, size);
-	printf ("INFO 1 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
+	// printf ("INFO 1 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
 	if (size > 0 && tok->arg != NULL)
 	{
 		while (data->input[data->i + u] && ft_is_separator(data->input, (data->i + u)) == 0)
 		{
-			printf ("----in while : <%s>\n", &(data->input[data->i + u]));
+			// printf ("----in while : <%s>\n", &(data->input[data->i + u]));
 			if (data->input[data->i + u] == '\"' && data->input[data->i + u + 1] != '\"')
 			{
-				printf ("in dq\n");
+				// printf ("in dq\n");
 				tmp = ft_ret_double_quote(data, &data->input[data->i + u], 0);
 				if (ft_str_size(tmp) > 0)
 					u = u + 2 + ft_str_size(tmp);
@@ -107,12 +107,12 @@ void	ft_malloc_arg(t_data *data, t_token *tok) // malloc dans tok->arg l'argumen
 				if (data->input[data->i + u] == '\"')
 					u++;
 
-				printf ("----IN malloc arg dbl q u size (%d)\n", u);
+				// printf ("----IN malloc arg dbl q u size (%d)\n", u);
 				if (ft_str_size(tmp) > 0)
 					ft_copie_dest_src(tok, tmp);
 				ft_strdel(&tmp);
-				printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
-				printf ("INFO 2 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
+				// printf ("1 u : %d, <%s>\n", u, &data->input[data->i + u]);
+				// printf ("INFO 2 %d <%s>\n", ft_str_size(tok->arg), tok->arg);
 			}
 			else if (data->input[data->i + u] == '\'' && data->input[data->i + u + 1] != '\'')
 			{
@@ -262,12 +262,12 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 	ret = 0;
 	
 	// ft_putstr("size one arg :\n");
-	ft_putnbr(s);
+	// ft_putnbr(s);
 	s = s + data->i;
 	// ft_putstr("size one arg :\n");
-	ft_putnbr(s);
+	// ft_putnbr(s);
 	// ft_putstr("size one arg :\n");
-	ft_putnbr(ret);
+	// ft_putnbr(ret);
 	// ft_putstr("size one arg :\n");
 	// printf("size one arg : entree\n");
 	while (ft_is_separator(data->input, (s + u)) == 0 && data->input[s + u] && data->input[s + u] != ' ')
@@ -367,7 +367,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 	i = 0;
 
 	// ft_putstr("one arg :\n");
-	ft_putnbr(u);
+	// ft_putnbr(u);
 	// printf("one arg : malloc ret\n");
 	// tmp = ft_size_one_arg(data, u);
 	ret = ft_malloc_str(data, ft_size_one_arg(data, u));
@@ -383,7 +383,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		{
 			// printf("one arg : dq : ret\n");
 			tmp = ret;
-			printf("------ %p\n------ %p\n", ret, tmp);
+			// printf("------ %p\n------ %p\n", ret, tmp);
 			ret = ft_src_in_dest(data, ret, ft_ret_double_quote(data, &data->input[i + u], 0), 0);
 			ft_strdel(&tmp);
 			// printf("one arg : dq : ret : <%s>\n", ret);
@@ -432,6 +432,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 		}
 		else
 		{
+			// printf("one arg : else");
 			tmp = ret;
 			ret = ft_src_in_dest(data, ret, ft_one_simple_arg(data, i + u), 0);
 			ft_strdel(&tmp);
@@ -453,21 +454,43 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 	int		u;
 	int max = 0;
 	char	*tmp;
+	char	*tmp2;
 
 	u = 0;
+	// printf("malloc builting arg :\n");
 	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0 && max < 20)
 	{
-		printf("malloc builtin : debut while\n");
+		// printf("malloc builtin : debut while\n");
 		u = u + ft_space(data->input, data->i + u);
-		printf("malloc builtin : one arg\n");
-		ft_strdel(&tok->arg);
+		// printf("malloc builtin : strdel\n");
+		// ft_strdel(&tok->arg);
+		// printf("malloc builtin : one arg tmp\n");
 		tmp = ft_one_arg(data, u);
+		if (tok->arg != NULL)
+			tmp2 = tok->arg;
+		// printf("malloc builtin : one arg tok arg\n");
+		// printf("tok arg <%s>\n", tok->arg);
 		tok->arg = ft_src_in_dest(data, tok->arg, tmp, ' ');
-		ft_strdel(&tmp);
-		printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
+		// printf("tok arg <%s>\n", tok->arg);
+		// ft_strdel(&tmp);
+		ft_strdel(&tmp2);
+		// ft_putstr("le free de tmp <");
+		// ft_putstr(tmp);
+		// ft_putstr(">\n");
+		// printf("malloc builtin : free tmp <%s> %p", tmp, tmp);
+		// if (tmp != NULL)
+		// {
+		// 	free(tmp);
+		// 	tmp = NULL;
+		// }
+		// ft_strdel(&tmp);
+		// ft_putstr("le free de tmp : OK\n");
+		// printf("malloc builtin : incre one arg : u %d <%s>\n", u, &data->input[data->i + u]);
 		u = ft_incre_one_arg(data, u);
-		printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
+		// printf("malloc builtin : fin while : u %d <%s>\n", u, &data->input[data->i + u]);
 		max ++;
+		// ft_strdel(&tmp); // probleme cheloue ici ???
 	}
+	// printf("malloc builting arg : sortie : <%s>\n", tok->arg);
 	data->i = data->i + u;
 }

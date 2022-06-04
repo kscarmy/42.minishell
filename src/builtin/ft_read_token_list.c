@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 13:40:54 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/04 20:20:11 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,11 +253,11 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 
 	int i = 0; // A SUPP
 
-	ft_print_token_list(data);
+	// ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	// printf("PTN DE PID: %d\n", getpid());
-	printf("read token list :\n\n\n");
-	ft_putchar('\'');
+	// printf("read token list :\n\n\n");
+	// ft_putchar('\'');
 	// printf("'");
 	ft_pipe_close_data_fd(data, 3);
 	while (data->exit == 0 && t != NULL)
@@ -321,7 +321,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 		
 		i++;
 	}
-	printf("'\n\n\n");
+	// printf("'\n\n\n");
 }
 
 
