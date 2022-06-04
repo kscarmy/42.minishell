@@ -45,7 +45,7 @@ t_var	*ft_found_var_name(t_data *data, char *str) // permet de trouver et de ren
 			var->value = ft_itoa(g_return);
 			// printf("g_return %d ft_itoa : <%s>\n", g_return, ft_itoa(g_return));
 			// ft_strdel(&tmp);
-			var->value = ft_itoa(g_return);
+			// var->value = ft_itoa(g_return);
 			return (var);
 		}
 		if (ft_strncmp(var->name, str, i) == 0)
