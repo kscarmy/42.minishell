@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:56:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 13:40:09 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:54:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,4 +241,12 @@ char	*ft_str_cpy(char *stra, char *strb)
 	}
 	// printf("str_cpy : stra <%s> strb %d <%s> %d\n", stra, i, strb, u);
 	return (stra);
+}
+
+int		ft_is_number(char c) // renvoie 1 si c'est un nombre, sinon 0
+{
+	if (c <= '9' && c >= '0')
+		return (1);
+	else
+		return (0);
 }

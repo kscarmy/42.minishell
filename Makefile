@@ -30,6 +30,7 @@ SRC	= 	src/main.c \
 		src/builtin/ft_unset.c \
 		src/builtin/ft_export.c \
 		src/builtin/ft_cd.c \
+		src/builtin/ft_exit.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
 		src/utils/ft_parse_arg.c \

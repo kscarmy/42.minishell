@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 14:12:02 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 16:08:46 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ void	ft_launch_cmd(t_data *data, t_token *token) // lance une cmd
 	// 	add_history(NULL, 2);	// shows history with param == 2; adds to history with param == 1;
 	if (token->cmd == 6)
 		ft_cd(data, token);	// fill inside with path of directory to enter.
-	if (token->cmd == 7 && token->prev == NULL && token->next == NULL) // pour exit
-		data->exit = 1; // enclanche la sortie
+	if (token->cmd == 7) // pour exit
+	{
+		// printf("data.")
+		ft_exit(data, token);
+	}
 	if (token->cmd == 8) // pour unset
 		ft_unset(data, token);
 	if (token->cmd == 9) // pour bin

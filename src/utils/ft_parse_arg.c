@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 14:04:06 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 16:22:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,12 +481,13 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 		// printf("malloc builtin : one arg tok arg\n");
 		// printf("tok arg <%s>\n", tok->arg);
 		// printf("2 tok arg <%s> %p tmp <%s> %p tmp2 <%s> %p\n", tok->arg, tok->arg, tmp, tmp, tmp2, tmp2);
-		u = ft_incre_one_arg(data, u);
+		// u = ft_incre_one_arg(data, u);
 		if (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0)
 			tok->arg = ft_src_in_dest(data, tok->arg, tmp, ' ');
 		else
 			tok->arg = ft_src_in_dest(data, tok->arg, tmp, 0);
 		// printf("tok arg <%s>\n", tok->arg);
+		u = ft_incre_one_arg(data, u);
 		// printf("3 tok arg <%s> %p tmp <%s> %p tmp2 <%s> %p\n", tok->arg, tok->arg, tmp, tmp, tmp2, tmp2);
 		// ft_strdel(&tmp);
 		ft_strdel(&tmp2);

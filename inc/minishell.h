@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 14:38:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 15:54:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ int		ft_str_after_cut(char *str); // compare le premier caractere de str avec le
 void	ft_copie_dest_src(t_token *tok, char *src); // copie dans dest ce que contient source A LA SUITE DE DEST : SI PAS DE PLACE TEMPI !
 char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep); // refais un malloc de dest de la taille dest + src, copie dest puis src a la suite. si sep est different de NULL, la fonction place le sep entre dest et src.
 char	*ft_str_cpy(char *stra, char *strb);
+int		ft_is_number(char c); // renvoie 1 si c'est un nombre, sinon 0
 
 
 /*	**************	*/
@@ -297,6 +298,11 @@ void	ft_cd_goto_path(t_data *data, char *path); // verifie la validitee du path 
 void	ft_cd_from_data_to_var_opwd(t_data *data); // s'occupe de gerer opwd dans la structure var
 void	ft_cd_from_data_to_var_pwd(t_data *data); // s'occupe de gerer pwd dans la structure var
 void	ft_cd_goto_opwd(t_data *data, char *path); // execute la commande 'cd -'
+
+/*	ft_exit.c	*/
+void    ft_exit(t_data *data, t_token *token);
+
+
 /*	**********	*/
 /*		VAR		*/
 /*	**********	*/
