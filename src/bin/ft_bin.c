@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/04 20:17:54 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 13:56:13 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,18 @@ void	ft_is_bin(t_data *data, t_token *token) //
 
 	i = 0;
 	// ft_putstr("ft_is_bin :\n");
+
+	if (data->env != NULL)
+		ft_free_data_env(data);
+	ft_malloc_var(data);
+	// printf("tok arg : <%s>\n", token->arg);
+	if (access(token->bin[0], F_OK) == 0)
+	{
+		// printf("acces OK !\n");
+		ft_arg_path_bin(data, token);
+		return ;
+	}
+
 	var = ft_found_var_name(data, "PATH");
 	if (var == NULL)
 	{
@@ -166,20 +178,22 @@ void	ft_is_bin(t_data *data, t_token *token) //
 	
 	// ft_print_token_list(data);
 	// ft_putstr("ft_is_bin : suite\n");
-	if (data->env != NULL)
-		ft_free_data_env(data);
+	// if (data->env != NULL)
+	// 	ft_free_data_env(data);
 	// ft_putstr("ft_is_bin : free var : OK\n");
-	ft_malloc_var(data);
+	// ft_malloc_var(data);
 	// ft_putstr("ft_is_bin : malloc var : OK\n");
 
 	/*	fin zone test	*/
 	// printf("tok <%s> bin <%s>\n", token->arg, token->bin[0]);
-	if (access(token->arg, F_OK) == 0)
-	{
-		// printf("acces OK !\n");
-		ft_bin_execve(data, token);
-		return ;
-	}
+
+	
+	// if (access(token->arg, F_OK) == 0)
+	// {
+	// 	// printf("acces OK !\n");
+	// 	ft_bin_execve(data, token);
+	// 	return ;
+	// }
 
 	/*	fin zone test	*/
 	
@@ -212,27 +226,20 @@ void	ft_is_bin(t_data *data, t_token *token) //
 
 void	ft_arg_path_bin(t_data *data, t_token *token) // cherche si la string est un binaire
 {
-	int	i;
 	pid_t	pid;
 	// int		status;
 
-	i = access(token->bin[0], F_OK);
-	printf("NON MICHEL !\n");
-	if (i == 0)
-	{
-		pid = fork();
-		if (pid == -1)
-			data->err = 5000;
-		else if (pid == 0)
-			i = execve(token->bin[0], token->bin, data->env);
-		else
-			waitpid(pid, &g_return, 0);
-	}
-	else
-	{
-		// data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
-		printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
-	}
+	pid = fork();
+	if (pid == -1)
+		data->err = 5000;
+	else if (pid == 0)
+		execve(token->bin[0], token->bin, data->env);
+	waitpid(pid, &g_return, 0);
+	// else
+	// {
+	// 	// data->err = 4000; // ERREUR : COMMANDE NON TROUVEE !
+	// 	printf("ft_bin > ft_is_bin : COMMANDE INCONNUE\n");
+	// }
 }
 
 void	ft_bin_execve(t_data *data, t_token *token) //
@@ -247,7 +254,7 @@ void	ft_bin_execve(t_data *data, t_token *token) //
 	// dup2(data->pipe->fd_i, 0);
 	pid = fork();
 	if (pid == -1)
-		printf("ERREUR TEST FORK\n");
+		data->err = 5050;
 	else if (pid == 0)
 		execve(token->arg, token->bin, data->env);
 	// else

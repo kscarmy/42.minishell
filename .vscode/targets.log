@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 15:26:49 2022
+# Make data base, printed on Sun Jun  5 11:27:35 2022
 
 # Variables
 
@@ -55,7 +55,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 58)
 CFLAGS = -Wall -Werror -Wextra
 # environment
-JOURNAL_STREAM = 9:1263527
+JOURNAL_STREAM = 9:132376
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -77,15 +77,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/32509/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 218251
+MANAGERPID = 25733
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-14099686-e0ca-4681-9c57-b41f9fe764c8.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-f13faefc-bffe-48c2-8a4b-526d5221045e.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/guderram/42/minishell
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_32509_IPdDIQ
+KRB5CCNAME = FILE:/tmp/krb5cc_32509_R8gY1d
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -93,7 +93,7 @@ PATH = /mnt/nfs/homes/guderram/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 # environment
 GPG_AGENT_INFO = /run/user/32509/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/218711,unix/e1r10p6.42.fr:/tmp/.ICE-unix/218711
+SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/26231,unix/e1r10p6.42.fr:/tmp/.ICE-unix/26231
 # environment
 XDG_RUNTIME_DIR = /run/user/32509
 # environment
@@ -103,7 +103,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 58f3f224507046da9570053cb2971050
+INVOCATION_ID = 64f084a0b7f241f98ce3801d9b5edb66
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 51)
@@ -115,7 +115,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/32509/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 222681
+GIO_LAUNCHED_DESKTOP_FILE_PID = 27524
 # automatic
 %F = $(notdir $%)
 # environment
@@ -127,7 +127,7 @@ PWD = /mnt/nfs/homes/guderram/42/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 218551
+SSH_AGENT_PID = 26195
 # makefile (from 'Makefile', line 64)
 DONE = @echo "MINISHELL ready to use!"
 # environment
@@ -253,9 +253,9 @@ TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
 # environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 222759
+VSCODE_PID = 28351
 # environment
-TERMINATOR_UUID = urn:uuid:edca271b-4cd9-4eb4-a3eb-79bebae2bf54
+TERMINATOR_UUID = urn:uuid:661a9b27-34bd-4bec-b212-40ce59c7c800
 # variable set hash-table stats:
 # Load=123/1024=12%, Rehash=0, Collisions=22/160=14%
 
@@ -265,9 +265,8 @@ TERMINATOR_UUID = urn:uuid:edca271b-4cd9-4eb4-a3eb-79bebae2bf54
 
 # Directories
 
-# . (device 57, inode 264218669): 13 files, no impossibilities.
- 
-# src (device 57, inode 264218955): No files, no impossibilities so far.
+# . (device 56, inode 264208798): 13 files, no impossibilities.
+# src (device 56, inode 264209481): No files, no impossibilities so far.
 
 # 13 files, no impossibilities in 2 directories.
 
@@ -312,6 +311,7 @@ all: obj minishell
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
@@ -389,7 +389,7 @@ obj/main.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 15:07:50.486134059
+#  Last modified 2022-06-05 11:27:07.451662755
 #  File has been updated.
 #  Successfully updated.
 
@@ -548,7 +548,6 @@ obj/bin/ft_bin.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -589,6 +588,7 @@ src/libft/libft.a:
 obj/builtin/ft_cd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 # Not a target:
@@ -635,6 +635,6 @@ obj/parsing/ft_quote.o:
 # strcache performance: lookups = 91 / hit rate = 30%
 # hash-table stats:
 # Load=63/8192=1%, Rehash=0, Collisions=1/91=1%
-# Finished Make data base on Fri Jun  3 15:26:49 2022
+# Finished Make data base on Sun Jun  5 11:27:35 2022
 
  

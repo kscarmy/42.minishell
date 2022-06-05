@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/30 13:20:48 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 12:33:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	ft_pipe_out(t_data *data) // redirige la sortie de la prochaine commande da
 	// ft_pipe_close_data_fd(data, 1);
 	unlink(TMP_OUT);
 	fd_out = open(TMP_OUT, O_CREAT, 00777);
-	close(fd_out);
+	if (fd_out != -10)
+		close(fd_out);
 	fd_out = open(TMP_OUT, O_RDWR);
 	ft_fd_redir(data, -10, fd_out);
 	// if (data->pipe->fd_o > 0)
@@ -92,8 +93,10 @@ void	ft_pipe_in(t_data *data) // redirige l'entree de la prochaine commande dans
 	// printf("pipe in : fd_in %d\n", fd_in);
 	if (fd_in > 0)
 		ft_copy_fd(out, fd_in);
-	close(out);
-	close(fd_in);
+	if (out != -10)
+		close(out);
+	if (fd_in != -10)
+		close(fd_in);
 	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);
 	ft_fd_redir(data, fd_in, -10);
 	// printf("pipe in : fd_in : %d\n", data->pipe->fd_i);
@@ -104,10 +107,12 @@ void	ft_pipe_close_data_fd(t_data *data, int	fd) // ferme le fd, si fd == 0 ferm
 	
 	if (fd == 1 || fd == 3)
 	{
-		close(data->pipe->fd_o);
+		if (data->pipe->fd_o != -10)
+			close(data->pipe->fd_o);
 		data->pipe->fd_o = -10;
 		dup2(data->pipe->ofd_o, 1);
-		close(data->pipe->ofd_o);
+		if (data->pipe->ofd_o != -10)
+			close(data->pipe->ofd_o);
 		data->pipe->ofd_o = -10;
 	}
 	if (fd == 0 || fd == 3)
@@ -117,10 +122,12 @@ void	ft_pipe_close_data_fd(t_data *data, int	fd) // ferme le fd, si fd == 0 ferm
 		// 	close(data->pipe->fd_i);
 		// data->pipe->fd_i = -10;
 		// dup2(0, 0);
-		close(data->pipe->fd_i);
+		if (data->pipe->fd_i != -10)
+			close(data->pipe->fd_i);
 		data->pipe->fd_i = -10;
 		dup2(data->pipe->ofd_i, 0);
-		close(data->pipe->ofd_i);
+		if (data->pipe->ofd_i != -10)
+			close(data->pipe->ofd_i);
 		data->pipe->ofd_i = -10;
 	}
 }

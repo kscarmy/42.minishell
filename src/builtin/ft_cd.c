@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:47:58 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/04 20:17:15 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/05 11:49:52 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	ft_cd_home(t_data *data) // si cd renvoie sur son home
 void	ft_cd_goto_opwd(t_data *data, char *path) // execute la commande 'cd -'
 {
 	t_var	*opwd;
+	char	*tmp;
 
 	opwd = ft_found_var_name(data, "OLDPWD");
 	if (opwd == NULL)
@@ -88,17 +89,19 @@ void	ft_cd_goto_opwd(t_data *data, char *path) // execute la commande 'cd -'
 	}
 	else
 	{
+		tmp = getcwd(NULL, 0);
 		chdir(path);
 		ft_strdel(&data->opwd);
 		data->opwd = ft_malloc_str(data, ft_strlen(data->pwd));
 		data->opwd = ft_strncpy(data->opwd, data->pwd, ft_strlen(data->pwd));
 		ft_strdel(&data->pwd);
-		data->pwd = ft_malloc_str(data, ft_strlen(getcwd(NULL, 0)));
-		data->pwd = ft_strncpy(data->pwd, getcwd(NULL, 0), ft_strlen(getcwd(NULL, 0)));
+		data->pwd = ft_malloc_str(data, ft_strlen(tmp));
+		data->pwd = ft_strncpy(data->pwd, tmp, ft_strlen(tmp));
 		ft_cd_from_data_to_var_opwd(data);
 		ft_cd_from_data_to_var_pwd(data);
-		ft_putstr(data->pwd);
-		ft_putchar('\n');
+		ft_putstr(data->pwd); // ??
+		ft_putchar('\n'); // ??
+		ft_strdel(&tmp);
 	}
 }
 
@@ -106,6 +109,7 @@ void	ft_cd_goto_path(t_data *data, char *path) // verifie la validitee du path e
 {
 	int		i;
 	char	*npath;
+	char	*tmp;
 
 	i = 0;
 	while (path[i] && path[i] != ' ' && ft_is_separator(data->input, i) == 0)
@@ -120,14 +124,16 @@ void	ft_cd_goto_path(t_data *data, char *path) // verifie la validitee du path e
 	}
 	else
 	{
+		tmp = getcwd(NULL, 0);
 		ft_strdel(&data->opwd);
 		data->opwd = ft_malloc_str(data, ft_strlen(data->pwd));
 		data->opwd = ft_strncpy(data->opwd, data->pwd, ft_strlen(data->pwd));
 		ft_strdel(&data->pwd);
-		data->pwd = ft_malloc_str(data, ft_strlen(getcwd(NULL, 0)));
-		data->pwd = ft_strncpy(data->pwd, getcwd(NULL, 0), ft_strlen(getcwd(NULL, 0)));
+		data->pwd = ft_malloc_str(data, ft_strlen(tmp));
+		data->pwd = ft_strncpy(data->pwd, tmp, ft_strlen(tmp));
 		ft_cd_from_data_to_var_opwd(data);
 		ft_cd_from_data_to_var_pwd(data);
+		ft_strdel(&tmp);
 	}
 	ft_strdel(&npath);
 }
