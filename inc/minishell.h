@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 13:38:17 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:08:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,12 +338,13 @@ void	ft_free_data_env(t_data *data); // free un tableau de char
 /*	**********	*/
 /*	 Signals	*/
 /*	**********	*/
-void	handler();
-void	init_signals(void);
+void	ft_handler(int	sig);
+void	ft_handler_pid(int	sig);
+void	ft_init_signals(void);
 
 
 /*	*******	*/
-/*	 REDIR	*/
+/*	 REDIR	*/	
 /*	*******	*/
 
 /*	ft_pipe.c	*/

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 13:38:31 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:10:47 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,40 @@ int		ft_verif_pipe(t_pipe *p) // renvoie 1 si les pipe sont libres (== -10) sino
 
 void	prompt(t_data *data)
 {
-	int	i = 0;
+	// int	i = 0;
 	// char *line;
 	// write(0, "~$ ", 3);
-	while (data->exit == 0)
+	while (g_return != -1234 && data->exit == 0)
 	{
 		/*	readline	*/
-		i = 0;
-		data->input = readline("~$ ");
-		add_history(data->input);
-		while (data->input[i]) { i++; }
+		// i = 0;
+		if (g_return >= 0)
+			data->input = readline("~$ ");
+		if (data->input == NULL)
+		{
+			// ft_putstr("1 INPUT NULL\n");
+			g_return = -1234;
+			break ;
+		}
+		// printf("g_return %d\n", g_return);
+		if (g_return >= 0 && data->input != NULL && ft_str_size(data->input) > 0)
+			add_history(data->input);
+		// ft_putstr("2 INPUT NULL\n");
+		// while (data->input[i]) { i++; }
 		// printf("sizeof input %d\n", i);
 		/*	commande de parsing a inserer ici */
 		if (ft_is_input_safe(data->input) == 0)
 			data->err = 1;
-		else
+		else if (g_return >= 0)
+		{
+			// ft_putstr("3 INPUT NULL NON\n");
 			ft_parse_input(data);
-
+		}
+		// ft_putstr("4 INPUT NULL\n");
 		// printf("err : %d\n", data->err);
 		/* commande d'execusion des tokens a inserer ici */
 		
-		if (data->err == 0 && data->exit == 0 && data->token != NULL)
+		if (g_return >= 0 && data->err == 0 && data->exit == 0 && data->token != NULL)
 			ft_read_token_list(data);
 
 
@@ -63,9 +76,12 @@ void	prompt(t_data *data)
 		// printf("sizeof data->i %d\n", data->i);
 		ft_clear_for_new_input(data);
 		// printf("fin du clear pour input\n");
-		if (data->exit != 0)
-			ft_putstr("exit\n");
+
 	}
+	if (g_return < 0)
+		data->exit = 1;
+	if (data->exit != 0)
+		ft_putstr("exit\n");
 	// write(0, "ex\n", 3);
 
 
@@ -92,9 +108,11 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 //	int i = 0; // A SUPP
-
-	init_signals();
-	signal(SIGTSTP, handler);
+	g_return = 0;
+	// ft_init_signals();
+	signal(SIGINT, ft_handler);
+	signal(SIGQUIT, ft_handler);
+	// signal(SIGTSTP, handler);
 
 	printf("Bienvenue dans ce minishell realisé par guderram et mourdani\n");
 	data = malloc(sizeof(t_data));
