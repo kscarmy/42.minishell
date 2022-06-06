@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 15:54:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:38:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,6 +300,7 @@ void	ft_cd_from_data_to_var_pwd(t_data *data); // s'occupe de gerer pwd dans la 
 void	ft_cd_goto_opwd(t_data *data, char *path); // execute la commande 'cd -'
 
 /*	ft_exit.c	*/
+int     ft_resize_g_return(int  i);
 void    ft_exit(t_data *data, t_token *token);
 
 

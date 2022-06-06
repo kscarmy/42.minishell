@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 16:13:02 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:38:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,5 @@ int	main(int argc, char **argv, char **env)
 	// rl_clear_history();
 	free(data);
 	data = NULL;
-	return (g_return);
+	return (ft_resize_g_return(g_return));
 }
