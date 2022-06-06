@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 00:04:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/05/20 16:41:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:58:01 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_create_unset_token(t_data *data) // fonction qui cree le token unset
 	
 	
 	ft_malloc_builtin_arg(data, data->token);
-	printf("Unset arg : <%s>\n", data->token->arg);
+	// printf("Unset arg : <%s>\n", data->token->arg);
 
 	// while (ft_is_separator(data->input, (data->i + u)) == 0 && data->input[data->i + u])
 	// 	u++;

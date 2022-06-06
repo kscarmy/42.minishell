@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 16:22:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:58:56 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,9 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		if (data->input[s + u] == '\"' && data->input[s + u + 1] != '\"' && data->input[s + u + 1] != '\0')
 		{
 			// ft_putstr("size one arg : 1\n");
-			ret = ret + ft_str_size(ft_ret_double_quote(data, &data->input[s + u], 0));
+			tmp = ft_ret_double_quote(data, &data->input[s + u], 0);
+			ret = ret + ft_str_size(tmp);
+			ft_strdel(&tmp);
 			u++;
 			while (data->input[s + u] != '\"')
 				u++;
@@ -287,7 +289,9 @@ int		ft_size_one_arg(t_data *data, int s) // renvoie la taille d'un seul argumen
 		else if (data->input[s + u] == '\'' && data->input[s + u + 1] != '\'' && data->input[s + u + 1] != '\0')
 		{
 			// ft_putstr("size one arg : 2\n");
-			ret = ret + ft_str_size(ft_ret_simple_quote(data, &data->input[s + u], 0));
+			tmp = ft_ret_simple_quote(data, &data->input[s + u], 0);
+			ret = ret + ft_str_size(tmp);
+			ft_strdel(&tmp);
 			while (data->input[s + u] != '\'')
 				u++;
 			u++;
@@ -386,7 +390,7 @@ char	*ft_one_arg(t_data *data, int u) // renvoie le premier argument en partant 
 			// printf("------ %p\n------ %p\n", ret, tmp);
 			ret = ft_src_in_dest(data, ret, ft_ret_double_quote(data, &data->input[i + u], 0), 0);
 			ft_strdel(&tmp);
-			// printf("one arg : dq : ret : <%s>\n", ret);
+			// printf("------ %p\n------ %p\n", ret, tmp);
 			i++;
 			while (data->input[i + u] != '\"')
 				i++;
@@ -466,10 +470,12 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 	u = 0;
 	tmp = NULL;
 	tmp2 = NULL;
+	tok->arg = NULL;
 	// printf("malloc builting arg :\n");
 	while (data->input[data->i + u] && ft_is_separator(data->input, data->i + u) == 0)
 	{
 		// printf("malloc builtin : debut while\n");
+		// printf("malloc builtin : 1 arg <%s>\n", tok->arg);
 		u = u + ft_space(data->input, data->i + u);
 		// printf("malloc builtin : strdel\n");
 		// ft_strdel(&tok->arg);
@@ -486,6 +492,7 @@ void	ft_malloc_builtin_arg(t_data *data, t_token *tok) // permet de malloc les a
 			tok->arg = ft_src_in_dest(data, tok->arg, tmp, ' ');
 		else
 			tok->arg = ft_src_in_dest(data, tok->arg, tmp, 0);
+		// printf("malloc builtin : 1 arg <%s>\n", tok->arg);
 		// printf("tok arg <%s>\n", tok->arg);
 		u = ft_incre_one_arg(data, u);
 		// printf("3 tok arg <%s> %p tmp <%s> %p tmp2 <%s> %p\n", tok->arg, tok->arg, tmp, tmp, tmp2, tmp2);

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 13:25:24 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:48:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			// printf("bro\n");
 			ft_strdel(&tmp);
 			// printf("dbl q if dol u <%d>\n", u);
+			// printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 			i++;
-			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"')
+			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"' && str[i] != '\'')
 				i++;
 			// printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 		}
@@ -85,6 +86,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 		}
 	}
 	// printf("dbl q size <%d>\n", u);
+	// printf("dbl q if dol end u %d i %d str[i] <%s>\n", u, i, &(str[i]));
 	ret = ft_malloc_str(data, u);
 	// printf("double quote : ret : %d, u %d\n", ft_str_size(ret), u);
 	i = 1;
@@ -122,7 +124,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			// ft_copie_dest_src(data->token, ft_ret_dollar(data, &str[i]));
 			// u = u + ft_str_size(ft_ret_dollar(data, &str[i]));
 			i++;
-			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"')
+			while (str[i] && str[i] != ' ' && str[i] != '$' && ft_is_separator(str, i) == 0 && str[i] != '\"' && str[i] != '\'')
 				i++;
 		}
 		else if (str[i] == '$' && str[i + 1] == '"')
@@ -146,7 +148,7 @@ char	*ft_ret_double_quote(t_data *data, char *str, int incr) // renvoie la chain
 			// printf ("double quote : else : <%s>\n", ret);
 		}
 	}
-	printf("\n");
+	// printf("\n");
 	ret[u] = '\0';
 	// printf("double quote : exit \n");
 	// printf ("double quote : fin ret : <%s>\n", ret);
@@ -216,6 +218,6 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 	// ft_strdel(&var->value);
 	ft_strdel(&data->var->value);
 	ret[i] = '\0';
-	// printf("RET DOLL OK : ret <%s>\n", ret);
+	printf("RET DOLL OK : ret <%s>\n", ret);
 	return (ret);
 }

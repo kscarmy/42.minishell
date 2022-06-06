@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun Jun  5 15:39:38 2022
+# Make data base, printed on Mon Jun  6 10:22:22 2022
 
 # Variables
 
@@ -48,15 +48,13 @@ RM = rm -rf
 # environment
 GDM_LANG = en
 # environment
-VTE_VERSION = 6003
-# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/bin/code
+_ = /usr/share/code/code
 # makefile (from 'Makefile', line 59)
 CFLAGS = -Wall -Werror -Wextra
 # environment
-JOURNAL_STREAM = 9:132376
+JOURNAL_STREAM = 9:435752
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -66,7 +64,7 @@ LIB_FLAGS = -L $(LIBFT_DIR) -lft
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/terminator.desktop
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -78,15 +76,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/32509/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 25733
+MANAGERPID = 129967
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-f13faefc-bffe-48c2-8a4b-526d5221045e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-c8c117c7-de9b-419d-9ce8-9647fba15820.sock
 # environment
-VSCODE_CWD = /mnt/nfs/homes/guderram/42/minishell
+VSCODE_CWD = /mnt/nfs/homes/guderram
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_32509_R8gY1d
+KRB5CCNAME = FILE:/tmp/krb5cc_32509_v35Z5t
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -94,7 +92,7 @@ PATH = /mnt/nfs/homes/guderram/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 # environment
 GPG_AGENT_INFO = /run/user/32509/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/26231,unix/e1r10p6.42.fr:/tmp/.ICE-unix/26231
+SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/130455,unix/e1r10p6.42.fr:/tmp/.ICE-unix/130455
 # environment
 XDG_RUNTIME_DIR = /run/user/32509
 # environment
@@ -104,7 +102,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 64f084a0b7f241f98ce3801d9b5edb66
+INVOCATION_ID = 489d4abefe4345f4875f4a2d31bdca70
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 52)
@@ -116,7 +114,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/32509/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 27524
+GIO_LAUNCHED_DESKTOP_FILE_PID = 132308
 # automatic
 %F = $(notdir $%)
 # environment
@@ -128,7 +126,7 @@ PWD = /mnt/nfs/homes/guderram/42/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 26195
+SSH_AGENT_PID = 130419
 # makefile (from 'Makefile', line 65)
 DONE = @echo "MINISHELL ready to use!"
 # environment
@@ -140,15 +138,11 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /mnt/nfs/homes/guderram
 # environment
-VSCODE_CLI = 1
-# environment
 VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/guderram/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = guderram
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -157,8 +151,6 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -166,7 +158,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 1
+SHLVL = 0
 # makefile (from 'Makefile', line 51)
 LIBFT = $(LIBFT_DIR)libft.a
 # makefile (from 'Makefile', line 63)
@@ -192,9 +184,7 @@ MAKE_COMMAND := make
 # makefile (from 'Makefile', line 54)
 INC = -I ./inc/ -I $(LIBFT_DIR)
 # environment
-OLDPWD = /mnt/nfs/homes/guderram/42
-# environment
-TERMINATOR_DBUS_PATH = /net/tenshu/Terminator2
+OLDPWD = /mnt/nfs/homes/guderram
 # default
 .VARIABLES := 
 # automatic
@@ -248,17 +238,11 @@ NAME = minishell
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-TERMINATOR_DBUS_NAME = net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873
-# environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 28351
-# environment
-TERMINATOR_UUID = urn:uuid:661a9b27-34bd-4bec-b212-40ce59c7c800
+VSCODE_PID = 132308
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=22/160=14%
+# Load=115/1024=11%, Rehash=0, Collisions=17/152=11%
 
 # Pattern-specific Variable Values
 
@@ -266,10 +250,10 @@ TERMINATOR_UUID = urn:uuid:661a9b27-34bd-4bec-b212-40ce59c7c800
 
 # Directories
 
-# . (device 56, inode 264208798): 13 files, no impossibilities.
+# . (device 56, inode 264208798): 11 files, no impossibilities.
 # src (device 56, inode 264209481): No files, no impossibilities so far.
 
-# 13 files, no impossibilities in 2 directories.
+# 11 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -300,8 +284,8 @@ obj/builtin/ft_export.o:
 #  File has not been updated.
 
 # Not a target:
-obj/parsing/ft_cut_export.o:
  
+obj/parsing/ft_cut_export.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -578,12 +562,12 @@ obj/init/ft_init_data.o:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 obj/parsing/ft_pre_parsing.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 src/libft/libft.a:
 #  Implicit rule search has not been done.
@@ -639,9 +623,9 @@ obj/parsing/ft_quote.o:
 # strcache buffers: 1 (0) / strings = 64 / storage = 1097 B / avg = 17 B
 # current buf: size = 8162 B / used = 1097 B / count = 64 / avg = 17 B
 
-# strcache performance: lookups = 92 / hit rate = 30%
+# strcache performance: lookups = 90 / hit rate = 28%
 # hash-table stats:
-# Load=64/8192=1%, Rehash=0, Collisions=1/92=1%
-# Finished Make data base on Sun Jun  5 15:39:38 2022
+# Load=64/8192=1%, Rehash=0, Collisions=1/90=1%
+# Finished Make data base on Mon Jun  6 10:22:22 2022
 
  

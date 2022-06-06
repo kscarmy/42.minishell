@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/05 16:08:46 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 13:19:43 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 	// if (t->prev->prev == NULL || t->prev->prev->bin == NULL) // si ya par exemple `echo jean >` 
 	// 	data->err = 1230; // correspond a : bash: erreur de syntaxe près du symbole inattendu « newline »
 
-	
+	// printf ("ft_read_token_list_while_redir entree\n");	
 	while (max < 5 && data->err == 0 && t->prev != NULL && (t->prev->sep == 3 || t->prev->sep == 5)) // trouver le bon while a mettre ...
 	{
 		// printf ("ft_read_token_list_while_redir entree while\n");
@@ -183,6 +183,8 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 			t = t->prev->prev;
 			// printf("")
 		}
+		// else
+		// 	t = NULL;
 		// else if (t->prev != NULL)
 		// 	t = t->prev;
 		// else
@@ -202,6 +204,17 @@ t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok) // lecture 
 	
 		/*	partie reset des redirections	*/
 		ft_pipe_close_data_fd(data, 3);
+	}
+	// printf("t %d tp %d\n", t->cmd, t->prev->cmd);
+	if (t->prev != NULL && t->prev->prev != NULL && t->prev->prev->prev != NULL)
+	{
+		// printf ("1\n");
+		t = t->prev->prev->prev;
+	}
+	else
+	{
+		// printf ("2\n");
+		t = NULL;
 	}
 	// printf ("ft_read_token_list_while_redir SORTIE\n");
 	return (t);
@@ -263,6 +276,7 @@ void	ft_read_token_list(t_data *data) // lecture des tokens
 	// ft_putchar('\'');
 	// printf("'");
 	ft_pipe_close_data_fd(data, 3);
+	// printf("pid : %d\n", getpid());
 	while (data->exit == 0 && t != NULL)
 	{
 		// printf("tok : conten :cmd %d arg <%s> sep %d\n", t->cmd, t->arg, t->sep);
