@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 15:56:29 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:46:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,10 @@ void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si
 
 /*	ft_parse_arg.c	*/
 int		ft_size_of_arg(t_data *data); // renvoie la taille d'un arg, pratique pour malloc tok->arg
+void	ft_size_of_arg_bis(t_data *data, int *i, int *u, int *cd);
+void	ft_size_of_arg_bis_bis(t_data *data, int *u, int *cd);
+
+
 void	ft_malloc_arg(t_data *data, t_token *tok); // malloc dans tok->arg l'argument
 
 void	ft_malloc_builtin_arg(t_data *data, t_token *tok); // permet de malloc les arguments d'un builtin dans arg.
@@ -155,13 +159,24 @@ char	*ft_strncpy(char *dest, char *src, int n);
 int		ft_is_separator(char *str, int i); // renvoie 0 si "c" n'est pqs un separateur, sinon son code specifique
 char	*ft_malloc_str(t_data *data, int i); // malloc un str de taille i, le renplie de \0 et le return
 int		ft_str_size(char *str); // renvoie la taille d'un str
+
+/*	ft_str_bis_bis.c	*/
 int		ft_check_char(char *str, char c, int max); // verifie si c est dans str avec max
 int		ft_str_comp(char *str1, char *str2); // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
+
+/*	ft_str_bis.c	*/
 int		ft_str_after_cut(char *str); // compare le premier caractere de str avec les caracteres devant se trouver apres un argument
 void	ft_copie_dest_src(t_token *tok, char *src); // copie dans dest ce que contient source A LA SUITE DE DEST : SI PAS DE PLACE TEMPI !
 char	*ft_src_in_dest(t_data *data, char *dest, char *src, char sep); // refais un malloc de dest de la taille dest + src, copie dest puis src a la suite. si sep est different de NULL, la fonction place le sep entre dest et src.
 char	*ft_str_cpy(char *stra, char *strb);
+char	*ft_src_in_dest_bis(char *dest, char *src, char *ret, char sep);
+
+
+/*	ft_str_bis_bis.c	*/
+int		ft_check_char(char *str, char c, int max); // verifie si c est dans str avec max
+int		ft_str_comp(char *str1, char *str2); // compare les deux strings, renvoie 1 si strictement identiques, sinon 0.
 int		ft_is_number(char c); // renvoie 1 si c'est un nombre, sinon 0
+
 
 
 /*	**************	*/

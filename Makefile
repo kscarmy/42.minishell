@@ -33,6 +33,8 @@ SRC	= 	src/main.c \
 		src/builtin/ft_exit.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
+		src/utils/ft_str_bis.c \
+		src/utils/ft_str_bis_bis.c \
 		src/utils/ft_parse_arg.c \
 		src/var/ft_var.c \
 		src/var/ft_var_sort.c \
