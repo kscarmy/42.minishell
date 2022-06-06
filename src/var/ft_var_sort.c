@@ -6,17 +6,16 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 10:59:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/24 14:03:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:58:12 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-
 void	ft_export_no_arg(t_data *data)
 {
-	int	i;
-	t_var *var;
+	t_var	*var;
+	int		i;
 
 	i = 0;
 	var = data->var;
@@ -29,10 +28,8 @@ void	ft_export_no_arg(t_data *data)
 	while (i > 0)
 	{
 		ft_print_one_var(var);
-		
 		i--;
 	}
-	
 }
 
 t_var	*ft_found_next_min_var(t_data *data)
@@ -51,7 +48,7 @@ t_var	*ft_found_next_min_var(t_data *data)
 	return (var);
 }
 
-t_var	*ft_found_first_var(t_data *data) // cherche la premiere variable selon la table ascii
+t_var	*ft_found_first_var(t_data *data)
 {
 	t_var	*var;
 	t_var	*head;

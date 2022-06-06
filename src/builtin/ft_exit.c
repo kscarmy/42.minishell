@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:20 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 13:42:39 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:45:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,15 @@ void    ft_exit(t_data *data, t_token *tok)
     {
         g_return = ret;
 		data->exit = 1;
+        return ;
     }
+    // else if (tok->arg[i] == '\0' && tok->prev == NULL && tok->next == NULL) // pour exit
+    // {
+    //     while ()
+    //     g_return = ret;
+	// 	data->exit = 1;
+    //     return ;
+    // }
     else
     {
         data->exit = 0;

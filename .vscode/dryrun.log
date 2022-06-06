@@ -38,6 +38,7 @@ gcc -Wall -Werror -Wextra -o obj/builtin/ft_unset.o -c src/builtin/ft_unset.c
 gcc -Wall -Werror -Wextra -o obj/builtin/ft_export.o -c src/builtin/ft_export.c
 gcc -Wall -Werror -Wextra -o obj/builtin/ft_cd.o -c src/builtin/ft_cd.c
 gcc -Wall -Werror -Wextra -o obj/builtin/ft_exit.o -c src/builtin/ft_exit.c
+ 
 gcc -Wall -Werror -Wextra -o obj/utils/ft_write.o -c src/utils/ft_write.c
 gcc -Wall -Werror -Wextra -o obj/utils/ft_str.o -c src/utils/ft_str.c
 gcc -Wall -Werror -Wextra -o obj/utils/ft_parse_arg.o -c src/utils/ft_parse_arg.c

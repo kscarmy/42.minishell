@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 12:48:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:01:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,6 @@ char	*ft_ret_dollar(t_data *data, char *str) // renvoie la valeur directe de var
 	// ft_strdel(&var->value);
 	ft_strdel(&data->var->value);
 	ret[i] = '\0';
-	printf("RET DOLL OK : ret <%s>\n", ret);
+	// printf("RET DOLL OK : ret <%s>\n", ret);
 	return (ret);
 }

@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Jun  6 10:22:22 2022
+# Make data base, printed on Mon Jun  6 15:49:45 2022
 
 # Variables
 
@@ -48,7 +48,7 @@ RM = rm -rf
 # environment
 GDM_LANG = en
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
 # makefile (from 'Makefile', line 59)
@@ -78,7 +78,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 MANAGERPID = 129967
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-c8c117c7-de9b-419d-9ce8-9647fba15820.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-ce0b4ccf-242e-4824-9658-320eb5403872.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/guderram
 # environment
@@ -114,7 +114,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/32509/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 132308
+GIO_LAUNCHED_DESKTOP_FILE_PID = 225482
 # automatic
 %F = $(notdir $%)
 # environment
@@ -240,7 +240,7 @@ LANG = C
 # environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 132308
+VSCODE_PID = 225482
 # variable set hash-table stats:
 # Load=115/1024=11%, Rehash=0, Collisions=17/152=11%
 
@@ -250,10 +250,10 @@ VSCODE_PID = 132308
 
 # Directories
 
-# . (device 56, inode 264208798): 11 files, no impossibilities.
+# . (device 56, inode 264208798): 12 files, no impossibilities.
 # src (device 56, inode 264209481): No files, no impossibilities so far.
 
-# 11 files, no impossibilities in 2 directories.
+# 12 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -284,7 +284,6 @@ obj/builtin/ft_export.o:
 #  File has not been updated.
 
 # Not a target:
- 
 obj/parsing/ft_cut_export.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -299,6 +298,7 @@ all: obj minishell
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+ 
 
 # Not a target:
 obj/redir/ft_here_doc.o:
@@ -567,7 +567,6 @@ obj/parsing/ft_pre_parsing.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 src/libft/libft.a:
 #  Implicit rule search has not been done.
@@ -576,6 +575,7 @@ src/libft/libft.a:
 #  recipe to execute (from 'Makefile', line 75):
 	@make -sC $(LIBFT_DIR)
 
+ 
 # Not a target:
 obj/builtin/ft_cd.o:
 #  Implicit rule search has not been done.
@@ -620,12 +620,12 @@ obj/parsing/ft_quote.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 64 / storage = 1097 B / avg = 17 B
-# current buf: size = 8162 B / used = 1097 B / count = 64 / avg = 17 B
+# strcache buffers: 1 (0) / strings = 63 / storage = 1094 B / avg = 17 B
+# current buf: size = 8162 B / used = 1094 B / count = 63 / avg = 17 B
 
-# strcache performance: lookups = 90 / hit rate = 28%
+# strcache performance: lookups = 91 / hit rate = 30%
 # hash-table stats:
-# Load=64/8192=1%, Rehash=0, Collisions=1/90=1%
-# Finished Make data base on Mon Jun  6 10:22:22 2022
+# Load=63/8192=1%, Rehash=0, Collisions=1/91=1%
+# Finished Make data base on Mon Jun  6 15:49:45 2022
 
  
