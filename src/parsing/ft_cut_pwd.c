@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:10:53 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:18:28 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:30:11 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_cut_pwd(t_data *data)
 	i = data->i + ft_space(data->input, data->i);
 	u = 0;
 	str = "pwd";
-	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
+	while (data->input[i] && data->input[i] != ' '
+		&& ft_is_separator(data->input, i) == 0)
 	{
 		if (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;

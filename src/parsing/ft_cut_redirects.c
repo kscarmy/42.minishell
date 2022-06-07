@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:18:55 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:30:43 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	ft_cut_redirects(t_data *data)
 {
-	int i;
-	int u;
+	int	i;
+	int	u;
 
 	i = data->i;
 	u = 0;
 	u = u + ft_space(data->input, i);
 	if (ft_is_separator(data->input, (i + u)) != 0)
 	{
-		ft_create_redirects_token(data, ft_is_separator(data->input, (i + u)));
+		ft_create_redirects_token(data,
+			ft_is_separator(data->input, (i + u)));
 		if (ft_is_separator(data->input, (i + u)) > 4)
 			data->i = data->i + u + 2;
 		else

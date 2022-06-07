@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:13:58 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:15:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_cut_echo_option(t_data *data, int i)
 	data->i = i;
 	ft_create_echo_token(data, u);
 }
-
 
 void	ft_create_echo_token(t_data *data, int option)
 {

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 13:58:49 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:34:32 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	prompt(t_data *data)
 {
 	while (g_return != -1234 && data->exit == 0)
 	{
+		data->err = 0;
 		if (g_return >= 0)
 			data->input = readline("~$ ");
 		if (data->input == NULL)

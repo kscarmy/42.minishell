@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 00:04:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:19:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:30:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_cut_unset(t_data *data, int i)
 	u = 0;
 	str = "unset";
 	i = i + ft_space(data->input, i);
-	while (data->input[i] && data->input[i] != ' ' && ft_is_separator(data->input, i) == 0)
+	while (data->input[i] && data->input[i] != ' '
+		&& ft_is_separator(data->input, i) == 0)
 	{
 		if (ft_is_a_b(data->input[i], str[u]) == 1)
 			u++;

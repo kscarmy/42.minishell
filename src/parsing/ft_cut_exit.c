@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 06:59:21 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/07 14:14:42 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:16:08 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_cut_exit(t_data *data)
 {
-	char *command;
-	int i;
+	char	*command;
+	int		i;
 
 	i = data->i;
 	command = "exit";
@@ -25,7 +25,7 @@ int	ft_cut_exit(t_data *data)
 	{
 		data->i = data->i + 4;
 		ft_create_exit_token(data);
-		return(1);
+		return (1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:02:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:03:42 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,15 +211,15 @@ int		ft_cut_unset(t_data *data, int i); // ret 1 si unset trouver, sinon ret 0. 
 void	ft_create_unset_token(t_data *data); // fonction qui cree le token unset
 
 /*	ft_cut_export.c	*/
-void	ft_create_export_token(t_data *data); // cree le token de la commande export
+int		ft_export_count_equal(t_data *data);
 int		ft_is_export(char *str, int i);// verifie si l'argument d'export est valable
 void	ft_parse_export(t_data *data); // parse les arguments de export
 int		ft_cut_export(t_data *data); // cut la commande export
 
-
-void	ft_export_in_bin(t_data *data, int nb); // malloc chaques arguments VALIDES de export
-int		ft_export_sizeof_arg(char	*str, int i); // renvoie la taille d'un arg de export en partant de i dans str
-int		ft_export_count_equal(t_data *data); // compte le nombre valide d'arguments pour export
+/*	ft_cut_export_bis.c	*/
+void	ft_create_export_token(t_data *data); // cree le token de la commande export
+void	ft_export_in_bin(t_data *data, int nb);
+int		ft_export_sizeof_arg(char	*str, int i);
 
 /*	ft_cut_pwd.c	*/
 int		ft_cut_pwd(t_data *data); // cut la commande pwd
@@ -227,7 +227,7 @@ void	ft_create_pwd_token(t_data *data); // cree le token de la commande pwd
 
 /*	ft_cut_input.c	*/
 int		ft_parse_input(t_data *data); // return 0 si ok, sinon 1 ou numero specifique a l'erreur
-int	ft_parse_cmd_not_found(t_data *data); // commande non trouvee
+void	ft_parse_input_bis(t_data *data, int *found);
 
 /*	ft_cut_echo.c	*/
 int		ft_cut_echo(t_data *data, int i); // ret 1 si echo trouver, sinon ret 0. i est la tete de lecture ou demarre la lecture
@@ -284,13 +284,21 @@ t_token		*ft_here_doc(t_data *data, t_token *t); // fonction de gestion de '<<'
 
 /*		ft_pre_parsing.c		*/
 int		ft_is_input_safe(char *str); // verifie si le input respecte les demandes, telles que les quotes fermees
-int		ft_verif_single_quote(char *str); // verifie la permeabilite des single quotes
-int		ft_verif_double_quote(char *str); // verifie la permeabilite des double quotes
+int		ft_is_input_safe_quotes(char *str, int *i);
 
 /*		ft_quote.c		*/
 char	*ft_ret_double_quote(t_data *data, char *str, int incr); // renvoie la chaine entre double quote. Applique les $UN_TRUC si besoin
 char	*ft_ret_dollar(t_data *data, char *str); // renvoie la valeur directe de var name, si str n'existe pas renvoie un null
 char	*ft_ret_simple_quote(t_data *data, char *str, int incr); // renvoie la chaine entre simple quote. Applique PAS les $UN_TRUC si besoin
+void	ft_ret_double_quote_size(t_data *data, char *str, int *i, int *u);
+void	ft_ret_double_quote_fill(t_data *data, char *str, int *i, int *u);
+void	ft_ret_double_quote_b(t_data *data, char *str, char *ret);
+
+/*		ft_dol.c		*/
+char	*ft_ret_dollar_single(void);
+char	*ft_ret_dollar_ret(t_data *data, char *str);
+char	*ft_ret_dollar_ret(t_data *data, char *str);
+
 
 
 /*	**************	*/

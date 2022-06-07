@@ -6,98 +6,47 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 23:15:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:19:45 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:43:25 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int		ft_is_input_safe(char *str)
+int	ft_is_input_safe_quotes(char *str, int *i)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	if (str[*i] == '\"')
 	{
-		if (str[i] == '\"')
-		{
-			i++;
-			while (str[i] && str[i] != '\"')
-				i++;
-			if (str[i] == '\0')
-				return (0);
-		}
-		else if (str[i] == '\'')
-		{
-			i++;
-			while (str[i] && str[i] != '\'')
-				i++;
-			if (str[i] == '\0')
-				return (0);
-		}
-		else if (str[i] == '\\')
-			return(0);
-		else if (str[i] == ';')
-			return(0);
-		i++;
+		*i = *i + 1;
+		while (str[*i] && str[*i] != '\"')
+			*i = *i + 1;
+		if (str[*i] == '\0')
+			return (0);
+	}
+	else if (str[*i] == '\'')
+	{
+		*i = *i + 1;
+		while (str[*i] && str[*i] != '\'')
+			*i = *i + 1;
+		if (str[*i] == '\0')
+			return (0);
 	}
 	return (1);
 }
 
-int		ft_verif_single_quote(char *str)
+int	ft_is_input_safe(char *str)
 {
 	int	i;
-	int sq;
-	int dq;
-	
-	i = 0;
-	sq = 0;
-	dq = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'' && sq == 0)
-		{printf("1 ");
-			sq = 1;}
-		else if (str[i] == '\'' && sq == 1)
-		{printf("2 ");
-			dq = 0;
-			sq = 0;
-		}
-		else if (str[i] == '\"' && sq == 1)
-		{printf("3 ");
-			dq = 1;
-		}
-		i++;
-	}
-	printf("\n");
-	if (dq == 1)
-		return (dq);
-	return (sq);
-}
 
-int		ft_verif_double_quote(char *str)
-{
-	int	i;
-	int dq;
-	int	sq;
-	
 	i = 0;
-	dq = 0;
-	sq = 0;
 	while (str[i])
 	{
-		if (str[i] == '\"' && dq == 0)
-			dq = 1;
-		else if (str[i] == '\"' && dq == 1)
-		{
-			sq = 0;
-			dq = 0;
-		}
-		else if (str[i] == '\'' && dq == 1)
-			sq = 1;
+		if (ft_is_input_safe_quotes(str, &i) == 0)
+			return (0);
+		else if (str[i] == '\\')
+			return (0);
+		else if (str[i] == ';')
+			return (0);
 		i++;
 	}
-	if (sq == 1)
-		return (sq);
-	return (dq);
+	return (1);
 }

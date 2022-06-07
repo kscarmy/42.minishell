@@ -6,18 +6,26 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:18:07 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 15:29:49 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_parse_cmd_not_found(t_data *data)
+void	ft_parse_input_bis(t_data *data, int *found)
 {
-	ft_putstr("minishell : command not found : ");
-	ft_putstr(&(data->input[data->i]));
-	ft_putchar('\n');
-	return (-1);
+	if (*found == 0 && ft_cut_echo(data, data->i) == 1)
+		*found = *found + 1;
+	if (*found == 0 && ft_cut_pwd(data) == 1)
+		*found = *found + 1;
+	if (*found == 0 && ft_cut_export(data) == 1)
+		*found = *found + 1;
+	if (*found == 0 && ft_cut_unset(data, data->i) == 1)
+		*found = *found + 1;
+	if (*found == 0 && ft_cut_redirects(data) == 1)
+		*found = *found + 1;
+	if (*found == 0 && ft_cut_bin(data) == 1)
+		*found = *found + 1;
 }
 
 int	ft_parse_input(t_data *data)
@@ -25,7 +33,6 @@ int	ft_parse_input(t_data *data)
 	int	found;
 
 	data->i = 0;
-	found = 0;
 	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
 		found = 0;
@@ -38,22 +45,7 @@ int	ft_parse_input(t_data *data)
 			found++;
 		if (found == 0 && ft_cut_cd(data, data->i))
 			found++;
-		if (found == 0 && ft_cut_echo(data, data->i) == 1)
-			found++;
-		if (found == 0 && ft_cut_pwd(data) == 1)
-			found++;
-		if (found == 0 && ft_cut_export(data) == 1)
-			found++;
-		if (found == 0 && ft_cut_unset(data, data->i) == 1)
-			found++;
-		if (found == 0 && ft_cut_redirects(data) == 1)
-			found++;
-		if (found == 0 && ft_cut_bin(data) == 1)
-			found++;
-		if (found == 0)
-			found = ft_parse_cmd_not_found(data);
+		ft_parse_input_bis(data, &found);
 	}
-	if (found == -1)
-		return (1);
 	return (0);
 }

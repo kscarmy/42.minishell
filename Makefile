@@ -11,12 +11,12 @@ SRC	= 	src/main.c \
 		src/parsing/ft_cut_pwd.c \
 		src/parsing/ft_cut_input.c \
 		src/parsing/ft_cut_export.c \
+		src/parsing/ft_cut_export_bis.c \
 		src/parsing/ft_cut_echo.c \
 		src/parsing/ft_cut_unset.c \
 		src/parsing/ft_cut_bin.c \
 		src/parsing/ft_cut_redirects.c \
 		src/parsing/ft_pre_parsing.c \
-		src/parsing/ft_quote.c \
 		src/init/ft_init_token.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_var.c \
@@ -44,6 +44,8 @@ SRC	= 	src/main.c \
 		src/parse_arg/ft_malloc_arg_bis.c \
 		src/parse_arg/ft_one_arg.c \
 		src/parse_arg/ft_size_one_arg.c \
+		src/parse_arg/ft_quote.c \
+		src/parse_arg/ft_dol.c \
 
 
 
