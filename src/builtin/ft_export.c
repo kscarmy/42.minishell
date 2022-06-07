@@ -6,29 +6,18 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:04:57 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/24 11:15:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:55:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-// void	ft_export(t_data *data, t_token *token) // commande export
-// {
-// 	t_var	var;
-
-// 	var = ft_found_var_name(data, token->arg);
-// 	if (token->arg == NULL)
-// 		printf("EXPORT : NO DATA NOT SET IN : src>builtin>ft_export.c\n");
-// 	if (ft_)
-// }
-
-
-void	ft_export_in_var(t_data *data, t_token *token, int i)  // verifie si le name est dans var et fais en fonction
+void	ft_export_in_var(t_data *data, t_token *token, int i)
 {
 	t_var	*var;
 	int		u;
 	int		y;
-	
+
 	u = 0;
 	y = 0;
 	while (token->arg[y])
@@ -42,14 +31,13 @@ void	ft_export_in_var(t_data *data, t_token *token, int i)  // verifie si le nam
 	y++;
 	while (token->bin[i][y + u])
 		u++;
-	// printf("export_in_var : %d\n", u);
 	data->var->value = ft_malloc_str(data, u);
 	data->var->value = ft_strncpy(data->var->value, &(token->bin[i][y]), u);
 }
 
-void	ft_parse_export_name(t_data *data, t_token *token, int i) // parse et malloc dans token->arg le nom de la var. i est la position dans token->bin[i]
+void	ft_parse_export_name(t_data *data, t_token *token, int i)
 {
-	int u;
+	int	u;
 
 	u = 0;
 	if (token->arg != NULL)
@@ -61,9 +49,9 @@ void	ft_parse_export_name(t_data *data, t_token *token, int i) // parse et mallo
 		token->arg = ft_strncpy(token->arg, token->bin[i], u);
 }
 
-void	ft_export(t_data *data, t_token *token) // commande export
+void	ft_export(t_data *data, t_token *token)
 {
-	int	i; // compteur dans bin[i]
+	int	i;
 
 	i = 0;
 	if (token->bin[0] == NULL)

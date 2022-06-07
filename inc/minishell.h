@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 18:03:42 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:38:04 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	ft_delete_token(t_data *data, t_token *delete); // supprime la tokene en re
 /*	ft_init_data.c	*/
 int	ft_init_data(t_data *data, char **env); // malloc env dans data
 void	ft_init_pipe(t_data *data); // prepare la structure des pipes
+void	ft_init_data_bis(t_data *data);
 // int	ft_init_data_bis(t_data *data, char **env, int i);
 void	ft_create_var_var(t_data *data, char *str); // cree un maillon de chane dans la structure var
 void	ft_init_data_pwd(t_data *data); // initialise les deux pwd dans la structure data
@@ -413,5 +414,6 @@ t_token *ft_here_doc_bis(t_data *data, t_token *t, int fd_in);
 
 /*	ft_free.c	*/
 void    ft_free_minishell(t_data *data); // free les mallocs avant de sortir du programme.
+void	ft_free_minishell_bis(t_data *data);
 
 #endif

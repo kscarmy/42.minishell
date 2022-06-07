@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:58:29 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/06 15:55:37 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:09:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_handler(int sig)
 	if (sig == SIGINT)
 	{
 		ft_putstr_fd("\n", 1);
-		rl_replace_line("", 0);
+		// rl_replace_line("", 0); // A REMETTRE : COMPILE PAS SUR MAC !
 		rl_on_new_line();
 		rl_redisplay();
 		g_return = 2;

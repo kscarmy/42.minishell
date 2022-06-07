@@ -6,13 +6,13 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 02:12:33 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/21 05:36:05 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:54:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-char	*ft_unset_malloc_str(t_data *data, char *str) // renvoie une chaine de str
+char	*ft_unset_malloc_str(t_data *data, char *str)
 {
 	char	*string;
 	int		u;
@@ -26,8 +26,7 @@ char	*ft_unset_malloc_str(t_data *data, char *str) // renvoie une chaine de str
 	return (string);
 }
 
-
-void	ft_unset(t_data *data, t_token *token) // fonction principale de unset
+void	ft_unset(t_data *data, t_token *token)
 {
 	t_var	*var;
 	int		i;
@@ -45,9 +44,4 @@ void	ft_unset(t_data *data, t_token *token) // fonction principale de unset
 		ft_strdel(&str);
 		i++;
 	}
-
-	// var = ft_found_var_name(data, token->arg);
-	// printf("var name '%s' : var value '%s'\n", var->name, var->value);
-	// if (var != NULL)
-	// 	ft_delete_var(data, var);
 }
