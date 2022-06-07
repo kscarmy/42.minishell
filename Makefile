@@ -4,7 +4,6 @@ NAME		= minishell
 ## Sources
 SRC	= 	src/main.c \
 		src/signals.c \
-		src/parsing/history.c \
 		src/parsing/ft_cut_exit.c \
 		src/parsing/ft_clear_token.c \
 		src/parsing/ft_cut_cd.c \
@@ -15,8 +14,6 @@ SRC	= 	src/main.c \
 		src/parsing/ft_cut_echo.c \
 		src/parsing/ft_cut_unset.c \
 		src/parsing/ft_cut_bin.c \
-		src/parsing/quote.c \
-		src/parsing/cut_str.c \
 		src/parsing/ft_cut_redirects.c \
 		src/parsing/ft_pre_parsing.c \
 		src/parsing/ft_quote.c \

@@ -6,19 +6,18 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 07:10:53 by guderram          #+#    #+#             */
-/*   Updated: 2022/03/25 07:48:51 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:18:28 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_cut_pwd(t_data *data) // cut la commande pwd
+int	ft_cut_pwd(t_data *data)
 {
 	char	*str;
 	int		u;
 	int		i;
 
-	// printf("IN CUT PWD\n");
 	i = data->i + ft_space(data->input, data->i);
 	u = 0;
 	str = "pwd";
@@ -37,7 +36,7 @@ int	ft_cut_pwd(t_data *data) // cut la commande pwd
 	return (0);
 }
 
-void	ft_create_pwd_token(t_data *data) // cree le token de la commande pwd
+void	ft_create_pwd_token(t_data *data)
 {
 	int	i;
 
@@ -50,5 +49,4 @@ void	ft_create_pwd_token(t_data *data) // cree le token de la commande pwd
 	else
 		ft_add_new_token(data);
 	data->token->cmd = 2;
-	// printf("IN TOK PWD\n");
 }

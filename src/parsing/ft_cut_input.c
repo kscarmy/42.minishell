@@ -6,13 +6,13 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/04 20:23:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:18:07 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_parse_cmd_not_found(t_data *data) // commande non trouvee
+int	ft_parse_cmd_not_found(t_data *data)
 {
 	ft_putstr("minishell : command not found : ");
 	ft_putstr(&(data->input[data->i]));
@@ -20,121 +20,40 @@ int	ft_parse_cmd_not_found(t_data *data) // commande non trouvee
 	return (-1);
 }
 
-int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique a l'erreur
+int	ft_parse_input(t_data *data)
 {
 	int	found;
 
 	data->i = 0;
 	found = 0;
-	// printf("entree parse input : tok ?\n");
-	// ft_print_token_list(data);
-	// printf("Tok ok\n");
 	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
-		// printf("prefonc data i : '%s'\n", &(data->input[data->i]));
-		// printf ("parse input data i : %d\n", data->i);
 		found = 0;
 		data->i = data->i + ft_space(data->input, data->i);
-		// printf ("parse input data i : %d\n", data->i);
-		// printf("input : <%s>\n", data->input);
 		if (ft_str_size(&(data->input[data->i])) == 0)
 			found++;
-		// printf("0 : %d", data->i);
-		
-		if (found == 0 && ft_cut_exit(data))		// sets data->exit = 1 if command is "exit"
+		if (found == 0 && ft_cut_exit(data))
 			found++;
-		// printf("i : %d", data->i);
-		if (found == 0 && ft_cut_env(data, data->i) == 1)			// checks if command is "env" and creates its token
-		{
-			// printf("incre env found\n");
+		if (found == 0 && ft_cut_env(data, data->i) == 1)
 			found++;
-		}
-		// printf("1 %d", data->i);
 		if (found == 0 && ft_cut_cd(data, data->i))
 			found++;
-		// printf("2 %d", data->i);
 		if (found == 0 && ft_cut_echo(data, data->i) == 1)
-		{
 			found++;
-		}
-		// printf("3 %d", data->i);
 		if (found == 0 && ft_cut_pwd(data) == 1)
 			found++;
-		// printf("4 %d", data->i);
 		if (found == 0 && ft_cut_export(data) == 1)
 			found++;
-		// printf("5 %d", data->i);
 		if (found == 0 && ft_cut_unset(data, data->i) == 1)
 			found++;
-		// printf("6 %d", data->i);
 		if (found == 0 && ft_cut_redirects(data) == 1)
 			found++;
-		// printf("7 %d", data->i);
 		if (found == 0 && ft_cut_bin(data) == 1)
-		{
-			// printf("fin while cut input : <%s>\n", data->token->bin[0]);
 			found++;
-		}
-		// ft_print_token_list(data);
-		// printf("aftfonc data i : '%s'\n", &(data->input[data->i]));
 		if (found == 0)
 			found = ft_parse_cmd_not_found(data);
-		// printf(" PARSE INPUT end while i %d, '%s'\n", data->i, &(data->input[data->i]));
-		
 	}
 	if (found == -1)
-		return (1); // pas de commande trouvee
+		return (1);
 	return (0);
 }
-
-
-
-
-// int	ft_parse_input(t_data *data) // return 0 si ok, sinon 1 ou numero specifique a l'erreur
-// {
-// 	int	found;
-
-// 	data->i = 0;
-// 	found = 0;
-
-// 	if (ft_cut_exit(data))			// sets data->exit = 1 if command is "exit"
-// 		return (0);
-
-// 	if (cut_history(data) == 1)		// checks if command is "history" and creates its token
-// 		found++;
-// 	else 
-// 		add_history(data->input, 1);	// adds line to history if it is not "history"
-	
-// 	if (ft_cut_env(data))			// checks if command is "env" and creates its token
-// 		found++;
-	
-// 	if (ft_cut_cd(data))
-// 		found++;
-// 	while (data->input[data->i])
-// 	{
-// 		found = 0;
-// 		ft_space(data->input, data->i);
-// 		if (found == 0 && ft_cut_echo(data, data->i) == 1)
-// 			found++;
-// 		if (found == 0 && ft_cut_pwd(data) == 1)
-// 			found++;
-// 		if (found == 0 && ft_cut_export(data) == 1)
-// 			found++;
-// 		if (found == 0 && ft_cut_unset(data, data->i) == 1)
-// 			found++;
-// 		if (found == 0 && ft_cut_redirects(data) == 1)
-// 			found++;
-// 		if (found == 0 && ft_cut_bin(data) == 1)
-// 			found++;
-// 		data->i = data->i + 1;
-// 	}
-// 	if (found == 0)
-// 	{
-// 		if (!'\n')
-// 			printf("minishell : command not found : %s\n", data->input);
-// 		return (1); // pas de commande trouvee
-// 	}
-// 	return (0);
-// }
-
-

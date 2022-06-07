@@ -6,13 +6,13 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 23:15:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/04/20 03:04:51 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:19:45 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int		ft_is_input_safe(char *str) // verifie si le input respecte les demandes, telles que les quotes fermees
+int		ft_is_input_safe(char *str)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ int		ft_is_input_safe(char *str) // verifie si le input respecte les demandes, t
 	return (1);
 }
 
-int		ft_verif_single_quote(char *str) // verifie la permeabilite des single quotes
+int		ft_verif_single_quote(char *str)
 {
 	int	i;
 	int sq;
@@ -75,7 +75,7 @@ int		ft_verif_single_quote(char *str) // verifie la permeabilite des single quot
 	return (sq);
 }
 
-int		ft_verif_double_quote(char *str) // verifie la permeabilite des double quotes
+int		ft_verif_double_quote(char *str)
 {
 	int	i;
 	int dq;
