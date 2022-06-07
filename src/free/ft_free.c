@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 15:38:29 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/01 16:14:45 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:10:55 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ void    ft_free_minishell(t_data *data) // free les mallocs avant de sortir du p
     if (data->input != NULL)
         ft_strdel(&data->input);
     if (data->pwd != NULL)
-        ft_strdel(&data->pwd);
+		ft_strdel(&data->pwd);
     if (data->opwd != NULL)
-        ft_strdel(&data->opwd);
+		ft_strdel(&data->opwd);	
+	if (data->tmp != NULL)
+		ft_strdel(&data->tmp);
 
         
     // if (data->token != NULL)

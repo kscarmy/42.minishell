@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:11:40 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 16:27:59 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:46:14 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_src_in_dest_bis(char *dest, char *src, char *ret, char sep)
 {
 	int	sd;
 	int	ss;
-	
+
 	sd = 0;
 	ss = 0;
 	while (dest && dest[sd] && dest[sd] != '\0')

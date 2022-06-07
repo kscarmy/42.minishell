@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/03 16:04:07 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 12:50:58 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int		ft_init_data(t_data *data, char **env) // malloc env dans data
 	data->err = 0;
 	data->var = NULL;
 	data->env = NULL;
+	data->tmp = NULL;
 	i = 0;
 
 	// ft_putstr("init data :\n");

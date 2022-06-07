@@ -6,7 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun  6 16:15:42 2022
+ 
+# Make data base, printed on Tue Jun  7 13:44:48 2022
 
 # Variables
 
@@ -18,12 +19,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 50)
+# makefile (from 'Makefile', line 54)
 OBJ = ${patsubst src/%, obj/%, $(SRC:.c=.o)}
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 5)
-SRC = src/main.c src/signals.c src/parsing/history.c src/parsing/ft_cut_exit.c src/parsing/ft_clear_token.c src/parsing/ft_cut_cd.c src/parsing/ft_cut_env.c src/parsing/ft_cut_pwd.c src/parsing/ft_cut_input.c src/parsing/ft_cut_export.c src/parsing/ft_cut_echo.c src/parsing/ft_cut_unset.c src/parsing/ft_cut_bin.c src/parsing/quote.c src/parsing/cut_str.c src/parsing/ft_cut_redirects.c src/parsing/ft_pre_parsing.c src/parsing/ft_quote.c src/init/ft_init_token.c src/init/ft_init_data.c src/init/ft_init_var.c src/builtin/ft_read_token_list.c src/builtin/ft_echo.c src/builtin/ft_pwd.c src/builtin/ft_env.c src/builtin/ft_unset.c src/builtin/ft_export.c src/builtin/ft_cd.c src/builtin/ft_exit.c src/utils/ft_write.c src/utils/ft_str.c src/utils/ft_str_bis.c src/utils/ft_str_bis_bis.c src/utils/ft_parse_arg.c src/var/ft_var.c src/var/ft_var_sort.c src/bin/ft_bin.c src/redir/ft_pipe.c src/redir/ft_in_file.c src/redir/ft_here_doc.c src/free/ft_free.c 
+SRC = src/main.c src/signals.c src/parsing/history.c src/parsing/ft_cut_exit.c src/parsing/ft_clear_token.c src/parsing/ft_cut_cd.c src/parsing/ft_cut_env.c src/parsing/ft_cut_pwd.c src/parsing/ft_cut_input.c src/parsing/ft_cut_export.c src/parsing/ft_cut_echo.c src/parsing/ft_cut_unset.c src/parsing/ft_cut_bin.c src/parsing/quote.c src/parsing/cut_str.c src/parsing/ft_cut_redirects.c src/parsing/ft_pre_parsing.c src/parsing/ft_quote.c src/init/ft_init_token.c src/init/ft_init_data.c src/init/ft_init_var.c src/builtin/ft_read_token_list.c src/builtin/ft_echo.c src/builtin/ft_pwd.c src/builtin/ft_env.c src/builtin/ft_unset.c src/builtin/ft_export.c src/builtin/ft_cd.c src/builtin/ft_exit.c src/utils/ft_write.c src/utils/ft_str.c src/utils/ft_str_bis.c src/utils/ft_str_bis_bis.c src/var/ft_var.c src/var/ft_var_sort.c src/bin/ft_bin.c src/redir/ft_pipe.c src/redir/ft_in_file.c src/redir/ft_here_doc.c src/free/ft_free.c src/parse_arg/ft_parse_arg.c src/parse_arg/ft_malloc_arg.c src/parse_arg/ft_malloc_arg_bis.c src/parse_arg/ft_one_arg.c src/parse_arg/ft_size_one_arg.c 
 # environment
 XDG_SESSION_TYPE = x11
 # environment
@@ -42,28 +43,28 @@ XMODIFIERS = @im=ibus
 CURDIR := /mnt/nfs/homes/guderram/42/minishell
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 60)
+# makefile (from 'Makefile', line 64)
 RM = rm -rf
 # environment
-GDM_LANG = en
+VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/mnt/nfs/homes/guderram/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /usr/share/code/code
-# makefile (from 'Makefile', line 61)
+_ = /usr/bin/code
+# makefile (from 'Makefile', line 65)
 CFLAGS = -Wall -Werror -Wextra
 # environment
-JOURNAL_STREAM = 9:435752
+JOURNAL_STREAM = 9:2118098
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from 'Makefile', line 55)
+# makefile (from 'Makefile', line 59)
 LIB_FLAGS = -L $(LIBFT_DIR) -lft
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+IM_CONFIG_PHASE = 1
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -75,15 +76,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/32509/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 129967
+MANAGERPID = 426095
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-ce0b4ccf-242e-4824-9658-320eb5403872.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-f22f5fee-ea06-4180-8df7-bfceb81f6cff.sock
 # environment
-VSCODE_CWD = /mnt/nfs/homes/guderram
+VSCODE_CWD = /mnt/nfs/homes/guderram/42/minishell
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session8
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_32509_v35Z5t
+KRB5CCNAME = FILE:/tmp/krb5cc_32509_ei11c4
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -91,7 +92,7 @@ PATH = /mnt/nfs/homes/guderram/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 # environment
 GPG_AGENT_INFO = /run/user/32509/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/130455,unix/e1r10p6.42.fr:/tmp/.ICE-unix/130455
+SESSION_MANAGER = local/e2r10p4.clusters.42paris.fr:@/tmp/.ICE-unix/426563,unix/e2r10p4.clusters.42paris.fr:/tmp/.ICE-unix/426563
 # environment
 XDG_RUNTIME_DIR = /run/user/32509
 # environment
@@ -101,10 +102,10 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 489d4abefe4345f4875f4a2d31bdca70
+INVOCATION_ID = d8900400d6834b84a2df2e72111d9c65
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 54)
+# makefile (from 'Makefile', line 58)
 LIBFT_DIR = ./src/libft/
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/guderram
@@ -112,8 +113,6 @@ XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/guderram
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/32509/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 225482
 # automatic
 %F = $(notdir $%)
 # environment
@@ -125,8 +124,8 @@ PWD = /mnt/nfs/homes/guderram/42/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 130419
-# makefile (from 'Makefile', line 67)
+SSH_AGENT_PID = 426527
+# makefile (from 'Makefile', line 71)
 DONE = @echo "MINISHELL ready to use!"
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
@@ -137,11 +136,15 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /mnt/nfs/homes/guderram
 # environment
+VSCODE_CLI = 1
+# environment
 VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/guderram/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
 LOGNAME = guderram
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -150,6 +153,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -157,15 +162,13 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 0
-# makefile (from 'Makefile', line 53)
+SHLVL = 1
+# makefile (from 'Makefile', line 57)
 LIBFT = $(LIBFT_DIR)libft.a
-# makefile (from 'Makefile', line 65)
+# makefile (from 'Makefile', line 69)
 CLEAN_O = @echo "Object files removed!"
-# makefile (from 'Makefile', line 59)
+# makefile (from 'Makefile', line 63)
 CC = gcc
-# environment
-IM_CONFIG_PHASE = 1
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -180,7 +183,7 @@ LIBVIRT_DEFAULT_URI = qemu:///system
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
-# makefile (from 'Makefile', line 56)
+# makefile (from 'Makefile', line 60)
 INC = -I ./inc/ -I $(LIBFT_DIR)
 # environment
 OLDPWD = /mnt/nfs/homes/guderram
@@ -189,15 +192,12 @@ OLDPWD = /mnt/nfs/homes/guderram
 # automatic
 *F = $(notdir $*)
 # environment
-LANGUAGE = en
-# environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
 VSCODE_IPC_HOOK = /run/user/32509/vscode-c015ace9-1.67.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
- 
 MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
@@ -207,7 +207,7 @@ MFLAGS = -pqrR
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
-# makefile (from 'Makefile', line 66)
+# makefile (from 'Makefile', line 70)
 CLEAN_A = @echo "Executables removed!"
 # environment
 QT_ACCESSIBILITY = 1
@@ -221,8 +221,12 @@ MAKEFILES :=
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/3c69f04a_6467_4d32_aca2_ec18e90bfac8
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.93
 # default
 SUFFIXES := 
 # environment
@@ -238,11 +242,13 @@ NAME = minishell
 # environment
 LANG = C
 # environment
+TERM = xterm-256color
+# environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 225482
+VSCODE_PID = 432210
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=17/152=11%
+# Load=118/1024=12%, Rehash=0, Collisions=19/155=12%
 
 # Pattern-specific Variable Values
 
@@ -250,20 +256,26 @@ VSCODE_PID = 225482
 
 # Directories
 
-# . (device 56, inode 264208798): 12 files, no impossibilities.
-# src (device 56, inode 264209481): No files, no impossibilities so far.
+# . (device 60, inode 264208798): 12 files, no impossibilities.
+# src (device 60, inode 264209481): No files, no impossibilities so far.
 
 # 12 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c
-#  recipe to execute (from 'Makefile', line 91):
+#  recipe to execute (from 'Makefile', line 96):
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+# Not a target:
+obj/parse_arg/ft_parse_arg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/builtin/ft_echo.o:
@@ -272,6 +284,7 @@ obj/builtin/ft_echo.o:
 #  File has not been updated.
 
 # Not a target:
+ 
 obj/parsing/ft_cut_echo.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -285,6 +298,12 @@ obj/builtin/ft_export.o:
 
 # Not a target:
 obj/parsing/ft_cut_export.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/parse_arg/ft_malloc_arg_bis.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -341,12 +360,6 @@ obj/free/ft_free.o:
 #  File has not been updated.
 
 # Not a target:
-obj/utils/ft_parse_arg.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 obj/utils/ft_str.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -371,14 +384,26 @@ obj/main.o:
 #  File has not been updated.
 
 # Not a target:
+obj/parse_arg/ft_one_arg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 16:15:27.755669115
+#  Last modified 2022-06-07 13:44:26.566443882
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 obj/parsing/quote.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/parse_arg/ft_size_one_arg.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -419,11 +444,11 @@ obj/utils/ft_str_bis.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-minishell: obj/main.o obj/signals.o obj/parsing/history.o obj/parsing/ft_cut_exit.o obj/parsing/ft_clear_token.o obj/parsing/ft_cut_cd.o obj/parsing/ft_cut_env.o obj/parsing/ft_cut_pwd.o obj/parsing/ft_cut_input.o obj/parsing/ft_cut_export.o obj/parsing/ft_cut_echo.o obj/parsing/ft_cut_unset.o obj/parsing/ft_cut_bin.o obj/parsing/quote.o obj/parsing/cut_str.o obj/parsing/ft_cut_redirects.o obj/parsing/ft_pre_parsing.o obj/parsing/ft_quote.o obj/init/ft_init_token.o obj/init/ft_init_data.o obj/init/ft_init_var.o obj/builtin/ft_read_token_list.o obj/builtin/ft_echo.o obj/builtin/ft_pwd.o obj/builtin/ft_env.o obj/builtin/ft_unset.o obj/builtin/ft_export.o obj/builtin/ft_cd.o obj/builtin/ft_exit.o obj/utils/ft_write.o obj/utils/ft_str.o obj/utils/ft_str_bis.o obj/utils/ft_str_bis_bis.o obj/utils/ft_parse_arg.o obj/var/ft_var.o obj/var/ft_var_sort.o obj/bin/ft_bin.o obj/redir/ft_pipe.o obj/redir/ft_in_file.o obj/redir/ft_here_doc.o obj/free/ft_free.o src/libft/libft.a
+minishell: obj/main.o obj/signals.o obj/parsing/history.o obj/parsing/ft_cut_exit.o obj/parsing/ft_clear_token.o obj/parsing/ft_cut_cd.o obj/parsing/ft_cut_env.o obj/parsing/ft_cut_pwd.o obj/parsing/ft_cut_input.o obj/parsing/ft_cut_export.o obj/parsing/ft_cut_echo.o obj/parsing/ft_cut_unset.o obj/parsing/ft_cut_bin.o obj/parsing/quote.o obj/parsing/cut_str.o obj/parsing/ft_cut_redirects.o obj/parsing/ft_pre_parsing.o obj/parsing/ft_quote.o obj/init/ft_init_token.o obj/init/ft_init_data.o obj/init/ft_init_var.o obj/builtin/ft_read_token_list.o obj/builtin/ft_echo.o obj/builtin/ft_pwd.o obj/builtin/ft_env.o obj/builtin/ft_unset.o obj/builtin/ft_export.o obj/builtin/ft_cd.o obj/builtin/ft_exit.o obj/utils/ft_write.o obj/utils/ft_str.o obj/utils/ft_str_bis.o obj/utils/ft_str_bis_bis.o obj/var/ft_var.o obj/var/ft_var_sort.o obj/bin/ft_bin.o obj/redir/ft_pipe.o obj/redir/ft_in_file.o obj/redir/ft_here_doc.o obj/free/ft_free.o obj/parse_arg/ft_parse_arg.o obj/parse_arg/ft_malloc_arg.o obj/parse_arg/ft_malloc_arg_bis.o obj/parse_arg/ft_one_arg.o obj/parse_arg/ft_size_one_arg.o src/libft/libft.a
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 73):
+#  recipe to execute (from 'Makefile', line 77):
 	@$(CC)  $(CFLAGS) $(OBJ) $(LIB_FLAGS) -lreadline -o $(NAME)
 	$(DONE)
 
@@ -450,7 +475,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 99):
+#  recipe to execute (from 'Makefile', line 104):
 	@make fclean -sC $(LIBFT_DIR)
 	@${RM} ${NAME}
 	$(CLEAN_A)
@@ -480,7 +505,6 @@ obj:
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
- 
 # automatic
 # @ := obj
 # automatic
@@ -499,7 +523,7 @@ obj:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 80):
+#  recipe to execute (from 'Makefile', line 84):
 	@mkdir -p obj
 	@mkdir -p obj/parsing
 	@mkdir -p obj/init
@@ -509,6 +533,7 @@ obj:
 	@mkdir -p obj/bin
 	@mkdir -p obj/redir
 	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
 
 # Not a target:
 obj/utils/ft_str_bis_bis.o:
@@ -536,6 +561,7 @@ obj/builtin/ft_read_token_list.o:
 
 # Not a target:
 obj/parsing/cut_str.o:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -563,7 +589,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 94):
+#  recipe to execute (from 'Makefile', line 99):
 	@make clean -sC $(LIBFT_DIR)
 	@${RM} obj ${OBJ}
 	$(CLEAN_O)
@@ -584,7 +610,7 @@ src/libft/libft.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 77):
+#  recipe to execute (from 'Makefile', line 81):
 	@make -sC $(LIBFT_DIR)
 
 # Not a target:
@@ -618,25 +644,31 @@ obj/init/ft_init_var.o:
 #  File has not been updated.
 
 # Not a target:
+obj/parse_arg/ft_malloc_arg.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 obj/parsing/ft_quote.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=52/1024=5%, Rehash=0, Collisions=2/119=2%
+# Load=56/1024=5%, Rehash=0, Collisions=2/127=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 65 / storage = 1144 B / avg = 17 B
-# current buf: size = 8162 B / used = 1144 B / count = 65 / avg = 17 B
+# strcache buffers: 1 (0) / strings = 69 / storage = 1271 B / avg = 18 B
+# current buf: size = 8162 B / used = 1271 B / count = 69 / avg = 18 B
 
-# strcache performance: lookups = 93 / hit rate = 30%
+# strcache performance: lookups = 97 / hit rate = 28%
 # hash-table stats:
-# Load=65/8192=1%, Rehash=0, Collisions=1/93=1%
-# Finished Make data base on Mon Jun  6 16:15:42 2022
+# Load=69/8192=1%, Rehash=0, Collisions=1/97=1%
+# Finished Make data base on Tue Jun  7 13:44:48 2022
 
  

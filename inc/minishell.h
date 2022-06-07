@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/06 17:46:38 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:42:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct p_data
 	char			*input; // chaine de caractere recu brute dans le shell
 	char			*pwd; // vraie pwd
 	char			*opwd; // vraie old pwd
+	char			*tmp; //
 	struct p_token	*token; // adresse du premier token
 	struct p_var	*var; // adresse du premier var
 	struct p_pipe	*pipe; // structure des pipes
@@ -126,25 +127,47 @@ void	ft_free_var(t_data *data, t_var *var); // free les mallocs dans une liste
 void	ft_delete_var(t_data *data, t_var *delete); // supprime la var en relian si besoin les autres
 
 
-
-/*	*************	*/
-/*		UTILS		*/
-/*	*************	*/
+/*	*****************	*/
+/*		PARSE_ARG		*/
+/*	*****************	*/
 
 /*	ft_parse_arg.c	*/
 int		ft_size_of_arg(t_data *data); // renvoie la taille d'un arg, pratique pour malloc tok->arg
 void	ft_size_of_arg_bis(t_data *data, int *i, int *u, int *cd);
 void	ft_size_of_arg_bis_bis(t_data *data, int *u, int *cd);
-
-
-void	ft_malloc_arg(t_data *data, t_token *tok); // malloc dans tok->arg l'argument
-
-void	ft_malloc_builtin_arg(t_data *data, t_token *tok); // permet de malloc les arguments d'un builtin dans arg.
-char	*ft_one_arg(t_data *data, int u); // renvoie le premier argument en partant de u dans data input
-char	*ft_one_simple_arg(t_data *data, int i); // renvoie une chaine simple contenant des termes
-int		ft_size_one_arg(t_data *data, int s); // renvoie la taille d'un seul argument
 int		ft_incre_one_arg(t_data *data, int u); // incremente en fonction d'un 'argument' d'entree
+void	ft_malloc_builtin_arg(t_data *data, t_token *tok); // permet de malloc les arguments d'un builtin dans arg.
 
+/*		ft_malloc_arg.c		*/
+void	ft_malloc_arg(t_data *data, t_token *tok); // malloc dans tok->arg l'argument
+void	ft_malloc_arg_pre_b(t_data *data, t_token *tok,int *u, int *cd);
+void	ft_malloc_arg_bis(t_data *data, t_token *tok, int *u, int *cd);
+void	ft_malloc_arg_bis_bis(t_data *data, t_token *tok, int *u, int *cd);
+void	ft_malloc_arg_bbb(t_data *data, t_token *tok, int *u, int *cd);
+
+/*		ft_malloc_arg_bis.c		*/
+void	ft_malloc_arg_bbbb(t_data *data, t_token *tok, int *u, int *i);
+void	ft_malloc_arg_end(t_data *data, int *u, int *size);
+char	*ft_one_simple_arg(t_data *data, int i); // renvoie une chaine simple contenant des termes
+
+/*		ft_one_arg.c		*/
+char	*ft_one_arg(t_data *data, int u); // renvoie le premier argument en partant de u dans data input
+void	ft_one_arg_b(t_data *data, int u, int *i, int *cd);
+void	ft_one_arg_bb(t_data *data, int u, int *i, int *cd);
+void	ft_one_arg_bbb(t_data *data, int u, int *i, int *cd);
+void	ft_one_arg_bbbb(t_data *data, int u, int *i, int *cd);
+
+/*		ft_size_one_arg.c		*/
+int		ft_size_one_arg(t_data *data, int s); // renvoie la taille d'un seul argument
+int		ft_size_one_arg_b(t_data *da, int s, int *u, int *ret);
+int		ft_size_one_arg_bb(t_data *da, int s, int *u, int *ret);
+int		ft_size_one_arg_bbb(t_data *da, int s, int *u);
+int		ft_size_one_arg_bbbb(t_data *da, int s, int *u, int *ret);
+
+
+/*	*************	*/
+/*		UTILS		*/
+/*	*************	*/
 
 /*	ft_write.c	*/
 int		ft_is_a_b(char a, char b); // compare a et b, renvoie 1 si ils sont identiques sinon 0

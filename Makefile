@@ -35,7 +35,6 @@ SRC	= 	src/main.c \
 		src/utils/ft_str.c \
 		src/utils/ft_str_bis.c \
 		src/utils/ft_str_bis_bis.c \
-		src/utils/ft_parse_arg.c \
 		src/var/ft_var.c \
 		src/var/ft_var_sort.c \
 		src/bin/ft_bin.c \
@@ -43,6 +42,11 @@ SRC	= 	src/main.c \
 		src/redir/ft_in_file.c \
 		src/redir/ft_here_doc.c \
 		src/free/ft_free.c \
+		src/parse_arg/ft_parse_arg.c \
+		src/parse_arg/ft_malloc_arg.c \
+		src/parse_arg/ft_malloc_arg_bis.c \
+		src/parse_arg/ft_one_arg.c \
+		src/parse_arg/ft_size_one_arg.c \
 
 
 
@@ -86,6 +90,7 @@ obj:
 	@mkdir -p obj/bin
 	@mkdir -p obj/redir
 	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
 
 obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<

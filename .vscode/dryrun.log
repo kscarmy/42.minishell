@@ -9,15 +9,7 @@ mkdir -p obj/var
 mkdir -p obj/bin
 mkdir -p obj/redir
 mkdir -p obj/free
+mkdir -p obj/parse_arg
  
-gcc -Wall -Werror -Wextra -o obj/parsing/ft_quote.o -c src/parsing/ft_quote.c
- 
-gcc -Wall -Werror -Wextra -o obj/utils/ft_str.o -c src/utils/ft_str.c
- 
-gcc -Wall -Werror -Wextra -o obj/utils/ft_str_bis.o -c src/utils/ft_str_bis.c
-gcc -Wall -Werror -Wextra -o obj/utils/ft_str_bis_bis.o -c src/utils/ft_str_bis_bis.c
- 
-gcc  -Wall -Werror -Wextra  obj/main.o  obj/signals.o  obj/parsing/history.o  obj/parsing/ft_cut_exit.o  obj/parsing/ft_clear_token.o  obj/parsing/ft_cut_cd.o  obj/parsing/ft_cut_env.o  obj/parsing/ft_cut_pwd.o  obj/parsing/ft_cut_input.o  obj/parsing/ft_cut_export.o  obj/parsing/ft_cut_echo.o  obj/parsing/ft_cut_unset.o  obj/parsing/ft_cut_bin.o  obj/parsing/quote.o  obj/parsing/cut_str.o  obj/parsing/ft_cut_redirects.o  obj/parsing/ft_pre_parsing.o  obj/parsing/ft_quote.o  obj/init/ft_init_token.o  obj/init/ft_init_data.o  obj/init/ft_init_var.o  obj/builtin/ft_read_token_list.o  obj/builtin/ft_echo.o  obj/builtin/ft_pwd.o  obj/builtin/ft_env.o  obj/builtin/ft_unset.o  obj/builtin/ft_export.o  obj/builtin/ft_cd.o  obj/builtin/ft_exit.o  obj/utils/ft_write.o  obj/utils/ft_str.o  obj/utils/ft_str_bis.o  obj/utils/ft_str_bis_bis.o  obj/utils/ft_parse_arg.o  obj/var/ft_var.o  obj/var/ft_var_sort.o  obj/bin/ft_bin.o  obj/redir/ft_pipe.o  obj/redir/ft_in_file.o  obj/redir/ft_here_doc.o  obj/free/ft_free.o -L ./src/libft/ -lft -lreadline -o minishell
-echo "MINISHELL ready to use!"
 make: Leaving directory '/mnt/nfs/homes/guderram/42/minishell'
  
