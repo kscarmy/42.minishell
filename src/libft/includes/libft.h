@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mourdani <mourdani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 05:36:34 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/21 18:27:02 by mourdani         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:07:19 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int					ft_atoi(const char *number_pointer);
 unsigned int		ft_atoui(const char *number_pointer);
 unsigned int		ft_atoui_strict(const char *number_pointer);
 
-int				ft_is_a_b(char a, char b);
+int					ft_is_a_b(char a, char b);
 bool				ft_isdigit(int c);
 bool				ft_is_whitespace(char character);
 bool				ft_is_plus_or_minus(char character);

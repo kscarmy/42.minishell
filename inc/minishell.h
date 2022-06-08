@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:38:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:03:53 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,15 +313,22 @@ void	ft_echo(t_data *data, t_token *token); // commande echo
 
 /*	ft_read_token_list.c	*/
 t_token		*ft_read_token_list_while_pipe(t_data *data, t_token *t); // lecture des tokens dans les pipes
-void	ft_read_token_list(t_data *data); // lecture des tokens
 void	ft_launch_cmd(t_data *data, t_token *token); // lance une cmd
 t_token	*ft_ret_last_token(t_data *data); // renvoie l'adresse du dernier token.
 void	ft_print_token_list(t_data *data); // affiche tout les token
 t_token		*ft_read_token_list_while_redir(t_data *data, t_token *tok); // lecture des tokens pendant des redirections
 t_token		*ft_redirect_input(t_data *data, t_token *tok); // redirige l'entree standart sur un fichier.
+t_token	*ft_read_token_list_while_redir_bis(t_data *data, t_token *t, int *fd);
 
 
 int	ft_while_token(t_data *data); // lecture des tokens
+
+
+/*	ft_read_token_list_bis.c	*/
+t_token	*ft_redirect_input(t_data *data, t_token *tok);
+void	ft_read_token_list_bis(t_data *data, t_token *t);
+void	ft_read_token_list(t_data *data); // lecture des tokens
+void	ft_print_token_list(t_data *data);
 
 /*	ft_pwd.c	*/
 void	ft_pwd(t_data *data); // commande pwd
@@ -342,13 +349,17 @@ void	ft_export(t_data *data, t_token *token); // commande export
 void	ft_cd(t_data *data, t_token *token);
 void	ft_cd_home(t_data *data); // si cd renvoie sur son home
 void	ft_cd_goto_path(t_data *data, char *path); // verifie la validitee du path et le stocke dans TOUT les endroits necesaires
+void	ft_cd_goto_opwd(t_data *data, char *path); // execute la commande 'cd -'
+void	ft_cd_goto_path_bis(t_data *data);
+
+/*	ft_cd.c	*/
 void	ft_cd_from_data_to_var_opwd(t_data *data); // s'occupe de gerer opwd dans la structure var
 void	ft_cd_from_data_to_var_pwd(t_data *data); // s'occupe de gerer pwd dans la structure var
-void	ft_cd_goto_opwd(t_data *data, char *path); // execute la commande 'cd -'
 
 /*	ft_exit.c	*/
 int     ft_resize_g_return(int  i);
 void    ft_exit(t_data *data, t_token *token);
+void	ft_exit_bis(t_data *data, t_token *tok, int i, int ret);
 
 
 /*	**********	*/
@@ -374,13 +385,14 @@ void	ft_test(t_data *data); // TEST
 char	*ft_malloc_one_var(t_data *data, t_var *var); // malloc une ligne dans data->env
 void	ft_malloc_var(t_data *data); // malloc et renvoie var dans un char **
 int		ft_bin_path(t_data *data, t_var *var, t_token *tok, int i); // stocke et malloc un path dans token->arg
-void	ft_is_bin(t_data *data, t_token *token); //
-void	ft_bin_execve(t_data *data, t_token *token); //
-// void	ft_free_tab_char(char **str); // free un tableau de char
-void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
 void	ft_free_data_env(t_data *data); // free un tableau de char
+void	ft_bin_path_bis(t_data *data, t_token *tok, int *u, int *y);
 
-
+/*	ft_bin_bis.c	*/
+void	ft_bin_execve(t_data *data, t_token *token); //
+void	ft_arg_path_bin(t_data *data, t_token *token); // cherche si la string est un binaire
+void	ft_is_bin(t_data *data, t_token *token); //
+void	ft_is_bin_bis(t_data *data, t_token *token, t_var *var, int *i);
 
 /*	**********	*/
 /*	 Signals	*/

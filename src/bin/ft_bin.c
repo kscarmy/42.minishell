@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:58:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:02:39 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,13 @@ void	ft_malloc_var(t_data *data)
 	data->env[i] = NULL;
 }
 
+void	ft_bin_path_bis(t_data *data, t_token *tok, int *u, int *y)
+{
+	tok->arg = ft_malloc_str(data, (*u + *y + 2));
+	*u = 0;
+	*y = 0;
+}
+
 int	ft_bin_path(t_data *data, t_var *var, t_token *tok, int i)
 {
 	int	u;
@@ -75,9 +82,7 @@ int	ft_bin_path(t_data *data, t_var *var, t_token *tok, int i)
 		ft_strdel(&tok->arg);
 	while (var->value[i + u] && var->value[i + u] != ':')
 		u++;
-	tok->arg = ft_malloc_str(data, (u + y + 2));
-	u = 0;
-	y = 0;
+	ft_bin_path_bis(data, tok, &u, &y);
 	while (var->value[i + u] && var->value[i + u] != ':')
 	{
 		tok->arg[u] = var->value[i + u];
@@ -110,74 +115,4 @@ void	ft_free_data_env(t_data *data)
 		free(data->env);
 		data->env = NULL;
 	}
-}
-
-void	ft_is_bin(t_data *data, t_token *token)
-{
-	int		i;
-	t_var	*var;
-
-	i = 0;
-	if (data->env != NULL)
-		ft_free_data_env(data);
-	ft_malloc_var(data);
-	if (access(token->bin[0], F_OK) == 0)
-	{
-		ft_arg_path_bin(data, token);
-		return ;
-	}
-	var = ft_found_var_name(data, "PATH");
-	if (var == NULL)
-	{
-		ft_putstr("bash: ");
-		ft_putstr(token->bin[0]);
-		ft_putstr(" : No such file or directory\n");
-		g_return = 127;
-		return ;
-	}
-	token->arg = NULL;
-	while (var != NULL && var->value != NULL
-		&& i < ft_str_size(var->value) && access(token->arg, F_OK) == -1)
-		i = i + ft_bin_path(data, var, token, i);
-	if (access(token->arg, F_OK) == 0)
-		ft_bin_execve(data, token);
-	else
-	{
-		ft_putstr("bash: ");
-		ft_putstr(token->bin[0]);
-		ft_putstr(" : commande introuvable\n");
-		g_return = 127;
-	}
-}
-
-void	ft_arg_path_bin(t_data *data, t_token *token)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == -1)
-		data->err = 5000;
-	else if (pid == 0)
-		execve(token->bin[0], token->bin, data->env);
-	signal(SIGINT, ft_handler_pid);
-	signal(SIGQUIT, ft_handler_pid);
-	waitpid(pid, &g_return, 0);
-	signal(SIGINT, ft_handler);
-	signal(SIGQUIT, ft_handler);
-}
-
-void	ft_bin_execve(t_data *data, t_token *token)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == -1)
-		data->err = 5050;
-	else if (pid == 0)
-		execve(token->arg, token->bin, data->env);
-	signal(SIGINT, ft_handler_pid);
-	signal(SIGQUIT, ft_handler_pid);
-	waitpid(pid, &g_return, 0);
-	signal(SIGINT, ft_handler);
-	signal(SIGQUIT, ft_handler);
 }

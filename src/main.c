@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:59:16 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:05:40 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ void	prompt(t_data *data)
 			ft_read_token_list(data);
 		ft_clear_for_new_input(data);
 	}
-	if (g_return < 0)
-		data->exit = 1;
-	if (data->exit != 0)
+	if (g_return < 0 || data->exit != 0)
 		ft_putstr("exit\n");
 }
 

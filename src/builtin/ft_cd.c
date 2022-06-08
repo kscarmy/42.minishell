@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:47:58 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:42:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:28:50 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,27 @@ void	ft_cd_goto_opwd(t_data *data, char *path)
 	}
 }
 
+void	ft_cd_goto_path_bis(t_data *data)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	tmp = getcwd(NULL, 0);
+	ft_strdel(&data->opwd);
+	data->opwd = ft_malloc_str(data, ft_strlen(data->pwd));
+	data->opwd = ft_strncpy(data->opwd, data->pwd, ft_strlen(data->pwd));
+	ft_strdel(&data->pwd);
+	data->pwd = ft_malloc_str(data, ft_strlen(tmp));
+	data->pwd = ft_strncpy(data->pwd, tmp, ft_strlen(tmp));
+	ft_cd_from_data_to_var_opwd(data);
+	ft_cd_from_data_to_var_pwd(data);
+	ft_strdel(&tmp);
+}
+
 void	ft_cd_goto_path(t_data *data, char *path)
 {
 	int		i;
 	char	*npath;
-	char	*tmp;
 
 	i = 0;
 	while (path[i] && path[i] != ' ' && ft_is_separator(data->input, i) == 0)
@@ -85,62 +101,6 @@ void	ft_cd_goto_path(t_data *data, char *path)
 		ft_putstr(": No such file or directory\n");
 	}
 	else
-	{
-		tmp = getcwd(NULL, 0);
-		ft_strdel(&data->opwd);
-		data->opwd = ft_malloc_str(data, ft_strlen(data->pwd));
-		data->opwd = ft_strncpy(data->opwd, data->pwd, ft_strlen(data->pwd));
-		ft_strdel(&data->pwd);
-		data->pwd = ft_malloc_str(data, ft_strlen(tmp));
-		data->pwd = ft_strncpy(data->pwd, tmp, ft_strlen(tmp));
-		ft_cd_from_data_to_var_opwd(data);
-		ft_cd_from_data_to_var_pwd(data);
-		ft_strdel(&tmp);
-	}
+		ft_cd_goto_path_bis(data);
 	ft_strdel(&npath);
-}
-
-void	ft_cd_from_data_to_var_opwd(t_data *data)
-{
-	t_var	*opwd;
-
-	opwd = ft_found_var_name(data, "OLDPWD");
-	if (opwd == NULL)
-	{
-		ft_add_new_var(data);
-		data->var->name = ft_malloc_str(data, 6);
-		data->var->name = ft_strncpy(data->var->name, "OLDPWD", 6);
-		data->var->value = ft_malloc_str(data, ft_strlen(data->opwd));
-		data->var->value = ft_strncpy(data->var->value,
-				data->opwd, ft_strlen(data->opwd));
-	}
-	else
-	{
-		ft_strdel(&opwd->value);
-		opwd->value = ft_malloc_str(data, ft_strlen(data->opwd));
-		opwd->value = ft_strncpy(opwd->value,
-				data->opwd, ft_strlen(data->opwd));
-	}
-}
-
-void	ft_cd_from_data_to_var_pwd(t_data *data)
-{
-	t_var	*pwd;
-
-	pwd = ft_found_var_name(data, "PWD");
-	if (pwd == NULL)
-	{
-		ft_add_new_var(data);
-		data->var->name = ft_malloc_str(data, 3);
-		data->var->name = ft_strncpy(data->var->name, "PWD", 3);
-		data->var->value = ft_malloc_str(data, ft_strlen(data->pwd));
-		data->var->value = ft_strncpy(data->var->value,
-				data->pwd, ft_strlen(data->pwd));
-	}
-	else
-	{
-		ft_strdel(&pwd->value);
-		pwd->value = ft_malloc_str(data, ft_strlen(data->pwd));
-		pwd->value = ft_strncpy(pwd->value, data->pwd, ft_strlen(data->pwd));
-	}
 }

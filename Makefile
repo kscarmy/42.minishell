@@ -21,12 +21,14 @@ SRC	= 	src/main.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_var.c \
 		src/builtin/ft_read_token_list.c \
+		src/builtin/ft_read_token_list_bis.c \
 		src/builtin/ft_echo.c \
 		src/builtin/ft_pwd.c \
 		src/builtin/ft_env.c \
 		src/builtin/ft_unset.c \
 		src/builtin/ft_export.c \
 		src/builtin/ft_cd.c \
+		src/builtin/ft_cd_bis.c \
 		src/builtin/ft_exit.c \
 		src/utils/ft_write.c \
 		src/utils/ft_str.c \
@@ -35,6 +37,7 @@ SRC	= 	src/main.c \
 		src/var/ft_var.c \
 		src/var/ft_var_sort.c \
 		src/bin/ft_bin.c \
+		src/bin/ft_bin_bis.c \
 		src/redir/ft_pipe.c \
 		src/redir/ft_in_file.c \
 		src/redir/ft_here_doc.c \

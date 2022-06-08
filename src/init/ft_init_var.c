@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 17:41:03 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:34:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 11:09:20 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ void	ft_delete_var(t_data *data, t_var *delete)
 		if (delete->next == NULL && delete->prev != NULL)
 			delete->prev->next = NULL;
 		if (delete->prev == NULL && delete->next != NULL)
+		{
 			data->var = delete->next;
 			delete->next->prev = NULL;
+		}
 		if (delete->prev == NULL && delete->next == NULL)
 			data->var = NULL;
 		if (delete->next != NULL && delete->prev != NULL)

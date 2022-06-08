@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 05:25:32 by mourdani          #+#    #+#             */
-/*   Updated: 2022/02/26 07:03:46 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:07:26 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include "libft.h"
-
 
 int		get_next_line(const int fd, char **line);
 
