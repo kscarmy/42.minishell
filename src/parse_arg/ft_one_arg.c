@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:28:29 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 13:33:30 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:00:04 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_one_arg_bbb(t_data *data, int u, int *i, int *cd)
 		*i = *i + 1;
 		while (ft_is_separator(data->input, (*i + u)) == 0
 			&& data->input[*i + u] && data->input[*i + u] != ' '
-			&& data->input[*i + u] != '$')
+			&& data->input[*i + u] != '$' && data->input[*i + u] != '\''
+			&& data->input[*i + u] != '\"' && data->input[*i + u] != '/')
 			*i = *i + 1;
 		*cd = *cd + 1;
 	}

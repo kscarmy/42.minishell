@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:58:24 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 17:58:43 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:03:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ char	*ft_ret_dollar_ret(t_data *data, char *str)
 	ret = NULL;
 	while (str[i] && str[i] != ' ' && str[i] != '$'
 		&& ft_is_separator(str, i) == 0
-		&& str[i] != '\'' && str[i] != '\"')
+		&& str[i] != '\'' && str[i] != '\"' && str[i] != '/')
 		i++;
 	ret = ft_malloc_str(data, i);
 	i = 1;
 	while (str[i] && str[i] != ' '
 		&& str[i] != '$' && ft_is_separator(str, i) == 0
-		&& str[i] != '\'' && str[i] != '\"')
+		&& str[i] != '\'' && str[i] != '\"' && str[i] != '/')
 	{
 		ret[i - 1] = str[i];
 		i++;
@@ -62,14 +62,13 @@ char	*ft_ret_dollar(t_data *data, char *str)
 	ret = ft_ret_dollar_ret(data, str);
 	if (ft_str_size(ret) == 0)
 		return (ret);
-	ft_strdel(&data->var->value);
 	var = ft_found_var_name(data, ret);
 	if (var == NULL)
 		return (NULL);
 	ft_strdel(&ret);
 	ret = ft_malloc_str(data, ft_str_size(var->value));
 	i = 0;
-	while (var->value[i])
+	while (var->value && var->value[i])
 	{
 		ret[i] = var->value[i];
 		i++;

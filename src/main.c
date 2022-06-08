@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 12:05:40 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:15:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	g_return = 0;
 	signal(SIGINT, ft_handler);
+	signal(SIGQUIT, ft_handler);
 	ft_putstr("Bienvenue dans ce minishell realisé par guderram et mourdani\n");
 	data = malloc(sizeof(t_data));
 	if (ft_init_data(data, env) == 0)

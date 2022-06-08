@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:23:22 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:32:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	ft_init_data_pwd(t_data *data)
 	var = data->var;
 	while (var != NULL && ft_strncmp(var->name, str, 3) != 0)
 		var = var->next;
-	while (var->value[i])
+	while (var && var->value[i])
 		i++;
-	data->pwd = ft_malloc_str(data, i);
-	data->pwd = ft_strncpy(data->pwd, var->value, i);
+	data->pwd = ft_malloc_str(data, 1000);
+	getcwd(data->pwd, 1000);
 	i = 0;
 	str = "OLDPWD";
 	var = data->var;
@@ -57,7 +57,8 @@ void	ft_init_data_pwd(t_data *data)
 	while (var != NULL && var->value[i])
 		i++;
 	data->opwd = ft_malloc_str(data, i);
-	data->opwd = ft_strncpy(data->opwd, var->value, i);
+	if (var != NULL)
+		data->opwd = ft_strncpy(data->opwd, var->value, i);
 }
 
 void	ft_init_pipe(t_data *data)
@@ -109,7 +110,7 @@ int	ft_init_data(t_data *data, char **env)
 	data->env = NULL;
 	data->tmp = NULL;
 	i = 0;
-	while (env[i] && data->err == 0)
+	while (env && env[i] && data->err == 0)
 	{
 		ft_create_var_var(data, env[i]);
 		i++;

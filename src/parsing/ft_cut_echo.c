@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:16:44 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 15:15:29 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:42:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ void	ft_cut_echo_option(t_data *data, int i)
 		u++;
 	while (ft_is_a_b(data->input[i + u], str[1]) == 1)
 		u++;
-	if (u >= 2)
+	if (u >= 2 && (data->input[i + u] == '\0'
+			|| data->input[i + u] == '\'' || data->input[i + u] == '\"'
+			|| data->input[i + u] == ' '))
 		i = i + u;
+	else
+		u = 0;
 	i = i + ft_space(data->input, i);
 	data->i = i;
 	ft_create_echo_token(data, u);

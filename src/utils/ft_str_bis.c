@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:11:40 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 13:46:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:48:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ char	*ft_str_cpy(char *stra, char *strb)
 
 	i = 0;
 	u = 0;
-	while (stra[i] && stra[i] != '\0')
+	while (stra && stra[i] && stra[i] != '\0')
 		i++;
-	while (strb[u] && strb[u] != '\0')
+	while (strb && strb[u] && strb[u] != '\0')
 	{
 		stra[i + u] = strb[u];
 		u++;

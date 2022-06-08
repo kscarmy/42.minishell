@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:04:57 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:55:31 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:44:09 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_export_in_var(t_data *data, t_token *token, int i)
 		u++;
 	data->var->value = ft_malloc_str(data, u);
 	data->var->value = ft_strncpy(data->var->value, &(token->bin[i][y]), u);
+	data->var->value[u] = '\0';
 }
 
 void	ft_parse_export_name(t_data *data, t_token *token, int i)

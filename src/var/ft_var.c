@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:38:46 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:39:24 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,26 @@ void	ft_disp_all_var(t_data *data, char sep, int export)
 	t_var	*var;
 
 	var = data->var;
-	while (var != NULL)
+	while (var != NULL && var->name != NULL)
 	{
-		if (var->name[0] == '?' && var->name[1] == '\0')
+		if (var->name && var->name[0] == '?' && var->name[1] == '\0')
 			var = var->next;
-		if (export == 1)
+		if (var == NULL)
+			break ;
+		if (var && var->name != NULL && export == 1)
 			ft_putstr("declare -x ");
 		ft_putstr(var->name);
 		ft_putchar(sep);
-		if (export == 1)
+		if (var && var->name != NULL && export == 1)
 			ft_putchar('"');
-		ft_putstr(var->value);
-		if (export == 1)
+		if (var && var->name != NULL)
+			ft_putstr(var->value);
+		if (var && var->name != NULL && export == 1)
 			ft_putchar('"');
-		if (var->next != NULL)
+		if (var && var->next != NULL && (var->next->name
+				&& var->next->name[0] != '?' && var->next->name[1] != '\0'))
 			ft_putchar('\n');
-		var = var->next;
+		if (var)
+			var = var->next;
 	}
 }
