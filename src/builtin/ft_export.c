@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:04:57 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 13:44:09 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/09 09:39:14 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,37 @@ void	ft_parse_export_name(t_data *data, t_token *token, int i)
 		token->arg = ft_strncpy(token->arg, token->bin[i], u);
 }
 
+int	ft_export_bin_equal(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == '=')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	ft_export(t_data *data, t_token *token)
 {
 	int	i;
 
 	i = 0;
-	if (token->bin[0] == NULL)
-		ft_disp_all_var(data, '=', 1);
-	while (token->bin[i] != NULL)
+	if (token->bin && token->bin[0] == NULL)
 	{
-		ft_parse_export_name(data, token, i);
-		ft_export_in_var(data, token, i);
+		ft_disp_all_var(data, '=', 1);
+		ft_putchar('\n');
+	}
+	while (token->bin && token->bin[i] != NULL)
+	{
+		if (ft_export_bin_equal(token->bin[i]) == 1)
+		{
+			ft_parse_export_name(data, token, i);
+			ft_export_in_var(data, token, i);
+		}
 		i++;
 	}
 }

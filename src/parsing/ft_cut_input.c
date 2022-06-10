@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 15:29:49 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/09 09:55:20 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_parse_input(t_data *data)
 	int	found;
 
 	data->i = 0;
+	found = 0;
 	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
 		found = 0;

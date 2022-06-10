@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:00:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 12:04:23 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:57:19 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_arg_path_bin(t_data *data, t_token *token)
 	waitpid(pid, &g_return, 0);
 	signal(SIGINT, ft_handler);
 	signal(SIGQUIT, ft_handler);
+	// printf("g_return 1 : %d\n", g_return);
 }
 
 void	ft_bin_execve(t_data *data, t_token *token)
@@ -85,4 +86,5 @@ void	ft_bin_execve(t_data *data, t_token *token)
 	waitpid(pid, &g_return, 0);
 	signal(SIGINT, ft_handler);
 	signal(SIGQUIT, ft_handler);
+	// printf("g_return 2 : %d\n", g_return);
 }

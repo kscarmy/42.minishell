@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:16 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 11:48:45 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/10 12:00:03 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ void	ft_read_token_list(t_data *data)
 {
 	t_token	*t;
 
+	// printf("g_return entree : %d\n", g_return);
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{
+		t = ft_read_token_list_cat(data, t);
 		if (t != NULL && t->prev != NULL
 			&& (t->prev->sep == 3 || t->prev->sep == 5))
 			t = ft_read_token_list_while_redir(data, t);
@@ -79,6 +81,7 @@ void	ft_read_token_list(t_data *data)
 		else
 			t = NULL;
 	}
+	// printf("g_return sortie : %d\n", g_return);
 }
 
 void	ft_print_token_list(t_data *data)
@@ -105,4 +108,45 @@ void	ft_print_token_list(t_data *data)
 		token = token->next;
 	}
 	printf("-------------------------------\n");
+}
+
+int	ft_read_token_list_cat_while(t_token *t)
+{
+	// printf("bin0 <%s>\n", t->bin[0]);
+	if (t->bin != NULL && t->bin[0] !=  NULL && ft_strncmp(t->bin[0], "cat", 3) == 0 && t->bin[1] == NULL)
+	{
+		// printf("bin 0 : <%s>\n", t->bin[0]);
+		if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
+			return (1);
+	}
+	return (0);
+}
+
+t_token	*ft_read_token_list_cat(t_data *data, t_token *tok)
+{
+	t_token	*t;
+	char	*tmp;
+
+	t = tok;
+	data->cat = 0;
+	while (ft_read_token_list_cat_while(t) == 1)
+	{
+		// printf("incr cat\n");
+		data->cat = data->cat + 1;
+		t = t->prev->prev;
+	}
+	// printf("whiloe ok\n");
+	if (t->prev == NULL && data->cat > 0)
+	{
+		// printf("ok\n");
+		ft_launch_cmd(data, t);
+		while (data->cat > 0)
+		{
+			tmp = readline("");
+			ft_strdel(&tmp);
+			data->cat = data->cat - 1;
+		}
+		return (NULL);
+	}
+	return(tok);
 }

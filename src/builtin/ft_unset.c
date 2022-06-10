@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 02:12:33 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:54:29 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/09 08:23:21 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_unset(t_data *data, t_token *token)
 	char	*str;
 
 	i = 0;
-	while (token->arg[i])
+	while (token->arg && token->arg[i])
 	{
 		i = i + ft_space(token->arg, i);
 		str = ft_unset_malloc_str(data, &(token->arg[i]));

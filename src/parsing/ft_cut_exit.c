@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 06:59:21 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/07 15:16:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:58:44 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int	ft_cut_exit(t_data *data)
 {
-	char	*command;
-	int		i;
+	int	i;
 
 	i = data->i;
-	command = "exit";
 	while (ft_is_whitespace(data->input[i]))
 		i++;
-	if (ft_strncmp((data->input + i), command, 4) == 0)
-	{
-		data->i = data->i + 4;
-		ft_create_exit_token(data);
-		return (1);
-	}
-	return (0);
+	if (ft_strncmp(&data->input[i], "exit", 4) != 0)
+		return (0);
+	i = i + 4;
+	if (ft_str_after_cut(&data->input[i]) != 1)
+		return (0);
+	data->i = i;
+	ft_create_exit_token(data);
+	return (1);
 }
 
 void	ft_create_exit_token(t_data *data)

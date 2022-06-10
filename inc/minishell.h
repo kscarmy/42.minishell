@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 14:58:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:39:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 
 typedef struct p_data
 {
+	int				cat;
 	int				exit;
 	int				err;
 	int				i;
@@ -201,9 +202,7 @@ int		ft_cut_unset(t_data *data, int i);
 void	ft_create_unset_token(t_data *data);
 
 /*	ft_cut_export.c	*/
-int		ft_export_count_equal(t_data *data);
-int		ft_is_export(char *str, int i);
-void	ft_parse_export(t_data *data);
+void	ft_create_export_token(t_data *data);
 int		ft_cut_export(t_data *data);
 
 /*	ft_cut_export_bis.c	*/
@@ -305,6 +304,9 @@ t_token	*ft_read_token_list_while_redir_bis(t_data *data, t_token *t, int *fd);
 int		ft_while_token(t_data *data);
 
 /*	ft_read_token_list_bis.c	*/
+t_token	*ft_read_token_list_cat(t_data *data, t_token *tok);
+int	ft_read_token_list_cat_while(t_token *t);
+
 t_token	*ft_redirect_input(t_data *data, t_token *tok);
 void	ft_read_token_list_bis(t_data *data, t_token *t);
 void	ft_read_token_list(t_data *data);
@@ -321,6 +323,7 @@ void	ft_unset(t_data *data, t_token *token);
 char	*ft_unset_malloc_str(t_data *data, char *str);
 
 /*	ft_export.c	*/
+int		ft_export_bin_equal(char *str);
 void	ft_export_in_var(t_data *data, t_token *token, int i);
 void	ft_parse_export_name(t_data *data, t_token *token, int i);
 void	ft_export(t_data *data, t_token *token);

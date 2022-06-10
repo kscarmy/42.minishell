@@ -11,7 +11,6 @@ SRC	= 	src/main.c \
 		src/parsing/ft_cut_pwd.c \
 		src/parsing/ft_cut_input.c \
 		src/parsing/ft_cut_export.c \
-		src/parsing/ft_cut_export_bis.c \
 		src/parsing/ft_cut_echo.c \
 		src/parsing/ft_cut_unset.c \
 		src/parsing/ft_cut_bin.c \
@@ -65,7 +64,7 @@ INC		= -I ./inc/ -I $(LIBFT_DIR)
 CC		= gcc
 RM		= rm -rf
 CFLAGS		= -Wall -Werror -Wextra
-## -fsanitize=address
+## -fsanitize=address -g3
 ## Output messages	
 DONE = @echo "libft compiled successfully!"
 CLEAN_O = @echo "Object files removed!"
