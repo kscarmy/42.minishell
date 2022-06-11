@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 03:50:34 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 12:50:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:16:52 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,14 @@ void	ft_ret_double_quote_else(char *ret, char *str, int *i, int *u)
 	if (str[*i] == '$' && str[*i + 1] == '"')
 	{
 		tmp = malloc(sizeof(char *) * (2));
-		tmp[0] = '$';
-		tmp[1] = '\0';
-		ret = ft_str_cpy(ret, tmp);
+		if (tmp != NULL)
+		{
+			tmp[0] = '$';
+			tmp[1] = '\0';
+			ret = ft_str_cpy(ret, tmp);
+			ft_strdel(&tmp);
+		}
 		*u = *u + 1;
-		ft_strdel(&tmp);
 		*i = *i + 1;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 22:42:26 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 12:02:39 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:11:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_malloc_var(t_data *data)
 		var = var->next;
 		i++;
 	}
+	data->env = NULL;
 	data->env = (char **)malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	var = data->var;
@@ -66,6 +67,7 @@ void	ft_malloc_var(t_data *data)
 
 void	ft_bin_path_bis(t_data *data, t_token *tok, int *u, int *y)
 {
+	tok->arg = NULL;
 	tok->arg = ft_malloc_str(data, (*u + *y + 2));
 	*u = 0;
 	*y = 0;

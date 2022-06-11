@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 03:14:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 22:32:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:14:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_init_token(t_data *data)
 {
 	t_token	*token;
 
+	token = NULL;
 	token = malloc(sizeof(t_token));
 	if (token == NULL)
 		data->err = 101;
@@ -36,6 +37,7 @@ void	ft_add_new_token(t_data *data)
 {
 	t_token	*new;
 
+	new = NULL;
 	new = malloc(sizeof(t_token));
 	if (new == NULL)
 		data->err = 101;

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 14:32:23 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 20:04:06 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,20 @@ void	ft_init_pipe(t_data *data)
 	t_pipe	*pip;
 
 	pip = malloc(sizeof(t_pipe));
-	data->pipe = pip;
-	data->pipe->fd_o = -10;
-	data->pipe->fd_i = -10;
-	data->pipe->ofd_o = -10;
-	data->pipe->ofd_i = -10;
+	if (pip != NULL)
+	{
+		data->pipe = pip;
+		data->pipe->fd_o = -10;
+		data->pipe->fd_i = -10;
+		data->pipe->ofd_o = -10;
+		data->pipe->ofd_i = -10;
+	}
+	data->var->name = ft_malloc_str(data, 1);
+	if (data->var->name != NULL)
+	{
+		data->var->name[0] = '?';
+		data->var->name[1] = '\0';
+	}
 }
 
 void	ft_init_data_bis(t_data *data)
@@ -79,7 +88,6 @@ void	ft_init_data_bis(t_data *data)
 	int		i;
 
 	data->token = NULL;
-	ft_init_pipe(data);
 	t = ft_found_var_name(data, "SHLVL");
 	if (t != NULL)
 	{
@@ -119,9 +127,8 @@ int	ft_init_data(t_data *data, char **env)
 		ft_init_var(data);
 	else
 		ft_add_new_var(data);
-	data->var->name = malloc(sizeof(char) * 2);
-	data->var->name[0] = '?';
-	data->var->name[1] = '\0';
+	data->var->name = NULL;
+	ft_init_pipe(data);
 	ft_init_data_pwd(data);
 	ft_init_data_bis(data);
 	return (1);

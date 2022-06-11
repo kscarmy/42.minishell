@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:20 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 11:16:03 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:04:09 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_resize_g_return(int i)
 {
 	while (i > 255)
-		i = i % 256;
+		i = i % 255;
 	while (i < 0)
 		i = i + 256;
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 17:41:03 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 11:09:20 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:15:10 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_init_var(t_data *data)
 {
 	t_var	*var;
 
+	var = NULL;
 	var = malloc(sizeof(t_var));
 	if (var == NULL)
 		data->err = 1001;
@@ -33,6 +34,7 @@ void	ft_add_new_var(t_data *data)
 {
 	t_var	*new;
 
+	new = NULL;
 	new = (t_var *)malloc(sizeof(t_var));
 	if (new == NULL)
 		data->err = 101;
