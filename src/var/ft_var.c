@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/09 08:33:10 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 14:59:15 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_var	*ft_found_var_name(t_data *data, char *str)
 		if (str[0] == '?' && str[1] == '\0')
 		{
 			ft_strdel(&var->value);
-			var->value = ft_itoa(g_return);
+			var->value = ft_itoa(ft_resize_g_return(g_return));
 			return (var);
 		}
 		if (ft_strncmp(var->name, str, i) == 0 && var->name[i] == '\0')

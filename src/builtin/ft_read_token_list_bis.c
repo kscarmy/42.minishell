@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:16 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/10 12:00:03 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:03:45 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_read_token_list(t_data *data)
 {
 	t_token	*t;
 
-	// printf("g_return entree : %d\n", g_return);
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{
@@ -67,10 +66,7 @@ void	ft_read_token_list(t_data *data)
 		if (t != NULL && t->prev != NULL && t->prev->sep == 4)
 			t = ft_redirect_input(data, t);
 		if (t != NULL && t->next != NULL && t->next->sep == 2)
-		{
-			ft_pipe_close_data_fd(data, 0);
 			ft_pipe_in(data);
-		}
 		if (t != NULL && t->prev == NULL)
 			ft_pipe_close_data_fd(data, 1);
 		if (t != NULL && t->prev != NULL && t->prev->sep == 6)
@@ -81,7 +77,6 @@ void	ft_read_token_list(t_data *data)
 		else
 			t = NULL;
 	}
-	// printf("g_return sortie : %d\n", g_return);
 }
 
 void	ft_print_token_list(t_data *data)
@@ -110,43 +105,39 @@ void	ft_print_token_list(t_data *data)
 	printf("-------------------------------\n");
 }
 
-int	ft_read_token_list_cat_while(t_token *t)
-{
-	// printf("bin0 <%s>\n", t->bin[0]);
-	if (t->bin != NULL && t->bin[0] !=  NULL && ft_strncmp(t->bin[0], "cat", 3) == 0 && t->bin[1] == NULL)
-	{
-		// printf("bin 0 : <%s>\n", t->bin[0]);
-		if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
-			return (1);
-	}
-	return (0);
-}
+// int	ft_read_token_list_cat_while(t_token *t)
+// {
+// 	if (t->bin != NULL && t->bin[0] != NULL
+// 		&& ft_strncmp(t->bin[0], "cat", 3) == 0 && t->bin[1] == NULL)
+// 	{
+// 		if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
-t_token	*ft_read_token_list_cat(t_data *data, t_token *tok)
-{
-	t_token	*t;
-	char	*tmp;
+// t_token	*ft_read_token_list_cat(t_data *data, t_token *tok)
+// {
+// 	t_token	*t;
+// 	char	*tmp;
 
-	t = tok;
-	data->cat = 0;
-	while (ft_read_token_list_cat_while(t) == 1)
-	{
-		// printf("incr cat\n");
-		data->cat = data->cat + 1;
-		t = t->prev->prev;
-	}
-	// printf("whiloe ok\n");
-	if (t->prev == NULL && data->cat > 0)
-	{
-		// printf("ok\n");
-		ft_launch_cmd(data, t);
-		while (data->cat > 0)
-		{
-			tmp = readline("");
-			ft_strdel(&tmp);
-			data->cat = data->cat - 1;
-		}
-		return (NULL);
-	}
-	return(tok);
-}
+// 	t = tok;
+// 	data->cat = 0;
+// 	while (ft_read_token_list_cat_while(t) == 1)
+// 	{
+// 		data->cat = data->cat + 1;
+// 		t = t->prev->prev;
+// 	}
+// 	if (t->prev == NULL && data->cat > 0)
+// 	{
+// 		ft_launch_cmd(data, t);
+// 		while (data->cat > 0)
+// 		{
+// 			tmp = readline("");
+// 			ft_strdel(&tmp);
+// 			data->cat = data->cat - 1;
+// 		}
+// 		return (NULL);
+// 	}
+// 	return (tok);
+// }

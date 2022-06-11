@@ -21,6 +21,7 @@ SRC	= 	src/main.c \
 		src/init/ft_init_var.c \
 		src/builtin/ft_read_token_list.c \
 		src/builtin/ft_read_token_list_bis.c \
+		src/builtin/ft_read_token_list_bis_bis.c \
 		src/builtin/ft_echo.c \
 		src/builtin/ft_pwd.c \
 		src/builtin/ft_env.c \

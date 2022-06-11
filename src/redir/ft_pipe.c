@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:49:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 14:07:49 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 14:58:08 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_pipe_in(t_data *data)
 	int	out;
 	int	fd_in;
 
+	ft_pipe_close_data_fd(data, 0);
 	out = open(TMP_OUT, O_RDWR);
 	unlink(TMP_IN);
 	fd_in = open(TMP_IN, O_CREAT | O_RDWR | O_APPEND, 00777);

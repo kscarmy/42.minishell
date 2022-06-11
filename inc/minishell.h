@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/10 11:39:48 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:04:33 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,13 +304,14 @@ t_token	*ft_read_token_list_while_redir_bis(t_data *data, t_token *t, int *fd);
 int		ft_while_token(t_data *data);
 
 /*	ft_read_token_list_bis.c	*/
-t_token	*ft_read_token_list_cat(t_data *data, t_token *tok);
-int	ft_read_token_list_cat_while(t_token *t);
-
 t_token	*ft_redirect_input(t_data *data, t_token *tok);
 void	ft_read_token_list_bis(t_data *data, t_token *t);
 void	ft_read_token_list(t_data *data);
 void	ft_print_token_list(t_data *data);
+
+/*	ft_read_token_list_bis_bis.c	*/
+t_token	*ft_read_token_list_cat(t_data *data, t_token *tok);
+int		ft_read_token_list_cat_while(t_token *t);
 
 /*	ft_pwd.c	*/
 void	ft_pwd(t_data *data);
