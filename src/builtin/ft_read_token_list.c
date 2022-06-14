@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 18:04:01 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/14 10:24:04 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_launch_cmd(t_data *data, t_token *token)
 		ft_export(data, token);
 	if (token->cmd == 4)
 		ft_env(data, token);
-	if (token->cmd == 6)
+	if (token->cmd == 6 && token->prev == NULL && token->next == NULL)
 		ft_cd(data, token);
 	if (token->cmd == 8)
 		ft_unset(data, token);
