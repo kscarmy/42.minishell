@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 15:04:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:19:37 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,7 @@ void	ft_is_bin_bis(t_data *data, t_token *token, t_var *var, int *i);
 /*	 Signals	*/
 /*	**********	*/
 void	ft_handler(int sig);
+void	ft_handler_heredoc(int sig);
 void	ft_handler_pid(int sig);
 void	ft_init_signals(void);
 
@@ -396,7 +397,8 @@ void	ft_fd_redir(t_data	*data, int fd_in, int fd_out);
 
 /*		ft_here_doc.c	*/
 t_token	*ft_here_doc(t_data *data, t_token *t);
-t_token	*ft_here_doc_bis(t_data *data, t_token *t, int fd_in);
+void	ft_heredoc_fork(t_token *t, int fd_in, int size);
+t_token	*ft_here_doc_bis(t_data *data, t_token *t);
 
 /*	*******	*/
 /*	 FREE	*/

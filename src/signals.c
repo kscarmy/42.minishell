@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:58:29 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/14 10:24:28 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:26:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,33 @@ void	ft_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
+		// ft_putstr_fd("\b\b  \b\b", 1);
 		ft_putstr_fd("\n", 1);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		g_return = 2;
-		return ;
+		g_return = 130	;
 	}
 	else if (sig == SIGQUIT)
 	{
 		ft_putstr_fd("\b\b  \b\b", 1);
 		g_return = 0;
-		return ;
-	}	
+	}
+}
+
+void	ft_handler_heredoc(int sig)
+{
+	if (sig == SIGINT)
+	{
+		g_return = sig;
+		ft_putstr_fd("\b\b  \b\b", 1);
+		rl_replace_line("", 0);
+		ft_putstr_fd("\b\b  \b\b", 1);
+		exit(130);
+	}
+	else if (sig == SIGQUIT)
+		ft_putstr_fd("\b\b  \b\b", 1);
+	g_return = sig;
 }
 
 void	ft_handler_pid(int sig)
@@ -37,6 +51,7 @@ void	ft_handler_pid(int sig)
 		ft_putstr_fd("\n", 1);
 	else if (sig == SIGQUIT)
 		ft_putstr_fd("Quit (core dumped)\n", 1);
+	g_return = sig;
 }
 
 void	init_signals(void)

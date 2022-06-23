@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 18:05:20 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/23 15:31:25 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	prompt(t_data *data)
 		if (g_return >= 0)
 			data->input = readline("~$ ");
 		if (data->input == NULL)
-		{
-			g_return = -1234;
-			break ;
-		}
+			return ;
 		if (g_return >= 0 && data->input != NULL
 			&& ft_str_size(data->input) > 0)
 			add_history(data->input);
@@ -46,8 +43,6 @@ void	prompt(t_data *data)
 			ft_read_token_list(data);
 		ft_clear_for_new_input(data);
 	}
-	if (g_return < 0 || data->exit != 0)
-		ft_putstr("exit\n");
 }
 
 int	main(int argc, char **argv, char **env)
@@ -66,6 +61,7 @@ int	main(int argc, char **argv, char **env)
 	if (ft_init_data(data, env) == 0)
 		return (0);
 	prompt(data);
+	ft_putstr("exit\n");
 	unlink(TMP_OUT);
 	unlink(TMP_IN);
 	ft_free_minishell(data);
