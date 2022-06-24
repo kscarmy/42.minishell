@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:58:29 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/23 19:58:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:43:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_handler(int sig)
 		// rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		g_return = 130	;
+		g_return = 130;
 	}
 	else if (sig == SIGQUIT)
 	{

@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 12:59:39 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:47:37 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,14 +198,12 @@ int		ft_is_number(char c);
 /*	**************	*/
 
 /*	ft_cut_unset.c	*/
-int	ft_cut_unset(t_data *data, char *str);
-// int		ft_cut_unset(t_data *data, int i);
+int		ft_cut_unset(t_data *data, char *str);
 void	ft_create_unset_token(t_data *data);
 
 /*	ft_cut_export.c	*/
 void	ft_create_export_token(t_data *data);
-// int		ft_cut_export(t_data *data);
-int	ft_cut_export(t_data *data, char *str);
+int		ft_cut_export(t_data *data, char *str);
 
 /*	ft_cut_export_bis.c	*/
 void	ft_create_export_token(t_data *data);
@@ -213,8 +211,7 @@ void	ft_export_in_bin(t_data *data, int nb);
 int		ft_export_sizeof_arg(char	*str, int i);
 
 /*	ft_cut_pwd.c	*/
-// int		ft_cut_pwd(t_data *data);
-int	ft_cut_pwd(t_data *data, char *str);
+int		ft_cut_pwd(t_data *data, char *str);
 void	ft_create_pwd_token(t_data *data);
 
 /*	ft_cut_input.c	*/
@@ -222,10 +219,7 @@ int		ft_parse_input(t_data *data);
 void	ft_parse_input_bis(t_data *data, int *found, char *str);
 
 /*	ft_cut_echo.c	*/
-// int		ft_cut_echo(t_data *data, int i);
-int	ft_cut_echo(t_data *data, char *str);
-// void	ft_cut_echo_option(t_data *data, int i);
-// void	ft_create_echo_token(t_data *data, int option);
+int		ft_cut_echo(t_data *data, char *str);
 void	ft_create_echo_token(t_data *data);
 
 /*	ft_clear_token.c	*/
@@ -233,28 +227,24 @@ void	ft_clear_token_list(t_data *data);
 void	ft_clear_for_new_input(t_data *data);
 
 /*	ft_cut_env.c	*/
-// int		ft_cut_env(t_data *data, int i);
-int	ft_cut_env(t_data *data, char *str);
+int		ft_cut_env(t_data *data, char *str);
 void	ft_create_env_token(t_data *data);
 
 /*	ft_cut_exit.c	*/
-int	ft_cut_exit(t_data *data, char *str);
-// int		ft_cut_exit(t_data *data);
+int		ft_cut_exit(t_data *data, char *str);
 void	ft_create_exit_token(t_data *data);
 
 /*	ft_cut_cd.c	*/
-int	ft_cut_cd(t_data *data, char *str);
-// int		ft_cut_cd(t_data *data, int i);
+int		ft_cut_cd(t_data *data, char *str);
 void	ft_create_cd_token(t_data *data);
 
 /*	ft_cut_bin.c	*/
-// int		ft_cut_bin(t_data *data);
-int	ft_cut_bin(t_data *data, char *str);
+int		ft_cut_bin(t_data *data, char *str);
 void	ft_create_bin_token(t_data *data);
 void	ft_malloc_bin(t_data *data);
 int		ft_bin_arg_size(t_data *data, int i);
 int		ft_bin_count(t_data *data, int i);
-
+char	*ft_str_malloc_cpy(t_data *data, char	*str);
 int		ft_bin_size(t_data *data);
 
 /*	history.c	*/
@@ -274,11 +264,8 @@ char	*put_env(t_data *data, char *str, int i);
 char	*ft_quote(t_data *data, char *str, int i);
 
 /*		 ft_cut_redirects		*/
-// int		ft_cut_redirects(t_data *data);
-int	ft_cut_redirects(t_data *data, char *str);
+int		ft_cut_redirects(t_data *data);
 void	ft_create_redirects_token(t_data *data, int i);
-
-
 
 t_token	*ft_here_doc(t_data *data, t_token *t);
 

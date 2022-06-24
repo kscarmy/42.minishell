@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 12:25:38 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:44:44 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,6 @@ void	ft_create_export_token(t_data *data)
 	data->i = data->i + u;
 	data->token->cmd = 3;
 }
-
-// int	ft_cut_export(t_data *data)
-// {
-// 	int	i;
-
-// 	i = data->i;
-// 	if (ft_strncmp(&data->input[i], "export", 6) != 0)
-// 		return (0);
-// 	i = i + 6;
-// 	if (ft_str_after_cut(&data->input[i]) != 1)
-// 		return (0);
-// 	data->i = i;
-// 	ft_create_export_token(data);
-// 	return (1);
-// }
 
 int	ft_cut_export(t_data *data, char *str)
 {
