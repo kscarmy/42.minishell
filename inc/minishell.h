@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 13:47:37 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:31:52 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,7 @@ char	*ft_ret_dollar_ret(t_data *data, char *str);
 
 /*	ft_echo.c	*/
 void	ft_echo(t_data *data, t_token *token);
+int		ft_echo_option(t_token *t, int u);
 
 /*	ft_read_token_list.c	*/
 t_token	*ft_read_token_list_while_pipe(t_data *data, t_token *t);
