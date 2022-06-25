@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 13:44:44 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:33:16 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_create_export_token(t_data *data)
 		ft_add_new_token(data);
 	u = ft_bin_size(data);
 	data->token->bin = (char **)malloc(sizeof(char *) * (u + 1));
-	data->token->bin[u] = NULL;
+	// data->token->bin[u] = NULL;
 	u = ft_space(data->input, data->i);
 	ft_strdel(&data->token->arg);
 	u = u + ft_space(data->input, data->i + u);
@@ -37,6 +37,7 @@ void	ft_create_export_token(t_data *data)
 		u = u + ft_space(data->input, data->i + u);
 		i++;
 	}
+	data->token->bin[i] = NULL;
 	data->i = data->i + u;
 	data->token->cmd = 3;
 }

@@ -6,11 +6,16 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 13:43:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:46:02 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+// void	ft_cut_bin_interpret(t_data *data, t_token *t)
+// {
+	
+// }
 
 int	ft_cut_bin(t_data *data, char *str)
 {
@@ -18,6 +23,7 @@ int	ft_cut_bin(t_data *data, char *str)
 	int	i;
 
 	i = 1;
+	printf("ft_cut_bin : dol %d\n", data->dol);
 	if (data->token == NULL)
 		ft_init_token(data);
 	else
@@ -38,6 +44,7 @@ int	ft_cut_bin(t_data *data, char *str)
 	}
 	data->token->bin[i] = NULL;
 	data->i = data->i + u;
+	data->dol = 0;
 	return (1);
 }
 

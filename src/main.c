@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/23 15:31:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:50:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	prompt(t_data *data)
 	while (g_return != -1234 && data->exit == 0)
 	{
 		data->err = 0;
+		data->i = 0;
 		if (g_return >= 0)
 			data->input = readline("~$ ");
 		if (data->input == NULL)
@@ -67,5 +68,6 @@ int	main(int argc, char **argv, char **env)
 	ft_free_minishell(data);
 	free(data);
 	data = NULL;
+	rl_clear_history();
 	return (ft_resize_g_return(g_return));
 }

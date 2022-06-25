@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:16 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 13:42:17 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:23:18 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	ft_read_token_list(t_data *data)
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{
-		t = ft_read_token_list_cat(data, t);
+		if (t != NULL && t->cmd == 9 && t->bin && t->bin[0] && t->bin[1] == NULL)
+			t = ft_read_token_list_cat(data, t);
 		if (t != NULL && t->prev != NULL
 			&& (t->prev->sep == 3 || t->prev->sep == 5))
 			t = ft_read_token_list_while_redir(data, t);

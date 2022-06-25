@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:00:49 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 15:03:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:20:12 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	ft_read_token_list_cat_while(t_token *t)
 {
-	if (t->bin != NULL && t->bin[0] != NULL
-		&& ft_strncmp(t->bin[0], "cat", 3) == 0 && t->bin[1] == NULL)
+	if (t->bin != NULL)
 	{
-		if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
-			return (1);
+		if (t->bin[0] != NULL)
+		{
+			if (ft_strncmp(t->bin[0], "cat", 3) == 0)
+			{
+				if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
+					return (1);
+			}
+		}
 	}
 	return (0);
 }
@@ -30,6 +35,8 @@ t_token	*ft_read_token_list_cat(t_data *data, t_token *tok)
 
 	t = tok;
 	data->cat = 0;
+	if (!t->bin)
+		return (tok);
 	while (ft_read_token_list_cat_while(t) == 1)
 	{
 		data->cat = data->cat + 1;

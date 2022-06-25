@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:00:06 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 18:04:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 12:58:32 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_is_bin_bis(t_data *data, t_token *token, t_var *var, int *i)
 {
-	token->arg = NULL;
+	token->arg = ft_malloc_str(data, 0);
 	while (var != NULL && var->value != NULL
 		&& *i < ft_str_size(var->value) && access(token->arg, F_OK) == -1)
 		*i = *i + ft_bin_path(data, var, token, *i);

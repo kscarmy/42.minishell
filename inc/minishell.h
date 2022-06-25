@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/24 14:31:52 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:56:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 
 typedef struct p_data
 {
+	int				dol;
 	int				cat;
 	int				exit;
 	int				err;
@@ -216,6 +217,7 @@ void	ft_create_pwd_token(t_data *data);
 
 /*	ft_cut_input.c	*/
 int		ft_parse_input(t_data *data);
+void	ft_parse_input_interpret(t_data *data);
 void	ft_parse_input_bis(t_data *data, int *found, char *str);
 
 /*	ft_cut_echo.c	*/
