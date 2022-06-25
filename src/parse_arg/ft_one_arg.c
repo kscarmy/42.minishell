@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:28:29 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 13:00:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:40:22 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,11 @@ char	*ft_one_arg(t_data *data, int u)
 		ft_one_arg_b(data, u, &i, &cd);
 		ft_one_arg_bb(data, u, &i, &cd);
 		ft_one_arg_bbb(data, u, &i, &cd);
+		if (ft_str_size(data->tmp) > SIZE_MAX)
+		{
+			data->exit = 1;
+			return (NULL);
+		}
 		ft_one_arg_bbbb(data, u, &i, &cd);
 	}
 	return (data->tmp);

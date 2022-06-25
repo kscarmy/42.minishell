@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 14:56:00 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:49:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
+# define SIZE_MAX 100000000
 # define TMP_OUT ".minishell_tmp_out"
 # define TMP_IN ".minishell_tmp_in"
 # define TMP_HERE ".minishell_tmp_here_doc"
