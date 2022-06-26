@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 15:02:06 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:51:14 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,8 @@ int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra); // str = &data->
 void	ft_cut_inter_malloc(t_data *data, t_token *t, char *str, int ret);
 int	ft_str_size_space(char *str, int i);
 void	ft_cut_bin_inter_malloc(t_data *data, t_token *t ,char *str, int ret); // str = &data->input[data->i], stra = premiere string
+int	ft_cut_bin_incre_one_arg(char *str, int u);
+
 
 /*	history.c	*/
 int		cut_history(t_data *data);

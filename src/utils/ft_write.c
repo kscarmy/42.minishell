@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:07:01 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 16:54:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:32:44 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int	ft_space(char *str, int i)
 	int	u;
 
 	u = 0;
-	while (str && str[i + u] && str[i + u] == ' ')
+	if (str == NULL)
+		return (0);
+	if (!str[i])
+		return (0);
+	while (str && str[i + u] && str[i + u] != '\0' && str[i + u] == ' ')
 		u++;
 	return (u);
 }

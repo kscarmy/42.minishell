@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 17:28:56 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 13:44:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:58:24 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_size_of_arg(t_data *data)
 
 int	ft_incre_one_arg(t_data *data, int u)
 {
-	// printf("ft_incre_one_arg : entree : data i : %d u %d\n", data->i, u);
+	// printf("ft_incre_one_arg : entree : data i : %d u %d <%s>\n", data->i, u, &data->input[data->i + u]);
 	while (data->input[data->i + u]
 		&& data->input[data->i + u] != ' '
 		&& ft_is_separator(data->input, data->i + u) == 0)
@@ -112,7 +112,7 @@ int	ft_incre_one_arg(t_data *data, int u)
 		else
 			u++;
 	}
-	// printf("ft_incre_one_arg : sortie : data i : %d u %d\n", data->i, u);
+	// printf("ft_incre_one_arg : sortie : data i : %d u %d <%s>\n", data->i, u, &data->input[data->i + u]);
 	return (u);
 }
 
