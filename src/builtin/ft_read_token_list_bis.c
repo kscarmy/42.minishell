@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:16 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 13:23:18 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 16:50:35 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_read_token_list(t_data *data)
 {
 	t_token	*t;
 
+	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{

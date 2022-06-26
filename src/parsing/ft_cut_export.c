@@ -6,11 +6,30 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 08:25:07 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 16:40:55 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:18:00 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+int	ft_export_size(t_data *data)
+{
+	int		nbr;
+	int		u;
+
+	u = 0;
+	nbr = 1;
+	while (data->input[data->i + u]
+		&& ft_is_separator(data->input, data->i + u) == 0)
+	{
+		u = u + ft_space(data->input, data->i + u);
+		u = ft_incre_one_arg(data, u);
+		u = u + ft_space(data->input, data->i + u);
+		nbr++;
+	}
+	data->token->cmd = 9;
+	return (nbr);
+}
 
 void	ft_create_export_token(t_data *data)
 {
@@ -22,7 +41,7 @@ void	ft_create_export_token(t_data *data)
 		ft_init_token(data);
 	else
 		ft_add_new_token(data);
-	u = ft_bin_size(data);
+	u = ft_export_size(data);
 	data->token->bin = (char **)malloc(sizeof(char *) * (u + 1));
 	// data->token->bin[u] = NULL;
 	u = ft_space(data->input, data->i);
