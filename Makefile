@@ -64,7 +64,7 @@ INC		= -I ./inc/ -I $(LIBFT_DIR)
 ## Compiling config
 CC		= gcc
 RM		= rm -rf
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g3
 ## -fsanitize=address -g3
 ## Output messages	
 DONE = @echo "libft compiled successfully!"

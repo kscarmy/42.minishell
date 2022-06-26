@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 15:04:33 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:38:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
+# define SIZE_MAX 100000000
 # define TMP_OUT ".minishell_tmp_out"
 # define TMP_IN ".minishell_tmp_in"
 # define TMP_HERE ".minishell_tmp_here_doc"
@@ -39,6 +40,7 @@
 
 typedef struct p_data
 {
+	int				dol;
 	int				cat;
 	int				exit;
 	int				err;
@@ -198,12 +200,12 @@ int		ft_is_number(char c);
 /*	**************	*/
 
 /*	ft_cut_unset.c	*/
-int		ft_cut_unset(t_data *data, int i);
+int		ft_cut_unset(t_data *data, char *str);
 void	ft_create_unset_token(t_data *data);
 
 /*	ft_cut_export.c	*/
 void	ft_create_export_token(t_data *data);
-int		ft_cut_export(t_data *data);
+int		ft_cut_export(t_data *data, char *str);
 
 /*	ft_cut_export_bis.c	*/
 void	ft_create_export_token(t_data *data);
@@ -211,42 +213,46 @@ void	ft_export_in_bin(t_data *data, int nb);
 int		ft_export_sizeof_arg(char	*str, int i);
 
 /*	ft_cut_pwd.c	*/
-int		ft_cut_pwd(t_data *data);
+int		ft_cut_pwd(t_data *data, char *str);
 void	ft_create_pwd_token(t_data *data);
 
 /*	ft_cut_input.c	*/
 int		ft_parse_input(t_data *data);
-void	ft_parse_input_bis(t_data *data, int *found);
+void	ft_parse_input_interpret(t_data *data, int i);
+void	ft_parse_input_bis(t_data *data, int *found, char *str);
 
 /*	ft_cut_echo.c	*/
-int		ft_cut_echo(t_data *data, int i);
-void	ft_cut_echo_option(t_data *data, int i);
-void	ft_create_echo_token(t_data *data, int option);
+int		ft_cut_echo(t_data *data, char *str);
+void	ft_create_echo_token(t_data *data);
 
 /*	ft_clear_token.c	*/
 void	ft_clear_token_list(t_data *data);
 void	ft_clear_for_new_input(t_data *data);
 
 /*	ft_cut_env.c	*/
-int		ft_cut_env(t_data *data, int i);
+int		ft_cut_env(t_data *data, char *str);
 void	ft_create_env_token(t_data *data);
 
 /*	ft_cut_exit.c	*/
-int		ft_cut_exit(t_data *data);
+int		ft_cut_exit(t_data *data, char *str);
 void	ft_create_exit_token(t_data *data);
 
 /*	ft_cut_cd.c	*/
-int		ft_cut_cd(t_data *data, int i);
+int		ft_cut_cd(t_data *data, char *str);
 void	ft_create_cd_token(t_data *data);
 
 /*	ft_cut_bin.c	*/
-int		ft_cut_bin(t_data *data);
+int		ft_cut_bin(t_data *data, char *str);
 void	ft_create_bin_token(t_data *data);
 void	ft_malloc_bin(t_data *data);
 int		ft_bin_arg_size(t_data *data, int i);
 int		ft_bin_count(t_data *data, int i);
-
+char	*ft_str_malloc_cpy(t_data *data, char	*str);
 int		ft_bin_size(t_data *data);
+
+int	ft_cut_bin_inter_sub(char *str); // retourne le nombre d'arguments dans une string
+int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra); // str = &data->input[data->i], stra = premiere string
+
 
 /*	history.c	*/
 int		cut_history(t_data *data);
@@ -267,6 +273,7 @@ char	*ft_quote(t_data *data, char *str, int i);
 /*		 ft_cut_redirects		*/
 int		ft_cut_redirects(t_data *data);
 void	ft_create_redirects_token(t_data *data, int i);
+
 t_token	*ft_here_doc(t_data *data, t_token *t);
 
 /*		ft_pre_parsing.c		*/
@@ -292,6 +299,7 @@ char	*ft_ret_dollar_ret(t_data *data, char *str);
 
 /*	ft_echo.c	*/
 void	ft_echo(t_data *data, t_token *token);
+int		ft_echo_option(t_token *t, int u);
 
 /*	ft_read_token_list.c	*/
 t_token	*ft_read_token_list_while_pipe(t_data *data, t_token *t);
@@ -377,6 +385,7 @@ void	ft_is_bin_bis(t_data *data, t_token *token, t_var *var, int *i);
 /*	 Signals	*/
 /*	**********	*/
 void	ft_handler(int sig);
+void	ft_handler_heredoc(int sig);
 void	ft_handler_pid(int sig);
 void	ft_init_signals(void);
 
@@ -396,7 +405,8 @@ void	ft_fd_redir(t_data	*data, int fd_in, int fd_out);
 
 /*		ft_here_doc.c	*/
 t_token	*ft_here_doc(t_data *data, t_token *t);
-t_token	*ft_here_doc_bis(t_data *data, t_token *t, int fd_in);
+void	ft_heredoc_fork(t_token *t, int fd_in, int size);
+t_token	*ft_here_doc_bis(t_data *data, t_token *t);
 
 /*	*******	*/
 /*	 FREE	*/

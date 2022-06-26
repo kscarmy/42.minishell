@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 07:04:57 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/09 09:39:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:34:59 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_export_bin_equal(char *str)
 	int	i;
 
 	i = 0;
+	if (str[0] == '_' && str[1] == '=')
+		return (0);
 	while (str && str[i])
 	{
 		if (str[i] == '=')

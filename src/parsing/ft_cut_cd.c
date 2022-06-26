@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:59:30 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/07 14:13:19 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:43:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	change_dir(t_data *data)
 	return (1);
 }
 
-int	ft_cut_cd(t_data *data, int i)
+int	ft_cut_cd(t_data *data, char *str)
 {
-	if (ft_strncmp(&data->input[i], "cd", 2) != 0)
+	char	*arg;
+
+	arg = "cd";
+	if (ft_str_size(str) != ft_str_size(arg))
 		return (0);
-	i = i + 2;
-	if (ft_str_after_cut(&data->input[i]) != 1)
+	if (ft_strncmp(str, arg, ft_str_size(arg)) != 0)
 		return (0);
-	i = i + ft_space(data->input, i);
-	data->i = i;
 	ft_create_cd_token(data);
 	return (1);
 }

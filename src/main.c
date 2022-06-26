@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 18:05:20 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:50:34 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ void	prompt(t_data *data)
 	while (g_return != -1234 && data->exit == 0)
 	{
 		data->err = 0;
+		data->i = 0;
 		if (g_return >= 0)
 			data->input = readline("~$ ");
 		if (data->input == NULL)
-		{
-			g_return = -1234;
-			break ;
-		}
+			return ;
 		if (g_return >= 0 && data->input != NULL
 			&& ft_str_size(data->input) > 0)
 			add_history(data->input);
@@ -46,8 +44,6 @@ void	prompt(t_data *data)
 			ft_read_token_list(data);
 		ft_clear_for_new_input(data);
 	}
-	if (g_return < 0 || data->exit != 0)
-		ft_putstr("exit\n");
 }
 
 int	main(int argc, char **argv, char **env)
@@ -66,10 +62,12 @@ int	main(int argc, char **argv, char **env)
 	if (ft_init_data(data, env) == 0)
 		return (0);
 	prompt(data);
+	ft_putstr("exit\n");
 	unlink(TMP_OUT);
 	unlink(TMP_IN);
 	ft_free_minishell(data);
 	free(data);
 	data = NULL;
+	rl_clear_history();
 	return (ft_resize_g_return(g_return));
 }

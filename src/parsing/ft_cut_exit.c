@@ -6,25 +6,21 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 06:59:21 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/10 11:58:44 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:43:30 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	ft_cut_exit(t_data *data)
+int	ft_cut_exit(t_data *data, char *str)
 {
-	int	i;
+	char	*arg;
 
-	i = data->i;
-	while (ft_is_whitespace(data->input[i]))
-		i++;
-	if (ft_strncmp(&data->input[i], "exit", 4) != 0)
+	arg = "exit";
+	if (ft_str_size(str) != ft_str_size(arg))
 		return (0);
-	i = i + 4;
-	if (ft_str_after_cut(&data->input[i]) != 1)
+	if (ft_strncmp(str, arg, ft_str_size(arg)) != 0)
 		return (0);
-	data->i = i;
 	ft_create_exit_token(data);
 	return (1);
 }
