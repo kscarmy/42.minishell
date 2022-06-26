@@ -1,0 +1,64 @@
+1:echo $?
+
+1:echo $?$?$?
+
+1:echo $SHLVLs$?
+
+1:"$HOME" | '$HOME'
+    Puis echo $?
+
+1:ls hdjxuxhz
+    Puis echo $?
+
+1:echo '$SHLVL $?'
+
+1:echo "$SHLVL $?"
+
+1:echo test | exit 2
+    puis echo $?
+
+1:exit | exit 10 | exit 11 | exit 9223372036854775808
+    Puis echo $?
+
+
+1:echo test| exit 165411651651615132132
+    Puis $?
+
+1:export cou=ec
+    Puis export bon=ho
+    Puis '$cou$bon' salut
+    Puis $?
+
+1:export cou=ec
+    Puis export bon=ho
+    Puis echo $cou $bon salut
+    Puis echo $?
+
+
+0:echo $SHLVL$?s
+
+
+0:exit | exit 10 | exit 11 | exit 255
+    Puis echo $?
+
+0:exit | exit 10 | exit 11 | exit 510
+    Puis echo $?
+
+0:echo test | exit 1 a 2 3
+    Puis echo $?
+
+0:echo test| exit 16
+        Puis $?
+
+0:export test ="a"
+    Puis echo $?
+
+0:"$HOME" | "$HOME"
+    Puis echo $?
+
+0:echo $?qtyshd
+
+0:env | exit 0 puis echo $?
+
+
+0:cat | cat | ls ou exit 1 | exit 4684455555577 | exit a
