@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 16:42:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:31:54 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	ft_parse_input_bis(t_data *data, int *found, char *str)
 		*found = *found + 1;
 }
 
-void	ft_parse_input_interpret(t_data *data)
+void	ft_parse_input_interpret(t_data *data, int i)
 {
 	int	size;
-	int i;
+	// int i;
 	int	dq;
 
-	i = 0;
+	// i = 0;
 	dq = 0;
-	size = ft_incre_one_arg(data, 0);
+	size = ft_incre_one_arg(data, i);
 	data->dol = 0;
 	while (data->input[data->i + i] && i <= size)
 	{
@@ -63,7 +63,7 @@ int	ft_parse_input(t_data *data)
 	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
 		found = 0;
-		ft_parse_input_interpret(data);
+		ft_parse_input_interpret(data, 0);
 		data->i = data->i + ft_space(data->input, data->i);
 		if (ft_cut_redirects(data) != 1)
 		{

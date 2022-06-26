@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 16:49:35 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/26 11:38:48 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ void	ft_create_pwd_token(t_data *data);
 
 /*	ft_cut_input.c	*/
 int		ft_parse_input(t_data *data);
-void	ft_parse_input_interpret(t_data *data);
+void	ft_parse_input_interpret(t_data *data, int i);
 void	ft_parse_input_bis(t_data *data, int *found, char *str);
 
 /*	ft_cut_echo.c	*/
@@ -249,6 +249,10 @@ int		ft_bin_arg_size(t_data *data, int i);
 int		ft_bin_count(t_data *data, int i);
 char	*ft_str_malloc_cpy(t_data *data, char	*str);
 int		ft_bin_size(t_data *data);
+
+int	ft_cut_bin_inter_sub(char *str); // retourne le nombre d'arguments dans une string
+int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra); // str = &data->input[data->i], stra = premiere string
+
 
 /*	history.c	*/
 int		cut_history(t_data *data);
