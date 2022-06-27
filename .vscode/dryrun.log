@@ -45,7 +45,6 @@ gcc -Wall -Werror -Wextra -g3 -o obj/utils/ft_str_bis_bis.o -c src/utils/ft_str_
 gcc -Wall -Werror -Wextra -g3 -o obj/var/ft_var.o -c src/var/ft_var.c
 gcc -Wall -Werror -Wextra -g3 -o obj/var/ft_var_sort.o -c src/var/ft_var_sort.c
 gcc -Wall -Werror -Wextra -g3 -o obj/bin/ft_bin.o -c src/bin/ft_bin.c
- 
 gcc -Wall -Werror -Wextra -g3 -o obj/bin/ft_bin_bis.o -c src/bin/ft_bin_bis.c
 gcc -Wall -Werror -Wextra -g3 -o obj/redir/ft_pipe.o -c src/redir/ft_pipe.c
 gcc -Wall -Werror -Wextra -g3 -o obj/redir/ft_in_file.o -c src/redir/ft_in_file.c

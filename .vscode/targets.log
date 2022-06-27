@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun Jun 26 13:43:39 2022
+# Make data base, printed on Mon Jun 27 14:11:15 2022
 
 # Variables
 
@@ -46,8 +46,6 @@ SHELL = /bin/sh
 # makefile (from 'Makefile', line 66)
 RM = rm -rf
 # environment
-GDM_LANG = en
-# environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"575d78304484aa5fa0cbb32d34fd883d.fr","_translationsConfigFile":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/tcf.json","_cacheRoot":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr","_resolvedLanguagePackCoreLocation":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/corrupted.info","_languagePackSupport":true}
@@ -56,7 +54,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 67)
 CFLAGS = -Wall -Werror -Wextra -g3
 # environment
-JOURNAL_STREAM = 9:177912
+JOURNAL_STREAM = 9:420946
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -78,15 +76,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/32509/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 20724
+MANAGERPID = 108117
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-ac7cbcb5-f283-4329-b97b-c743108ae9ed.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-f8564c04-e6a7-4e00-b60c-832b54192683.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/guderram/42/minishell
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_32509_64HQtz
+KRB5CCNAME = FILE:/tmp/krb5cc_32509_IKYxZJ
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -94,7 +92,7 @@ PATH = /mnt/nfs/homes/guderram/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 # environment
 GPG_AGENT_INFO = /run/user/32509/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r10p6.42.fr:@/tmp/.ICE-unix/44444,unix/e1r10p6.42.fr:/tmp/.ICE-unix/44444
+SESSION_MANAGER = local/e1r10p5.42.fr:@/tmp/.ICE-unix/108591,unix/e1r10p5.42.fr:/tmp/.ICE-unix/108591
 # environment
 XDG_RUNTIME_DIR = /run/user/32509
 # environment
@@ -104,7 +102,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 8c557aef3fd9468098b45aba9c5349f6
+INVOCATION_ID = 9e561ced147e45ff9d3280086c5eb59c
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 60)
@@ -126,7 +124,7 @@ PWD = /mnt/nfs/homes/guderram/42/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 44404
+SSH_AGENT_PID = 108555
 # makefile (from 'Makefile', line 73)
 DONE = @echo "MINISHELL ready to use!"
 # environment
@@ -194,8 +192,6 @@ OLDPWD = /mnt/nfs/homes/guderram
 # automatic
 *F = $(notdir $*)
 # environment
-LANGUAGE = en
-# environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
 VSCODE_IPC_HOOK = /run/user/32509/vscode-c015ace9-1.68.1-main.sock
@@ -226,11 +222,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/5838053c_ccf6_4eee_870c_3cdee6d42561
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f4c3d868_ffb8_4b2c_a640_cac17c1a7aff
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.93
+GNOME_TERMINAL_SERVICE = :1.99
 # default
 SUFFIXES := 
 # environment
@@ -250,9 +246,9 @@ TERM = xterm-256color
 # environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 50709
+VSCODE_PID = 110318
 # variable set hash-table stats:
-# Load=120/1024=12%, Rehash=0, Collisions=19/157=12%
+# Load=118/1024=12%, Rehash=0, Collisions=19/155=12%
 
 # Pattern-specific Variable Values
 
@@ -260,10 +256,10 @@ VSCODE_PID = 50709
 
 # Directories
 
-# . (device 55, inode 264208791): 9 files, no impossibilities.
-# src (device 55, inode 264209471): No files, no impossibilities so far.
+# . (device 59, inode 264208791): 10 files, no impossibilities.
+# src (device 59, inode 264209471): No files, no impossibilities so far.
 
-# 9 files, no impossibilities in 2 directories.
+# 10 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -283,9 +279,7 @@ obj/parse_arg/ft_parse_arg.o:
 
 # Not a target:
 obj/builtin/ft_echo.o:
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -298,6 +292,7 @@ obj/parsing/ft_cut_echo.o:
 # Not a target:
 obj/builtin/ft_export.o:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -562,7 +557,6 @@ obj/signals.o:
 obj/builtin/ft_read_token_list.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -580,6 +574,7 @@ obj/bin/ft_bin.o:
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
+ 
 #  File does not exist.
 #  File has not been updated.
 
@@ -683,9 +678,9 @@ obj/builtin/ft_cd_bis.o:
 # strcache buffers: 1 (0) / strings = 69 / storage = 1332 B / avg = 19 B
 # current buf: size = 8162 B / used = 1332 B / count = 69 / avg = 19 B
 
-# strcache performance: lookups = 96 / hit rate = 28%
+# strcache performance: lookups = 97 / hit rate = 28%
 # hash-table stats:
-# Load=69/8192=1%, Rehash=0, Collisions=2/96=2%
-# Finished Make data base on Sun Jun 26 13:43:39 2022
+# Load=69/8192=1%, Rehash=0, Collisions=2/97=2%
+# Finished Make data base on Mon Jun 27 14:11:15 2022
 
  

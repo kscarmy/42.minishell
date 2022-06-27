@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:45:12 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 18:35:22 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/27 14:11:31 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,8 @@ int	ft_cut_bin_inter_sub(char *str) // retourne le nombre d'arguments dans une s
 	//printf("ft_cut_bin_inter_sub : entree : str <%s>\n", str);
 	// while (str && str[i] == ' ')
 	// 	i++;
-	if (str && str[i] != ' ')
-		ret++;
+	// if (str && str[i] != ' ')
+	// 	ret++;
 	// i = i + ft_space(str, i);
 	while (str && str[i])
 	{
