@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:58:29 by mourdani          #+#    #+#             */
-/*   Updated: 2022/06/25 11:33:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:03:10 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void	ft_handler_heredoc(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_return = sig;
+		// g_return = sig;
 		ft_putstr_fd("\b\b  \b\b", 1);
-		rl_replace_line("", 0);
-		ft_putstr_fd("\b\b  \b\b", 1);
+		// rl_replace_line("", 0);
+		// ft_putstr_fd("\b\b  \b\b", 1);
+		// g_return = 130;
 		exit(130);
 	}
 	else if (sig == SIGQUIT)

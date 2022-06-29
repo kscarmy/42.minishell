@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:47:58 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/08 11:28:50 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:17:20 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	ft_cd_home(t_data *data)
 
 	var = ft_found_var_name(data, "HOME");
 	if (var == NULL)
+	{
 		ft_putstr("Minishell: cd: HOME not set\n");
+		g_return = 1;
+	}
 	else
 		ft_cd_goto_path(data, var->value);
 }
@@ -48,6 +51,7 @@ void	ft_cd_goto_opwd(t_data *data, char *path)
 	{
 		ft_putstr("Minishell: cd: ");
 		ft_putstr("OLDPWD not set\n");
+		g_return = 1;
 	}
 	else
 	{
@@ -99,6 +103,7 @@ void	ft_cd_goto_path(t_data *data, char *path)
 		ft_putstr("Minishell: cd: ");
 		ft_putstr(npath);
 		ft_putstr(": No such file or directory\n");
+		g_return = 1;
 	}
 	else
 		ft_cd_goto_path_bis(data);

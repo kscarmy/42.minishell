@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:06:50 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 14:39:42 by guderram         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:54:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ int	ft_parse_input(t_data *data)
 {
 	int		found;
 	char	*str;
-	int		max = 0;
+	// int		max = 0;
 
 	// data->i = 0;
 	found = 0;
 	str = NULL;
-	while (data->exit == 0 && found >= 0 && data->input[data->i] && max < 1)
+	while (data->exit == 0 && found >= 0 && data->input[data->i])
 	{
+		// printf("ft_parse_input : 1 while <%s>\n", &data->input[data->i]);
 		found = 0;
 		ft_parse_input_interpret(data, 0);
 		data->i = data->i + ft_space(data->input, data->i);
@@ -75,7 +76,8 @@ int	ft_parse_input(t_data *data)
 				found++;
 			ft_strdel(&str);
 		}
-		max++;
+		// printf("ft_parse_input : 2 while <%s>\n", &data->input[data->i]);
+		// max++;
 	}
 	return (0);
 }
