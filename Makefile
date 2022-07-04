@@ -72,7 +72,7 @@ CLEAN_O = @echo "Object files removed!"
 CLEAN_A = @echo "Executables removed!"
 DONE = @echo "MINISHELL ready to use!"
 
-all:	obj $(NAME)
+all:	$(NAME)
 
 
 $(NAME): $(OBJ) $(LIBFT)
@@ -82,7 +82,7 @@ $(NAME): $(OBJ) $(LIBFT)
 $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 
-obj:
+obj/%.o: src/%.c
 	@mkdir -p obj
 	@mkdir -p obj/parsing
 	@mkdir -p obj/init
@@ -93,8 +93,6 @@ obj:
 	@mkdir -p obj/redir
 	@mkdir -p obj/free
 	@mkdir -p obj/parse_arg
-
-obj/%.o: src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
