@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:48:16 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/27 15:49:21 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/09 00:55:28 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ t_token	*ft_redirect_input(t_data *data, t_token *tok)
 
 void	ft_read_token_list_bis(t_data *data, t_token *t)
 {
+	if (t != NULL && t->prev != NULL && t->prev->sep == 6)
+		t = ft_here_doc(data, t);
 	if (t != NULL && t->prev != NULL && t->prev->sep == 2)
 	{
 		ft_pipe_close_data_fd(data, 1);
@@ -60,7 +62,8 @@ void	ft_read_token_list(t_data *data)
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{
-		if (t != NULL && t->cmd == 9 && t->bin && t->bin[0] && t->bin[1] == NULL)
+		if (t != NULL && t->cmd == 9 && t->bin
+			&& t->bin[0] && t->bin[1] == NULL)
 			t = ft_read_token_list_cat(data, t);
 		if (t != NULL && t->prev != NULL
 			&& (t->prev->sep == 3 || t->prev->sep == 5))
@@ -71,8 +74,6 @@ void	ft_read_token_list(t_data *data)
 			ft_pipe_in(data);
 		if (t != NULL && t->prev == NULL)
 			ft_pipe_close_data_fd(data, 1);
-		if (t != NULL && t->prev != NULL && t->prev->sep == 6)
-			t = ft_here_doc(data, t);
 		ft_read_token_list_bis(data, t);
 		if (t != NULL && t->prev != NULL)
 			t = t->prev;

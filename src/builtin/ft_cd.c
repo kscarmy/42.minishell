@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:47:58 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/27 15:17:20 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/09 00:58:23 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_cd(t_data *data, t_token *token)
 	if (token->arg == NULL || token->arg[i] == '\0' || token->arg[i] == '~')
 		ft_cd_home(data);
 	else if (token->arg[i] == '-')
-		ft_cd_goto_opwd(data, data->opwd);
+		ft_cd_goto_opwd(data, data->opwd, ft_found_var_name(data, "OLDPWD"));
 	else
 		ft_cd_goto_path(data, &token->arg[i]);
 }
@@ -41,12 +41,10 @@ void	ft_cd_home(t_data *data)
 		ft_cd_goto_path(data, var->value);
 }
 
-void	ft_cd_goto_opwd(t_data *data, char *path)
+void	ft_cd_goto_opwd(t_data *data, char *path, t_var *opwd)
 {
-	t_var	*opwd;
 	char	*tmp;
 
-	opwd = ft_found_var_name(data, "OLDPWD");
 	if (opwd == NULL)
 	{
 		ft_putstr("Minishell: cd: ");

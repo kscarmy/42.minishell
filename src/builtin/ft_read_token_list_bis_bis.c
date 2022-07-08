@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:00:49 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 13:20:12 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/09 00:51:08 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_read_token_list_cat_while(t_token *t)
 		{
 			if (ft_strncmp(t->bin[0], "cat", 3) == 0)
 			{
-				if (t->prev != NULL && t->prev->sep == 2 && t->prev->prev != NULL)
+				if (t->prev != NULL && t->prev->sep == 2
+					&& t->prev->prev != NULL)
 					return (1);
 			}
 		}

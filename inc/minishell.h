@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/07/08 23:52:01 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/09 01:51:09 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,22 +243,20 @@ int		ft_cut_cd(t_data *data, char *str);
 void	ft_create_cd_token(t_data *data);
 
 /*	ft_cut_bin.c	*/
+void	ft_cut_bin_bis(t_data *data, char *str);
 int		ft_cut_bin(t_data *data, char *str);
 void	ft_create_bin_token(t_data *data);
 void	ft_malloc_bin(t_data *data);
 int		ft_bin_arg_size(t_data *data, int i);
 int		ft_bin_count(t_data *data, int i);
 char	*ft_str_malloc_cpy(t_data *data, char	*str);
-
-int	ft_bin_size(char *str);
-
-int	ft_cut_bin_inter_sub(char *str); // retourne le nombre d'arguments dans une string
-int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra); // str = &data->input[data->i], stra = premiere string
+int		ft_bin_size(char *str);
+int		ft_cut_bin_inter_sub(char *str);
+int		ft_cut_bin_inter_size(t_data *data, char *str, char *stra);
 void	ft_cut_inter_malloc(t_data *data, t_token *t, char *str, int ret);
-int	ft_str_size_space(char *str, int i);
-void	ft_cut_bin_inter_malloc(t_data *data, t_token *t ,char *str, int ret); // str = &data->input[data->i], stra = premiere string
-int	ft_cut_bin_incre_one_arg(char *str, int u);
-
+int		ft_str_size_space(char *str, int i);
+void	ft_cut_bin_inter_malloc(t_data *data, t_token *t, char *str, int ret);
+int		ft_cut_bin_incre_one_arg(char *str, int u);
 
 /*	history.c	*/
 int		cut_history(t_data *data);
@@ -347,7 +345,7 @@ void	ft_export(t_data *data, t_token *token);
 void	ft_cd(t_data *data, t_token *token);
 void	ft_cd_home(t_data *data);
 void	ft_cd_goto_path(t_data *data, char *path);
-void	ft_cd_goto_opwd(t_data *data, char *path);
+void	ft_cd_goto_opwd(t_data *data, char *path, t_var *opwd);
 void	ft_cd_goto_path_bis(t_data *data);
 
 /*	ft_cd.c	*/
