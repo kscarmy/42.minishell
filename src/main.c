@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:54 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/25 13:50:34 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/06 09:45:27 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	main(int argc, char **argv, char **env)
 	ft_free_minishell(data);
 	free(data);
 	data = NULL;
-	rl_clear_history();
+	// rl_clear_history();
 	return (ft_resize_g_return(g_return));
 }

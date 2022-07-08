@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/26 17:51:14 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/08 23:52:01 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include "../src/libft/includes/libft.h"
 
 # define BUFFER_SIZE_GNL 128
-# define SIZE_MAX 100000000
+# define MS_SIZE_MAX 100000000
 # define TMP_OUT ".minishell_tmp_out"
 # define TMP_IN ".minishell_tmp_in"
 # define TMP_HERE ".minishell_tmp_here_doc"
@@ -411,8 +411,9 @@ void	ft_fd_redir(t_data	*data, int fd_in, int fd_out);
 
 /*		ft_here_doc.c	*/
 t_token	*ft_here_doc(t_data *data, t_token *t);
-void	ft_heredoc_fork(t_token *t, int fd_in, int size);
+void	ft_heredoc_fork(char *str, int fd_in);
 t_token	*ft_here_doc_bis(t_data *data, t_token *t);
+void	ft_here_doc_multi(t_data *d, t_token *t);
 
 /*	*******	*/
 /*	 FREE	*/
