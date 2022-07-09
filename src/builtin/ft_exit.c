@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:38:20 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 18:04:09 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/09 03:33:24 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_resize_g_return(int i)
 {
 	while (i > 255)
-		i = i % 255;
+		i = i % 256;
 	while (i < 0)
 		i = i + 256;
 	return (i);
@@ -24,20 +24,25 @@ int	ft_resize_g_return(int i)
 void	ft_exit_bis(t_data *data, t_token *tok, int i, int ret)
 {
 	ret = ft_atoi(tok->arg);
-	if (tok->arg[i] == '\0' && tok->prev == NULL && tok->next == NULL)
+	if (tok->arg[i] == '\0')
 	{
 		g_return = ret;
-		data->exit = 1;
-		return ;
+		if (tok->prev == NULL && tok->next == NULL)
+			data->exit = 1;
+		else
+			data->exit = 0;
 	}
 	else
 	{
-		data->exit = 0;
 		ft_putstr("bash: ");
 		ft_putstr("exit");
-		ft_putstr(" : numeric argument required or too many arguments\n");
+		ft_putstr("too many arguments\n");
 		g_return = 2;
 	}
+	if (tok->prev == NULL && tok->next == NULL)
+		data->exit = 1;
+	else
+		data->exit = 0;
 }
 
 void	ft_exit(t_data *data, t_token *tok)
@@ -60,7 +65,7 @@ void	ft_exit(t_data *data, t_token *tok)
 		i++;
 	else if (tok->arg[i] == '+')
 		i++;
-	while (tok->arg && tok->arg[i] != '\0' && ft_is_number(tok->arg[i]) == 1)
+	while (tok->arg && tok->arg[i] != '\0' && tok->arg[i] != ' ')
 		i++;
 	i = i + ft_space(tok->arg, i);
 	ft_exit_bis(data, tok, i, ret);
