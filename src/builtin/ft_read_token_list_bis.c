@@ -58,7 +58,6 @@ void	ft_read_token_list(t_data *data)
 {
 	t_token	*t;
 
-	ft_print_token_list(data);
 	t = ft_ret_last_token(data);
 	while (data->exit == 0 && t != NULL)
 	{

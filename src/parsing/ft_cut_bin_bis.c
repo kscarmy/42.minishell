@@ -44,7 +44,6 @@ void	ft_cut_bin_bis(t_data *data, char *str)
 		ft_add_new_token(data);
 	u = ft_cut_bin_inter_size(data, &data->input[data->i], str);
 	data->dol = 0;
-	printf("ft_cut_bin : u %d\n", u);
 	data->token->bin = (char **)malloc(sizeof(char *) * (u + 1));
 	data->token->bin[u] = NULL;
 	data->dol = dol;

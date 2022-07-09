@@ -68,6 +68,6 @@ int	main(int argc, char **argv, char **env)
 	ft_free_minishell(data);
 	free(data);
 	data = NULL;
-	// rl_clear_history();
+	rl_clear_history();
 	return (ft_resize_g_return(g_return));
 }

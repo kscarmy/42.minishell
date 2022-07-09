@@ -17,7 +17,7 @@ void	ft_handler(int sig)
 	if (sig == SIGINT)
 	{
 		ft_putstr_fd("\n", 1);
-		// rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 		g_return = 130;
@@ -33,11 +33,11 @@ void	ft_handler_heredoc(int sig)
 {
 	if (sig == SIGINT)
 	{
-		// g_return = sig;
+		g_return = sig;
 		ft_putstr_fd("\b\b  \b\b", 1);
-		// rl_replace_line("", 0);
-		// ft_putstr_fd("\b\b  \b\b", 1);
-		// g_return = 130;
+		rl_replace_line("", 0);
+		ft_putstr_fd("\b\b  \b\b", 1);
+		g_return = 130;
 		exit(130);
 	}
 	else if (sig == SIGQUIT)

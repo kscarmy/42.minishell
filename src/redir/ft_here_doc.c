@@ -62,7 +62,6 @@ void	ft_heredoc_fork(char *str, int fd_in)
 
 t_token	*ft_here_doc(t_data *data, t_token *t)
 {
-	printf("ft_here_doc\n");
 	signal(SIGINT, ft_handler_heredoc);
 	signal(SIGQUIT, ft_handler_heredoc);
 	ft_here_doc_multi(data, t);
@@ -73,7 +72,7 @@ t_token	*ft_here_doc(t_data *data, t_token *t)
 	else
 	{
 		ft_putstr_fd("\n", 1);
-		// rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}

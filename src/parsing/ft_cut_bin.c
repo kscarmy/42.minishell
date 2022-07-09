@@ -43,7 +43,7 @@ void	ft_cut_inter_malloc(t_data *data, t_token *t, char *str, int ret)
 int	ft_cut_bin_incre_one_arg(char *str, int u)
 {
 	u = u + ft_space(str, u);
-	while (str[u] && str[u] != ' '
+	while (str && str[u] && str[u] != ' '
 		&& ft_is_separator(str, u) == 0)
 	{
 		if (str[u] == '\'')
@@ -110,8 +110,8 @@ int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra)
 		ret = 1;
 	i = ft_space(str, 0);
 	tmp = NULL;
-	while (str && str[i] && ft_is_separator(str, i) == 0
-		&& i < ft_str_size(str))
+	while (str && str[i] && str[i] != '\0'
+		&& i < ft_str_size(str) && ft_is_separator(str, i) == 0)
 	{
 		i = i + ft_space(str, i);
 		tmp = ft_one_arg(data, i);
@@ -120,7 +120,7 @@ int	ft_cut_bin_inter_size(t_data *data, char *str, char *stra)
 			ret = ret + ft_cut_bin_inter_sub(tmp);
 		else
 			ret++;
-		i = i + ft_cut_bin_incre_one_arg(str, i);
+		i = ft_cut_bin_incre_one_arg(str, i);
 		ft_strdel(&tmp);
 		data->dol = 0;
 	}
