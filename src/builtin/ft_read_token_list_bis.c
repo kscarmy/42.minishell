@@ -43,8 +43,6 @@ t_token	*ft_redirect_input(t_data *data, t_token *tok)
 
 void	ft_read_token_list_bis(t_data *data, t_token *t)
 {
-	if (t != NULL && t->prev != NULL && t->prev->sep == 6)
-		t = ft_here_doc(data, t);
 	if (t != NULL && t->prev != NULL && t->prev->sep == 2)
 	{
 		ft_pipe_close_data_fd(data, 1);
@@ -73,6 +71,8 @@ void	ft_read_token_list(t_data *data)
 			ft_pipe_in(data);
 		if (t != NULL && t->prev == NULL)
 			ft_pipe_close_data_fd(data, 1);
+		if (t != NULL && t->prev != NULL && t->prev->sep == 6)
+			t = ft_here_doc(data, t);
 		ft_read_token_list_bis(data, t);
 		if (t != NULL && t->prev != NULL)
 			t = t->prev;

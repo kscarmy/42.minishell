@@ -28,7 +28,7 @@ t_token	*ft_here_doc_bis(t_data *data, t_token *t)
 			t = t->prev->prev;
 		else
 			t = NULL;
-	}	
+	}
 	return (t);
 }
 
@@ -64,6 +64,7 @@ t_token	*ft_here_doc(t_data *data, t_token *t)
 {
 	signal(SIGINT, ft_handler_heredoc);
 	signal(SIGQUIT, ft_handler_heredoc);
+	g_return = 0;
 	ft_here_doc_multi(data, t);
 	signal(SIGINT, ft_handler);
 	signal(SIGQUIT, ft_handler);
