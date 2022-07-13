@@ -441,6 +441,7 @@ mkdir -p obj/redir
 mkdir -p obj/free
 mkdir -p obj/parse_arg
 gcc -Wall -Werror -Wextra -o obj/redir/ft_here_doc.o -c src/redir/ft_here_doc.c
+ 
 mkdir -p obj
 mkdir -p obj/parsing
 mkdir -p obj/init

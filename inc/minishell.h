@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:35:41 by guderram          #+#    #+#             */
-/*   Updated: 2022/07/09 01:51:09 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:25:38 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,6 +362,7 @@ void	ft_exit_bis(t_data *data, t_token *tok, int i, int ret);
 /*	**********	*/
 
 /*	ft_var.c	*/
+int		ft_found_var_name_dol(t_data *data);
 t_var	*ft_found_var_name(t_data *data, char *str);
 void	ft_disp_all_var(t_data *data, char sep, int export);
 

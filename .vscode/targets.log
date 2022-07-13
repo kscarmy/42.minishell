@@ -6,10 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 13 10:07:11 2022
+# Make data base, printed on Wed Jul 13 13:33:24 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -45,6 +46,8 @@ SHELL = /bin/sh
 # makefile (from 'Makefile', line 67)
 RM = rm -rf
 # environment
+GDM_LANG = en
+# environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"575d78304484aa5fa0cbb32d34fd883d.fr","_translationsConfigFile":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/tcf.json","_cacheRoot":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr","_resolvedLanguagePackCoreLocation":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/30d9c6cd9483b2cc586687151bcbcd635f373630","_corruptedFile":"/mnt/nfs/homes/guderram/.config/Code/clp/575d78304484aa5fa0cbb32d34fd883d.fr/corrupted.info","_languagePackSupport":true}
@@ -53,7 +56,7 @@ _ = /usr/bin/code
 # makefile (from 'Makefile', line 68)
 CFLAGS = -Wall -Werror -Wextra
 # environment
-JOURNAL_STREAM = 9:1209102
+JOURNAL_STREAM = 9:51916
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -75,15 +78,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/32509/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 472875
+MANAGERPID = 2510
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-acee4476-e872-4927-aec0-5b05a1689012.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/32509/vscode-ipc-7149a845-ae03-40da-90de-53a97f3ed0af.sock
 # environment
 VSCODE_CWD = /mnt/nfs/homes/guderram/42/minishell
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session6
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_32509_NczQ28
+KRB5CCNAME = FILE:/tmp/krb5cc_32509_qCnFoG
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -91,7 +94,7 @@ PATH = /mnt/nfs/homes/guderram/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 # environment
 GPG_AGENT_INFO = /run/user/32509/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/e1r11p3.42.fr:@/tmp/.ICE-unix/473301,unix/e1r11p3.42.fr:/tmp/.ICE-unix/473301
+SESSION_MANAGER = local/e1r11p3.clusters.42paris.fr:@/tmp/.ICE-unix/3039,unix/e1r11p3.clusters.42paris.fr:/tmp/.ICE-unix/3039
 # environment
 XDG_RUNTIME_DIR = /run/user/32509
 # environment
@@ -101,7 +104,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 72feb01020744252a5e754f6cf2e9132
+INVOCATION_ID = a031cd445b1a4b3f8d66a2c454189c05
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # makefile (from 'Makefile', line 61)
@@ -123,7 +126,7 @@ PWD = /mnt/nfs/homes/guderram/42/minishell
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 473228
+SSH_AGENT_PID = 3003
 # makefile (from 'Makefile', line 74)
 DONE = @echo "MINISHELL ready to use!"
 # environment
@@ -185,11 +188,13 @@ MAKE_COMMAND := make
 # makefile (from 'Makefile', line 63)
 INC = -I ./inc/ -I $(LIBFT_DIR)
 # environment
-OLDPWD = /mnt/nfs/homes/guderram/42
+OLDPWD = /mnt/nfs/homes/guderram
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
+# environment
+LANGUAGE = en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
@@ -221,11 +226,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/25769a78_ef4a_490c_96d2_e18d4b8194e6
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/827c2a32_4ea9_46b4_ad0f_34188c61ca8d
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.100
+GNOME_TERMINAL_SERVICE = :1.97
 # default
 SUFFIXES := 
 # environment
@@ -245,9 +250,9 @@ TERM = xterm-256color
 # environment
 DOCKER_HOST = unix:///run/user/32509/docker.sock
 # environment
-VSCODE_PID = 476067
+VSCODE_PID = 4430
 # variable set hash-table stats:
-# Load=118/1024=12%, Rehash=0, Collisions=19/157=12%
+# Load=120/1024=12%, Rehash=0, Collisions=19/159=12%
 
 # Pattern-specific Variable Values
 
@@ -255,10 +260,12 @@ VSCODE_PID = 476067
 
 # Directories
 
-# . (device 59, inode 264212907): 8 files, no impossibilities.
-# src (device 59, inode 264212967): 7 files, no impossibilities so far.
+# . (device 59, inode 264208534): 10 files, no impossibilities.
+# src/init (device 59, inode 264275870): 5 files, no impossibilities so far.
+# src (device 59, inode 264212934): 7 files, no impossibilities so far.
+# src/parsing (device 59, inode 264281015): 15 files, no impossibilities so far.
 
-# 15 files, no impossibilities in 2 directories.
+# 37 files, no impossibilities in 4 directories.
 
 # Implicit Rules
 
@@ -276,7 +283,6 @@ obj/%.o: src/%.c
 	@mkdir -p obj/parse_arg
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
- 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
@@ -293,11 +299,39 @@ obj/builtin/ft_echo.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+obj/parsing/ft_cut_echo.o: src/parsing/ft_cut_echo.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_echo'
+ 
+#  Last modified 2022-07-13 13:12:09.727811762
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
 # Not a target:
-obj/parsing/ft_cut_echo.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/init/ft_init_data.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:33:23.413319918
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/parsing/ft_pre_parsing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.963972583
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 obj/builtin/ft_export.o:
@@ -306,16 +340,49 @@ obj/builtin/ft_export.o:
 #  File has not been updated.
 
 # Not a target:
-obj/parsing/ft_cut_export.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/ft_cut_cd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.9489726
+#  File has been updated.
+#  Successfully updated.
 
-# Not a target:
-obj/parsing/ft_cut_bin_bis.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_export.o: src/parsing/ft_cut_export.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_export'
+#  Last modified 2022-07-13 13:12:09.668811829
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+obj/parsing/ft_cut_bin_bis.o: src/parsing/ft_cut_bin_bis.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_bin_bis'
+#  Last modified 2022-07-13 13:12:10.003811449
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/parse_arg/ft_quote.o:
@@ -357,16 +424,36 @@ obj/var/ft_var_sort.o:
 #  File has not been updated.
 
 # Not a target:
+src/parsing/ft_cut_bin.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.945972604
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 obj/var/ft_var.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/init/ft_init_token.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/init/ft_init_token.o: src/init/ft_init_token.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init/ft_init_token'
+#  Last modified 2022-07-13 13:12:10.178811251
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/free/ft_free.o:
@@ -380,36 +467,31 @@ obj/utils/ft_str.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/parsing/ft_cut_redirects.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_redirects.o: src/parsing/ft_cut_redirects.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_redirects'
+#  Last modified 2022-07-13 13:12:10.063811381
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 obj/main.o: src/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  File does not exist.
+#  Last modified 2022-07-13 13:12:09.05981252
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/main.o
-# automatic
-# % := 
-# automatic
-# * := main
-# automatic
-# + := src/main.c
-# automatic
-# | := 
-# automatic
-# < := src/main.c
-# automatic
-# ^ := src/main.c
-# automatic
-# ? := src/main.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 87):
 	@mkdir -p obj
 	@mkdir -p obj/parsing
@@ -432,7 +514,14 @@ obj/parse_arg/ft_one_arg.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-13 10:06:27.695766986
+#  Last modified 2022-07-13 13:09:47.889972667
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/parsing/ft_cut_echo.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.950972598
 #  File has been updated.
 #  Successfully updated.
 
@@ -443,16 +532,43 @@ obj/parse_arg/ft_size_one_arg.o:
 #  File has not been updated.
 
 # Not a target:
+src/parsing/ft_cut_export.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.955972592
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/parsing/ft_cut_bin_bis.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.946972603
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 obj/builtin/ft_env.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/parsing/ft_cut_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_env.o: src/parsing/ft_cut_env.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_env'
+#  Last modified 2022-07-13 13:12:09.449812078
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/builtin/ft_exit.o:
@@ -460,17 +576,44 @@ obj/builtin/ft_exit.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/parsing/ft_clear_token.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_clear_token.o: src/parsing/ft_clear_token.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_clear_token'
+#  Last modified 2022-07-13 13:12:09.339812202
+#  File has been updated.
+ 
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
-# Not a target:
-obj/parsing/ft_cut_exit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_exit.o: src/parsing/ft_cut_exit.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_exit'
+#  Last modified 2022-07-13 13:12:09.27181228
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/utils/ft_str_bis.o:
@@ -480,7 +623,7 @@ obj/utils/ft_str_bis.o:
 
 minishell: obj/main.o obj/signals.o obj/parsing/ft_cut_exit.o obj/parsing/ft_clear_token.o obj/parsing/ft_cut_cd.o obj/parsing/ft_cut_env.o obj/parsing/ft_cut_pwd.o obj/parsing/ft_cut_input.o obj/parsing/ft_cut_export.o obj/parsing/ft_cut_echo.o obj/parsing/ft_cut_unset.o obj/parsing/ft_cut_bin.o obj/parsing/ft_cut_bin_bis.o obj/parsing/ft_cut_redirects.o obj/parsing/ft_pre_parsing.o obj/init/ft_init_token.o obj/init/ft_init_data.o obj/init/ft_init_var.o obj/builtin/ft_read_token_list.o obj/builtin/ft_read_token_list_bis.o obj/builtin/ft_read_token_list_bis_bis.o obj/builtin/ft_echo.o obj/builtin/ft_pwd.o obj/builtin/ft_env.o obj/builtin/ft_unset.o obj/builtin/ft_export.o obj/builtin/ft_cd.o obj/builtin/ft_cd_bis.o obj/builtin/ft_exit.o obj/utils/ft_write.o obj/utils/ft_str.o obj/utils/ft_str_bis.o obj/utils/ft_str_bis_bis.o obj/var/ft_var.o obj/var/ft_var_sort.o obj/bin/ft_bin.o obj/bin/ft_bin_bis.o obj/redir/ft_pipe.o obj/redir/ft_in_file.o obj/redir/ft_here_doc.o obj/free/ft_free.o obj/parse_arg/ft_parse_arg.o obj/parse_arg/ft_malloc_arg.o obj/parse_arg/ft_malloc_arg_bis.o obj/parse_arg/ft_one_arg.o obj/parse_arg/ft_size_one_arg.o obj/parse_arg/ft_quote.o obj/parse_arg/ft_dol.o src/libft/libft.a
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-07-13 13:12:16.864803666
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -490,10 +633,30 @@ minishell: obj/main.o obj/signals.o obj/parsing/ft_cut_exit.o obj/parsing/ft_cle
 	$(DONE)
 
 # Not a target:
-obj/parsing/ft_cut_input.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/init/ft_init_token.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.918972634
+#  File has been updated.
+#  Successfully updated.
+
+obj/parsing/ft_cut_input.o: src/parsing/ft_cut_input.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_input'
+#  Last modified 2022-07-13 13:12:09.610811895
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/builtin/ft_pwd.o:
@@ -501,11 +664,24 @@ obj/builtin/ft_pwd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/parsing/ft_cut_pwd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_pwd.o: src/parsing/ft_cut_pwd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_pwd'
+#  Last modified 2022-07-13 13:12:09.552811961
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
@@ -524,6 +700,13 @@ obj/parse_arg/ft_dol.o:
 #  File has not been updated.
 
 # Not a target:
+src/parsing/ft_cut_redirects.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.960972587
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 obj/redir/ft_pipe.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -538,22 +721,34 @@ obj/builtin/ft_unset.o:
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-13 10:06:27.735766941
+#  Last modified 2022-07-13 13:09:47.929972622
 #  File has been updated.
 #  Successfully updated.
 
-# Not a target:
-obj/parsing/ft_cut_unset.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_unset.o: src/parsing/ft_cut_unset.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_unset'
+#  Last modified 2022-07-13 13:12:09.855811617
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 obj:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
- 
 
 # Not a target:
 obj/utils/ft_str_bis_bis.o:
@@ -561,11 +756,24 @@ obj/utils/ft_str_bis_bis.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/signals.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/signals.o: src/signals.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'signals'
+#  Last modified 2022-07-13 13:12:09.127812443
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 .DEFAULT:
@@ -580,6 +788,13 @@ obj/builtin/ft_read_token_list.o:
 #  File has not been updated.
 
 # Not a target:
+src/parsing/ft_cut_env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.951972597
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 obj/redir/ft_in_file.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -590,6 +805,20 @@ obj/bin/ft_bin.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+src/parsing/ft_clear_token.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.943972606
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/parsing/ft_cut_exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.953972595
+#  File has been updated.
+#  Successfully updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -608,16 +837,82 @@ clean:
 	$(CLEAN_O)
 
 # Not a target:
-obj/init/ft_init_data.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/ft_cut_input.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.956972591
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
-obj/parsing/ft_pre_parsing.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/parsing/ft_cut_pwd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.958972589
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/parsing/ft_cut_unset.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.962972584
+#  File has been updated.
+#  Successfully updated.
+
+obj/init/ft_init_data.o: src/init/ft_init_data.c
+ 
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init/ft_init_data'
+#  Last modified 2022-07-13 13:12:10.24081118
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/init/ft_init_data.o
+# automatic
+# % := 
+# automatic
+# * := init/ft_init_data
+# automatic
+# + := src/init/ft_init_data.c
+# automatic
+# | := 
+# automatic
+# < := src/init/ft_init_data.c
+# automatic
+# ^ := src/init/ft_init_data.c
+# automatic
+# ? := src/init/ft_init_data.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+obj/parsing/ft_pre_parsing.o: src/parsing/ft_pre_parsing.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_pre_parsing'
+#  Last modified 2022-07-13 13:12:10.123811313
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 src/libft/libft.a:
 #  Implicit rule search has not been done.
@@ -638,11 +933,24 @@ obj/builtin/ft_cd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-obj/parsing/ft_cut_cd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parsing/ft_cut_cd.o: src/parsing/ft_cut_cd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_cd'
+#  Last modified 2022-07-13 13:12:09.396812138
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/utils/ft_write.o:
@@ -651,10 +959,30 @@ obj/utils/ft_write.o:
 #  File has not been updated.
 
 # Not a target:
-obj/parsing/ft_cut_bin.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/signals.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-13 13:09:47.970972575
+#  File has been updated.
+#  Successfully updated.
+
+obj/parsing/ft_cut_bin.o: src/parsing/ft_cut_bin.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parsing/ft_cut_bin'
+#  Last modified 2022-07-13 13:12:09.940811521
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 87):
+	@mkdir -p obj
+	@mkdir -p obj/parsing
+	@mkdir -p obj/init
+	@mkdir -p obj/builtin
+	@mkdir -p obj/utils
+	@mkdir -p obj/var
+	@mkdir -p obj/bin
+	@mkdir -p obj/redir
+	@mkdir -p obj/free
+	@mkdir -p obj/parse_arg
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Not a target:
 obj/init/ft_init_var.o:
@@ -687,19 +1015,19 @@ obj/builtin/ft_cd_bis.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=60/1024=6%, Rehash=0, Collisions=4/134=3%
+# Load=76/1024=7%, Rehash=0, Collisions=4/198=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 77 / storage = 1416 B / avg = 18 B
-# current buf: size = 8162 B / used = 1416 B / count = 77 / avg = 18 B
+# strcache buffers: 1 (0) / strings = 127 / storage = 2409 B / avg = 18 B
+# current buf: size = 8162 B / used = 2409 B / count = 127 / avg = 18 B
 
-# strcache performance: lookups = 102 / hit rate = 24%
+# strcache performance: lookups = 174 / hit rate = 27%
 # hash-table stats:
-# Load=77/8192=1%, Rehash=0, Collisions=3/102=3%
-# Finished Make data base on Wed Jul 13 10:07:11 2022
+# Load=127/8192=2%, Rehash=0, Collisions=7/174=4%
+# Finished Make data base on Wed Jul 13 13:33:24 2022
 
  

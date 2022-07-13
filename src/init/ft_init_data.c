@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:03:09 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 20:04:06 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:39:29 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,18 @@ void	ft_init_pipe(t_data *data)
 		data->pipe->ofd_o = -10;
 		data->pipe->ofd_i = -10;
 	}
-	data->var->name = ft_malloc_str(data, 1);
-	if (data->var->name != NULL)
+	if (ft_found_var_name_dol(data) == 0)
 	{
-		data->var->name[0] = '?';
-		data->var->name[1] = '\0';
+		if (data->var == NULL)
+			ft_init_var(data);
+		else
+			ft_add_new_var(data);
+		data->var->name = ft_malloc_str(data, 1);
+		if (data->var->name != NULL)
+		{
+			data->var->name[0] = '?';
+			data->var->name[1] = '\0';
+		}
 	}
 }
 
@@ -123,11 +130,6 @@ int	ft_init_data(t_data *data, char **env)
 		ft_create_var_var(data, env[i]);
 		i++;
 	}
-	if (data->var == NULL)
-		ft_init_var(data);
-	else
-		ft_add_new_var(data);
-	data->var->name = NULL;
 	ft_init_pipe(data);
 	ft_init_data_pwd(data);
 	ft_init_data_bis(data);

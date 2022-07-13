@@ -6,11 +6,30 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 22:02:35 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/11 14:59:15 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:37:32 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+int	ft_found_var_name_dol(t_data *data)
+{
+	t_var	*var;
+	char	*str;
+
+	str = "?";
+	if (data->var != NULL)
+		var = data->var;
+	else
+		return (0);
+	while (var != NULL)
+	{
+		if (var->name && str[0] == var->name[0] && str[1] == var->name[1])
+			return (1);
+		var = var->next;
+	}
+	return (0);
+}
 
 t_var	*ft_found_var_name(t_data *data, char *str)
 {
@@ -62,7 +81,7 @@ void	ft_disp_all_var(t_data *data, char sep, int export)
 			ft_putstr(var->value);
 		if (var && var->name != NULL && export == 1)
 			ft_putchar('"');
-		if (var && var->next != NULL)
+		if (var)
 			ft_putchar('\n');
 		if (var)
 			var = var->next;
