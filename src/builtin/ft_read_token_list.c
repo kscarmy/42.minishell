@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:38:17 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/14 10:24:04 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 10:22:05 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_token	*ft_read_token_list_while_pipe(t_data *data, t_token *t)
 
 t_token	*ft_read_token_list_while_redir_bis(t_data *data, t_token *t, int *fd)
 {
-	while (data->err == 0 && t->prev != NULL && t != NULL
+	while (data->err == 0 && t != NULL && t->prev != NULL
+		&& t->prev->prev != NULL
 		&& (t->prev->sep == 3 || t->prev->sep == 5))
 	{
 		if (*fd != -10)
@@ -86,6 +87,12 @@ t_token	*ft_read_token_list_while_redir(t_data *data, t_token *tok)
 
 	fd = -10;
 	t = tok;
+	if (!(t != NULL && t->prev != NULL && t->prev->prev != NULL))
+	{
+		ft_putstr("bash: syntax error near unexpected token `newline'\n");
+		g_return = 2;
+		return (NULL);
+	}
 	t = ft_read_token_list_while_redir_bis(data, tok, &fd);
 	if (tok != NULL && tok->cmd != -1)
 	{

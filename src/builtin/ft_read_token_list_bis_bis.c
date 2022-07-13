@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 15:00:49 by guderram          #+#    #+#             */
-/*   Updated: 2022/07/09 00:51:08 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 10:08:17 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_token	*ft_read_token_list_cat(t_data *data, t_token *tok)
 			tmp = readline("");
 			ft_strdel(&tmp);
 			data->cat = data->cat - 1;
+			ft_putchar('\n');
 		}
 		return (NULL);
 	}

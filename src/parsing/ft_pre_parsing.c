@@ -6,7 +6,7 @@
 /*   By: guderram <guderram@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 23:15:08 by guderram          #+#    #+#             */
-/*   Updated: 2022/06/07 15:43:25 by guderram         ###   ########.fr       */
+/*   Updated: 2022/07/13 10:20:45 by guderram         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int	ft_is_input_safe(char *str)
 			return (0);
 		i++;
 	}
+	if (ft_space(str, 0) == ft_str_size(str))
+		return (0);
 	return (1);
 }

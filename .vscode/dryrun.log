@@ -10,55 +10,527 @@ mkdir -p obj/bin
 mkdir -p obj/redir
 mkdir -p obj/free
 mkdir -p obj/parse_arg
-gcc -Wall -Werror -Wextra -g3 -o obj/main.o -c src/main.c
-gcc -Wall -Werror -Wextra -g3 -o obj/signals.o -c src/signals.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_exit.o -c src/parsing/ft_cut_exit.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_clear_token.o -c src/parsing/ft_clear_token.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_cd.o -c src/parsing/ft_cut_cd.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_env.o -c src/parsing/ft_cut_env.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_pwd.o -c src/parsing/ft_cut_pwd.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_input.o -c src/parsing/ft_cut_input.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_export.o -c src/parsing/ft_cut_export.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_echo.o -c src/parsing/ft_cut_echo.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_unset.o -c src/parsing/ft_cut_unset.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_bin.o -c src/parsing/ft_cut_bin.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_cut_redirects.o -c src/parsing/ft_cut_redirects.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parsing/ft_pre_parsing.o -c src/parsing/ft_pre_parsing.c
-gcc -Wall -Werror -Wextra -g3 -o obj/init/ft_init_token.o -c src/init/ft_init_token.c
-gcc -Wall -Werror -Wextra -g3 -o obj/init/ft_init_data.o -c src/init/ft_init_data.c
-gcc -Wall -Werror -Wextra -g3 -o obj/init/ft_init_var.o -c src/init/ft_init_var.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_read_token_list.o -c src/builtin/ft_read_token_list.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_read_token_list_bis.o -c src/builtin/ft_read_token_list_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_read_token_list_bis_bis.o -c src/builtin/ft_read_token_list_bis_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_echo.o -c src/builtin/ft_echo.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_pwd.o -c src/builtin/ft_pwd.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_env.o -c src/builtin/ft_env.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_unset.o -c src/builtin/ft_unset.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_export.o -c src/builtin/ft_export.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_cd.o -c src/builtin/ft_cd.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_cd_bis.o -c src/builtin/ft_cd_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/builtin/ft_exit.o -c src/builtin/ft_exit.c
-gcc -Wall -Werror -Wextra -g3 -o obj/utils/ft_write.o -c src/utils/ft_write.c
-gcc -Wall -Werror -Wextra -g3 -o obj/utils/ft_str.o -c src/utils/ft_str.c
-gcc -Wall -Werror -Wextra -g3 -o obj/utils/ft_str_bis.o -c src/utils/ft_str_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/utils/ft_str_bis_bis.o -c src/utils/ft_str_bis_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/var/ft_var.o -c src/var/ft_var.c
-gcc -Wall -Werror -Wextra -g3 -o obj/var/ft_var_sort.o -c src/var/ft_var_sort.c
-gcc -Wall -Werror -Wextra -g3 -o obj/bin/ft_bin.o -c src/bin/ft_bin.c
-gcc -Wall -Werror -Wextra -g3 -o obj/bin/ft_bin_bis.o -c src/bin/ft_bin_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/redir/ft_pipe.o -c src/redir/ft_pipe.c
-gcc -Wall -Werror -Wextra -g3 -o obj/redir/ft_in_file.o -c src/redir/ft_in_file.c
-gcc -Wall -Werror -Wextra -g3 -o obj/redir/ft_here_doc.o -c src/redir/ft_here_doc.c
-gcc -Wall -Werror -Wextra -g3 -o obj/free/ft_free.o -c src/free/ft_free.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_parse_arg.o -c src/parse_arg/ft_parse_arg.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_malloc_arg.o -c src/parse_arg/ft_malloc_arg.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_malloc_arg_bis.o -c src/parse_arg/ft_malloc_arg_bis.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_one_arg.o -c src/parse_arg/ft_one_arg.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_size_one_arg.o -c src/parse_arg/ft_size_one_arg.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_quote.o -c src/parse_arg/ft_quote.c
-gcc -Wall -Werror -Wextra -g3 -o obj/parse_arg/ft_dol.o -c src/parse_arg/ft_dol.c
+gcc -Wall -Werror -Wextra -o obj/main.o -c src/main.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/signals.o -c src/signals.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_exit.o -c src/parsing/ft_cut_exit.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_clear_token.o -c src/parsing/ft_clear_token.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_cd.o -c src/parsing/ft_cut_cd.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_env.o -c src/parsing/ft_cut_env.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_pwd.o -c src/parsing/ft_cut_pwd.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_input.o -c src/parsing/ft_cut_input.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_export.o -c src/parsing/ft_cut_export.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_echo.o -c src/parsing/ft_cut_echo.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_unset.o -c src/parsing/ft_cut_unset.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_bin.o -c src/parsing/ft_cut_bin.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_bin_bis.o -c src/parsing/ft_cut_bin_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_cut_redirects.o -c src/parsing/ft_cut_redirects.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parsing/ft_pre_parsing.o -c src/parsing/ft_pre_parsing.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/init/ft_init_token.o -c src/init/ft_init_token.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/init/ft_init_data.o -c src/init/ft_init_data.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/init/ft_init_var.o -c src/init/ft_init_var.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_read_token_list.o -c src/builtin/ft_read_token_list.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_read_token_list_bis.o -c src/builtin/ft_read_token_list_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_read_token_list_bis_bis.o -c src/builtin/ft_read_token_list_bis_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_echo.o -c src/builtin/ft_echo.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_pwd.o -c src/builtin/ft_pwd.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_env.o -c src/builtin/ft_env.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_unset.o -c src/builtin/ft_unset.c
+mkdir -p obj
+mkdir -p obj/parsing
+ 
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_export.o -c src/builtin/ft_export.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_cd.o -c src/builtin/ft_cd.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_cd_bis.o -c src/builtin/ft_cd_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/builtin/ft_exit.o -c src/builtin/ft_exit.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/utils/ft_write.o -c src/utils/ft_write.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/utils/ft_str.o -c src/utils/ft_str.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/utils/ft_str_bis.o -c src/utils/ft_str_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/utils/ft_str_bis_bis.o -c src/utils/ft_str_bis_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/var/ft_var.o -c src/var/ft_var.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/var/ft_var_sort.o -c src/var/ft_var_sort.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/bin/ft_bin.o -c src/bin/ft_bin.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/bin/ft_bin_bis.o -c src/bin/ft_bin_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/redir/ft_pipe.o -c src/redir/ft_pipe.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/redir/ft_in_file.o -c src/redir/ft_in_file.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/redir/ft_here_doc.o -c src/redir/ft_here_doc.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/free/ft_free.o -c src/free/ft_free.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_parse_arg.o -c src/parse_arg/ft_parse_arg.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_malloc_arg.o -c src/parse_arg/ft_malloc_arg.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_malloc_arg_bis.o -c src/parse_arg/ft_malloc_arg_bis.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_one_arg.o -c src/parse_arg/ft_one_arg.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_size_one_arg.o -c src/parse_arg/ft_size_one_arg.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_quote.o -c src/parse_arg/ft_quote.c
+mkdir -p obj
+mkdir -p obj/parsing
+mkdir -p obj/init
+mkdir -p obj/builtin
+mkdir -p obj/utils
+mkdir -p obj/var
+mkdir -p obj/bin
+mkdir -p obj/redir
+mkdir -p obj/free
+mkdir -p obj/parse_arg
+gcc -Wall -Werror -Wextra -o obj/parse_arg/ft_dol.o -c src/parse_arg/ft_dol.c
 make -sC ./src/libft/
-gcc  -Wall -Werror -Wextra -g3  obj/main.o  obj/signals.o  obj/parsing/ft_cut_exit.o  obj/parsing/ft_clear_token.o  obj/parsing/ft_cut_cd.o  obj/parsing/ft_cut_env.o  obj/parsing/ft_cut_pwd.o  obj/parsing/ft_cut_input.o  obj/parsing/ft_cut_export.o  obj/parsing/ft_cut_echo.o  obj/parsing/ft_cut_unset.o  obj/parsing/ft_cut_bin.o  obj/parsing/ft_cut_redirects.o  obj/parsing/ft_pre_parsing.o  obj/init/ft_init_token.o  obj/init/ft_init_data.o  obj/init/ft_init_var.o  obj/builtin/ft_read_token_list.o  obj/builtin/ft_read_token_list_bis.o  obj/builtin/ft_read_token_list_bis_bis.o  obj/builtin/ft_echo.o  obj/builtin/ft_pwd.o  obj/builtin/ft_env.o  obj/builtin/ft_unset.o  obj/builtin/ft_export.o  obj/builtin/ft_cd.o  obj/builtin/ft_cd_bis.o  obj/builtin/ft_exit.o  obj/utils/ft_write.o  obj/utils/ft_str.o  obj/utils/ft_str_bis.o  obj/utils/ft_str_bis_bis.o  obj/var/ft_var.o  obj/var/ft_var_sort.o  obj/bin/ft_bin.o  obj/bin/ft_bin_bis.o  obj/redir/ft_pipe.o  obj/redir/ft_in_file.o  obj/redir/ft_here_doc.o  obj/free/ft_free.o  obj/parse_arg/ft_parse_arg.o  obj/parse_arg/ft_malloc_arg.o  obj/parse_arg/ft_malloc_arg_bis.o  obj/parse_arg/ft_one_arg.o  obj/parse_arg/ft_size_one_arg.o  obj/parse_arg/ft_quote.o  obj/parse_arg/ft_dol.o -L ./src/libft/ -lft -lreadline -o minishell
+gcc  -Wall -Werror -Wextra  obj/main.o  obj/signals.o  obj/parsing/ft_cut_exit.o  obj/parsing/ft_clear_token.o  obj/parsing/ft_cut_cd.o  obj/parsing/ft_cut_env.o  obj/parsing/ft_cut_pwd.o  obj/parsing/ft_cut_input.o  obj/parsing/ft_cut_export.o  obj/parsing/ft_cut_echo.o  obj/parsing/ft_cut_unset.o  obj/parsing/ft_cut_bin.o  obj/parsing/ft_cut_bin_bis.o  obj/parsing/ft_cut_redirects.o  obj/parsing/ft_pre_parsing.o  obj/init/ft_init_token.o  obj/init/ft_init_data.o  obj/init/ft_init_var.o  obj/builtin/ft_read_token_list.o  obj/builtin/ft_read_token_list_bis.o  obj/builtin/ft_read_token_list_bis_bis.o  obj/builtin/ft_echo.o  obj/builtin/ft_pwd.o  obj/builtin/ft_env.o  obj/builtin/ft_unset.o  obj/builtin/ft_export.o  obj/builtin/ft_cd.o  obj/builtin/ft_cd_bis.o  obj/builtin/ft_exit.o  obj/utils/ft_write.o  obj/utils/ft_str.o  obj/utils/ft_str_bis.o  obj/utils/ft_str_bis_bis.o  obj/var/ft_var.o  obj/var/ft_var_sort.o  obj/bin/ft_bin.o  obj/bin/ft_bin_bis.o  obj/redir/ft_pipe.o  obj/redir/ft_in_file.o  obj/redir/ft_here_doc.o  obj/free/ft_free.o  obj/parse_arg/ft_parse_arg.o  obj/parse_arg/ft_malloc_arg.o  obj/parse_arg/ft_malloc_arg_bis.o  obj/parse_arg/ft_one_arg.o  obj/parse_arg/ft_size_one_arg.o  obj/parse_arg/ft_quote.o  obj/parse_arg/ft_dol.o -L ./src/libft/ -lft -lreadline -o minishell
 echo "MINISHELL ready to use!"
 make: Leaving directory '/mnt/nfs/homes/guderram/42/minishell'
  
