@@ -74,12 +74,14 @@ minishell$ ls | grep minishell > output.txt
 - Pas de fuites mémoire autorisées (excepté celles de la fonction readline).
 - Compatible avec les bibliothèques suivantes : readline, printf, malloc, etc.
 
-### Auteur
-
-Ce projet a été développé par ***kscarmy***.
-
 ### Notes :
 
 - Les bonus mentionnés dans le sujet (e.g., &&, ||, *) n'ont pas été implémentés.
 - Pour toute question ou suggestion, ouvrez une issue sur le dépôt GitHub.
+
+
+## Auteurs
+- [kscarmy](https://github.com/kscarmy)
+- [mourdani](https://github.com/mourdani)
+
 
